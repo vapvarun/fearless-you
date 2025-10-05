@@ -1,0 +1,322 @@
+@charset "UTF-8";
+/* line 7, ../sass/favcon.scss */
+:root {
+  --ldfc-primary: #00a2e8;
+  --ldfc-table-radius: 6px;
+  --ldfc-button-radius: 20px;
+}
+
+@font-face {
+  font-family: 'ldfc';
+  src: url("../fonts/ldfc.eot?54167715");
+  src: url("../fonts/ldfc.eot?54167715#iefix") format("embedded-opentype"), url("../fonts/ldfc.woff2?54167715") format("woff2"), url("../fonts/ldfc.woff?54167715") format("woff"), url("../fonts/ldfc.ttf?54167715") format("truetype"), url("../fonts/ldfc.svg?54167715#fontello") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?54167715#fontello') format('svg');
+  }
+}
+*/
+/* line 61, ../sass/partials/_iconfont.scss */
+[class^="ldfc-icon-"]:before, [class*=" ldfc-icon-"]:before {
+  font-family: "ldfc";
+  font-style: normal;
+  font-weight: normal;
+  speak: never;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  text-align: center;
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+/* line 95, ../sass/partials/_iconfont.scss */
+.ldfc-icon-heart-closed:before {
+  content: '\e800' !important;
+}
+
+/* '' */
+/* line 96, ../sass/partials/_iconfont.scss */
+.ldfc-icon-heart-open:before {
+  content: '\e801' !important;
+}
+
+/* '' */
+/* line 15, ../sass/favcon.scss */
+.ldfc-favorite-button {
+  margin: 30px 0;
+  text-align: center;
+}
+/* line 18, ../sass/favcon.scss */
+.ldfc-favorite-button .ldfc-button.js-favcon-favorite {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 25px 5px 20px;
+  text-decoration: none;
+  border: 3px solid #ddd !important;
+  background: transparent;
+  color: #666;
+  font-weight: 800;
+  border-radius: var(--ldfc-button-radius);
+  transition: all ease-in-out 250ms;
+}
+/* line 29, ../sass/favcon.scss */
+.ldfc-favorite-button .ldfc-button.js-favcon-favorite:hover {
+  border: 3px solid #aaa !important;
+  color: #111;
+}
+/* line 33, ../sass/favcon.scss */
+.ldfc-favorite-button .ldfc-button.js-favcon-favorite.favcon-saved {
+  background: var(--ldfc-primary);
+  color: #fff;
+  border-color: var(--ldfc-primary) !important;
+}
+/* line 37, ../sass/favcon.scss */
+.ldfc-favorite-button .ldfc-button.js-favcon-favorite.favcon-saved:hover {
+  opacity: 0.8;
+}
+/* line 41, ../sass/favcon.scss */
+.ldfc-favorite-button .ldfc-button.js-favcon-favorite.favcon-saved .ldfc-heart svg,
+.ldfc-favorite-button .ldfc-button.js-favcon-favorite.favcon-saved .ldfc-heart svg path {
+  fill: #fff;
+}
+/* line 47, ../sass/favcon.scss */
+.ldfc-favorite-button .ldfc-button.js-favcon-favorite .ld-icon {
+  padding-right: 5px;
+  display: inline-block;
+}
+/* line 50, ../sass/favcon.scss */
+.ldfc-favorite-button .ldfc-button.js-favcon-favorite .ld-icon svg {
+  width: 15px;
+  height: 15px;
+  transition: all ease-in-out 250ms;
+}
+/* line 54, ../sass/favcon.scss */
+.ldfc-favorite-button .ldfc-button.js-favcon-favorite .ld-icon svg path {
+  transition: all ease-in-out 250ms;
+}
+
+/* line 62, ../sass/favcon.scss */
+.ldfc-favorite-table {
+  margin: 30px 0;
+}
+/* line 64, ../sass/favcon.scss */
+.ldfc-favorite-table-wrap {
+  border-radius: 6px;
+}
+/* line 67, ../sass/favcon.scss */
+.ldfc-favorite-table .ldfc-favorite-header {
+  background: var(--ldfc-primary);
+  padding: 20px 22px;
+  color: #fff;
+  font-weight: bold;
+  border-radius: var(--ldfc-table-radius) var(--ldfc-table-radius) 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+/* line 76, ../sass/favcon.scss */
+.ldfc-favorite-table .ldfc-favorite-header a {
+  color: #fff;
+  text-decoration: none;
+}
+/* line 80, ../sass/favcon.scss */
+.ldfc-favorite-table .ldfc-favorite-header .ldfc-favorite-search-input {
+  padding: 5px 10px;
+  background: #fff;
+  border-radius: 3px;
+  transition: all ease-in-out 250ms;
+  display: inline-block;
+  border: 0;
+  box-shadow: none;
+  width: 100%;
+  max-width: 150px;
+  margin-left: 15px;
+}
+/* line 91, ../sass/favcon.scss */
+.ldfc-favorite-table .ldfc-favorite-header .ldfc-favorite-search-input:focus {
+  max-width: 300px;
+}
+/* line 96, ../sass/favcon.scss */
+.ldfc-favorite-table .ldfc-favorites {
+  border: 2px solid #e2e7ed;
+  border-top: 0;
+  border-radius: 0 0 var(--ldfc-table-radius) var(--ldfc-table-radius);
+}
+/* line 100, ../sass/favcon.scss */
+.ldfc-favorite-table .ldfc-favorites .ldfc-favorite {
+  position: relative;
+}
+/* line 102, ../sass/favcon.scss */
+.ldfc-favorite-table .ldfc-favorites .ldfc-favorite a.js-ldfc-unfavorite {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  z-index: 5;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all ease-in-out 250ms;
+  text-decoration: none;
+}
+/* line 117, ../sass/favcon.scss */
+.ldfc-favorite-table .ldfc-favorites .ldfc-favorite a.js-ldfc-unfavorite:hover {
+  background: #666;
+  color: #fff;
+}
+/* line 120, ../sass/favcon.scss */
+.ldfc-favorite-table .ldfc-favorites .ldfc-favorite a.js-ldfc-unfavorite:hover svg path {
+  fill: #fff;
+}
+/* line 124, ../sass/favcon.scss */
+.ldfc-favorite-table .ldfc-favorites .ldfc-favorite a.js-ldfc-unfavorite svg {
+  width: 15px;
+  height: 15px;
+}
+/* line 127, ../sass/favcon.scss */
+.ldfc-favorite-table .ldfc-favorites .ldfc-favorite a.js-ldfc-unfavorite svg path {
+  transition: all ease-in-out 250ms;
+}
+/* line 132, ../sass/favcon.scss */
+.ldfc-favorite-table .ldfc-favorites .ldfc-favorite a.ldfc-favorite__link {
+  padding: 20px;
+  text-decoration: none;
+  transition: all ease-in-out 250ms;
+  display: block;
+  position: relative;
+}
+/* line 137, ../sass/favcon.scss */
+.ldfc-favorite-table .ldfc-favorites .ldfc-favorite a.ldfc-favorite__link:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+/* line 141, ../sass/favcon.scss */
+.ldfc-favorite-table .ldfc-favorites .ldfc-favorite a.ldfc-favorite__link .ldfc-favorite__title {
+  display: block;
+}
+/* line 144, ../sass/favcon.scss */
+.ldfc-favorite-table .ldfc-favorites .ldfc-favorite a.ldfc-favorite__link .ldfc-favorite__course {
+  font-size: .9em;
+  color: #666;
+}
+/* line 149, ../sass/favcon.scss */
+.ldfc-favorite-table .ldfc-favorites .ldfc-favorite::after {
+  display: block;
+  height: 1px;
+  background: #ddd;
+  margin: 0 20px;
+  content: '';
+}
+/* line 156, ../sass/favcon.scss */
+.ldfc-favorite-table .ldfc-favorites .ldfc-favorite:last-child::after {
+  display: none;
+}
+
+/* line 164, ../sass/favcon.scss */
+.ld-icon.ld-icon-favorites {
+  font-family: "ldfc";
+  font-style: normal;
+  font-weight: normal;
+  speak: never;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+  font-size: 16px;
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+  font-family: "ldfc" !important;
+  width: 19px;
+  height: 19px;
+}
+/* line 169, ../sass/favcon.scss */
+.ld-icon.ld-icon-favorites::before {
+  content: '\e800';
+}
+
+/* line 175, ../sass/favcon.scss */
+.ldfc-icon {
+  font-family: "ldfc";
+  font-style: normal;
+  font-weight: normal;
+  speak: never;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+  font-size: 16px;
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+/* line 177, ../sass/favcon.scss */
+.ldfc-icon.ldfc-icon-heart::before {
+  content: '\e801';
+}
+
+/* line 185, ../sass/favcon.scss */
+.js-ldfc-unfavorite .ldfc-icon.ldfc-icon-heart::before,
+.favcon-saved .ldfc-icon.ldfc-icon-heart::before {
+  content: '\e800';
+}
+
+/* line 192, ../sass/favcon.scss */
+.ld-tab-content .ldfc-favorite-table {
+  margin: 0;
+}
+
+/* line 197, ../sass/favcon.scss */
+.ldfc-favorited-icon {
+  padding: 0 15px 0 5px;
+  display: inline-flex;
+  align-items: center;
+}
+/* line 201, ../sass/favcon.scss */
+.ldfc-favorited-icon svg {
+  width: 15px;
+  height: 15px;
+}

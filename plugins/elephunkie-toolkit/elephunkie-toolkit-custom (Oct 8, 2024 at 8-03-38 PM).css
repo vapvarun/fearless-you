@@ -1,0 +1,139 @@
+/* Elephunkie Toolkit Custom CSS */
+
+.elephunkie-body {
+    background-image: linear-gradient(180deg, #ee3274 0%, #804299 100%) !important;
+}
+
+.phunkie-tools-wrap {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 10px;
+}
+
+.phunkie-tools-header {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0);
+    padding: 0px;
+    border-radius: 10px;
+    color: white;
+    font-size: 2em;
+    font-family: 'Poppins', sans-serif;
+}
+
+.phunkie-tools-container {
+    margin-top: 20px;
+}
+
+.phunkie-feature {
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid #ff69b4;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.phunkie-settings-header {
+    text-align: left;
+}
+
+.phunkie-toggle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.phunkie-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #32a852; /* Green color from Elephunkie site */
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #32a852;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.toggle-feature[data-onstyle="phunkie-on"] + .slider {
+    background-color: #f39c12; /* Amber color from Elephunkie site */
+}
+
+.toggle-feature[data-offstyle="phunkie-off"] + .slider {
+    background-color: #3498db; /* Blue color from Elephunkie site */
+}
+
+.wp-core-ui .button-primary {
+    background-color: #ffdd00 !important; /* Bright yellow color */
+    color: #000000 !important; /* Black text */
+    border-color: #ffdd00 !important;
+}
+
+.phunkie-admin-title-image {
+    max-height: 100px;
+    width: auto;
+}
+
+.wrap-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.phunkie-submit-button-container {
+    margin-top: 20px;
+}
+
+.phunkie-button {
+    background-color: #ff69b4 !important;
+    color: white !important;
+}
+
+.phunkie-feature-title {
+    font-size: 1.2em;
+    margin-left: 10px;
+}
+
+.phunkie-feature-description {
+    margin-left: 75px;
+    font-size: 0.9em;
+}

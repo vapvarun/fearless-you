@@ -1,0 +1,121 @@
+/* Custom styling for the Phunkie Audio Player */
+
+/* Reset the player container styling */
+.mejs-container {
+    width: 100%;
+    max-width: 480px; /* Adjust based on your design requirements */
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Customize controls bar */
+.mejs-controls {
+    background-color: transparent;
+    padding: 10px 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Style the play and pause button */
+.mejs-playpause-button {
+    float: left;
+    width: auto;
+    margin-right: 20px; /* Space between buttons */
+}
+
+/* Custom styles for time rail (progress bar) */
+.mejs-time-rail {
+    flex-grow: 1;
+    margin: 0 15px;
+}
+
+.mejs-time-total {
+    background-color: #333; /* Dark theme for the slider */
+}
+
+/* Volume control customization */
+.mejs-horizontal-volume-slider {
+    width: 120px; /* Fixed width for volume control */
+    margin-left: 20px;
+}
+
+.mejs-horizontal-volume-total,
+.mejs-horizontal-volume-current {
+    height: 2px;
+}
+
+/* Current and total time styling */
+.mejs-time {
+    color: #333;
+    font-size: 12px;
+}
+
+/* Time float (appears on hover over the time rail) */
+.mejs-time-float {
+    background-color: #fff;
+    color: #333;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+/* Adjust play button icon size and color */
+.mejs-play button:before,
+.mejs-pause button:before {
+    font-size: 18px;
+    color: #333;
+}
+
+/* Ensure the image appears neatly above the controls */
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+/* Custom styling for the Phunkie Audio Player within Gutenberg blocks */
+
+.wp-block-audio {
+    max-width: 480px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 10px;
+    box-sizing: border-box;
+    margin: auto;
+}
+
+audio {
+    width: 100%;
+    display: block;
+}
+
+/* Style adjustments for the media controls */
+audio::-webkit-media-controls-panel {
+    background-color: transparent;
+    color: #333;
+}
+
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-timeline-container,
+audio::-webkit-media-controls-volume-slider {
+    color: #333;
+}
+
+/* Image styling specific for Gutenberg audio block */
+.wp-block-audio img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Ensuring controls are styled consistently */
+.mejs-container .mejs-controls {
+    background-color: transparent;
+}

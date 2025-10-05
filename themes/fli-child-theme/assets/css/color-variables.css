@@ -1,0 +1,275 @@
+/**
+ * Fearless Living Extended Color Variable System
+ * 
+ * This file defines a comprehensive color palette with CSS custom properties
+ * to ensure consistency and reduce color duplication across the site.
+ */
+
+:root {
+  /* ==========================================================================
+     Brand Colors
+     ========================================================================== */
+  
+  /* Primary Brand - Teal/Blue-Green */
+  --fl-brand-primary: #59898d;
+  --fl-brand-primary-light: rgba(89, 137, 141, 0.2);
+  --fl-brand-primary-medium: rgba(89, 137, 141, 0.5);
+  --fl-brand-primary-dark: rgba(89, 137, 141, 0.9);
+  --fl-brand-primary-darker: #0a738a;
+  
+  /* Secondary Brand - Yellow/Green */
+  --fl-brand-secondary: #bfc046;
+  --fl-brand-secondary-light: rgba(191, 192, 70, 0.2);
+  --fl-brand-secondary-medium: rgba(191, 192, 70, 0.5);
+  --fl-brand-secondary-dark: rgba(191, 192, 70, 0.8);
+  
+  /* Accent Colors */
+  --fl-accent-yellow: #fde132;
+  --fl-accent-blue: #009bde;
+  --fl-accent-orange: #ff6b00;
+  --fl-accent-pink: #ff69b4;
+  --fl-accent-bright-blue: #007CFF;
+  --fl-accent-wp-blue: #2271b1;
+  
+  /* ==========================================================================
+     Neutral Colors
+     ========================================================================== */
+  
+  /* Grays - Light to Dark */
+  --fl-gray-50: #FAFBFD;
+  --fl-gray-100: #F2F4F5;
+  --fl-gray-200: #E7E9EC;
+  --fl-gray-300: #D6D9DD;
+  --fl-gray-400: #ddd;
+  --fl-gray-500: #7F868F;
+  --fl-gray-600: #647385;
+  --fl-gray-700: #393939;
+  --fl-gray-800: #2c3e50;
+  --fl-gray-900: #122B46;
+  
+  /* Whites */
+  --fl-white: #ffffff;
+  --fl-white-95: #f9f9f9;
+  
+  /* ==========================================================================
+     Semantic Colors
+     ========================================================================== */
+  
+  /* Success */
+  --fl-success: #27ae60;
+  --fl-success-light: rgba(39, 174, 96, 0.1);
+  --fl-success-medium: rgba(39, 174, 96, 0.5);
+  --fl-success-dark: #1e8449;
+  
+  /* Warning */
+  --fl-warning: #ff6b00;
+  --fl-warning-light: rgba(255, 107, 0, 0.1);
+  --fl-warning-medium: rgba(255, 107, 0, 0.5);
+  --fl-warning-dark: #cc5600;
+  
+  /* Danger/Error */
+  --fl-danger: #e74c3c;
+  --fl-danger-light: rgba(231, 76, 60, 0.1);
+  --fl-danger-medium: rgba(231, 76, 60, 0.5);
+  --fl-danger-dark: #dc3545;
+  
+  /* Info */
+  --fl-info: #385DFF;
+  --fl-info-light: rgba(56, 93, 255, 0.1);
+  --fl-info-medium: rgba(56, 93, 255, 0.5);
+  --fl-info-dark: #2041cc;
+  
+  /* ==========================================================================
+     Component-Specific Colors
+     ========================================================================== */
+  
+  /* Backgrounds */
+  --fl-bg-primary: var(--fl-white);
+  --fl-bg-secondary: var(--fl-gray-50);
+  --fl-bg-tertiary: var(--fl-gray-100);
+  --fl-bg-overlay: rgba(0, 0, 0, 0.5);
+  --fl-bg-overlay-light: rgba(0, 0, 0, 0.2);
+  
+  /* Text Colors */
+  --fl-text-primary: var(--fl-gray-900);
+  --fl-text-secondary: var(--fl-gray-700);
+  --fl-text-muted: var(--fl-gray-500);
+  --fl-text-inverse: var(--fl-white);
+  --fl-text-link: var(--fl-brand-primary);
+  --fl-text-link-hover: var(--fl-brand-primary-darker);
+  
+  /* Borders */
+  --fl-border-light: var(--fl-gray-200);
+  --fl-border-medium: var(--fl-gray-300);
+  --fl-border-dark: var(--fl-gray-400);
+  
+  /* Buttons - Primary */
+  --fl-btn-primary-bg: var(--fl-brand-primary);
+  --fl-btn-primary-bg-hover: var(--fl-brand-primary-darker);
+  --fl-btn-primary-text: var(--fl-white);
+  --fl-btn-primary-border: var(--fl-brand-primary);
+  
+  /* Buttons - Secondary */
+  --fl-btn-secondary-bg: var(--fl-white);
+  --fl-btn-secondary-bg-hover: var(--fl-gray-50);
+  --fl-btn-secondary-text: var(--fl-brand-primary);
+  --fl-btn-secondary-border: var(--fl-brand-primary);
+  
+  /* Buttons - Success */
+  --fl-btn-success-bg: var(--fl-success);
+  --fl-btn-success-bg-hover: var(--fl-success-dark);
+  --fl-btn-success-text: var(--fl-white);
+  
+  /* Buttons - Danger */
+  --fl-btn-danger-bg: var(--fl-danger);
+  --fl-btn-danger-bg-hover: var(--fl-danger-dark);
+  --fl-btn-danger-text: var(--fl-white);
+  
+  /* Forms */
+  --fl-input-bg: var(--fl-white);
+  --fl-input-bg-disabled: var(--fl-gray-100);
+  --fl-input-border: var(--fl-gray-300);
+  --fl-input-border-focus: var(--fl-brand-primary);
+  --fl-input-text: var(--fl-text-primary);
+  --fl-input-placeholder: var(--fl-gray-500);
+  
+  /* Cards/Blocks */
+  --fl-card-bg: var(--fl-white);
+  --fl-card-border: var(--fl-border-light);
+  --fl-card-shadow: rgba(0, 0, 0, 0.1);
+  
+  /* Navigation */
+  --fl-nav-bg: var(--fl-gray-800);
+  --fl-nav-text: var(--fl-white);
+  --fl-nav-text-hover: var(--fl-brand-primary-light);
+  --fl-nav-active-bg: var(--fl-brand-primary);
+  
+  /* Tables */
+  --fl-table-bg: var(--fl-white);
+  --fl-table-bg-alt: var(--fl-gray-50);
+  --fl-table-border: var(--fl-border-light);
+  --fl-table-header-bg: var(--fl-gray-100);
+  
+  /* Tooltips */
+  --fl-tooltip-bg: var(--fl-gray-900);
+  --fl-tooltip-text: var(--fl-white);
+  
+  /* Shadows */
+  --fl-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --fl-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --fl-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --fl-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  
+  /* ==========================================================================
+     Feature-Specific Colors
+     ========================================================================== */
+  
+  /* Learning/Courses */
+  --fl-course-progress-bg: var(--fl-gray-200);
+  --fl-course-progress-fill: var(--fl-brand-primary);
+  --fl-course-complete: var(--fl-success);
+  --fl-course-incomplete: var(--fl-gray-400);
+  
+  /* Community/Social */
+  --fl-social-like: var(--fl-danger);
+  --fl-social-comment: var(--fl-info);
+  --fl-social-share: var(--fl-brand-primary);
+  
+  /* Notifications/Badges */
+  --fl-notification-bg: var(--fl-danger);
+  --fl-notification-text: var(--fl-white);
+  --fl-badge-new: var(--fl-success);
+  --fl-badge-featured: var(--fl-accent-yellow);
+  
+  /* Status Indicators */
+  --fl-status-online: var(--fl-success);
+  --fl-status-away: var(--fl-warning);
+  --fl-status-busy: var(--fl-danger);
+  --fl-status-offline: var(--fl-gray-400);
+
+  /* ==========================================================================
+     Category Colors (Dynamic - Set via Admin Panel)
+     ========================================================================== */
+  
+  /* Category Colors - These are dynamically set via the admin panel */
+  --fl-category-curriculum-color: #59898d;
+  --fl-category-love-notes-color: #ff69b4;
+  --fl-category-monthly-reflection-color: #bfc046;
+  --fl-category-qa-calls-color: #ff6b00;
+  --fl-category-topics-color: #009bde;
+  --fl-category-uncategorized-color: #7f868f;
+  
+  /* Category Color RGB Values */
+  --fl-category-curriculum-color-rgb: 89, 137, 141;
+  --fl-category-love-notes-color-rgb: 255, 105, 180;
+  --fl-category-monthly-reflection-color-rgb: 191, 192, 70;
+  --fl-category-qa-calls-color-rgb: 255, 107, 0;
+  --fl-category-topics-color-rgb: 0, 155, 222;
+  --fl-category-uncategorized-color-rgb: 127, 134, 143;
+}
+
+/* ==========================================================================
+   Dark Mode Variables (optional - can be activated with class or media query)
+   ========================================================================== */
+
+@media (prefers-color-scheme: dark) {
+  :root.dark-mode {
+    /* Invert background colors */
+    --fl-bg-primary: var(--fl-gray-900);
+    --fl-bg-secondary: var(--fl-gray-800);
+    --fl-bg-tertiary: var(--fl-gray-700);
+    
+    /* Invert text colors */
+    --fl-text-primary: var(--fl-white);
+    --fl-text-secondary: var(--fl-gray-200);
+    --fl-text-muted: var(--fl-gray-400);
+    --fl-text-inverse: var(--fl-gray-900);
+    
+    /* Adjust component colors */
+    --fl-card-bg: var(--fl-gray-800);
+    --fl-card-border: var(--fl-gray-600);
+    --fl-input-bg: var(--fl-gray-700);
+    --fl-input-border: var(--fl-gray-600);
+    
+    /* Adjust shadows for dark mode */
+    --fl-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    --fl-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    --fl-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+    --fl-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* ==========================================================================
+   Usage Examples
+   ========================================================================== */
+
+/*
+Example usage in your CSS:
+
+.resource-item {
+  background-color: var(--fl-card-bg);
+  border: 1px solid var(--fl-card-border);
+  color: var(--fl-text-primary);
+}
+
+.resource-item:hover {
+  border-color: var(--fl-brand-primary);
+  box-shadow: var(--fl-shadow-md);
+}
+
+.btn-primary {
+  background-color: var(--fl-btn-primary-bg);
+  color: var(--fl-btn-primary-text);
+  border: 1px solid var(--fl-btn-primary-border);
+}
+
+.btn-primary:hover {
+  background-color: var(--fl-btn-primary-bg-hover);
+}
+
+.success-message {
+  background-color: var(--fl-success-light);
+  color: var(--fl-success-dark);
+  border-left: 4px solid var(--fl-success);
+}
+*/

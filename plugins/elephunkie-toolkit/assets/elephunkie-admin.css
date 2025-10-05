@@ -1,0 +1,433 @@
+.phunkie-admin-page {        
+   margin-left:-20px;   min-height:100vh; 
+}
+#toplevel_page_elephunkie-toolkit, #adminmenu li.elephunkie-menu-item {
+    background-color: #ee3274;
+}
+#toplevel_page_elephunkie-toolkit:hover, #adminmenu li.elephunkie-menu-item:hover {
+    background-color: #ee3274;
+}
+
+.phunkie-wrap {display: flex;flex-direction: column;border-radius:10px;background-color: rgba(255,255,255,0.95);box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);}
+	.wrap-header{justify-content: flex-start;padding: 0.5em 2em;background-color: rgba(255,255,255,0.75);border-radius: 10px 10px 0px 0px;}
+	.wrap-guts{border-width: 0px 1em 0px 1em;border-style: solid;border-color: rgba(255,255,255,0.75);flex-grow: 1;min-height: 90vh;padding: 1em;}
+	.wrap-footer{padding: 0.5em 2em;background-color:rgba(255,255,255,0.75);border-radius: 0px 0px 10px 10px;}
+
+.upload-btn{
+background-color: #4EC34C;
+border: 2px solid white;
+box-shadow: none;
+color: #fff;
+font-size: 14px;
+font-weight: 600;
+height: auto;
+padding: 7px 17px;
+border-radius: 50px;
+margin-top: -40px;
+}
+
+#adminmenu, #adminmenuback {
+    min-width: 165px;
+}
+
+.upload-btn:hover{background-color:#29c10b;}
+.phunkie-admin-page {margin: 1em;text-align:center;}
+.phunkie-wrap{margin-top:20px;border-radius:10px;}
+.phunkie-admin-page p {
+    font-size: 14px !important;
+}
+.phunkie-admin-page .notice, .phunkie-admin-page div.error, .phunkie-admin-page div.updated {
+    margin: 0px;
+}
+.phunkie-admin-page .notice-info, .phunkie-admin-page .notice-success, .phunkie-admin-page div.updated {
+    border-left-color: #FFED12;
+}
+
+.phunkie-admin-row {
+    padding: 16px 40px 37px 40px;
+}
+.phunkie-admin-row-inner {
+    padding: 0px 40px 0px 40px;
+}
+.phunkie-admin-row #message {
+    margin-bottom: 40px;
+}
+
+.phunkie-admin-col-2 {
+    width: 50%;
+    float:left;
+}
+.phunkie-admin-col-3 {
+    width: 33.3%;
+    float:left;
+}
+.phunkie-admin-col-70 {
+    margin: 0 auto;
+    width: 70%;
+}
+.phunkie-admin-col-first > * {
+    margin-right: 4%;
+}
+.phunkie-admin-col-inner > * {
+    margin-left: 2%;
+    margin-right: 2%;
+}       
+.phunkie-admin-col-last > * {
+    margin-left: 4%;
+}
+
+.phunkie-admin-title {
+    position: relative;
+    text-align: center;
+}
+
+.phunkie-admin-box {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	margin-top:10px;
+}
+.phunkie-admin-box-header {
+    background-image: linear-gradient(120deg,#ee3274 0%,#804299 100%);
+    padding: 20px 20px 15px 25px;
+}
+.phunkie-admin-box-header .phunkie-tooltip-description {
+    display: none;
+    position: absolute;
+    background: #ffffff;
+    padding: 20px;
+    top: 10px;
+    left: 10px;
+    margin-right: 50px;
+    border: 2px solid #43009b;
+    border-radius: 5px 5px 5px 5px;
+}
+.phunkie-admin-box-header-title {
+    color: #ffffff;
+    margin: 0px;
+    padding-bottom: 10px;
+}
+.phunkie-admin-box-content {
+    background-color: rgba(0,0,0,0.7);
+    padding: 20px 50px;
+}
+.phunkie-admin-box ul, .phunkie-admin-box .phunkie-li {
+    list-style-type: none;
+    color: #FFED12;
+    margin: 0px;
+    font-size: 18px;
+    font-weight: 500; 
+}
+.phunkie-admin-box ul li { 
+    margin: 0;
+}
+.phunkie-admin-box ul li:before {    
+    font-family: ETModules;
+    font-weight: 400;
+    font-variant: normal;
+    font-size: 32px;
+    line-height: 48px;
+    margin-right: 15px;
+    vertical-align: middle;
+}
+.phunkie-admin-box ul li#dd-documentation:before {
+    content: "\68";
+}
+.phunkie-admin-box ul li#dd-layouts:before {
+    content: "\e004";
+}
+.phunkie-admin-box ul li#dd-licenses:before {
+    content: "\e001";
+}
+.phunkie-admin-box ul li#dd-support:before {
+    content: "\e028";
+}
+.phunkie-admin-box ul li a { /Volumes/Oswald/Plex/Porn/Young Perps I Don t Care About Your Girlfriend - Jesse Zeppelin and Braden Taylor.mp4
+    text-decoration: none;
+    color: inherit;
+}
+.phunkie-admin-box ul li a:hover { 
+    opacity: 0.6;
+}
+
+.phunkie-admin-box input[type="text"], .phunkie-admin-box input[type="password"] {
+    box-sizing: border-box;
+    width: 100%;
+    height: 40px;
+    padding-left: 16px;
+    color: #444;
+    background-color: #eee; 
+}
+
+.phunkie-admin-box .phunkie-switch-container {
+    display: flex;
+    align-items: center;
+}
+
+.phunkie-admin-box .phunkie-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  /*** setting page input types s ****/
+.phunkie-admin-box .phunkie-switch-container {
+padding:5px;
+}
+.phunkie-admin-box .phunkie-input-container {
+    display: flex;
+    align-items: center;
+	padding:5px;
+}
+
+.phunkie-admin-box .phunkie-input {
+    position: relative;
+    display: inline-block;
+    width: 300px;
+    height: 34px;
+	 
+  }
+ 
+	
+.phunkie-admin-box .phunkie-input-option {
+    color: #ffffff;
+    font-size:16px;
+    font-weight: 500; 
+    padding-left: 10px;
+}
+.phunkie-admin-box .phunkie-input-label {
+    color: #ffffff;
+    font-size:16px;
+    font-weight: 500; 
+   padding-left: 10px;
+}
+.phunkie-switch-option ,.phunkie-input-label {padding-right:10px;width:200px;}
+.phunkie-input .type_input{width:100%;}
+
+.upload-btn{float:right; cursor:pointer;}
+.type_input.a {   width: 70% !important;
+    float: left;
+    height: 34px !important;}
+	
+/*.upload-btn.b {width:25%;}*/
+
+.phunkie-404-rpage-dropdown{
+		margin-left: 11px;
+}
+  /*** input types ends ****/
+  
+.phunkie-admin-box input[type="checkbox"] {display:none;}
+
+.phunkie-admin-box .phunkie-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #43009b;
+    border-radius: 20px;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.phunkie-admin-box .phunkie-slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 50%;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.phunkie-admin-box input[type="checkbox"]:checked + .phunkie-slider {
+    background-color: #2AABFF;
+}
+
+.phunkie-admin-box input[type="checkbox"]:focus + .phunkie-slider {
+    box-shadow: 0 0 1px #FFED12;
+}
+
+.phunkie-admin-box input[type="checkbox"]:checked + .phunkie-slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+.phunkie-admin-box .phunkie-switch-option {
+    color: #ffffff;
+    font-size:16px;
+    font-weight: 500; 
+    padding-left: 10px;
+}
+
+.phunkie-admin-box .phunkie-admin-tooltip {
+    flex: 1;
+    text-align: right;
+    z-index: 1;
+}
+.phunkie-admin-box .phunkie-admin-tooltip>span:before {
+    font-family: ETModules;
+    content: "\75";
+    color: #ffffff;
+}
+.phunkie-admin-box .phunkie-admin-tooltip span[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 50%;
+    top:35%;
+    transform: translate(-50%, -50%);
+    padding: 25px;
+    border: solid 1px #fff;
+    border-radius: 7px;
+    box-shadow: 6px 6px 0px 0px rgba(0,0,0,0.1);
+    background: rgba(0,0,0,0.8);
+    color: #fff;
+    font-size: 14px;
+    line-height:1.6em;
+    text-align: left;
+}
+
+.phunkie-admin-box form.phunkie-license {
+    display: flex;
+    align-items: center;
+}
+.phunkie-admin-box-content .phunkie-license-key {
+    flex: 1;
+} 
+.phunkie-admin-box-content .phunkie-license-button {
+    min-width: 180px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.wp-core-ui .button.phunkie-submit {
+    background-color: #4EC34C;
+    border-width: 0px;
+    box-shadow: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    height: auto;
+    line-height: 1.7em;
+    padding: 10px 20px;
+}
+
+.wp-core-ui .button.phunkie-submit.phunkie-deactivate {
+    background-color: #99FF05;
+}
+.wp-core-ui .button.phunkie-submit.phunkie-check {
+    background-color: #2AABFF;
+    margin-left:10px;
+}
+
+.wp-core-ui .button.phunkie-submit.phunkie-check span:before {
+    font-family: ETModules;
+    content: "\e02a";
+    font-size: 10px;
+}
+
+.phunkie-license-key input {
+    padding-right: 40px;
+}
+.phunkie-license-key .phunkie-license-key-toggle:after {
+    position: relative;
+    font-family: ETModules;
+    font-size: 16px;
+    float: right;
+    padding-right: 16px;
+    margin-top: -32px;
+    color: #FFED12;
+    opacity: 0.6;
+}
+.phunkie-license-key .phunkie-license-key-toggle.phunkie-lock:after {
+    content: "\e06c";
+}
+.phunkie-license-key .phunkie-license-key-toggle.phunkie-unlock:after {
+    content: "\e06d";
+}
+
+ .phunkie-admin-title-image img {
+        max-width: 400px;
+    }
+.phunkie-admin-footer a {
+    color: #444;
+    text-decoration: none;
+}
+
+@media only screen and ( min-width: 981px ) {
+    #dd-add-ons .phunkie-admin-box-content {
+        padding: 68px 50px;
+    }
+    #dd-links .phunkie-admin-box-content:not(.phunkie-license-page) {
+        padding: 44px 50px;
+    }
+}
+
+@media only screen and ( max-width: 980px ) {
+    .phunkie-admin-col-first > *, .phunkie-admin-col-inner > *, .phunkie-admin-col-last > *  {
+        margin: 0;
+    }
+    .phunkie-admin-col-2, .phunkie-admin-col-3, .phunkie-admin-col-70 {
+        width: 100%;
+        margin-bottom: 50px;
+    }
+    .phunkie-admin-col-last {
+        margin: 0;
+    }  
+    .phunkie-admin-title-image img {
+        max-width: 400px;
+    }
+    .phunkie-admin-box .phunkie-admin-tooltip {
+        display: none;
+    }
+    .phunkie-admin-box form.phunkie-license {
+        display: block;
+    }
+}
+/** mobile view portrait **/
+@media only screen and ( max-width: 400px ) {
+	.phunkie-admin-box-content {
+		padding: 20px 22px;
+	}
+	.phunkie-admin-box .phunkie-switch-container {
+		display: block;
+	}
+	.phunkie-admin-box .phunkie-switch-option , phunkie-admin-box .phunkie-input-option, .phunkie-input-label{
+		display: block;
+		margin-bottom: 10px;
+	}
+	.phunkie-admin-box .phunkie-switch , .phunkie-admin-box .phunkie-input, .phunkie-switch-container .wp-picker-container {
+		margin-left: 10px;
+	}
+
+	.phunkie-admin-box .phunkie-input {
+		display: block;
+	}
+	.type_input.a {
+		widtH: 80% !important;
+	}
+	.upload-btn.b {
+		width: 50%;
+		margin: 5px 0;
+		margin-bottom: 10px;
+	}
+	.wp-picker-container .phunkie-switch .color_field.wp-color-picker{
+		width: 4rem;
+		font-size: 14px;
+		line-height: 1;
+		max-height: 32px;
+		padding: 0 1px;
+	}
+	.phunkie-404-rpage-dropdown{
+		margin-top: 5px;
+	}
+
+
+}

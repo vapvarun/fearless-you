@@ -1,0 +1,562 @@
+/* LearnDash Custom Styling for Fearless Living */
+/* Using BuddyBoss Color Variables */
+
+:root {
+    /* Using BuddyBoss Color Variables */
+    --ld-primary: var(--bb-primary-color);
+    --ld-secondary: var(--bb-secondary-color, var(--bb-primary-color));
+    --ld-accent: var(--bb-accent-color, var(--bb-primary-color));
+    --ld-success: #10b981;
+    --ld-warning: #f59e0b;
+    --ld-danger: #ef4444;
+    --ld-gray-light: var(--bb-content-alternate-background-color, #f3f4f6);
+    --ld-gray: var(--bb-alternate-text-color, #9ca3af);
+    --ld-gray-dark: var(--bb-heading-text-color, #4b5563);
+    --ld-border: var(--bb-content-border-color, #e0e0e0);
+    --ld-background: var(--bb-content-background-color, #ffffff);
+    --ld-background-alt: var(--bb-content-alternate-background-color, #f8f9fa);
+}
+
+/* ===========================
+   LESSON LIST WITH PROGRESS RINGS - CLEAN DESIGN
+   =========================== */
+
+/* Remove all default backgrounds and borders */
+.learndash-wrapper,
+.learndash-wrapper .ld-item-list,
+.learndash-wrapper .ld-lesson-list,
+.learndash-wrapper .ld-topic-list,
+.learndash-wrapper .ld-table-list {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+/* Clean white container for lesson groups */
+.learndash-wrapper .ld-expand-button,
+.learndash-wrapper .ld-item-list-section-heading {
+    background: white !important;
+    border-radius: 12px !important;
+    padding: 20px !important;
+    margin-bottom: 15px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Individual Lesson/Topic Item - Clean Design */
+.learndash-wrapper .ld-item-list-item,
+.learndash-wrapper .ld-table-list-item,
+.ld-lesson-item-wrap,
+.learndash-wrapper .ld-table-list .ld-table-list-item {
+    display: flex !important;
+    align-items: center !important;
+    padding: 20px !important;
+    margin-bottom: 2px !important;
+    background: white !important;
+    border: none !important;
+    border-radius: 0 !important;
+    position: relative !important;
+    transition: all 0.3s ease !important;
+}
+
+/* First and last items rounded corners */
+.learndash-wrapper .ld-item-list-item:first-child,
+.learndash-wrapper .ld-table-list-item:first-child {
+    border-radius: 12px 12px 0 0 !important;
+}
+
+.learndash-wrapper .ld-item-list-item:last-child,
+.learndash-wrapper .ld-table-list-item:last-child {
+    border-radius: 0 0 12px 12px !important;
+    margin-bottom: 15px !important;
+}
+
+/* Single item should be fully rounded */
+.learndash-wrapper .ld-item-list-item:only-child,
+.learndash-wrapper .ld-table-list-item:only-child {
+    border-radius: 12px !important;
+}
+
+/* Remove any nested containers */
+.learndash-wrapper .ld-table-list-items {
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Progress Ring Container */
+.ld-item-list-item::before,
+.ld-lesson-item-wrap::before {
+    content: '';
+    position: absolute;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: conic-gradient(
+        var(--ld-primary) var(--progress, 0deg),
+        var(--ld-gray-light) var(--progress, 0deg) 360deg
+    );
+    transition: all 0.3s ease;
+}
+
+/* Custom Progress Ring Implementation */
+.ld-progress-ring {
+    position: absolute;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+}
+
+.ld-progress-ring svg {
+    width: 50px;
+    height: 50px;
+    transform: rotate(-90deg);
+}
+
+.ld-progress-ring circle {
+    fill: transparent;
+    stroke-width: 3;
+    r: 22;
+    cx: 25;
+    cy: 25;
+}
+
+.ld-progress-ring .ring-background {
+    stroke: var(--ld-gray-light);
+}
+
+.ld-progress-ring .ring-progress {
+    stroke: var(--ld-primary);
+    stroke-dasharray: 138.23;
+    stroke-dashoffset: calc(138.23 * (1 - var(--progress, 0)));
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+/* Progress States */
+.ld-lesson-item-not-started .ld-progress-ring .ring-progress {
+    stroke-dashoffset: 138.23;
+}
+
+.ld-lesson-item-in-progress .ld-progress-ring .ring-progress {
+    stroke: var(--ld-primary);
+    stroke-dashoffset: calc(138.23 * 0.5);
+}
+
+.ld-lesson-item-complete .ld-progress-ring {
+    background: var(--ld-success);
+    border-radius: 50%;
+}
+
+.ld-lesson-item-complete .ld-progress-ring::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Quiz Score Display */
+.ld-lesson-item-quiz-complete .ld-progress-ring {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ld-success);
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.ld-lesson-item-quiz-failed .ld-progress-ring {
+    background: var(--ld-warning);
+}
+
+.ld-quiz-score {
+    position: absolute;
+    right: 25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 16px;
+    color: white;
+}
+
+.ld-quiz-score.score-high {
+    background: var(--ld-success);
+}
+
+.ld-quiz-score.score-low {
+    background: var(--ld-warning);
+}
+
+/* Lesson Title and Description */
+.ld-item-title {
+    flex-grow: 1;
+    padding-right: 70px;
+}
+
+.ld-item-title h3,
+.ld-lesson-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--ld-gray-dark);
+    margin-bottom: 4px;
+}
+
+.ld-item-title p,
+.ld-lesson-description {
+    font-size: 14px;
+    color: var(--ld-gray);
+    margin: 0;
+}
+
+/* ===========================
+   QUIZ UI DESIGN
+   =========================== */
+
+/* Quiz Container */
+.learndash-wrapper .wpProQuiz_content {
+    background: white;
+    border-radius: 30px;
+    padding: 30px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Quiz Header with BuddyBoss Color Gradient */
+.learndash-wrapper .wpProQuiz_content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: var(--bb-primary-color);
+    opacity: 0.1;
+    z-index: -1;
+    border-radius: 30px 30px 50% 50%;
+}
+
+/* Quiz Progress Bar */
+.wpProQuiz_header {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.wpProQuiz_questionList .wpProQuiz_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.quiz-progress {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 20px 0;
+}
+
+.quiz-progress-bar {
+    height: 100%;
+    background: white;
+    border-radius: 3px;
+    transition: width 0.5s ease;
+}
+
+/* Question Counter */
+.question-counter {
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+/* Question Text */
+.wpProQuiz_question {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    margin: 20px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.wpProQuiz_question_text {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--ld-gray-dark);
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+/* Answer Options */
+.wpProQuiz_questionList ul.wpProQuiz_questionListItem {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.wpProQuiz_questionListItem li {
+    background: white;
+    border: 2px solid var(--ld-gray-light);
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.wpProQuiz_questionListItem li:hover {
+    border-color: var(--bb-primary-color);
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.wpProQuiz_questionListItem li.wpProQuiz_answerCorrect,
+.wpProQuiz_questionListItem li.selected {
+    border-color: var(--bb-primary-color);
+    background: var(--bb-content-alternate-background-color);
+}
+
+/* Answer Label */
+.wpProQuiz_questionListItem li label {
+    cursor: pointer;
+    flex-grow: 1;
+    margin-left: 15px;
+    font-size: 16px;
+    color: var(--ld-gray-dark);
+}
+
+/* Answer Letter Indicator */
+.wpProQuiz_questionListItem li::before {
+    content: attr(data-letter);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--ld-gray-light);
+    color: var(--ld-primary);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.wpProQuiz_questionListItem li.selected::before {
+    background: var(--ld-primary);
+    color: white;
+}
+
+/* Submit Button - Using BuddyBoss Primary Color */
+.wpProQuiz_button,
+.learndash-wrapper button[name="submit_quiz"],
+.ld-quiz-submit {
+    background: var(--bb-primary-color);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 18px 50px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin: 20px auto;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.wpProQuiz_button:hover,
+.learndash-wrapper button[name="submit_quiz"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    opacity: 0.9;
+}
+
+/* Skip Button */
+.quiz-skip-button {
+    background: transparent;
+    color: var(--bb-primary-color);
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    float: right;
+    margin-top: -40px;
+}
+
+/* Quiz Results */
+.wpProQuiz_results {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+}
+
+.wpProQuiz_results h4 {
+    font-size: 28px;
+    color: var(--ld-gray-dark);
+    margin-bottom: 20px;
+}
+
+.wpProQuiz_result_score {
+    font-size: 48px;
+    font-weight: bold;
+    color: var(--bb-primary-color);
+    margin: 20px 0;
+}
+
+/* ===========================
+   RESPONSIVE DESIGN
+   =========================== */
+
+/* Tablet Styles */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .learndash-wrapper .ld-item-list,
+    .learndash-wrapper .wpProQuiz_content {
+        padding: 25px;
+    }
+    
+    .ld-progress-ring {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .wpProQuiz_questionListItem li {
+        padding: 18px 25px;
+    }
+}
+
+/* Desktop Styles */
+@media (min-width: 1025px) {
+    .learndash-wrapper .ld-item-list {
+        max-width: 800px;
+        margin: 0 auto 30px;
+    }
+    
+    .learndash-wrapper .wpProQuiz_content {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 40px;
+    }
+    
+    .ld-item-list-item {
+        padding: 20px 10px;
+    }
+    
+    .ld-progress-ring {
+        width: 65px;
+        height: 65px;
+        right: 30px;
+    }
+    
+    .wpProQuiz_question_text {
+        font-size: 24px;
+        margin-bottom: 40px;
+    }
+    
+    .wpProQuiz_questionListItem li {
+        padding: 22px 30px;
+        margin-bottom: 20px;
+    }
+    
+    .wpProQuiz_questionListItem li label {
+        font-size: 18px;
+    }
+    
+    .wpProQuiz_button {
+        padding: 20px 60px;
+        font-size: 20px;
+    }
+}
+
+/* Mobile-First Approach (Base styles are mobile) */
+@media (max-width: 767px) {
+    .learndash-wrapper .ld-item-list {
+        border-radius: 15px;
+        padding: 15px;
+    }
+    
+    .ld-item-title h3 {
+        font-size: 16px;
+    }
+    
+    .ld-item-title p {
+        font-size: 13px;
+    }
+    
+    .wpProQuiz_question_text {
+        font-size: 18px;
+    }
+    
+    .wpProQuiz_questionListItem li {
+        padding: 15px;
+    }
+}
+
+/* Animation for Progress Rings */
+@keyframes fillProgress {
+    from {
+        stroke-dashoffset: 138.23;
+    }
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.ld-progress-ring .ring-progress {
+    animation: fillProgress 1s ease-out forwards;
+}
+
+/* Custom styling for specific lesson states */
+.ld-lesson-item[data-status="not_started"] .ld-progress-ring {
+    background: transparent;
+    border: 3px solid var(--ld-gray-light);
+}
+
+.ld-lesson-item[data-status="in_progress"] .ld-progress-ring {
+    background: transparent;
+    border: 3px solid var(--ld-primary);
+}
+
+.ld-lesson-item[data-status="completed"] .ld-progress-ring {
+    background: var(--ld-success);
+    border: none;
+}
+
+/* Quiz score states */
+.ld-lesson-item[data-quiz-score] .ld-progress-ring::after {
+    content: attr(data-quiz-score);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.ld-lesson-item[data-quiz-score][data-quiz-passed="false"] .ld-progress-ring {
+    background: var(--ld-warning);
+}
+
+/* Smooth transitions */
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.learndash-wrapper * {
+    transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}

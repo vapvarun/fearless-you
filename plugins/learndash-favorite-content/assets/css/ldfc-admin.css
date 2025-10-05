@@ -1,0 +1,193 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'ldfc';
+  src: url("../fonts/ldfc.eot?54167715");
+  src: url("../fonts/ldfc.eot?54167715#iefix") format("embedded-opentype"), url("../fonts/ldfc.woff2?54167715") format("woff2"), url("../fonts/ldfc.woff?54167715") format("woff"), url("../fonts/ldfc.ttf?54167715") format("truetype"), url("../fonts/ldfc.svg?54167715#fontello") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'fontello';
+    src: url('../font/fontello.svg?54167715#fontello') format('svg');
+  }
+}
+*/
+/* line 61, ../sass/partials/_iconfont.scss */
+[class^="ldfc-icon-"]:before, [class*=" ldfc-icon-"]:before {
+  font-family: "ldfc";
+  font-style: normal;
+  font-weight: normal;
+  speak: never;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  text-align: center;
+  /* opacity: .8; */
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+
+/* line 95, ../sass/partials/_iconfont.scss */
+.ldfc-icon-heart-closed:before {
+  content: '\e800' !important;
+}
+
+/* '' */
+/* line 96, ../sass/partials/_iconfont.scss */
+.ldfc-icon-heart-open:before {
+  content: '\e801' !important;
+}
+
+/* '' */
+/* line 7, ../sass/ldfc-admin.scss */
+:root {
+  --ldfc-primary: #00a2e8;
+  --ldfc-table-radius: 6px;
+  --ldfc-button-radius: 20px;
+}
+
+/* line 14, ../sass/ldfc-admin.scss */
+th.column-favorites,
+td.column-favorites {
+  text-align: center;
+  width: 10%;
+}
+
+/* line 22, ../sass/ldfc-admin.scss */
+.favcon-stats__wrap .favcon-stats__colorgroup {
+  background: var(--ldfc-primary);
+  border-radius: var(--ldfc-table-radius);
+  padding: 20px;
+}
+/* line 28, ../sass/ldfc-admin.scss */
+.favcon-stats__wrap .favcon-stat {
+  color: #fff;
+}
+/* line 30, ../sass/ldfc-admin.scss */
+.favcon-stats__wrap .favcon-stat .favcon-stat__value {
+  font-size: 28px;
+}
+/* line 33, ../sass/ldfc-admin.scss */
+.favcon-stats__wrap .favcon-stat .favcon-stat__title {
+  font-size: 18px;
+  font-weight: bold;
+  opacity: 0.7;
+}
+/* line 38, ../sass/ldfc-admin.scss */
+.favcon-stats__wrap .favcon-stat.favcon-stat-total {
+  text-align: center;
+  padding-bottom: 15px;
+}
+/* line 41, ../sass/ldfc-admin.scss */
+.favcon-stats__wrap .favcon-stat.favcon-stat-total .favcon-stat__title {
+  margin-left: 10px;
+}
+/* line 46, ../sass/ldfc-admin.scss */
+.favcon-stats__wrap .favcon-stats-post-types {
+  display: flex;
+  flex-wrap: wrap;
+}
+/* line 49, ../sass/ldfc-admin.scss */
+.favcon-stats__wrap .favcon-stats-post-types .favcon-stat-post-type {
+  width: 44%;
+  padding: 30px 3%;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+}
+/* line 56, ../sass/ldfc-admin.scss */
+.favcon-stats__wrap .favcon-stats-post-types .favcon-stat-post-type::after {
+  content: '';
+  position: absolute;
+  right: -1px;
+  bottom: 0;
+  top: 0;
+  background: rgba(255, 255, 255, 0.4);
+  width: 1px;
+}
+/* line 65, ../sass/ldfc-admin.scss */
+.favcon-stats__wrap .favcon-stats-post-types .favcon-stat-post-type:nth-child(1), .favcon-stats__wrap .favcon-stats-post-types .favcon-stat-post-type:nth-child(2) {
+  border-top: 0;
+}
+/* line 70, ../sass/ldfc-admin.scss */
+.favcon-stats__wrap .favcon-stats-post-types .favcon-stat-post-type:nth-child(even)::after {
+  display: none;
+}
+/* line 74, ../sass/ldfc-admin.scss */
+.favcon-stats__wrap .favcon-stats-post-types .favcon-stat-post-type .favcon-stat__title {
+  font-size: 14px;
+  font-weight: bold;
+  opacity: 0.8;
+}
+/* line 79, ../sass/ldfc-admin.scss */
+.favcon-stats__wrap .favcon-stats-post-types .favcon-stat-post-type .favcon-stat__value {
+  font-size: 24px;
+}
+/* line 84, ../sass/ldfc-admin.scss */
+.favcon-stats__wrap .favcon-stat-posts {
+  margin-top: 10px;
+}
+/* line 86, ../sass/ldfc-admin.scss */
+.favcon-stats__wrap .favcon-stat-posts .favcon-stat-title {
+  font-size: 14px;
+  color: #666;
+  padding: 10px 0;
+  font-weight: bold;
+}
+/* line 92, ../sass/ldfc-admin.scss */
+.favcon-stats__wrap .favcon-stat-posts .favcon-stat__post {
+  color: #666;
+  justify-content: space-between;
+  display: flex;
+  padding: 5px 10px;
+  position: relative;
+}
+/* line 98, ../sass/ldfc-admin.scss */
+.favcon-stats__wrap .favcon-stat-posts .favcon-stat__post::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: var(--ldfc-primary);
+  opacity: 0.1;
+  display: block;
+}
+/* line 109, ../sass/ldfc-admin.scss */
+.favcon-stats__wrap .favcon-stat-posts .favcon-stat__post:nth-child(even)::before {
+  display: none;
+}
+/* line 112, ../sass/ldfc-admin.scss */
+.favcon-stats__wrap .favcon-stat-posts .favcon-stat__post .ldfc-count {
+  position: relative;
+  z-index: 2;
+  color: var(--ldfc-primary);
+  opacity: 0.75;
+}
+/* line 118, ../sass/ldfc-admin.scss */
+.favcon-stats__wrap .favcon-stat-posts .favcon-stat__post a {
+  color: var(--ldfc-primary);
+  position: relative;
+  z-index: 2;
+  font-size: 12px;
+  text-decoration: none;
+}

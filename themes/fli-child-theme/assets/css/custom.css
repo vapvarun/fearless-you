@@ -1,0 +1,1177 @@
+/* FLI Child Theme Custom CSS - Merged and Optimized */
+
+body,p {
+    font-weight: 400!important;
+}
+
+strong {
+    font-weight: 700!important;
+}
+
+b {
+    font-weight: 900!important;
+}
+
+.wp-block-bpmp-mp3-player .bpMp3Player .coverBox {
+    max-width: 150px;
+}
+
+.resources-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.resources-list::marker {
+    content: none;
+}
+
+.thumbnail-container {
+    min-height: 339px;
+}
+
+.resource-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 2px solid var(--fli-brand-teal, #59898d);
+    border-radius: var(--fli-border-radius, 5px);
+    background-color: var(--fli-brand-white, var(--bb-body-background-color, white));
+    transition: var(--fli-transition, all 0.3s);
+}
+
+.resource-item:hover {
+    background-color: var(--fli-brand-teal, #59898d);
+    color: var(--fli-brand-white, var(--bb-body-background-color, white));
+}
+
+.resource-item:hover i,
+.resource-item:hover a {
+    color: var(--fli-brand-white, var(--bb-body-background-color, white));
+}
+
+.resource-item i {
+    font-size: 24px !important;
+    color: var(--fli-brand-teal, #59898d);
+    margin-right: 10px;
+}
+
+.bb-course-excerpt h3 {
+    color: var(--fli-brand-teal, #59898d);
+}
+
+.resource-item a {
+    text-decoration: none;
+    color: var(--fli-brand-teal, #59898d);
+    font-size: 18px;
+    transition: var(--fli-transition, color 0.3s);
+}
+
+ul.ecs-event-list {
+    margin-left: 0;
+    border-radius: var(--bb-block-radius);
+}
+
+.bb-template-v2 .primary-menu > li:hover > a::before {
+    background-color: var(--fli-brand-dark-yellow, rgba(191, 192, 70, 0.5));
+}
+
+/* LearnDash Assessment Importer */
+
+.fli-assessment-form {
+    background-color: var(--bb-content-background-color, var(--fli-brand-var(--bb-body-background-color, white)));
+    padding: 20px;
+    border-radius: var(--bb-border-radius, var(--fli-border-radius));
+    box-shadow: var(--bb-box-shadow, var(--fli-box-shadow));
+    margin-top: 20px;
+}
+
+.fli-assessment-form label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+    color: var(--bb-primary-button-background-regular, var(--fli-brand-yellow));
+}
+
+.fli-assessment-form .fli-range-slider {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.fli-range-slider .fli-range-square {
+    width: 24px;
+    height: 24px;
+    background-color: var(--fli-brand-teal, rgba(89, 137, 141, 0.2));
+    border-radius: var(--bb-border-radius, var(--fli-border-radius));
+    cursor: pointer;
+    transition: var(--fli-transition, background-color 0.3s);
+}
+
+.fli-range-slider .fli-range-square.selected {
+    background-color: var(--fli-brand-teal, rgba(89, 137, 141, 0.9));
+}
+
+.fli-assessment-form input[type="submit"] {
+    background-color: var(--bb-primary-button-background-regular, var(--fli-brand-yellow));
+    color: var(--bb-primary-button-text-regular, var(--fli-brand-gray-dark));
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--bb-border-radius, var(--fli-border-radius));
+    cursor: pointer;
+    transition: var(--fli-transition, background-color 0.3s);
+}
+
+.fli-assessment-form input[type="submit"]:hover {
+    background-color: var(--bb-primary-button-background-hover, var(--fli-brand-dark-yellow));
+}
+
+.fli-assessment-questions p {
+    margin-top: 15px;
+}
+
+.fli-comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+
+.fli-comparison-table th,
+.fli-comparison-table td {
+    border: 1px solid var(--bb-content-border-color, var(--fli-brand-gray-light));
+    padding: 12px;
+    text-align: left;
+}
+
+.fli-comparison-table th {
+    background-color: var(--bb-primary-button-background-regular, var(--fli-brand-yellow));
+    color: var(--bb-primary-button-text-regular, var(--fli-brand-gray-dark));
+}
+
+.fli-comparison-table tr:nth-child(even) {
+    background-color: var(--fli-brand-gray-light, #f9f9f9);
+}
+
+/* BuddyBoss Admin Page */
+
+.fli-wrap {
+    background-color: var(--bb-content-background-color, var(--fli-brand-var(--bb-body-background-color, white)));
+    padding: 20px;
+    border-radius: var(--bb-border-radius, var(--fli-border-radius));
+    box-shadow: var(--bb-box-shadow, var(--fli-box-shadow));
+}
+
+button.fli-add-question {
+    background-color: var(--bb-primary-button-background-regular, var(--fli-brand-yellow));
+    color: var(--bb-primary-button-text-regular, var(--fli-brand-gray-dark));
+    padding: 8px 15px;
+    border: none;
+    border-radius: var(--bb-border-radius, var(--fli-border-radius));
+    cursor: pointer;
+    transition: var(--fli-transition, background-color 0.3s);
+    margin-top: 10px;
+}
+
+.fli-assessment-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bb-bg-color, #f4f4f4);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.fli-assessment-name h2 {
+    margin: 0;
+}
+
+.fli-start-button button {
+    background-color: var(--bb-primary-color, #007BFF);
+    color: var(--bb-body-background-color, white);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.fli-start-button button:hover {
+    background-color: var(--bb-secondary-color, #0056b3);
+}
+
+.fli-question {
+    margin: 20px 0;
+}
+
+.fli-progress-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.fli-progress-fill {
+    width: 0;
+    height: 20px;
+    background: linear-gradient(90deg, var(--bb-primary-color, darkblue), var(--bb-accent-color, darkcyan));
+    border-radius: 10px;
+    transition: width 0.3s ease, opacity 0.3s ease;
+    opacity: 0.3;
+}
+
+.fli-options {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.fli-options span {
+    cursor: pointer;
+    padding: 5px;
+}
+
+.fli-options span:hover {
+    background-color: var(--bb-primary-color, #007BFF);
+    color: var(--bb-body-background-color, white);
+    border-radius: 50%;
+}
+
+/* Elephunkie Styling */
+
+.phunkie-tools-wrap {
+    background-color: var(--fli-brand-pink, #ff69b4) !important;
+    padding: 20px;
+    border-radius: var(--fli-border-radius, 10px);
+}
+
+.phunkie-tools-header {
+    text-align: center;
+    background-color: var(--fli-brand-pink, #ff69b4);
+    padding: 10px;
+    border-radius: var(--fli-border-radius, 10px);
+    color: var(--fli-brand-var(--bb-body-background-color, white), #fff);
+    font-size: 2em;
+}
+
+.phunkie-tools-container {
+    margin-top: 20px;
+}
+
+.phunkie-feature {
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: var(--fli-brand-var(--bb-body-background-color, white), #ffffff);
+    border: 2px solid var(--fli-brand-pink, #ff69b4);
+    border-radius: var(--fli-border-radius, 5px);
+}
+
+#ld-cg-ls4o8tfugp .grid > .item .content .entry-content * {
+    color: var(--fli-brand-gray-medium, #393939);
+}
+
+/* Mastering Styling */
+
+.mastering {
+    font-weight: 100 !important;
+    font-size: 16px;
+    margin-top: 20px !important;
+    color: var(--fli-brand-white, var(--bb-body-background-color, white)) !important;
+    padding: 1em;
+    background-color: var(--fli-brand-dark-teal, #0a738a);
+    border-radius: var(--fli-border-radius, 15px);
+    text-align: center;
+}
+
+.mastering::first-line {
+    display: block;
+    font-weight: bold;
+}
+
+.has-sidebar:not(.profile-sidebar, .group-sidebar, .llms-pointer, .activate) #primary, body.buddypress.has-sidebar:not(.profile-sidebar, .group-sidebar, .llms-pointer, .activate) #page #primary {
+    max-width: 1200px;
+    width:100%;
+}
+
+/* Mobile Login Form Fixes - iPhone 15 Pro and similar devices */
+@media (max-width: 430px) {
+    /* Fix login form positioning and spacing */
+    body.login #login {
+        width: 85% !important;
+    max-width: 350px !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    padding: 0 !important;
+}
+
+/* Fix form padding and spacing */
+    body.login #loginform,
+    body.login #registerform,
+    body.login #lostpasswordform {
+    margin: 0 !important;
+    padding: 20px !important;
+    transform: none !important;
+}
+
+/* Fix input field spacing */
+    body.login input[type="text"],
+    body.login input[type="password"],
+    body.login input[type="email"] {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin-bottom: 15px !important;
+    padding: 12px !important;
+    font-size: 16px !important;
+    /* Prevents zoom on iOS */;
+}
+
+/* Fix Remember Me checkbox alignment */
+    body.login .forgetmenot {
+    margin: 15px 0 !important;
+    display: block !important;
+}
+
+body.login .forgetmenot label {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-size: 14px !important;
+}
+
+body.login .forgetmenot input[type="checkbox"] {
+    margin: 0 !important;
+    width: 18px !important;
+    height: 18px !important;
+    flex-shrink: 0 !important;
+    position: relative !important;
+    top: 0 !important;
+    vertical-align: middle !important;
+}
+
+/* Fix button spacing */
+    body.login .submit {
+    margin-top: 20px !important;
+}
+
+body.login .button-primary,
+    body.login input[type="submit"] {
+    width: 100% !important;
+    padding: 12px 20px !important;
+    font-size: 16px !important;
+    margin: 0 !important;
+}
+
+/* Fix magic login buttons */
+    body.login .magic-login-buttons {
+    display: flex !important;
+    gap: 10px !important;
+    margin-top: 15px !important;
+}
+
+body.login .magic-login-buttons button {
+    flex: 1 !important;
+    padding: 12px 15px !important;
+    font-size: 16px !important;
+}
+
+/* Ensure proper spacing for password section in magic link */
+    body.login #password-login-section {
+    margin-top: 20px !important;
+    padding-top: 20px !important;
+}
+
+/* Fix other options container */
+    body.login .other-options-container {
+    margin-top: 20px !important;
+    padding-top: 20px !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+body.login .other-options-container p {
+    margin-bottom: 10px !important;
+    font-size: 14px !important;
+}
+
+body.login .other-options-container a {
+    display: block !important;
+    padding: 8px 0 !important;
+    font-size: 14px !important;
+}
+
+}
+
+/* Additional fixes for very small screens */
+@media (max-width: 375px) {
+    body.login #login {
+        width: 90% !important;
+}
+
+body.login #loginform,
+    body.login #registerform,
+    body.login #lostpasswordform {
+    padding: 15px !important;
+}
+
+}
+
+/* LearnDash Lesson List - Clean Card Styling */
+body .ld-item-list,
+body .learndash .ld-item-list,
+body #learndash-page-content .ld-item-list,
+body .learndash-wrapper .ld-item-list,
+body .ld-lesson-list,
+body ul.ld-item-list {
+    padding: 0 !important;
+    margin: 0 0 20px 0 !important;
+    list-style: none !important;
+    background: transparent !important;
+}
+
+/* Remove background from inner wrapper elements */
+body .ld-item-list .ld-item-list-item-preview,
+body .learndash-wrapper .ld-item-list-item-preview,
+body .ld-item-list-item-preview-wrap,
+body .ld-item-list .ld-item-wrapper {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+/* Main lesson item styling - single card appearance */
+body .ld-item-list .ld-item-list-item,
+body .learndash .ld-item-list-item,
+body .ld-lesson-item,
+body .ld-item-list li.ld-item-list-item,
+body .learndash-wrapper .ld-item-list-item,
+body .bb-course-content .ld-item-list-item,
+body ul.ld-item-list > li {
+    padding: 20px 25px !important;
+    margin-bottom: 15px !important;
+    background: #ffffff !important;
+    border: 1px solid #e0e5ea !important;
+    border-radius: 10px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+    transition: all 0.3s ease !important;
+    list-style: none !important;
+    overflow: hidden !important;
+    transition: all 0.3s;
+}
+
+body .ld-item-list .ld-item-list-item:hover,
+body .learndash-wrapper .ld-item-list-item:hover,
+body ul.ld-item-list > li:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
+    transform: translateY(-3px) !important;
+    border-color: var(--fli-brand-teal, #59898d) !important;
+    background: var(--bb-content-alternate-background-color, #fafbfd) !important;
+}
+
+/* Lesson title and content alignment */
+.ld-item-list-item-title,
+.ld-lesson-title,
+.ld-item-list .ld-item-title,
+.ld-item-list .ld-item-name .ld-item-title {
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+    color: var(--bb-headings-color, #122b46) !important;
+    margin-bottom: 5px !important;
+}
+
+/* Fix inner elements to not have their own backgrounds */
+.ld-item-list .ld-item-details,
+.ld-item-list .ld-item-list-item-expanded,
+.learndash-wrapper .ld-expand-button {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+/* Status icons and indicators */
+.ld-item-list .ld-status-icon,
+.ld-lesson-item .ld-status {
+    display: inline-flex !important;
+    align-items: center !important;
+    margin-right: 10px !important;
+}
+
+/* Progress indicators */
+/* .ld-item-list .ld-progress,
+.learndash-wrapper .ld-progress {
+    margin: 10px 0 !important;
+} */
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .ld-item-list .ld-item-list-item,
+    .learndash .ld-item-list-item,
+    .ld-lesson-item {
+        padding: 12px 15px !important;
+    margin-bottom: 8px !important;
+}
+
+.ld-item-list-item-title,
+    .ld-lesson-title,
+    .ld-item-list .ld-item-title {
+    font-size: 15px !important;
+}
+
+/* Ensure proper touch targets on mobile */
+    .ld-item-list-item a,
+    .ld-lesson-item a {
+    display: block !important;
+    min-height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+/* Fix any overflow issues on mobile */
+    .ld-item-list,
+    .learndash-wrapper {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+}
+
+}
+
+@media (max-width: 480px) {
+    .ld-item-list .ld-item-list-item,
+    .learndash .ld-item-list-item,
+    .ld-lesson-item {
+        padding: 10px 12px !important;
+    margin-bottom: 6px !important;
+}
+
+}
+
+/* BuddyBoss theme integration */
+.bb-course-widget .ld-item-list .ld-item-list-item,
+.bb-course-content .ld-item-list .ld-item-list-item {
+    background: var(--bb-content-alternate-background-color, var(--fli-brand-var(--bb-body-background-color, white))) !important;
+    border-color: var(--bb-content-border-color, var(--fli-brand-gray-light)) !important;
+}
+
+/* Fix padding inconsistencies in course content area */
+.learndash-wrapper .ld-item-list,
+.bb-learndash-content-wrap .ld-item-list,
+.bb-course-content .ld-item-list {
+    padding: 0 !important;
+    margin: 15px 0 !important;
+}
+
+/* Ensure consistent spacing between lesson elements */
+.ld-item-list .ld-item-list-item .ld-item-list-item-preview {
+    padding: 0 !important;
+}
+
+.ld-item-list .ld-item-list-item .ld-item-components {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    flex-wrap: wrap !important;
+}
+
+/* Fix nested lesson items (topics within lessons) */
+.ld-item-list .ld-item-list-items {
+    padding-left: 0 !important;
+}
+
+/* .ld-item-list .ld-item-list-items .ld-item-list-item {
+    margin-left: 20px !important;
+} */
+
+/* @media (max-width: 768px) {
+    .ld-item-list .ld-item-list-items .ld-item-list-item {
+        margin-left: 15px !important;
+}
+
+} */
+
+/* Ensure proper alignment with BuddyBoss's grid system */
+.bb-grid-cell .ld-item-list,
+.bb-content-area .ld-item-list {
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Event List Styling to Match Widget Appearance */
+.tribe-events-list .tribe-events-loop,
+.tribe-events .tribe-events-list-event-title,
+.tribe-events-list-widget .tribe-events-list-widget__event,
+.ecs-event-list,
+ul.ecs-event-list {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 0 20px 0 !important;
+}
+
+/* Individual Event Items - Widget-like Styling */
+.tribe-events-list .type-tribe_events,
+.tribe-events-list-widget .tribe-events-list-widget__event,
+.ecs-event,
+.ecs-event-list li,
+ul.ecs-event-list li {
+    background: #ffffff !important;
+    border: 2px solid #e7e9ec !important;
+    border-radius: 12px !important;
+    padding: 20px !important;
+    margin-bottom: 15px !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08) !important;
+    transition: all 0.3s ease !important;
+    list-style: none !important;
+    display: block !important;
+}
+
+/* Hover Effect */
+.tribe-events-list .type-tribe_events:hover,
+.ecs-event:hover,
+.ecs-event-list li:hover,
+ul.ecs-event-list li:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    transform: translateY(-2px) !important;
+    border-color: #59898d !important;
+    background: #fafbfd !important;
+}
+
+/* Event Date Styling */
+.tribe-events-list .tribe-events-event-date,
+.tribe-events-list-widget .tribe-events-list-widget__event-date-tag,
+.ecs-date,
+.tribe-event-date-start {
+    display: inline-block !important;
+    background: #59898d !important;
+    color: var(--bb-body-background-color, white) !important;
+    padding: 6px 12px !important;
+    border-radius: 6px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    margin-bottom: 12px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+/* Event Title Styling */
+.tribe-events-list .tribe-events-list-event-title,
+.tribe-events-list-widget .tribe-events-list-widget__event-title,
+.ecs-event h4,
+.ecs-event-title,
+.tribe-events-list h2.tribe-events-list-event-title {
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    margin: 0 0 10px 0 !important;
+    color: #122b46 !important;
+}
+
+/* Event Title Links */
+.tribe-events-list .tribe-events-list-event-title a,
+.ecs-event h4 a,
+.ecs-event-title a {
+    color: #122b46 !important;
+    text-decoration: none !important;
+    transition: color 0.3s ease !important;
+}
+
+.tribe-events-list .tribe-events-list-event-title a:hover,
+.ecs-event h4 a:hover,
+.ecs-event-title a:hover {
+    color: #59898d !important;
+}
+
+/* Event Description/Excerpt */
+.tribe-events-list .tribe-events-list-event-description,
+.ecs-excerpt,
+.tribe-events-list-widget .tribe-events-list-widget__event-excerpt {
+    color: #5a6570 !important;
+    font-size: 15px !important;
+    line-height: 1.6 !important;
+    margin: 10px 0 !important;
+}
+
+/* Event Meta Information */
+.tribe-events-list .tribe-events-event-meta,
+.ecs-venue,
+.tribe-events-list-widget .tribe-events-list-widget__event-venue {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 15px !important;
+    margin-top: 12px !important;
+    padding-top: 12px !important;
+    border-top: 1px solid #e7e9ec !important;
+    font-size: 14px !important;
+    color: #7a8290 !important;
+}
+
+/* Event Time Styling */
+.tribe-event-time,
+.tribe-events-event-meta-desc,
+.ecs-time {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 5px !important;
+}
+
+.tribe-event-time:before,
+.ecs-time:before {
+    content: "🕐" !important;
+    font-size: 14px !important;
+}
+
+.tribe-events-venue-details:before,
+.ecs-venue:before {
+    content: "📍" !important;
+    font-size: 14px !important;
+}
+
+/* Read More / Event Link Button */
+.tribe-events-read-more,
+.ecs-event a.ecs-event-link,
+.tribe-events-list .tribe-events-event-url {
+    display: inline-block !important;
+    margin-top: 15px !important;
+    padding: 10px 20px !important;
+    background: #59898d !important;
+    color: var(--bb-body-background-color, white) !important;
+    border-radius: 6px !important;
+    text-decoration: none !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    transition: all 0.3s ease !important;
+}
+
+.tribe-events-read-more:hover,
+.ecs-event a.ecs-event-link:hover,
+.tribe-events-list .tribe-events-event-url:hover {
+    background: #4a7377 !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 3px 8px rgba(89, 137, 141, 0.3) !important;
+}
+
+/* Mobile Responsive Styling */
+@media (max-width: 768px) {
+    .tribe-events-list .type-tribe_events,
+    .ecs-event,
+    .ecs-event-list li,
+    ul.ecs-event-list li {
+        padding: 15px !important;
+    margin-bottom: 12px !important;
+}
+
+.tribe-events-list .tribe-events-list-event-title,
+    .ecs-event h4,
+    .ecs-event-title {
+    font-size: 16px !important;
+}
+
+.tribe-events-list .tribe-events-event-meta,
+    .ecs-venue {
+    flex-direction: column !important;
+    gap: 8px !important;
+}
+
+.tribe-events-list .tribe-events-event-date,
+    .ecs-date {
+    font-size: 12px !important;
+    padding: 4px 10px !important;
+}
+
+/* Hide course meta avatar and author link */
+.bb-course-meta .item-avatar,
+.bb-course-meta strong a {
+    display: none !important;
+}
+
+}
+
+/* LearnDash Lesson List Mobile Responsive Styling - AGGRESSIVE OVERRIDE */
+body .ld-item-list,
+body .learndash .ld-item-list,
+body #learndash-page-content .ld-item-list,
+body .learndash-wrapper .ld-item-list,
+body .ld-lesson-list,
+body ul.ld-item-list {
+    padding: 0 !important;
+    margin: 0 0 20px 0 !important;
+    list-style: none !important;
+}
+
+body .ld-item-list .ld-item-list-item,
+body .learndash .ld-item-list-item,
+body .ld-lesson-item,
+body .ld-item-list li.ld-item-list-item,
+body .learndash-wrapper .ld-item-list-item,
+body .bb-course-content .ld-item-list-item,
+body ul.ld-item-list > li {
+    padding: 20px 25px !important;
+    margin-bottom: 12px !important;
+    background: var(--fli-brand-var(--bb-body-background-color, white), #ffffff) !important;
+    border: 1px solid var(--bb-content-border-color, #e7e9ec) !important;
+    border-radius: var(--fli-border-radius, 12px) !important;
+    box-shadow: var(--fli-box-shadow, 0 1px 3px rgba(0, 0, 0, 0.05)) !important;
+    transition: var(--fli-transition, all 0.3s ease) !important;
+    list-style: none !important;
+    transition: all 0.3s;
+}
+
+/**
+ * Fearless Living Custom Styles
+ * Version: 2.0.0
+ */
+
+/* ==========================================================================
+   LearnDash Breadcrumbs Customization
+   ========================================================================== */
+
+/* Breadcrumb link colors */
+.fli-ld-breadcrumbs a,
+.ld-breadcrumbs a,
+.learndash-breadcrumbs a {
+    color: var(--bb-primary-button-background-regular, var(--fli-brand-yellow)) !important;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.fli-ld-breadcrumbs a:hover,
+.ld-breadcrumbs a:hover,
+.learndash-breadcrumbs a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* Breadcrumb title formatting with Frank Ruhl font weights */
+.breadcrumb-title-heavy {
+    /* font-family: 'Frank Ruhl Libre', 'Frank Ruhl', serif; */
+    font-weight: 800;
+    color: inherit;
+}
+
+.breadcrumb-title-light {
+    /* font-family: 'Frank Ruhl Libre', 'Frank Ruhl', serif; */
+    font-weight: 400;
+    color: inherit;
+}
+
+/* Apply to all breadcrumb containers */
+.fli-ld-breadcrumbs,
+.ld-breadcrumbs,
+.learndash-breadcrumbs {
+    /* font-family: 'Frank Ruhl Libre', 'Frank Ruhl', serif; */
+    margin-bottom: 20px;
+    padding: 10px 0;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* Breadcrumb separator styling */
+.ld-breadcrumbs-separator {
+    margin: 0 8px;
+    color: var(--bb-alternate-text-color, var(--fli-brand-gray-medium));
+    font-weight: 400;
+}
+
+/* Current page (non-linked) styling */
+.fli-ld-breadcrumbs .current,
+.ld-breadcrumbs .current,
+.learndash-breadcrumbs .current {
+    color: var(--bb-alternate-text-color, var(--fli-brand-gray-medium));
+    font-weight: 400;
+}
+
+/* Ensure proper spacing for formatted titles in breadcrumbs */
+.fli-ld-breadcrumbs span.breadcrumb-title-heavy + span.breadcrumb-title-light,
+.ld-breadcrumbs span.breadcrumb-title-heavy + span.breadcrumb-title-light {
+    margin-left: 0.25em;
+}
+
+/* Override default LearnDash breadcrumb styles if needed */
+.learndash-wrapper .ld-breadcrumbs {
+    background: transparent;
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* ==========================================================================
+   End LearnDash Breadcrumbs
+   ========================================================================== */
+
+/* ==========================================================================
+   Content Width Adjustments
+   ========================================================================== */
+
+/* Make main content area wider on LearnDash pages */
+.single-sfwd-courses .bb-grid,
+.single-sfwd-lessons .bb-grid,
+.single-sfwd-topic .bb-grid,
+.single-sfwd-quiz .bb-grid,
+.post-type-archive-sfwd-courses .bb-grid {
+    max-width: 100% !important;
+}
+
+/* Adjust content column to take more space */
+.single-sfwd-courses .content-area,
+.single-sfwd-lessons .content-area,
+.single-sfwd-topic .content-area,
+.single-sfwd-quiz .content-area,
+.post-type-archive-sfwd-courses .content-area {
+    max-width: 100% !important;
+    flex: 1 1 100% !important;
+}
+
+/* If there's a sidebar, adjust the grid */
+.single-sfwd-courses .site-content-grid,
+.single-sfwd-lessons .site-content-grid,
+.single-sfwd-topic .site-content-grid,
+.single-sfwd-quiz .site-content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+}
+
+/* With sidebar layout */
+.sidebar-left .site-content-grid,
+.sidebar-right .site-content-grid {
+    grid-template-columns: 1fr !important;
+}
+
+/* Wider container for LearnDash content */
+.learndash-wrapper {
+    max-width: 100% !important;
+    padding-right: 20px !important;
+}
+
+/* Adjust the main content container */
+/* .single-sfwd-courses .site-content,
+.single-sfwd-lessons .site-content,
+.single-sfwd-topic .site-content,
+.single-sfwd-quiz .site-content {
+    max-width: 1400px !important;
+    margin: 0 auto;
+    padding: 0 30px;
+} */
+
+/* Adjust if LearnDash Focus Mode is active */
+.learndash-focus .learndash-wrapper,
+.learndash-focus-main .learndash-wrapper {
+    max-width: 100% !important;
+    padding: 0 40px !important;
+}
+
+/* For focus mode sidebar layout */
+.learndash-focus-main {
+    max-width: calc(100% - 300px) !important;
+}
+
+/* Desktop specific adjustments */
+@media (min-width: 1025px) {
+    /* .single-sfwd-courses .container,
+    .single-sfwd-lessons .container,
+    .single-sfwd-topic .container,
+    .single-sfwd-quiz .container {
+        max-width: 1400px !important;
+    padding-left: 30px;
+    padding-right: 30px;
+} */
+
+/* Remove right margin/padding that might be causing the gap */
+    .single-sfwd-courses .entry-content,
+    .single-sfwd-lessons .entry-content,
+    .single-sfwd-topic .entry-content,
+    .single-sfwd-quiz .entry-content {
+        margin-right: 0 !important;
+        padding-right: 0 !important;
+    }
+
+}
+
+/* Tablet adjustments */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .learndash-wrapper {
+        padding-right: 15px !important;
+}
+
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+    .learndash-wrapper {
+        padding-right: 10px !important;
+}
+
+.single-sfwd-courses .site-content,
+    .single-sfwd-lessons .site-content,
+    .single-sfwd-topic .site-content,
+    .single-sfwd-quiz .site-content {
+    padding: 0 15px;
+}
+
+}
+
+/* ==========================================================================
+   End Content Width Adjustments
+   ========================================================================== */
+
+/* ==========================================================================
+   BuddyBoss Color Overrides - Replace Coral Orange with Proper Colors
+   ========================================================================== */
+
+/* Override the coral orange color in bb-highlight class with BuddyBoss primary color */
+.bb-highlight {
+    background: -webkit-linear-gradient(270deg, rgba(255, 255, 255, 0) 50%, var(--bb-primary-button-background-regular, #E6ED5A) 50%) !important;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, var(--bb-primary-button-background-regular, #E6ED5A) 50%) !important;
+}
+
+/* Override any buttons that might be using the coral orange color */
+button[style*="#fe6f4b"],
+.button[style*="#fe6f4b"],
+.btn[style*="#fe6f4b"] {
+    background-color: var(--bb-primary-button-background-regular, #E6ED5A) !important;
+    border-color: var(--bb-primary-button-border-regular, #E6ED5A) !important;
+    color: var(--bb-primary-button-text-regular, #1B181C) !important;
+}
+
+button[style*="#fe6f4b"]:hover,
+.button[style*="#fe6f4b"]:hover,
+.btn[style*="#fe6f4b"]:hover {
+    background-color: var(--bb-primary-button-background-hover, #BFC046) !important;
+    border-color: var(--bb-primary-button-border-hover, #BFC046) !important;
+    color: var(--bb-primary-button-text-hover, #1B181C) !important;
+}
+
+/* Override accessibility menu colors if they're using coral orange */
+.screen-reader-text:focus,
+.screen-reader-text:active,
+.skip-link,
+.skip-link:focus,
+.skip-link:active {
+    background-color: var(--bb-primary-button-background-regular, #E6ED5A) !important;
+    color: var(--bb-primary-button-text-regular, #1B181C) !important;
+}
+
+/* Override any elements with coral orange background or color */
+[style*="background-color: #fe6f4b"],
+[style*="background: #fe6f4b"],
+[style*="color: #fe6f4b"],
+[style*="border-color: #fe6f4b"] {
+    background-color: var(--bb-primary-button-background-regular, #E6ED5A) !important;
+    color: var(--bb-primary-button-text-regular, #1B181C) !important;
+    border-color: var(--bb-primary-button-border-regular, #E6ED5A) !important;
+}
+
+/* Total unique rules: 132 */
+
+/* ==========================================================================
+   BuddyBoss Panel - Pin Ask Rhonda and Log Out to Bottom
+   ========================================================================== */
+
+/* Make the BuddyBoss panel navigation container flexible */
+.bb-mobile-panel-inner .bp-navs,
+.buddypanel .bp-navs,
+.bb-mobile-panel-nav .bp-navs,
+#buddypanel .bp-navs {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    min-height: calc(100vh - 200px) !important;
+}
+
+/* Main navigation list should grow to fill available space */
+.bb-mobile-panel-inner .main-navigation,
+.buddypanel .main-navigation,
+.bb-mobile-panel-nav ul.main-navigation,
+#buddypanel ul.main-navigation,
+.bb-mobile-panel-inner > ul,
+.buddypanel > ul,
+.bp-navs > ul {
+    flex: 1 1 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Target Ask Rhonda menu item by partial text match or common patterns */
+.bb-mobile-panel-inner li[class*="ask-rhonda"],
+.buddypanel li[class*="ask-rhonda"],
+.bb-mobile-panel-inner li[id*="ask-rhonda"],
+.buddypanel li[id*="ask-rhonda"],
+.bb-mobile-panel-inner a[href*="ask-rhonda"],
+.buddypanel a[href*="ask-rhonda"],
+.bb-mobile-panel-inner li:has(a[href*="ask-rhonda"]),
+.buddypanel li:has(a[href*="ask-rhonda"]),
+/* Also target by menu text content */
+.bb-mobile-panel-inner li:has(a:contains("Ask Rhonda")),
+.buddypanel li:has(a:contains("Ask Rhonda")) {
+    margin-top: auto !important;
+    order: 998 !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding-top: 15px !important;
+}
+
+/* Target Log Out menu item */
+.bb-mobile-panel-inner li.logout-link,
+.buddypanel li.logout-link,
+.bb-mobile-panel-inner li[class*="logout"],
+.buddypanel li[class*="logout"],
+.bb-mobile-panel-inner li[class*="log-out"],
+.buddypanel li[class*="log-out"],
+.bb-mobile-panel-inner a[href*="wp-logout"],
+.buddypanel a[href*="wp-logout"],
+.bb-mobile-panel-inner li:has(a[href*="wp-logout"]),
+.buddypanel li:has(a[href*="wp-logout"]),
+.bb-mobile-panel-inner li:has(a[href*="logout"]),
+.buddypanel li:has(a[href*="logout"]),
+/* Also target by menu text content */
+.bb-mobile-panel-inner li:has(a:contains("Log Out")),
+.buddypanel li:has(a:contains("Log Out")),
+.bb-mobile-panel-inner li:has(a:contains("Logout")),
+.buddypanel li:has(a:contains("Logout")) {
+    order: 999 !important;
+    padding-bottom: 20px !important;
+    margin-bottom: 20px !important;
+}
+
+/* Alternative approach using nth-last-child if the items are consistently last */
+.bb-mobile-panel-inner .bp-navs > ul > li:nth-last-child(2),
+.buddypanel .bp-navs > ul > li:nth-last-child(2) {
+    margin-top: auto !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    padding-top: 15px !important;
+}
+
+.bb-mobile-panel-inner .bp-navs > ul > li:last-child,
+.buddypanel .bp-navs > ul > li:last-child {
+    padding-bottom: 20px !important;
+    margin-bottom: 20px !important;
+}
+
+/* Ensure proper panel height */
+.bb-mobile-panel-inner,
+.buddypanel,
+.bb-mobile-panel-nav,
+#buddypanel {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100vh !important;
+    overflow-y: auto !important;
+}
+
+/* Style the pinned bottom section */
+.bb-mobile-panel-inner li[class*="ask-rhonda"] a,
+.buddypanel li[class*="ask-rhonda"] a,
+.bb-mobile-panel-inner li[class*="logout"] a,
+.buddypanel li[class*="logout"] a,
+.bb-mobile-panel-inner li[class*="log-out"] a,
+.buddypanel li[class*="log-out"] a,
+.bb-mobile-panel-inner .bp-navs > ul > li:nth-last-child(2) a,
+.bb-mobile-panel-inner .bp-navs > ul > li:last-child a {
+    font-weight: 500 !important;
+}
+
+/* Mobile specific adjustments */
+@media (max-width: 768px) {
+    .bb-mobile-panel-inner .bp-navs,
+    .buddypanel .bp-navs {
+        min-height: calc(100vh - 150px) !important;
+    }
+}

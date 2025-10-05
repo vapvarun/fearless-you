@@ -1,0 +1,311 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Favorite Content for LearnDash\n"
+"POT-Creation-Date: 2021-02-10 10:51-0500\n"
+"PO-Revision-Date: 2021-02-10 10:51-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: init.php\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: EDD_SL_Plugin_Updater.php:201
+#, php-format
+msgid ""
+"There is a new version of %1$s available. %2$sView version %3$s details%4$s."
+msgstr ""
+
+#: EDD_SL_Plugin_Updater.php:209
+#, php-format
+msgid ""
+"There is a new version of %1$s available. %2$sView version %3$s details%4$s "
+"or %5$supdate now%6$s."
+msgstr ""
+
+#: EDD_SL_Plugin_Updater.php:396
+msgid "You do not have permission to install plugin updates"
+msgstr ""
+
+#: EDD_SL_Plugin_Updater.php:396
+msgid "Error"
+msgstr ""
+
+#: lib/admin.php:7 lib/admin.php:18 lib/admin.php:43 lib/view.php:268
+msgid "Favorite Content"
+msgstr ""
+
+#: lib/admin.php:44
+msgid "Give learners the ability to save their favorite content!"
+msgstr ""
+
+#: lib/admin.php:44
+msgid "Documentation"
+msgstr ""
+
+#: lib/admin.php:87 lib/admin.php:92
+msgid "License Key"
+msgstr ""
+
+#: lib/admin.php:93
+msgid "Enter and activate your license key"
+msgstr ""
+
+#: lib/admin.php:98
+msgid "Display"
+msgstr ""
+
+#: lib/admin.php:103
+msgid "Enable on"
+msgstr ""
+
+#: lib/admin.php:104
+msgid "Which content types can users favorite?"
+msgstr ""
+
+#: lib/admin.php:110
+msgid "Display favorite button"
+msgstr ""
+
+#: lib/admin.php:111
+msgid "How do you want the favorite button added to the page?"
+msgstr ""
+
+#: lib/admin.php:114
+msgid "Below the content"
+msgstr ""
+
+#: lib/admin.php:115
+msgid "Above the content"
+msgstr ""
+
+#: lib/admin.php:116
+msgid "Manually using [favorite_button] or widget"
+msgstr ""
+
+#: lib/admin.php:122
+msgid "Style"
+msgstr ""
+
+#: lib/admin.php:127
+msgid "Button border radius (in pixels)"
+msgstr ""
+
+#: lib/admin.php:133
+msgid "Table border radius (in pixels)"
+msgstr ""
+
+#: lib/admin.php:139
+msgid "Accent color"
+msgstr ""
+
+#: lib/admin.php:186
+msgid "Active"
+msgstr ""
+
+#: lib/admin.php:188
+msgid "Deactivate License"
+msgstr ""
+
+#: lib/admin.php:191
+msgid "Activate License"
+msgstr ""
+
+#: lib/admin.php:285 lib/admin.php:313
+msgid "An error occurred, please try again."
+msgstr ""
+
+#: lib/admin.php:292
+#, php-format
+msgid "Your license key expired on %s."
+msgstr ""
+
+#: lib/admin.php:297
+msgid "Your license key has been disabled."
+msgstr ""
+
+#: lib/admin.php:300
+msgid "Invalid license."
+msgstr ""
+
+#: lib/admin.php:304
+msgid "Your license is not active for this URL."
+msgstr ""
+
+#: lib/admin.php:307
+#, php-format
+msgid "This appears to be an invalid license key for %s."
+msgstr ""
+
+#: lib/admin.php:310
+msgid "Your license key has reached its activation limit."
+msgstr ""
+
+#: lib/model.php:6
+msgctxt "Post Type General Name"
+msgid "Favorited Content"
+msgstr ""
+
+#: lib/model.php:7
+msgctxt "Post Type Singular Name"
+msgid "Favorited Content"
+msgstr ""
+
+#: lib/model.php:8 lib/model.php:9
+msgid "Favorited Content"
+msgstr ""
+
+#: lib/model.php:10
+msgid "Favorited Content Archives"
+msgstr ""
+
+#: lib/model.php:11
+msgid "Favorited Content Attributes"
+msgstr ""
+
+#: lib/model.php:12
+msgid "Parent Favorited Content:"
+msgstr ""
+
+#: lib/model.php:13
+msgid "All Favorited Content"
+msgstr ""
+
+#: lib/model.php:14
+msgid "Add New Favorited Content"
+msgstr ""
+
+#: lib/model.php:15
+msgid "Add New"
+msgstr ""
+
+#: lib/model.php:16
+msgid "New Favorited Content"
+msgstr ""
+
+#: lib/model.php:17
+msgid "Edit Favorited Content"
+msgstr ""
+
+#: lib/model.php:18
+msgid "Update Favorited Content"
+msgstr ""
+
+#: lib/model.php:19 lib/model.php:20
+msgid "View Favorited Content"
+msgstr ""
+
+#: lib/model.php:21
+msgid "Search Favorited Content"
+msgstr ""
+
+#: lib/model.php:22
+msgid "Not found"
+msgstr ""
+
+#: lib/model.php:23
+msgid "Not found in Trash"
+msgstr ""
+
+#: lib/model.php:24
+msgid "Featured Image"
+msgstr ""
+
+#: lib/model.php:25
+msgid "Set featured image"
+msgstr ""
+
+#: lib/model.php:26
+msgid "Remove featured image"
+msgstr ""
+
+#: lib/model.php:27
+msgid "Use as featured image"
+msgstr ""
+
+#: lib/model.php:28
+msgid "Insert into item"
+msgstr ""
+
+#: lib/model.php:29
+msgid "Uploaded to this item"
+msgstr ""
+
+#: lib/model.php:30
+msgid "Items list"
+msgstr ""
+
+#: lib/model.php:31
+msgid "Items list navigation"
+msgstr ""
+
+#: lib/model.php:32
+msgid "Filter items list"
+msgstr ""
+
+#: lib/model.php:35
+msgid "User Favorite"
+msgstr ""
+
+#: lib/model.php:36
+msgid "Post Type Description"
+msgstr ""
+
+#: lib/model.php:68 lib/view.php:30 lib/view.php:214 lib/view.php:236
+msgid "Favorites"
+msgstr ""
+
+#: lib/view.php:9 lib/view.php:65
+msgid "You must be logged in to see your favorites."
+msgstr ""
+
+#: lib/view.php:21 lib/view.php:80
+msgid "You don't currently have any favorites."
+msgstr ""
+
+#: lib/view.php:31 lib/view.php:99 lib/view.php:215
+msgid "Search..."
+msgstr ""
+
+#: lib/view.php:147
+msgid "Favorite"
+msgstr ""
+
+#: lib/view.php:288
+msgid "Total Favorites"
+msgstr ""
+
+#: lib/view.php:329
+msgid "Top "
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Favorite Content for LearnDash"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.snaporbital.com/favorite-content/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Allow your students to mark content as favorites to quickly revisit later!"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "SnapOrbital"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.snaporbital.com"
+msgstr ""
