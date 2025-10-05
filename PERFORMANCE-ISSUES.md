@@ -5,7 +5,7 @@
 This document identifies all functions and code that negatively impact site speed and performance. Issues are prioritized by severity and estimated performance impact.
 
 **Total Performance Issues**: 18
-**Estimated Total Fix Effort**: 34.5 hours
+**Estimated Total Fix Effort**: 17.25 hours
 
 ---
 
@@ -37,7 +37,7 @@ foreach ($roles as $role_key => $role_data):
     $user_count = $all_user_counts[$role_key] ?? 0;
 ```
 
-**Estimated Effort**: 1.5 hours
+**Estimated Effort**: 0.75 hours
 
 ---
 
@@ -87,7 +87,7 @@ function fli_role_based_logo_id($logo_id) {
 }
 ```
 
-**Estimated Effort**: 30 minutes
+**Estimated Effort**: 7.5 minutes
 
 ---
 
@@ -122,7 +122,7 @@ $sql = $wpdb->prepare(
 );
 ```
 
-**Estimated Effort**: 15 minutes
+**Estimated Effort**: 7.5 minutes
 
 ---
 
@@ -154,7 +154,7 @@ if (filesize($file) > $max_size) {
 $content = file_get_contents($file);
 ```
 
-**Estimated Effort**: 2 hours (multiple locations)
+**Estimated Effort**: 0.5 hours (multiple locations)
 
 ---
 
@@ -187,7 +187,7 @@ function fli_cleanup_expired_transients() {
 }
 ```
 
-**Estimated Effort**: 1 hour
+**Estimated Effort**: 0.5 hours
 
 ---
 
@@ -226,7 +226,7 @@ function fli_cleanup_expired_transients() {
 wp_enqueue_script('fli-focus-mode', get_stylesheet_directory_uri() . '/assets/js/focus-mode.js', ['jquery'], '1.0.0', true);
 ```
 
-**Estimated Effort**: 12 hours
+**Estimated Effort**: 1.5 hours
 
 ---
 
@@ -252,7 +252,7 @@ wp_enqueue_script('fli-focus-mode', get_stylesheet_directory_uri() . '/assets/js
 wp_enqueue_style('fli-custom', get_stylesheet_directory_uri() . '/assets/css/custom.css', [], '1.0.0');
 ```
 
-**Estimated Effort**: 6 hours
+**Estimated Effort**: 1.5 hours
 
 ---
 
@@ -276,7 +276,7 @@ learndash_user_get_active_courses($user_id);
 
 **Fix**: Implement the caching examples shown in membership-caching-examples.php
 
-**Estimated Effort**: 3 hours
+**Estimated Effort**: 1.5 hours
 
 ---
 
@@ -303,7 +303,7 @@ fli_category_color_class();   // Function doesn't exist
 
 **Fix**: Define functions or remove calls
 
-**Estimated Effort**: 1 hour
+**Estimated Effort**: 0.5 hours
 
 ---
 
@@ -320,7 +320,7 @@ fli_category_color_class();   // Function doesn't exist
 
 **Fix**: Ensure caching functions are actually called for all menu queries
 
-**Estimated Effort**: 2 hours
+**Estimated Effort**: 0.5 hours
 
 ---
 
@@ -360,7 +360,7 @@ function scheduleCheck() {
 }
 ```
 
-**Estimated Effort**: 30 minutes
+**Estimated Effort**: 7.5 minutes
 
 ---
 
@@ -382,7 +382,7 @@ set_error_handler([$this, 'error_handler']);
 
 **Fix**: Only enable on debug mode or use error level filtering
 
-**Estimated Effort**: 30 minutes
+**Estimated Effort**: 7.5 minutes
 
 ---
 
@@ -406,7 +406,7 @@ $breadcrumbs = preg_replace_callback('/>([^<]+)</s', function($matches) {
 
 **Fix**: Cache formatted breadcrumbs or simplify logic
 
-**Estimated Effort**: 1 hour
+**Estimated Effort**: 0.5 hours
 
 ---
 
@@ -422,7 +422,7 @@ $breadcrumbs = preg_replace_callback('/>([^<]+)</s', function($matches) {
 
 **Fix**: Use `get_user_by('id', $user_id)` to get all meta at once
 
-**Estimated Effort**: 1.5 hours
+**Estimated Effort**: 0.75 hours
 
 ---
 
@@ -445,7 +445,7 @@ $(document).ready(function() {
 
 **Fix**: Use event delegation and conditional loading
 
-**Estimated Effort**: 2 hours
+**Estimated Effort**: 0.5 hours
 
 ---
 
@@ -471,7 +471,7 @@ return 'https://you.fearlessliving.org/wp-content/uploads/2025/09/LCCP_lt.svg';
 
 **Fix**: Use WordPress functions or allow CDN rewrites
 
-**Estimated Effort**: 30 minutes
+**Estimated Effort**: 7.5 minutes
 
 ---
 
@@ -496,7 +496,7 @@ observer.observe(document.body, { childList: true, subtree: true });
 
 **Fix**: Add throttling or only observe specific elements
 
-**Estimated Effort**: 1 hour
+**Estimated Effort**: 0.5 hours
 
 ---
 
@@ -513,29 +513,29 @@ observer.observe(document.body, { childList: true, subtree: true });
 
 **Fix**: Add Redis/Memcached support with fallback
 
-**Estimated Effort**: 4 hours
+**Estimated Effort**: 2 hours
 
 ---
 
 ## Summary by Priority
 
-### Week 1 - Critical Performance Fixes (5.5 hours)
-1. Fix N+1 query in role display (1.5 hours)
-2. Cache logo database query (30 min)
-3. Fix SQL syntax in cache clearing (15 min)
-4. Add file size checks (2 hours)
-5. Implement transient cleanup (1 hour)
-6. Fix undefined function calls (1 hour)
+### Week 1 - Critical Performance Fixes (2.75 hours)
+1. Fix N+1 query in role display (0.75 hours)
+2. Cache logo database query (15 min)
+3. Fix SQL syntax in cache clearing (7.5 min)
+4. Add file size checks (1 hour)
+5. Implement transient cleanup (0.5 hours)
+6. Fix undefined function calls (0.5 hours)
 
 **Expected Performance Gain**: 40-60% improvement on admin pages, 20-30% on frontend
 
 ---
 
-### Week 2 - High Priority (23 hours)
-1. Extract inline JavaScript (12 hours)
-2. Extract inline CSS (6 hours)
-3. Implement LearnDash caching (3 hours)
-4. Cache BuddyBoss menus (2 hours)
+### Week 2 - High Priority (11.5 hours)
+1. Extract inline JavaScript (6 hours)
+2. Extract inline CSS (3 hours)
+3. Implement LearnDash caching (1.5 hours)
+4. Cache BuddyBoss menus (1 hour)
 
 **Expected Performance Gain**: 30-50% improvement on all pages
 

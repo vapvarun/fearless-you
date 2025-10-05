@@ -13,30 +13,30 @@ This directory contains comprehensive code audit documentation for all custom co
 
 ### Individual Component Reports:
 
-1. **ELEPHUNKIE-TOOLKIT.md** - Elephunkie Toolkit Plugin Review
+1. **plugins/elephunkie-toolkit/ELEPHUNKIE-TOOLKIT.md** - Elephunkie Toolkit Plugin Review
    - 13 issues found (4 critical, 2 high, 3 medium, 4 code quality)
-   - Estimated fix effort: 16.5 hours
+   - Estimated fix effort: 8.5 hours
 
-2. **FEARLESS-ROLES-MANAGER.md** - Fearless Roles Manager Plugin Review
+2. **plugins/fearless-roles-manager/FEARLESS-ROLES-MANAGER.md** - Fearless Roles Manager Plugin Review
    - 10 issues found (0 critical, 0 high, 3 medium, 7 code quality)
-   - Estimated fix effort: 26.5 hours
+   - Estimated fix effort: 13.5 hours
 
-3. **FEARLESS-YOU-SYSTEMS.md** - Fearless You Systems Plugin Review
+3. **plugins/fearless-you-systems/FEARLESS-YOU-SYSTEMS.md** - Fearless You Systems Plugin Review
    - Partial review (requires full audit of included classes)
-   - Estimated full review effort: 10.5 hours
-   - Estimated fixes: 15-30 hours (after review)
+   - Estimated full review effort: 5.5 hours
+   - Estimated fixes: 8-15 hours (after review)
 
-4. **FLI-CHILD-THEME.md** - FLI Child Theme Review
+4. **themes/fli-child-theme/FLI-CHILD-THEME.md** - FLI Child Theme Review
    - 24 issues found (3 critical, 6 high, 5 medium, 10 code quality)
-   - Estimated fix effort: 95.75 hours
+   - Estimated fix effort: 48 hours
 
-5. **LEARNDASH-FAVORITE-CONTENT.md** - LearnDash Favorite Content Plugin Review
+5. **plugins/learndash-favorite-content/LEARNDASH-FAVORITE-CONTENT.md** - LearnDash Favorite Content Plugin Review
    - Third-party plugin, 3 maintenance issues
-   - Estimated setup effort: 4-5 hours
+   - Estimated setup effort: 2-2.5 hours
 
-6. **LOCK-VISIBILITY.md** - Lock Visibility (Block Visibility) Plugin Review
+6. **plugins/lock-visibility/LOCK-VISIBILITY.md** - Lock Visibility (Block Visibility) Plugin Review
    - Third-party plugin, 3 setup issues
-   - Estimated migration effort: 13-18 hours
+   - Estimated migration effort: 7-9 hours
 
 ### Summary Reports:
 
@@ -113,67 +113,67 @@ This directory contains comprehensive code audit documentation for all custom co
 ## Effort Estimates
 
 ### Immediate Fixes (Critical Security):
-- **Elephunkie Toolkit**: 2.75 hours
-- **FLI Child Theme**: 13 hours
-- **Total**: ~16 hours (2 days)
+- **Elephunkie Toolkit**: 1.5 hours
+- **FLI Child Theme**: 6.5 hours
+- **Total**: ~8 hours (1 day)
 
 ### High Priority Fixes:
-- **Elephunkie Toolkit**: 2.25 hours
-- **FLI Child Theme**: 8.25 hours
-- **Total**: ~11 hours (1.5 days)
+- **Elephunkie Toolkit**: 1.25 hours
+- **FLI Child Theme**: 4.25 hours
+- **Total**: ~5.5 hours
 
 ### Medium Priority Fixes:
-- **Elephunkie Toolkit**: 6 hours
-- **Fearless Roles Manager**: 3.75 hours
-- **FLI Child Theme**: 6.5 hours
-- **Total**: ~16 hours (2 days)
+- **Elephunkie Toolkit**: 3 hours
+- **Fearless Roles Manager**: 2 hours
+- **FLI Child Theme**: 3.5 hours
+- **Total**: ~8 hours (1 day)
 
 ### Code Quality Improvements:
-- **Elephunkie Toolkit**: 4.5 hours
-- **Fearless Roles Manager**: 19 hours
-- **FLI Child Theme**: 68 hours
-- **Total**: ~92 hours (11.5 days)
+- **Elephunkie Toolkit**: 2.5 hours
+- **Fearless Roles Manager**: 9.5 hours
+- **FLI Child Theme**: 34 hours
+- **Total**: ~46 hours (6 days)
 
 ### Third-Party Plugin Management:
-- **LearnDash Favorite Content**: 4-5 hours
-- **Lock Visibility**: 13-18 hours
-- **Total**: ~21 hours (2.5 days)
+- **LearnDash Favorite Content**: 2-2.5 hours
+- **Lock Visibility**: 7-9 hours
+- **Total**: ~11 hours (1.5 days)
 
 ### Fearless You Systems Full Review:
-- **Review**: 10.5 hours
-- **Fixes**: 15-30 hours (estimated)
-- **Total**: ~40 hours (5 days)
+- **Review**: 5.5 hours
+- **Fixes**: 8-15 hours (estimated)
+- **Total**: ~20 hours (2.5 days)
 
 ---
 
 ## Grand Total Estimated Effort
 
 ### Security & Bug Fixes Only:
-**43 hours (5.5 days)**
+**21.5 hours (2.5 days)**
 
 ### Including Code Quality:
-**135 hours (17 days)**
+**67.5 hours (8.5 days)**
 
 ### Including Full FYS Review & Plugin Management:
-**196 hours (24.5 days)**
+**98 hours (12 days)**
 
 ---
 
 ## Recommended Prioritization
 
-### Phase 1: Critical Security (Week 1-2) - 27 hours
-1. Fix unauthenticated endpoints (2 hours)
-2. Secure IP-based auto-login (6 hours)
-3. Remove hardcoded credentials (3 hours)
-4. Fix admin notice hiding (30 min)
-5. Remove error suppression (1 hour)
-6. Remove plugin modification code (4 hours)
-7. Fix plugin re-loading (2 hours)
-8. Other high-priority security issues (8.5 hours)
+### Phase 1: Critical Security (Week 1) - 13.5 hours
+1. Fix unauthenticated endpoints (1 hour)
+2. Secure IP-based auto-login (3 hours)
+3. Remove hardcoded credentials (1.5 hours)
+4. Fix admin notice hiding (15 min)
+5. Remove error suppression (30 min)
+6. Remove plugin modification code (2 hours)
+7. Fix plugin re-loading (1 hour)
+8. Other high-priority security issues (4.25 hours)
 
 **Deliverable**: Site secure from known critical vulnerabilities
 
-### Phase 2: Medium Priority (Week 3-4) - 16 hours
+### Phase 2: Medium Priority (Week 2) - 8 hours
 1. Performance optimizations
 2. CSRF protection improvements
 3. Input validation
@@ -181,7 +181,7 @@ This directory contains comprehensive code audit documentation for all custom co
 
 **Deliverable**: Site hardened, better performance
 
-### Phase 3: Code Quality (Month 2) - 92 hours
+### Phase 3: Code Quality (Week 3-4) - 46 hours
 1. Refactor monolithic files
 2. Extract inline JavaScript/CSS
 3. Add comprehensive documentation
@@ -190,7 +190,7 @@ This directory contains comprehensive code audit documentation for all custom co
 
 **Deliverable**: Maintainable, professional codebase
 
-### Phase 4: Full Review & Optimization (Month 3) - 61 hours
+### Phase 4: Full Review & Optimization (Month 2) - 30.5 hours
 1. Complete Fearless You Systems audit
 2. Fix identified issues
 3. Manage third-party plugins properly
@@ -203,22 +203,22 @@ This directory contains comprehensive code audit documentation for all custom co
 
 ## Quick Start - Fix Critical Issues First
 
-### Day 1: Elephunkie Toolkit Critical Issues (2.75 hours)
+### Day 1: Elephunkie Toolkit Critical Issues (1.5 hours)
 - Fix unauthenticated REST API endpoint
 - Remove global admin notice hiding
 - Fix error suppression
 
-### Day 2: FLI Child Theme Critical Issues (13 hours)
+### Day 2: FLI Child Theme Critical Issues (6.5 hours)
 - Secure or remove IP-based auto-login
 - Move hardcoded credentials to database
 - Remove plugin modification code
 
-### Day 3: High Priority Issues (11 hours)
+### Day 3: High Priority Issues (5.5 hours)
 - Fix remaining authentication issues
 - Add CSRF protection
 - Implement input validation
 
-**Result After 3 Days**: All critical security vulnerabilities resolved
+**Result After 2 Days**: All critical security vulnerabilities resolved
 
 ---
 
