@@ -541,21 +541,21 @@ observer.observe(document.body, { childList: true, subtree: true });
 
 ---
 
-### Month 2 - Medium Priority (6 hours)
-1. Fix AJAX polling rate (30 min)
-2. Optimize error handler (30 min)
-3. Cache breadcrumbs (1 hour)
-4. Batch user meta queries (1.5 hours)
-5. Optimize jQuery operations (2 hours)
+### Month 2 - Medium Priority (3 hours)
+1. Fix AJAX polling rate (15 min)
+2. Optimize error handler (15 min)
+3. Cache breadcrumbs (0.5 hours)
+4. Batch user meta queries (0.75 hours)
+5. Optimize jQuery operations (1 hour)
 
 **Expected Performance Gain**: 10-20% improvement
 
 ---
 
-### Long-term - Low Priority (5.5 hours)
-1. Implement CDN support (30 min)
-2. Optimize MutationObserver (1 hour)
-3. Add Redis/Memcached support (4 hours)
+### Long-term - Low Priority (2.75 hours)
+1. Implement CDN support (15 min)
+2. Optimize MutationObserver (0.5 hours)
+3. Add Redis/Memcached support (2 hours)
 
 **Expected Performance Gain**: 20-40% improvement (requires infrastructure)
 
@@ -628,11 +628,11 @@ After fixes, measure:
 
 ## Total Estimated Effort
 
-**Critical**: 5.5 hours
-**High**: 23 hours
-**Medium**: 6 hours
-**Low**: 5.5 hours
+**Critical**: 2.75 hours
+**High**: 11.5 hours
+**Medium**: 3 hours
+**Low**: 2.75 hours
 
-**Total**: 40 hours (5 days)
+**Total**: 20 hours (2.5 days)
 
 **Priority**: Start with Critical fixes for maximum impact with minimal effort.

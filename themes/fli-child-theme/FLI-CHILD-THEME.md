@@ -42,7 +42,7 @@ function fearless_ip_auto_login_updated() {
 - Add notification email when used
 - Add ability to disable from account
 
-**Estimated Effort**: 6 hours
+**Estimated Effort**: 1.5 hours
 
 ---
 
@@ -69,7 +69,7 @@ $ip_user_mappings = array(
 - Remove from version control history
 - Use hashed storage
 
-**Estimated Effort**: 3 hours
+**Estimated Effort**: 1.5 hours
 
 ---
 
@@ -96,7 +96,7 @@ $ip_user_mappings = array(
 - Fix via proper WordPress hooks instead
 - If needed, document as one-time migration script
 
-**Estimated Effort**: 4 hours (to implement proper fix)
+**Estimated Effort**: 1 hour (to implement proper fix)
 
 ---
 
@@ -118,7 +118,7 @@ $first_name = $_POST['first_name'];  // Missing isset() check
 
 **Fix Required**: Always check isset() before access
 
-**Estimated Effort**: 1 hour
+**Estimated Effort**: 0.5 hours
 
 ---
 
@@ -140,7 +140,7 @@ if (!wp_verify_nonce($_POST['nonce'], 'secure-ajax-nonce')) {
 - Check referrer
 - Add timestamp validation
 
-**Estimated Effort**: 2 hours
+**Estimated Effort**: 1 hour
 
 ---
 
@@ -167,7 +167,7 @@ function execute_remove_map_references() {
 - Add confirmation step
 - Add rollback capability
 
-**Estimated Effort**: 3 hours
+**Estimated Effort**: 1.5 hours
 
 ---
 
@@ -183,7 +183,7 @@ private $token_expiry = 3600; // 1 hour
 
 **Fix Required**: Reduce to 15-30 minutes
 
-**Estimated Effort**: 5 minutes
+**Estimated Effort**: 2.5 minutes
 
 ---
 
@@ -204,7 +204,7 @@ if (isset($magic_link_data['ip']) && $magic_link_data['ip'] !== $current_ip) {
 - Option to require same IP
 - Add suspicious activity blocking
 
-**Estimated Effort**: 2 hours
+**Estimated Effort**: 1 hour
 
 ---
 
@@ -220,7 +220,7 @@ if ($magic_link_data['email'] !== $email) {
 
 **Fix Required**: Use strtolower() for comparison
 
-**Estimated Effort**: 10 minutes
+**Estimated Effort**: 5 minutes
 
 ---
 
@@ -244,7 +244,7 @@ body.high-contrast * {
 
 **Fix Required**: Apply selectively to text areas only
 
-**Estimated Effort**: 2 hours
+**Estimated Effort**: 1 hour
 
 ---
 
@@ -257,7 +257,7 @@ body.high-contrast * {
 
 **Fix Required**: Add file size checks, stream large files
 
-**Estimated Effort**: 2 hours
+**Estimated Effort**: 1 hour
 
 ---
 
@@ -269,7 +269,7 @@ body.high-contrast * {
 
 **Fix Required**: Add scheduled cleanup or use shorter expiries
 
-**Estimated Effort**: 1 hour
+**Estimated Effort**: 0.5 hours
 
 ---
 
@@ -286,7 +286,7 @@ foreach ($roles as $role_key => $role_data):
 
 **Fix Required**: Batch queries outside loop
 
-**Estimated Effort**: 1 hour
+**Estimated Effort**: 0.5 hours
 
 ---
 
@@ -302,7 +302,7 @@ if ($text === 'Log In' && $GLOBALS['pagenow'] === 'wp-login.php')
 
 **Fix Required**: Use proper WordPress functions
 
-**Estimated Effort**: 30 minutes
+**Estimated Effort**: 15 minutes
 
 ---
 
@@ -326,7 +326,7 @@ fli-child-theme/
 │   └── admin-tools.php
 ```
 
-**Estimated Effort**: 16 hours
+**Estimated Effort**: 8 hours
 
 ---
 
@@ -349,7 +349,7 @@ fli-child-theme/
 - `/assets/js/mutation-observer-fix.js`
 - `/assets/js/accessibility-widget.js`
 
-**Estimated Effort**: 12 hours
+**Estimated Effort**: 6 hours
 
 ---
 
@@ -361,7 +361,7 @@ fli-child-theme/
 
 **Fix Required**: Move to custom.css
 
-**Estimated Effort**: 6 hours
+**Estimated Effort**: 1.5 hours
 
 ---
 
@@ -373,7 +373,7 @@ fli-child-theme/
 
 **Fix Required**: Remove or move to documentation
 
-**Estimated Effort**: 1 hour
+**Estimated Effort**: 0.5 hours
 
 ---
 
@@ -383,7 +383,7 @@ fli-child-theme/
 
 **Fix Required**: Add documentation blocks
 
-**Estimated Effort**: 10 hours
+**Estimated Effort**: 5 hours
 
 ---
 
@@ -393,7 +393,7 @@ fli-child-theme/
 
 **Fix Required**: Standardize to WordPress conventions
 
-**Estimated Effort**: 4 hours
+**Estimated Effort**: 1 hour
 
 ---
 
@@ -403,7 +403,7 @@ fli-child-theme/
 
 **Fix Required**: Implement proper logging system with levels
 
-**Estimated Effort**: 3 hours
+**Estimated Effort**: 1.5 hours
 
 ---
 
@@ -414,7 +414,7 @@ fli-child-theme/
 
 **Fix Required**: Move to template file
 
-**Estimated Effort**: 2 hours
+**Estimated Effort**: 1 hour
 
 ---
 
@@ -427,7 +427,7 @@ fli-child-theme/
 - EmailSender
 - AuthHandler
 
-**Estimated Effort**: 6 hours
+**Estimated Effort**: 1.5 hours
 
 ---
 
@@ -440,7 +440,7 @@ fli-child-theme/
 
 **Fix Required**: Define as constants
 
-**Estimated Effort**: 2 hours
+**Estimated Effort**: 1 hour
 
 ---
 
@@ -480,40 +480,40 @@ fli-child-theme/
 - Large class (6 hours)
 - Magic numbers (2 hours)
 
-### Total Estimated Effort: 95.75 hours
+### Total Estimated Effort: 47.875 hours
 
 ### Priority Fix Schedule:
 
-**Week 1 - Critical Security (13 hours)**:
-1. Remove/secure IP auto-login (6 hours)
-2. Move hardcoded credentials to DB (3 hours)
-3. Remove plugin modification code (4 hours)
+**Week 1 - Critical Security (6.5 hours)**:
+1. Remove/secure IP auto-login (3 hours)
+2. Move hardcoded credentials to DB (1.5 hours)
+3. Remove plugin modification code (2 hours)
 
-**Week 2 - High Priority Security (8.25 hours)**:
-1. Sanitize all POST inputs (1 hour)
-2. Strengthen CSRF protection (2 hours)
-3. Add file modification safeguards (3 hours)
-4. Fix magic link security issues (2.25 hours)
+**Week 2 - High Priority Security (4.125 hours)**:
+1. Sanitize all POST inputs (0.5 hours)
+2. Strengthen CSRF protection (1 hour)
+3. Add file modification safeguards (1.5 hours)
+4. Fix magic link security issues (1.125 hours)
 
-**Week 3 - Medium Priority (6.5 hours)**:
-1. Fix accessibility high contrast (2 hours)
-2. Add file size checks (2 hours)
-3. Fix query loops (1 hour)
-4. Add transient cleanup (1 hour)
-5. Remove global variable usage (30 min)
+**Week 3 - Medium Priority (3.25 hours)**:
+1. Fix accessibility high contrast (1 hour)
+2. Add file size checks (1 hour)
+3. Fix query loops (0.5 hours)
+4. Add transient cleanup (0.5 hours)
+5. Remove global variable usage (15 min)
 
-**Month 2 - Code Quality (68 hours)**:
-1. Refactor functions.php (16 hours)
-2. Extract inline JavaScript (12 hours)
-3. Extract inline CSS (6 hours)
-4. Add comprehensive documentation (10 hours)
-5. Standardize naming (4 hours)
-6. Implement logging system (3 hours)
-7. Refactor magic link class (6 hours)
-8. Move email templates (2 hours)
-9. Remove commented code (1 hour)
-10. Define constants (2 hours)
-11. Code review and testing (6 hours)
+**Month 2 - Code Quality (34 hours)**:
+1. Refactor functions.php (8 hours)
+2. Extract inline JavaScript (6 hours)
+3. Extract inline CSS (3 hours)
+4. Add comprehensive documentation (5 hours)
+5. Standardize naming (2 hours)
+6. Implement logging system (1.5 hours)
+7. Refactor magic link class (3 hours)
+8. Move email templates (1 hour)
+9. Remove commented code (0.5 hours)
+10. Define constants (1 hour)
+11. Code review and testing (3 hours)
 
 ### Testing Requirements:
 

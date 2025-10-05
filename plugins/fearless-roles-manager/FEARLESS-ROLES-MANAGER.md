@@ -25,7 +25,7 @@ $settings = isset($_POST['settings']) ? $_POST['settings'] : array();
 
 **Fix Required**: Sanitize all inputs immediately upon access, before any processing
 
-**Estimated Effort**: 30 minutes
+**Estimated Effort**: 7.5 minutes
 
 **Suggested Fix**:
 ```php
@@ -47,7 +47,7 @@ url: ajaxurl,
 
 **Fix Required**: Properly localize ajax_url in wp_localize_script
 
-**Estimated Effort**: 15 minutes
+**Estimated Effort**: 7.5 minutes
 
 **Current Code** (line 130-134):
 ```php
@@ -74,7 +74,7 @@ wp_localize_script('frm-admin', 'frm_ajax', array(
 - Implement progress tracking for large batches
 - Add timeout protection
 
-**Estimated Effort**: 2 hours
+**Estimated Effort**: 0.5 hours
 
 **Suggested Addition**:
 ```php
@@ -111,7 +111,7 @@ public function handle_process_role_tags() {
 
 **Fix Required**: Move JavaScript to external file
 
-**Estimated Effort**: 3 hours
+**Estimated Effort**: 1.5 hours
 
 **Steps**:
 1. Create `/assets/js/role-category-management.js`
@@ -129,7 +129,7 @@ public function handle_process_role_tags() {
 
 **Fix Required**: Add comprehensive error handling
 
-**Estimated Effort**: 4 hours
+**Estimated Effort**: 2 hours
 
 **Example for Line 137**:
 ```php
@@ -175,7 +175,7 @@ public function save_role_settings() {
 
 **Fix Required**: Refactor into multiple files
 
-**Estimated Effort**: 8 hours
+**Estimated Effort**: 4 hours
 
 **Suggested Structure**:
 ```
@@ -211,7 +211,7 @@ fearless-roles-manager/
 
 **Fix Required**: Standardize to WordPress coding standards (use `array()`)
 
-**Estimated Effort**: 1 hour
+**Estimated Effort**: 0.5 hours
 
 ---
 
@@ -230,7 +230,7 @@ $color = preg_match('/^#([A-Fa-f0-9]{6})$/', $_POST['category_color'] ?? '')
 
 **Fix Required**: Add comprehensive validation
 
-**Estimated Effort**: 2 hours
+**Estimated Effort**: 0.5 hours
 
 **Suggested Validation Class**:
 ```php
@@ -264,7 +264,7 @@ class FRM_Validator {
 
 **Fix Required**: Add PHPDoc blocks to all functions
 
-**Estimated Effort**: 4 hours
+**Estimated Effort**: 2 hours
 
 **Example**:
 ```php
@@ -289,7 +289,7 @@ public function save_role_settings() {
 
 **Fix Required**: Move to external CSS file
 
-**Estimated Effort**: 2 hours
+**Estimated Effort**: 0.5 hours
 
 ---
 
@@ -313,28 +313,28 @@ public function save_role_settings() {
 - Missing documentation
 - Inline styles
 
-### Total Estimated Effort: 26.5 hours
+### Total Estimated Effort: 13.25 hours
 
 ### Recommended Fix Order:
 
-**Sprint 1 - Quick Wins (1 hour)**:
-1. Fix hardcoded AJAX URL (15 min)
-2. Add POST sanitization (30 min)
-3. Standardize array syntax (15 min)
+**Sprint 1 - Quick Wins (0.5 hours)**:
+1. Fix hardcoded AJAX URL (7.5 min)
+2. Add POST sanitization (15 min)
+3. Standardize array syntax (7.5 min)
 
-**Sprint 2 - Security & Performance (2.5 hours)**:
-1. Add rate limiting (2 hours)
-2. Add input validation (30 min)
+**Sprint 2 - Security & Performance (1.25 hours)**:
+1. Add rate limiting (1 hour)
+2. Add input validation (15 min)
 
-**Sprint 3 - Code Organization (13 hours)**:
-1. Move inline JS to external files (3 hours)
-2. Move inline CSS to external files (2 hours)
-3. Refactor into multiple files (8 hours)
+**Sprint 3 - Code Organization (6.5 hours)**:
+1. Move inline JS to external files (1.5 hours)
+2. Move inline CSS to external files (1 hour)
+3. Refactor into multiple files (4 hours)
 
-**Sprint 4 - Quality & Maintenance (10 hours)**:
-1. Add error handling (4 hours)
-2. Add PHPDoc comments (4 hours)
-3. Code review and cleanup (2 hours)
+**Sprint 4 - Quality & Maintenance (5 hours)**:
+1. Add error handling (2 hours)
+2. Add PHPDoc comments (2 hours)
+3. Code review and cleanup (1 hour)
 
 ### Testing Requirements:
 

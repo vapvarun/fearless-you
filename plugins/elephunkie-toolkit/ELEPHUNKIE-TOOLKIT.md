@@ -32,7 +32,7 @@ Modular plugin system that combines multiple smaller tools into a single plugin 
 - Verify user has capability to read attachments
 - Add nonce verification
 
-**Estimated Effort**: 1 hour
+**Estimated Effort**: 0.5 hours
 
 **Suggested Fix**:
 ```php
@@ -61,7 +61,7 @@ function dismiss_admin_notices() {
 
 **Fix Required**: Remove this function entirely OR make it selective to only hide specific notices
 
-**Estimated Effort**: 30 minutes
+**Estimated Effort**: 7.5 minutes
 
 ---
 
@@ -79,7 +79,7 @@ function elephunkie_toggle_feature() {
 
 **Fix Required**: Move nonce check to first line, verify before any $_POST access
 
-**Estimated Effort**: 15 minutes
+**Estimated Effort**: 7.5 minutes
 
 ---
 
@@ -101,7 +101,7 @@ function elephunkie_toggle_feature() {
 - Only scan directory on plugin activation/deactivation
 - Clear cache when features are added/removed
 
-**Estimated Effort**: 2 hours
+**Estimated Effort**: 1 hour
 
 **Suggested Approach**:
 ```php
@@ -128,7 +128,7 @@ private function get_features() {
 **Impact**: Potential conflicts with other plugins using similar class names
 
 **Fix Required**: Add PHP namespace
-**Estimated Effort**: 1 hour
+**Estimated Effort**: 0.5 hours
 
 ---
 
@@ -143,7 +143,7 @@ $to = 'jonathan@elephunkie.com';
 
 **Fix Required**: Add to plugin settings or use site admin email
 
-**Estimated Effort**: 30 minutes
+**Estimated Effort**: 7.5 minutes
 
 ---
 
@@ -156,7 +156,7 @@ $to = 'jonathan@elephunkie.com';
 - Clean up transients
 - Remove any custom database entries
 
-**Estimated Effort**: 1 hour
+**Estimated Effort**: 0.5 hours
 
 ---
 
@@ -166,7 +166,7 @@ $to = 'jonathan@elephunkie.com';
 
 **Fix Required**: Add 'elephunkie' text domain to all __(), _e(), etc. calls
 
-**Estimated Effort**: 2 hours
+**Estimated Effort**: 1 hour
 
 ---
 
@@ -185,7 +185,7 @@ add_action('wp_ajax_nopriv_fearless_security_check', [$this, 'ajax_security_chec
 
 **Fix Required**: Remove wp_ajax_nopriv hook, require authentication
 
-**Estimated Effort**: 15 minutes
+**Estimated Effort**: 7.5 minutes
 
 #### MEDIUM: Security Logs in wp_options
 **File**: includes/fearless-security-fixer/fearless-security-fixer.php
@@ -195,7 +195,7 @@ add_action('wp_ajax_nopriv_fearless_security_check', [$this, 'ajax_security_chec
 
 **Fix Required**: Use custom table or rotate to log files
 
-**Estimated Effort**: 3 hours
+**Estimated Effort**: 1.5 hours
 
 ---
 
@@ -212,7 +212,7 @@ add_action('wp_ajax_nopriv_fearless_security_check', [$this, 'ajax_security_chec
 
 **Fix Required**: Remove @ operator, handle errors properly
 
-**Estimated Effort**: 1 hour
+**Estimated Effort**: 0.5 hours
 
 #### HIGH: Re-loading Active Plugins
 **File**: includes/phunk-plugin-logger/phunk.php
@@ -222,7 +222,7 @@ add_action('wp_ajax_nopriv_fearless_security_check', [$this, 'ajax_security_chec
 
 **Fix Required**: Only measure resource usage of already-loaded plugins, don't re-include
 
-**Estimated Effort**: 2 hours
+**Estimated Effort**: 1 hour
 
 #### MEDIUM: Hardcoded Email Addresses
 **File**: includes/phunk-plugin-logger/phunk.php
@@ -233,7 +233,7 @@ $to = 'jonathan@fearlessliving.org';
 ```
 **Fix Required**: Move to settings
 
-**Estimated Effort**: 1 hour
+**Estimated Effort**: 0.5 hours
 
 ---
 
@@ -262,29 +262,29 @@ $to = 'jonathan@fearlessliving.org';
 - Missing cleanup
 - Missing translations
 
-### Total Estimated Effort: 16.5 hours
+### Total Estimated Effort: 8.25 hours
 
 ### Recommended Fix Order:
 
-**Week 1 (Critical - 2.75 hours)**:
-1. Fix unauthenticated endpoints (1.25 hours)
-2. Remove/fix admin notice hiding (0.5 hours)
-3. Fix error suppression (1 hour)
+**Week 1 (Critical - 1.375 hours)**:
+1. Fix unauthenticated endpoints (0.625 hours)
+2. Remove/fix admin notice hiding (0.25 hours)
+3. Fix error suppression (0.5 hours)
 
-**Week 2 (High Priority - 2.25 hours)**:
-1. Fix nonce verification (0.25 hours)
-2. Fix plugin re-loading (2 hours)
+**Week 2 (High Priority - 1.125 hours)**:
+1. Fix nonce verification (0.125 hours)
+2. Fix plugin re-loading (1 hour)
 
-**Week 3 (Medium Priority - 6 hours)**:
-1. Implement caching for file scanning (2 hours)
-2. Fix security log storage (3 hours)
-3. Move hardcoded emails to settings (1 hour)
+**Week 3 (Medium Priority - 3 hours)**:
+1. Implement caching for file scanning (1 hour)
+2. Fix security log storage (1.5 hours)
+3. Move hardcoded emails to settings (0.5 hours)
 
-**Week 4 (Code Quality - 4.5 hours)**:
-1. Add namespace (1 hour)
-2. Add uninstall cleanup (1 hour)
-3. Fix text domains (2 hours)
-4. Remove other hardcoded values (0.5 hours)
+**Week 4 (Code Quality - 2.25 hours)**:
+1. Add namespace (0.5 hours)
+2. Add uninstall cleanup (0.5 hours)
+3. Fix text domains (1 hour)
+4. Remove other hardcoded values (0.25 hours)
 
 ### Testing Requirements:
 
