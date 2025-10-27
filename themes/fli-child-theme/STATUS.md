@@ -6,15 +6,23 @@
 
 ## What We Have
 
-### Customizations
-- Custom functions.php with site-specific code
-- Style overrides for BuddyBoss theme
-- Template overrides (if any)
-- Custom CSS/JS assets
-- BuddyBoss Platform integration
+### Active Include Files (5 files)
+- `includes/error-logging.php` - Debug/logging system (used by caching)
+- `includes/caching-system.php` - Performance caching system
+- `includes/other-options-handler.php` - Site options management
+- `includes/role-based-logo.php` - Custom logo per user role
+- `includes/class-fli-image-upload-handler.php` - Image upload handling
 
-### Backup Files Found
-- `functions-backup-original.php` - Old backup that should be excluded from git
+### Admin Files
+- `inc/admin/admin-init.php` - Admin area initialization
+- `inc/admin/theme-functions.php` - Theme-specific functions
+- `inc/admin/dynamic-styles.php` - Dynamic CSS generation
+- `inc/learndash-customizer.php` - LearnDash customizations
+
+### Assets
+- Custom CSS in `assets/css/`
+- Custom JS in `assets/js/`
+- BuddyBoss Platform integration
 
 ## What To Do
 
@@ -39,8 +47,16 @@
 ## What's Done
 
 - ✅ Theme copied to repository
-- ✅ Backup files identified
-- ✅ Excluded from git tracking
+- ✅ Include files audit completed (Oct 27, 2025)
+- ✅ Removed 3 unused include files (50 KB):
+  - `enable-breadcrumbs.php` - unused breadcrumb system
+  - `magic-link-auth.php` - unused passwordless login (35 KB!)
+  - `membership-caching-examples.php` - just example/demo code
+- ✅ Removed 3 backup files (115 KB):
+  - `functions-backup-original.php`
+  - `functions.php.backup`
+  - `custom-fivo-docs.js.backup`
+- ✅ **Total cleanup:** 165 KB removed, 6 unused files deleted
 
 ## Notes
 
