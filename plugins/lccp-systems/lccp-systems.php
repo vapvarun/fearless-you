@@ -26,11 +26,14 @@ define( 'LCCP_SYSTEMS_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 
 // Include the module manager class
 require_once LCCP_SYSTEMS_PLUGIN_DIR . 'includes/class-module-manager.php';
+// Include the roles manager class (needed for admin menu)
+require_once LCCP_SYSTEMS_PLUGIN_DIR . 'includes/class-roles-manager.php';
 
 class LCCP_Systems {
 
 	private static $instance = null;
 	private $module_manager  = null;
+	private $roles_manager   = null;
 
 	public static function get_instance() {
 		if ( null === self::$instance ) {
@@ -42,6 +45,9 @@ class LCCP_Systems {
 	private function __construct() {
 		// Initialize module manager
 		$this->module_manager = LCCP_Module_Manager::get_instance();
+
+		// Initialize roles manager
+		$this->roles_manager = new LCCP_Roles_Manager();
 
 		// Core initialization
 		add_action( 'init', array( $this, 'init' ) );

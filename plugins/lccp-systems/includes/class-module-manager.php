@@ -415,7 +415,19 @@ class LCCP_Module_Manager {
      * Check if module is enabled
      */
     public function is_module_enabled($module_id) {
-        return isset($this->module_settings[$module_id]) && $this->module_settings[$module_id]['enabled'];
+        if (!isset($this->module_settings[$module_id])) {
+            return false;
+        }
+
+        $setting = $this->module_settings[$module_id];
+
+        // Handle both array format ['enabled' => true] and string format 'on'
+        if (is_array($setting)) {
+            return isset($setting['enabled']) && $setting['enabled'];
+        } else {
+            // Legacy string format: 'on' or true
+            return $setting === 'on' || $setting === true || $setting === 1;
+        }
     }
     
     /**
