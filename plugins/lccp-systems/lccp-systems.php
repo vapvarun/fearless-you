@@ -1530,7 +1530,7 @@ class LCCP_Systems {
 				'id'          => 'lccp_module_roles',
 				'name'        => __( 'Roles Manager', 'lccp-systems' ),
 				'description' => __( 'Manage custom roles for mentors, big birds, and program coordinators.', 'lccp-systems' ),
-				'file'        => 'modules/class-roles-manager.php',
+				'file'        => 'includes/class-roles-manager.php',
 				'requires'    => array(),
 			),
 			array(
