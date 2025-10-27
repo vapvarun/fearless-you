@@ -366,9 +366,29 @@ class LCCP_Enhanced_Dashboards {
      */
     public function render_mentor_performance_widget() {
         global $wpdb;
-        
-        $mentors = get_users(array('role' => 'lccp_mentor'));
-        
+
+        // Get all mentor stats in a single efficient query with JOINs
+        $mentor_stats = $wpdb->get_results("
+            SELECT
+                u.ID,
+                u.display_name,
+                COUNT(DISTINCT a.student_id) as student_count,
+                COALESCE(SUM(h.session_length), 0) as month_hours,
+                0 as completion_rate
+            FROM {$wpdb->users} u
+            INNER JOIN {$wpdb->usermeta} um ON u.ID = um.user_id
+                AND um.meta_key = '{$wpdb->prefix}capabilities'
+                AND um.meta_value LIKE '%lccp_mentor%'
+            LEFT JOIN {$wpdb->prefix}lccp_assignments a
+                ON u.ID = a.mentor_id AND a.status = 'active'
+            LEFT JOIN {$wpdb->prefix}lccp_hour_tracker h
+                ON u.ID = h.user_id
+                AND MONTH(h.session_date) = MONTH(CURRENT_DATE())
+                AND YEAR(h.session_date) = YEAR(CURRENT_DATE())
+            GROUP BY u.ID, u.display_name
+            ORDER BY u.display_name ASC
+        ");
+
         ?>
         <div class="lccp-mentor-performance">
             <table class="widefat">
@@ -382,23 +402,18 @@ class LCCP_Enhanced_Dashboards {
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($mentors as $mentor): ?>
-                        <?php
-                        $student_count = $this->get_mentor_student_count($mentor->ID);
-                        $month_hours = $this->get_user_month_hours($mentor->ID);
-                        $completion_rate = $this->get_mentor_completion_rate($mentor->ID);
-                        ?>
+                    <?php foreach ($mentor_stats as $mentor): ?>
                         <tr>
                             <td>
                                 <strong><?php echo esc_html($mentor->display_name); ?></strong>
                             </td>
-                            <td><?php echo $student_count; ?></td>
-                            <td><?php echo number_format($month_hours, 1); ?></td>
+                            <td><?php echo intval($mentor->student_count); ?></td>
+                            <td><?php echo number_format($mentor->month_hours, 1); ?></td>
                             <td>
                                 <div class="mini-progress">
-                                    <div class="mini-progress-fill" style="width: <?php echo $completion_rate; ?>%"></div>
+                                    <div class="mini-progress-fill" style="width: <?php echo $mentor->completion_rate; ?>%"></div>
                                 </div>
-                                <?php echo $completion_rate; ?>%
+                                <?php echo $mentor->completion_rate; ?>%
                             </td>
                             <td>
                                 <a href="#" class="view-details" data-mentor-id="<?php echo $mentor->ID; ?>">View</a>
@@ -435,32 +450,33 @@ class LCCP_Enhanced_Dashboards {
         if (!function_exists('learndash_get_course_list')) {
             return 0;
         }
-        
-        $courses = learndash_get_course_list();
-        if (empty($courses)) {
-            return 0;
+
+        // Check cache first (15 minute cache)
+        $cache_key = 'lccp_overall_completion_rate';
+        $cached_rate = get_transient($cache_key);
+        if (false !== $cached_rate) {
+            return $cached_rate;
         }
-        
-        $total_progress = 0;
-        $student_count = 0;
-        
-        $students = get_users(array('role' => 'subscriber'));
-        foreach ($students as $student) {
-            foreach ($courses as $course_id) {
-                $progress = learndash_course_progress(array(
-                    'user_id' => $student->ID,
-                    'course_id' => $course_id,
-                    'array' => true
-                ));
-                
-                if (isset($progress['percentage'])) {
-                    $total_progress += $progress['percentage'];
-                    $student_count++;
-                }
-            }
-        }
-        
-        return $student_count > 0 ? round($total_progress / $student_count) : 0;
+
+        global $wpdb;
+
+        // Get average completion using efficient database query
+        // LearnDash stores course progress in user meta as ld_course_progress_{course_id}
+        $completion_rate = $wpdb->get_var("
+            SELECT AVG(CAST(meta_value AS DECIMAL(5,2)))
+            FROM {$wpdb->usermeta}
+            WHERE meta_key LIKE 'course_%_progress'
+            AND meta_value IS NOT NULL
+            AND meta_value != ''
+            AND CAST(meta_value AS DECIMAL(5,2)) BETWEEN 0 AND 100
+        ");
+
+        $rate = $completion_rate ? round($completion_rate) : 0;
+
+        // Cache for 15 minutes
+        set_transient($cache_key, $rate, 15 * MINUTE_IN_SECONDS);
+
+        return $rate;
     }
     
     private function get_mentor_student_count($mentor_id) {
@@ -612,29 +628,36 @@ class LCCP_Enhanced_Dashboards {
      */
     public function render_bigbird_oversight_widget() {
         global $wpdb;
-        
-        // Get all PCs and their performance metrics
-        $pcs = get_users(array('role' => 'lccp_pc'));
-        
-        if (!empty($pcs)) {
+
+        // Get all PCs with their student counts in a single efficient query
+        $pc_stats = $wpdb->get_results("
+            SELECT
+                u.ID,
+                u.display_name,
+                COUNT(DISTINCT um_students.user_id) as student_count
+            FROM {$wpdb->users} u
+            INNER JOIN {$wpdb->usermeta} um_role ON u.ID = um_role.user_id
+                AND um_role.meta_key = '{$wpdb->prefix}capabilities'
+                AND um_role.meta_value LIKE '%lccp_pc%'
+            LEFT JOIN {$wpdb->usermeta} um_students ON u.ID = um_students.meta_value
+                AND um_students.meta_key = 'pc_id'
+            GROUP BY u.ID, u.display_name
+            ORDER BY u.display_name ASC
+        ");
+
+        if (!empty($pc_stats)) {
             echo '<table class="lccp-pc-overview">';
             echo '<thead><tr><th>PC Name</th><th>Students</th><th>Avg Progress</th></tr></thead>';
             echo '<tbody>';
-            
-            foreach ($pcs as $pc) {
-                $student_count = count(get_users(array(
-                    'meta_key' => 'pc_id',
-                    'meta_value' => $pc->ID,
-                    'role' => 'subscriber'
-                )));
-                
+
+            foreach ($pc_stats as $pc) {
                 echo '<tr>';
                 echo '<td>' . esc_html($pc->display_name) . '</td>';
-                echo '<td>' . $student_count . '</td>';
+                echo '<td>' . intval($pc->student_count) . '</td>';
                 echo '<td>-</td>';
                 echo '</tr>';
             }
-            
+
             echo '</tbody></table>';
         } else {
             echo '<p>No PC team members found.</p>';
