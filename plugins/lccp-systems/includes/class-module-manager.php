@@ -873,7 +873,7 @@ class LCCP_Module_Manager {
      * Render module management page
      */
     public function render_module_management_page() {
-        $modules = $this->get_registered_modules();
+        $modules = $this->get_modules();
         // Load any stored module errors to reflect "problem" state
         $module_errors = get_transient('lccp_module_errors');
         ?>
