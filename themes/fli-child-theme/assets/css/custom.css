@@ -1175,3 +1175,13 @@ button[style*="#fe6f4b"]:hover,
         min-height: calc(100vh - 150px) !important;
     }
 }
+
+
+.learndash-wrapper #ld-profile  .ld-primary-background{
+	    background: #59898d !important;
+}
+
+
+.learndash-wrapper .ld-item-list .ld-item-list-item a.ld-item-name:hover{
+    color: #59898d;
+}

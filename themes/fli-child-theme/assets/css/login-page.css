@@ -1,0 +1,427 @@
+/**
+ * Login Page Styles - Extracted from functions.php for performance
+ * Loaded only on login pages
+ */
+
+/* Force remove default split layout */
+body.login,
+body.login-split-page {
+    background: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 100vh !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* Full screen background for desktop */
+body.login::before {
+    content: '' !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-image: url('../../FYM-Login-Desktop.jpg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    z-index: -1 !important;
+}
+
+/* Remove ALL BuddyBoss split layouts */
+.login-split,
+.bb-login-section,
+.bb-login-right-section,
+.login-split-left,
+.login-split-right {
+    display: none !important;
+}
+
+/* Override BuddyBoss container styles */
+.bb-login .login-form-wrap,
+.login .login-form-wrap {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    max-width: none !important;
+}
+
+/* Position login container properly */
+#login {
+    width: 350px !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    z-index: 10 !important;
+}
+
+/* Adjust form positioning to align with white board */
+#loginform,
+#registerform,
+#lostpasswordform {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 30px !important;
+    margin: 0 !important;
+    transform: translateX(-10%) translateY(-10%) !important;
+}
+
+/* Hide background for form elements */
+.login-heading,
+form,
+.login form {
+    background: transparent !important;
+}
+
+body.login.login-action-magic_login div#login {
+    left: calc(50% - 0px) !important;
+    max-width: 350px !important;
+    padding: 30px !important;
+}
+
+body.login.login-action-magic_login .privacy-policy-page-link {
+    transform: translateX(0%) translateY(-10%) !important;
+}
+
+/* Focus styles for accessibility */
+.login input:focus,
+.login button:focus,
+.login .button:focus {
+    outline: 2px solid #5A7891 !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 3px rgba(90, 120, 145, 0.2) !important;
+}
+
+.login .button-primary,
+.login input[type="submit"] {
+    margin-top: 0px !important;
+    line-height: normal !important;
+}
+
+/* Style links */
+.login a {
+    color: #5A7891 !important;
+    text-decoration: none !important;
+}
+
+.login a:hover {
+    text-decoration: underline !important;
+}
+
+#login form label#user_label:before {
+    content: "\ef52";
+    color: var(--bb-body-text-color);
+}
+
+.magic-login-or-separator:before {
+    background-color: #f6f7fb !important;
+}
+
+/* Tablet and Mobile styles */
+@media (max-width: 1024px) {
+    body.login::before {
+        background-image: url('../../rhonda-mobile-login.jpg') !important;
+    }
+
+    #login {
+        width: 90% !important;
+        max-width: 300px !important;
+        top: 70% !important;
+        left: 50% !important;
+        transform: translate(calc(-50% - 20px), calc(-50% - 10px)) !important;
+    }
+
+    #loginform,
+    #registerform,
+    #lostpasswordform {
+        transform: translateX(0) translateY(0) !important;
+        padding: 15px !important;
+    }
+
+    /* Hide labels on mobile, use placeholders instead */
+    .login-heading h2 {
+        display: none !important;
+    }
+}
+
+/* Mobile specific adjustments */
+@media (max-width: 768px) {
+    #login {
+        top: 75% !important;
+        max-width: 280px !important;
+        transform: translate(calc(-50% - 20px), calc(-50% - 10px)) !important;
+    }
+
+    #loginform,
+    #registerform,
+    #lostpasswordform {
+        padding: 10px !important;
+    }
+
+    body.login #login .privacy-policy-page-link {
+        transform: translateX(0%) translateY(0%) !important;
+    }
+}
+
+/* Hide WordPress logo */
+.login h1,
+#login h1 {
+    display: none !important;
+}
+
+/* Style error messages */
+.login .message,
+.login #login_error {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-left: 4px solid #dc3545 !important;
+    padding: 12px !important;
+    margin-bottom: 20px !important;
+    color: #333 !important;
+}
+
+.login #login_error {
+    border-left-color: #dc3545 !important;
+}
+
+.login .message {
+    border-left-color: #5A7891 !important;
+}
+
+/* Ensure all text in messages is visible */
+.login .message *,
+.login #login_error * {
+    color: #333 !important;
+}
+
+/* Fine-tune positioning for larger screens */
+@media (min-width: 1200px) {
+    #login {
+        transform: translate(-45%, -50%) !important;
+    }
+}
+
+/* Fine-tune mobile positioning */
+@media (max-width: 480px) {
+    #login {
+        top: 80% !important;
+        transform: translate(calc(-50% - 20px), calc(-50% - 10px)) !important;
+    }
+}
+
+/* Force hide any BuddyBoss theme elements */
+.bb-login-subtitle,
+.bb-login-footer,
+.login-split-part,
+.login-split-right,
+body.login-split-page .login-split {
+    display: none !important;
+}
+
+/* Ensure proper form container behavior */
+.login-form-wrap {
+    position: static !important;
+    transform: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: auto !important;
+}
+
+/* Remove any default WordPress login positioning */
+body.login div#login {
+    position: absolute !important;
+    left: calc(55% - 20px) !important;
+    top: 60% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+}
+
+/* Ensure the heading stays with the form */
+.login-heading {
+    margin-top: 0px !important;
+    margin-bottom: 10px !important;
+    text-align: center !important;
+}
+
+.login-heading h2 {
+    color: #333 !important;
+    font-size: 24px !important;
+    margin: 0 0 10px 0 !important;
+    text-align: center !important;
+}
+
+.login-heading span a {
+    font-size: 14px !important;
+}
+
+/* Hide Create an Account link */
+.login-heading span {
+    display: none !important;
+}
+
+/* Hide bottom navigation links */
+.login #nav {
+    display: none !important;
+}
+
+/* Hide HR separator */
+.login hr {
+    display: none !important;
+}
+
+/* Center terms of use text */
+.login .privacy-policy-page-link,
+.login .privacy-policy-link,
+.login .terms-of-use-link,
+.login .terms-link {
+    text-align: center !important;
+    display: block !important;
+    margin: 15px auto !important;
+}
+
+body.login .privacy-policy-page-link {
+    transform: translateX(-15%) translateY(-10%) !important;
+    margin-top: 0 !important;
+}
+
+body.login .privacy-policy-page-link .terms-link {
+    margin: 0 !important;
+}
+
+/* Center any footer links */
+.login .login-footer,
+.login .login-links {
+    text-align: center !important;
+}
+
+.login #login_error {
+    margin-left: -30px;
+}
+
+/* Hide default error messages that appear on first load */
+.login #login_error:empty {
+    display: none !important;
+}
+
+/* Ensure button container accommodates the shift */
+.login .submit {
+    position: relative !important;
+    overflow: visible !important;
+}
+
+/* Mobile Login Form Fixes - iPhone 15 Pro and similar devices */
+@media (max-width: 430px) {
+    body.login #login {
+        width: 85% !important;
+        max-width: 350px !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        padding: 0 !important;
+    }
+
+    body.login #loginform,
+    body.login #registerform,
+    body.login #lostpasswordform {
+        margin: 0 !important;
+        padding: 20px !important;
+        transform: none !important;
+    }
+
+    body.login input[type="text"],
+    body.login input[type="password"],
+    body.login input[type="email"] {
+        width: 100% !important;
+        box-sizing: border-box !important;
+        margin-bottom: 15px !important;
+        padding: 12px !important;
+        font-size: 16px !important;
+    }
+
+    body.login .forgetmenot {
+        margin: 15px 0 !important;
+        display: block !important;
+    }
+
+    body.login .forgetmenot label {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        font-size: 14px !important;
+    }
+
+    body.login .forgetmenot input[type="checkbox"] {
+        margin: 0 !important;
+        width: 18px !important;
+        height: 18px !important;
+        flex-shrink: 0 !important;
+        position: relative !important;
+        top: 0 !important;
+        vertical-align: middle !important;
+    }
+
+    body.login .submit {
+        margin-top: 20px !important;
+    }
+
+    body.login .button-primary,
+    body.login input[type="submit"] {
+        width: 100% !important;
+        padding: 12px 20px !important;
+        font-size: 16px !important;
+        margin: 0 !important;
+    }
+
+    body.login .magic-login-buttons {
+        display: flex !important;
+        gap: 10px !important;
+        margin-top: 15px !important;
+    }
+
+    body.login .magic-login-buttons button {
+        flex: 1 !important;
+        padding: 12px 15px !important;
+        font-size: 16px !important;
+    }
+
+    body.login #password-login-section {
+        margin-top: 20px !important;
+        padding-top: 20px !important;
+    }
+
+    body.login .other-options-container {
+        margin-top: 20px !important;
+        padding-top: 20px !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
+
+    body.login .other-options-container p {
+        margin-bottom: 10px !important;
+        font-size: 14px !important;
+    }
+
+    body.login .other-options-container a {
+        display: block !important;
+        padding: 8px 0 !important;
+        font-size: 14px !important;
+    }
+}
+
+/* Additional fixes for very small screens */
+@media (max-width: 375px) {
+    body.login #login {
+        width: 90% !important;
+    }
+
+    body.login #loginform,
+    body.login #registerform,
+    body.login #lostpasswordform {
+        padding: 15px !important;
+    }
+}

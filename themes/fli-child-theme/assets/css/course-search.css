@@ -1,0 +1,598 @@
+/**
+ * LearnDash Course Search Results Styles
+ * Optimized for FLI Child Theme
+ */
+
+/* ==========================================================================
+   Search Header & Results Count
+   ========================================================================== */
+
+/* .page-header {
+    background: #f8f9fa;
+    padding: 40px 20px;
+    margin-bottom: 30px;
+    border-bottom: 3px solid var(--fli-brand-teal, #59898D);
+} */
+
+.page-header .page-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--fli-brand-gray-dark, #1B181C);
+    margin: 0 0 10px;
+    text-align: left;
+}
+
+.page-header .page-title .highlight {
+    color: var(--fli-brand-teal, #59898D);
+    font-weight: 700;
+}
+
+/* .page-header .page-title .search-term {
+    color: #FFF;
+    background: var(--fli-brand-teal, #59898D);
+    padding: 2px 15px;
+    border-radius: 8px;
+    font-weight: 600;
+} */
+
+.search-results-count {
+    background: #fff;
+    padding: 15px 20px;
+    margin-bottom: 30px;
+    border-left: 4px solid var(--fli-brand-teal, #59898D);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.search-results-count strong {
+    color: var(--fli-brand-teal, #59898D);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   Course Search Grid
+   ========================================================================== */
+
+#learndash-content.learndash-course-search-results {
+    padding: 20px 0;
+}
+
+.ld-course-search-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+@media (max-width: 1200px) {
+    .ld-course-search-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .ld-course-search-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+/* ==========================================================================
+   Course Card
+   ========================================================================== */
+
+.ld-course-search-result {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.course-item-wrap {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e9ecef;
+}
+
+/* .course-item-wrap:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+} */
+
+/* ==========================================================================
+   Course Thumbnail
+   ========================================================================== */
+
+.course-thumbnail {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--fli-brand-teal, #59898D) 0%, var(--fli-brand-dark-teal, #0a738a) 100%);
+}
+
+.course-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.course-thumbnail.no-thumbnail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.course-no-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    /* background: linear-gradient(135deg, var(--fli-brand-teal, #59898D) 0%, var(--fli-brand-dark-teal, #0a738a) 100%); */
+}
+
+.course-no-image i {
+    font-size: 64px;
+    color: rgb(255, 255, 255);
+}
+
+/* Course Price Badge */
+.course-price {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--fli-brand-yellow, #E6ED5A);
+    color: var(--fli-brand-gray-dark, #1B181C);
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+}
+
+/* Course Badge (Enrolled/Course) */
+.course-badge {
+    background: rgba(255, 255, 255, 0.95);
+    color: var(--fli-brand-gray-dark, #1B181C);
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 4px 22px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: none;
+}
+
+.course-badge.enrolled {
+    background: var(--fli-brand-teal, #59898D);
+    color: #fff;
+}
+
+/* ==========================================================================
+   Course Content
+   ========================================================================== */
+
+.course-content {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.course-title {
+    margin: 0 0 15px 0;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+.course-title a {
+    color: var(--fli-brand-gray-dark, #1B181C);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.course-title a:hover {
+    color: var(--fli-brand-teal, #59898D);
+}
+
+.course-excerpt {
+    color: var(--fli-brand-gray-medium, #393939);
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+/* ==========================================================================
+   Progress Bar
+   ========================================================================== */
+
+.course-progress-wrap {
+    margin-bottom: 20px;
+}
+
+.course-progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e9ecef;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.course-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--fli-brand-teal, #59898D) 0%, var(--fli-brand-dark-teal, #0a738a) 100%);
+    border-radius: 10px;
+    transition: width 0.5s ease;
+    position: relative;
+}
+
+.course-progress-text {
+    position: absolute;
+    right: 10px;
+    top: -22px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--fli-brand-teal, #59898D);
+    white-space: nowrap;
+}
+
+/* ==========================================================================
+   Course Meta
+   ========================================================================== */
+
+.course-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #e9ecef;
+}
+
+.course-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    color: var(--fli-brand-gray-medium, #393939);
+}
+
+.course-meta-item i {
+    color: var(--fli-brand-teal, #59898D);
+    font-size: 16px;
+}
+
+/* .course-meta-item.course-categories {
+    width: 100%;
+    margin-top: 5px;
+} */
+
+/* ==========================================================================
+   Call to Action
+   ========================================================================== */
+
+.course-action {
+    margin-top: auto;
+}
+
+.course-action .button {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: var(--bb-primary-button-background-hover);
+    border-color: var(--bb-primary-button-background-hover);
+    color: var(--bb-primary-button-text-hover);
+    text-align: center;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.course-action .button:hover {
+    background-color: var(--bb-primary-button-background-hover);
+    border-color: var(--bb-primary-button-background-hover);
+    color: var(--bb-primary-button-text-hover);
+}
+
+/* ==========================================================================
+   Pagination
+   ========================================================================== */
+
+/* .bb-lms-pagination {
+    margin-top: 50px;
+    padding: 30px 0;
+    text-align: center;
+} */
+
+/* .bb-lms-pagination .page-numbers {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.bb-lms-pagination .page-numbers a,
+.bb-lms-pagination .page-numbers span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 12px;
+    background: #fff;
+    color: var(--fli-brand-gray-dark, #1B181C);
+    border: 2px solid #e9ecef;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.bb-lms-pagination .page-numbers a:hover {
+    background: var(--fli-brand-teal, #59898D);
+    color: #fff;
+    border-color: var(--fli-brand-teal, #59898D);
+    transform: translateY(-2px);
+}
+
+.bb-lms-pagination .page-numbers .current {
+    background: var(--fli-brand-teal, #59898D);
+    color: #fff;
+    border-color: var(--fli-brand-teal, #59898D);
+}
+
+.bb-lms-pagination .page-numbers .dots {
+    border: none;
+    background: transparent;
+} */
+
+/* ==========================================================================
+   No Results State
+   ========================================================================== */
+
+.bp-feedback {
+    background: #fff3cd;
+    border: 1px solid #ffc107;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+/* 
+.bp-feedback .bp-icon {
+    width: 24px;
+    height: 24px;
+    background: #ffc107;
+    border-radius: 50%;
+    flex-shrink: 0;
+} */
+
+ .bp-feedback p {
+    margin: 0;
+} 
+
+.search-wrap {
+    background: #f8f9fa;
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.search-wrap h3 {
+    margin: 0 0 20px 0;
+    font-size: 20px;
+    color: var(--fli-brand-gray-dark, #1B181C);
+}
+
+.search-wrap .search-form {
+    display: flex;
+    gap: 10px;
+}
+
+.search-wrap input[type="search"] {
+    flex: 1;
+    padding: 12px 20px;
+    border: 2px solid #dee2e6;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+.search-wrap button[type="submit"] {
+    padding: 12px 30px;
+    background: var(--fli-brand-teal, #59898D);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.search-wrap button[type="submit"]:hover {
+    background: var(--fli-brand-dark-teal, #0a738a);
+}
+
+.search-suggestions {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    border: 2px solid #e9ecef;
+    margin-bottom: 30px;
+}
+
+.search-suggestions h3 {
+    margin: 0 0 15px 0;
+    font-size: 18px;
+    color: var(--fli-brand-gray-dark, #1B181C);
+}
+
+.search-suggestions ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search-suggestions li {
+    padding: 8px 0 8px 25px;
+    position: relative;
+    color: var(--fli-brand-gray-medium, #393939);
+}
+
+.search-suggestions li:before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--fli-brand-teal, #59898D);
+    font-weight: 700;
+}
+
+.search-suggestions a {
+    color: var(--fli-brand-teal, #59898D);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.search-suggestions a:hover {
+    text-decoration: underline;
+}
+
+.suggested-courses {
+    margin-top: 40px;
+}
+
+.suggested-courses h3 {
+    margin: 0 0 25px 0;
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .page-header {
+        padding: 30px 15px;
+    }
+
+    .page-header .page-title {
+        font-size: 24px;
+    }
+
+    .course-thumbnail {
+        height: 180px;
+    }
+
+    .course-content {
+        padding: 20px;
+    }
+
+    .course-title {
+        font-size: 18px;
+    }
+
+    .search-wrap .search-form {
+        flex-direction: column;
+    }
+
+    .search-wrap button[type="submit"] {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header .page-title {
+        font-size: 20px;
+    }
+
+    .page-header .page-title .search-term {
+        display: block;
+        margin-top: 10px;
+    }
+
+    .course-thumbnail {
+        height: 160px;
+    }
+
+    .course-meta {
+        gap: 10px;
+    }
+
+    .course-meta-item {
+        font-size: 12px;
+    }
+
+    .bb-lms-pagination .page-numbers a,
+    .bb-lms-pagination .page-numbers span {
+        min-width: 36px;
+        height: 36px;
+        padding: 0 8px;
+        font-size: 14px;
+    }
+}
+
+
+/* ==========================================================================
+   Accessibility
+   ========================================================================== */
+/* 
+.screen-reader-text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+} */
+
+/* Focus styles */
+/* .course-title a:focus,
+.course-action .button:focus,
+.bb-lms-pagination .page-numbers a:focus {
+    outline: 3px solid var(--fli-brand-yellow, #E6ED5A);
+    outline-offset: 2px;
+} */
+
+/* High contrast mode support */
+/* @media (prefers-contrast: high) {
+    .course-item-wrap {
+        border: 2px solid currentColor;
+    }
+
+    .course-price,
+    .course-badge {
+        border: 2px solid currentColor;
+    }
+}
+ */
+/* Reduced motion support */
+/* @media (prefers-reduced-motion: reduce) {
+    .course-item-wrap,
+    .course-thumbnail img,
+    .course-action .button,
+    .bb-lms-pagination .page-numbers a,
+    .ld-course-search-result {
+        transition: none;
+        animation: none;
+    }
+} */
