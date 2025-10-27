@@ -887,7 +887,12 @@ class LCCP_Module_Manager {
                         $is_enabled = $this->is_module_enabled($module_id);
                         $is_loaded = isset($this->modules[$module_id]);
                         $dependencies_met = $this->check_module_dependencies($module_id);
-                        $module_info = $module_data['info'];
+                        // get_modules() returns flat array, not nested ['info']
+                        $module_info = $module_data;
+                        // Ensure version exists (not in get_modules() data)
+                        if (!isset($module_info['version'])) {
+                            $module_info['version'] = '1.0.0';
+                        }
                         ?>
                         <div class="lccp-module-card <?php echo $is_enabled ? 'enabled' : 'disabled'; ?> <?php echo !$dependencies_met ? 'dependencies-missing' : ''; ?>">
                             <div class="lccp-module-header">
