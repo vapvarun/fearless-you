@@ -501,11 +501,13 @@ class LCCP_Dashboards {
     
     private function render_program_overview_widget() {
         global $wpdb;
-        
-        // Get statistics
-        $total_students = count(get_users(array('role__in' => array('subscriber', 'lccp_pc'))));
-        $total_mentors = count(get_users(array('role' => 'lccp_mentor')));
-        $total_bigbirds = count(get_users(array('role' => 'lccp_big_bird')));
+
+        // Get statistics efficiently using count_users() to avoid memory exhaustion
+        $user_counts = count_users();
+        $total_students = (isset($user_counts['avail_roles']['subscriber']) ? $user_counts['avail_roles']['subscriber'] : 0) +
+                         (isset($user_counts['avail_roles']['lccp_pc']) ? $user_counts['avail_roles']['lccp_pc'] : 0);
+        $total_mentors = isset($user_counts['avail_roles']['lccp_mentor']) ? $user_counts['avail_roles']['lccp_mentor'] : 0;
+        $total_bigbirds = isset($user_counts['avail_roles']['lccp_big_bird']) ? $user_counts['avail_roles']['lccp_big_bird'] : 0;
         $active_courses = wp_count_posts('sfwd-courses')->publish;
         
         ob_start();
