@@ -158,11 +158,12 @@ class LCCP_Enhanced_Dashboards {
     public function render_admin_overview_widget() {
         global $wpdb;
         
-        // Get comprehensive statistics
-        $total_students = count(get_users(array('role' => 'subscriber')));
-        $total_mentors = count(get_users(array('role' => 'lccp_mentor')));
-        $total_bigbirds = count(get_users(array('role' => 'lccp_big_bird')));
-        $total_pcs = count(get_users(array('role' => 'lccp_pc')));
+        // Get comprehensive statistics - using count_users() for efficiency
+        $user_counts = count_users();
+        $total_students = isset($user_counts['avail_roles']['subscriber']) ? $user_counts['avail_roles']['subscriber'] : 0;
+        $total_mentors = isset($user_counts['avail_roles']['lccp_mentor']) ? $user_counts['avail_roles']['lccp_mentor'] : 0;
+        $total_bigbirds = isset($user_counts['avail_roles']['lccp_big_bird']) ? $user_counts['avail_roles']['lccp_big_bird'] : 0;
+        $total_pcs = isset($user_counts['avail_roles']['lccp_pc']) ? $user_counts['avail_roles']['lccp_pc'] : 0;
         
         // Get hour statistics
         $total_hours = $wpdb->get_var("SELECT SUM(session_length) FROM {$wpdb->prefix}lccp_hour_tracker");
@@ -527,7 +528,7 @@ class LCCP_Enhanced_Dashboards {
         global $wpdb;
         
         $pcs = $wpdb->get_results($wpdb->prepare(
-            "SELECT u.*, a.assigned_date 
+            "SELECT u.*, a.assigned_date
             FROM {$wpdb->prefix}lccp_assignments a
             JOIN {$wpdb->users} u ON a.pc_id = u.ID
             WHERE a.bigbird_id = %d AND a.status = 'active'",
@@ -653,7 +654,9 @@ class LCCP_Enhanced_Dashboards {
         echo '<h4>Team Performance Metrics</h4>';
         echo '<ul>';
         echo '<li>Total PCs: ' . count($pcs) . '</li>';
-        echo '<li>Active Students: ' . count(get_users(array('role' => 'subscriber'))) . '</li>';
+        $student_counts = count_users();
+        $active_students = isset($student_counts['avail_roles']['subscriber']) ? $student_counts['avail_roles']['subscriber'] : 0;
+        echo '<li>Active Students: ' . $active_students . '</li>';
         echo '<li>Average Completion Rate: Calculating...</li>';
         echo '</ul>';
         echo '</div>';
