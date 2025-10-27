@@ -570,7 +570,10 @@ class LCCP_Roles_Manager {
                 return true;
             }
         }
-        
+
         return false;
     }
 }
+
+// Initialize roles manager when this module is loaded
+new LCCP_Roles_Manager();
