@@ -79,7 +79,7 @@ class LCCP_Systems {
 		}
 
 		// Check for BuddyBoss (optional)
-		if ( ! defined( 'BP_PLATFORM_VERSION' ) ) {
+		if ( ! class_exists( 'BuddyPress' ) ) {
 			$missing_deps[] = 'BuddyBoss Platform';
 		}
 
@@ -1013,7 +1013,7 @@ class LCCP_Systems {
 									
 									<h4 style="margin-top: 15px;"><?php _e( 'Required Plugins Status', 'lccp-systems' ); ?></h4>
 									<strong>LearnDash:</strong> <?php echo class_exists( 'SFWD_LMS' ) ? '✓ Active' : '✗ Not Active'; ?><br>
-									<strong>BuddyBoss:</strong> <?php echo defined( 'BP_PLATFORM_VERSION' ) ? '✓ Active' : '✗ Not Active'; ?><br>
+									<strong>BuddyBoss:</strong> <?php echo class_exists( 'BuddyPress' ) ? '✓ Active' : '✗ Not Active'; ?><br>
 									<strong>WP Fusion:</strong> <?php echo class_exists( 'WP_Fusion' ) ? '✓ Active' : '✗ Not Active'; ?><br>
 								</div>
 								
@@ -1652,7 +1652,7 @@ class LCCP_Systems {
 								'error'   => 'LearnDash is required for this module',
 							);
 						}
-						if ( $requirement === 'BuddyBoss' && ! defined( 'BP_PLATFORM_VERSION' ) ) {
+						if ( $requirement === 'BuddyBoss' && ! class_exists( 'BuddyPress' ) ) {
 							return array(
 								'success' => false,
 								'error'   => 'BuddyBoss is required for this module',
@@ -1843,7 +1843,7 @@ function lccp_load_enabled_modules() {
 							$can_load = false;
 							break;
 						}
-						if ( $requirement === 'BuddyBoss' && ! defined( 'BP_PLATFORM_VERSION' ) ) {
+						if ( $requirement === 'BuddyBoss' && ! class_exists( 'BuddyPress' ) ) {
 							$can_load = false;
 							break;
 						}
