@@ -1,2 +1,40 @@
 /.DS_Store
-CLAUDE.md
+*.log
+*.sql
+*.sql.gz
+
+# Dependencies
+node_modules/
+vendor/
+bower_components/
+
+# Build files
+*.min.js.map
+*.min.css.map
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+Thumbs.db
+
+# Backup files
+*.backup
+*.bak
+*-backup.*
+*-old.*
+functions-backup-original.php
+
+# Package managers
+package-lock.json
+yarn.lock
+composer.lock
+
+# Temporary
+tmp/
+temp/
+cache/

@@ -1,0 +1,230 @@
+/* LCCP Events Integration Frontend Styles */
+
+/* Virtual Event Badge */
+.lccp-virtual-badge {
+    display: inline-block;
+    background: #667eea;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+/* Virtual Event Info Box */
+.lccp-virtual-event-info {
+    background: #f0f8ff;
+    border: 2px solid #667eea;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.lccp-virtual-event-info h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.lccp-virtual-link {
+    display: inline-block;
+    background: #667eea;
+    color: white;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.lccp-virtual-link:hover {
+    background: #5569d6;
+    color: white;
+    text-decoration: none;
+}
+
+.lccp-virtual-provider {
+    color: #666;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+/* Events List Layout */
+.lccp-events-shortcode,
+.lccp-events-block {
+    margin: 30px 0;
+}
+
+.lccp-events-shortcode.lccp-layout-list .lccp-event {
+    border-bottom: 1px solid #e5e5e5;
+    padding: 20px 0;
+}
+
+.lccp-events-shortcode.lccp-layout-list .lccp-event:last-child {
+    border-bottom: none;
+}
+
+/* Grid Layout */
+.lccp-events-shortcode.lccp-layout-grid {
+    display: grid;
+    gap: 20px;
+}
+
+.lccp-events-shortcode.lccp-layout-grid[data-columns="2"] {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.lccp-events-shortcode.lccp-layout-grid[data-columns="3"] {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.lccp-events-shortcode.lccp-layout-grid[data-columns="4"] {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.lccp-events-shortcode.lccp-layout-grid .lccp-event {
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.lccp-events-shortcode.lccp-layout-grid .lccp-event:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Event Card Components */
+.lccp-event-thumb {
+    margin-bottom: 15px;
+}
+
+.lccp-event-thumb img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.lccp-layout-grid .lccp-event-content {
+    padding: 20px;
+}
+
+.lccp-event-title {
+    margin: 0 0 10px 0;
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+.lccp-event-title a {
+    color: #333;
+    text-decoration: none;
+}
+
+.lccp-event-title a:hover {
+    color: #667eea;
+}
+
+.lccp-event-date {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.lccp-virtual-indicator {
+    display: inline-block;
+    background: #28a745;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    margin: 10px 0;
+}
+
+.lccp-event-excerpt {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 15px 0;
+}
+
+.lccp-event-link {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.lccp-event-link:hover {
+    text-decoration: underline;
+}
+
+/* No Events Message */
+.lccp-no-events {
+    padding: 40px;
+    text-align: center;
+    background: #f5f5f5;
+    border-radius: 8px;
+    color: #666;
+}
+
+/* Block Editor Styles */
+.lccp-events-block .lccp-event-item {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.lccp-events-block .lccp-event-item:last-child {
+    border-bottom: none;
+}
+
+.lccp-events-block h3 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+}
+
+.lccp-events-block .lccp-event-meta {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+/* Calendar Styles */
+.lccp-event-calendar {
+    margin: 30px 0;
+}
+
+#lccp-calendar-container {
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .lccp-events-shortcode.lccp-layout-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .lccp-virtual-event-info {
+        padding: 15px;
+    }
+    
+    .lccp-virtual-link {
+        display: block;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .lccp-event-title {
+        font-size: 18px;
+    }
+    
+    .lccp-event-excerpt {
+        font-size: 13px;
+    }
+}

@@ -1,0 +1,439 @@
+/**
+ * LCCP Dashboard Styles
+ */
+
+/* Dashboard Container */
+.lccp-dashboard {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.lccp-dashboard h2 {
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2em;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 10px;
+}
+
+.lccp-dashboard h3 {
+    color: #555;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+}
+
+/* Quick Links Section */
+.lccp-quick-links {
+    margin-bottom: 30px;
+}
+
+.lccp-links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.lccp-links-grid .button {
+    text-align: center;
+    padding: 12px 20px;
+    border-radius: 5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: block;
+    text-decoration: none;
+}
+
+.lccp-links-grid .button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Dashboard Sections */
+.lccp-dashboard-section {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Stats Grid */
+.lccp-dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.lccp-stat-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.lccp-stat-card .stat-value {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.lccp-stat-card .stat-label {
+    font-size: 0.9em;
+    text-transform: uppercase;
+    opacity: 0.9;
+    letter-spacing: 1px;
+}
+
+/* Progress Bars */
+.lccp-progress-bar {
+    background: #f0f0f0;
+    border-radius: 10px;
+    height: 25px;
+    overflow: hidden;
+    position: relative;
+    margin: 10px 0;
+}
+
+.lccp-progress-fill {
+    background: linear-gradient(90deg, #4CAF50, #45a049);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 0.9em;
+    transition: width 0.5s ease;
+    min-width: 40px;
+}
+
+/* Course Cards */
+.lccp-course-card {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.lccp-course-card h4 {
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.lccp-course-card .button {
+    margin-top: 10px;
+}
+
+/* Tables */
+.lccp-students-table,
+.lccp-log-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.lccp-students-table th,
+.lccp-students-table td,
+.lccp-log-table th,
+.lccp-log-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.lccp-students-table th,
+.lccp-log-table th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #333;
+}
+
+.lccp-students-table tr:hover,
+.lccp-log-table tr:hover {
+    background: #f8f9fa;
+}
+
+/* Activity List */
+.lccp-activity-list {
+    list-style: none;
+    padding: 0;
+}
+
+.lccp-activity-list li {
+    padding: 10px;
+    border-left: 3px solid #667eea;
+    margin-bottom: 10px;
+    background: #f8f9fa;
+    transition: background 0.2s;
+}
+
+.lccp-activity-list li:hover {
+    background: #e9ecef;
+}
+
+.lccp-time-ago {
+    color: #999;
+    font-size: 0.85em;
+    font-style: italic;
+}
+
+/* Hour Log Container */
+.lccp-hour-log-container {
+    margin-top: 20px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+/* Mentor Dashboard Specific */
+.lccp-mentor-dashboard .student-details-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    z-index: 10000;
+    max-width: 600px;
+    width: 90%;
+}
+
+.lccp-mentor-dashboard .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .lccp-dashboard {
+        padding: 10px;
+    }
+    
+    .lccp-links-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    
+    .lccp-dashboard-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .lccp-students-table {
+        font-size: 0.9em;
+    }
+    
+    .lccp-students-table th,
+    .lccp-students-table td {
+        padding: 8px;
+    }
+}
+
+/* Loading State */
+.lccp-loading {
+    opacity: 0.6;
+    pointer-events: none;
+    position: relative;
+}
+
+.lccp-loading::after {
+    content: "Loading...";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    z-index: 100;
+}
+
+/* BuddyBoss Theme Integration */
+.buddyboss-theme .lccp-dashboard {
+    background: transparent;
+}
+
+.buddyboss-theme .lccp-stat-card {
+    background: var(--bb-primary-color);
+}
+
+.buddyboss-theme .lccp-progress-fill {
+    background: var(--bb-primary-color);
+}
+
+.buddyboss-theme .lccp-activity-list li {
+    border-left-color: var(--bb-primary-color);
+}
+
+/* Modal Styles for Hour Logging */
+.lccp-modal {
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lccp-modal-content {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    max-width: 90%;
+    max-height: 90%;
+    width: 600px;
+    overflow-y: auto;
+}
+
+.lccp-modal-header {
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lccp-modal-header h2 {
+    margin: 0;
+    color: #333;
+    font-size: 24px;
+}
+
+.lccp-modal-close {
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.lccp-modal-close:hover {
+    color: #000;
+}
+
+.lccp-modal-body {
+    padding: 20px;
+}
+
+body.modal-open {
+    overflow: hidden;
+}
+
+/* Hour Tracker Form Styles in Modal */
+#hour-logging-form-container .lccp-hour-tracker-container {
+    margin: 0;
+    padding: 0;
+}
+
+#hour-logging-form-container .form-section {
+    margin-bottom: 25px;
+}
+
+#hour-logging-form-container .form-section h3 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 18px;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 8px;
+}
+
+#hour-logging-form-container .field-group {
+    margin-bottom: 15px;
+}
+
+#hour-logging-form-container .field-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #555;
+}
+
+#hour-logging-form-container .field-group .required {
+    color: #e74c3c;
+}
+
+#hour-logging-form-container input[type="text"],
+#hour-logging-form-container input[type="date"],
+#hour-logging-form-container input[type="number"],
+#hour-logging-form-container select,
+#hour-logging-form-container textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+#hour-logging-form-container .duration-inputs {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#hour-logging-form-container .duration-input {
+    width: 80px;
+}
+
+#hour-logging-form-container .duration-separator {
+    font-weight: bold;
+    color: #666;
+}
+
+#hour-logging-form-container .form-actions {
+    margin-top: 25px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+#hour-logging-form-container .btn-submit,
+#hour-logging-form-container .btn-reset {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#hour-logging-form-container .btn-submit {
+    background-color: #3498db;
+    color: white;
+}
+
+#hour-logging-form-container .btn-submit:hover {
+    background-color: #2980b9;
+}
+
+#hour-logging-form-container .btn-reset {
+    background-color: #95a5a6;
+    color: white;
+}
+
+#hour-logging-form-container .btn-reset:hover {
+    background-color: #7f8c8d;
+}
+
+@media (max-width: 768px) {
+    .lccp-modal-content {
+        width: 95%;
+        margin: 10px;
+    }
+}

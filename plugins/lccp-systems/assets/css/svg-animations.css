@@ -1,0 +1,236 @@
+/**
+ * SVG Animations CSS for LCCP Systems
+ * Styles for animated SVG elements and progress indicators
+ *
+ * @package LCCP Systems
+ * @since 1.0.0
+ */
+
+/* Progress Circle Animations */
+.lccp-progress-circle {
+    position: relative;
+    display: inline-block;
+}
+
+.lccp-progress-circle svg {
+    transform: rotate(-90deg);
+    transition: transform 0.3s ease;
+}
+
+.lccp-progress-circle:hover svg {
+    transform: rotate(-90deg) scale(1.05);
+}
+
+.lccp-progress-circle #progress-fill {
+    transition: stroke-dashoffset 0.5s ease-in-out;
+}
+
+.lccp-progress-circle #progress-fill:hover {
+    stroke-width: 10;
+    transition: stroke-width 0.3s ease;
+}
+
+/* Arch Animations */
+.lccp-arch {
+    transition: all 0.3s ease;
+}
+
+.lccp-arch-animated path {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+    animation: drawArch 1.5s ease-in-out forwards;
+}
+
+@keyframes drawArch {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.lccp-arch:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 4px 8px rgba(0, 124, 186, 0.3));
+}
+
+/* Loading Spinner Animations */
+.lccp-loading-spinner {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.lccp-loading-spinner circle {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Success Checkmark Animations */
+.lccp-success-checkmark {
+    transition: all 0.3s ease;
+}
+
+.lccp-success-animated path {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: drawCheckmark 0.8s ease-in-out forwards;
+}
+
+@keyframes drawCheckmark {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.lccp-success-checkmark:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 4px 8px rgba(70, 180, 80, 0.3));
+}
+
+/* Progress Bar Animations */
+.lccp-progress-bar {
+    transition: all 0.3s ease;
+}
+
+.lccp-progress-bar rect:last-child {
+    transition: width 0.5s ease-in-out;
+}
+
+.lccp-progress-bar:hover rect:last-child {
+    filter: brightness(1.2);
+}
+
+/* Scroll Animations */
+.lccp-scroll-animate {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.lccp-scroll-animate.lccp-animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.lccp-scroll-animate.lccp-animated.lccp-slide-left {
+    transform: translateX(0);
+}
+
+.lccp-scroll-animate.lccp-slide-left {
+    transform: translateX(-30px);
+}
+
+.lccp-scroll-animate.lccp-animated.lccp-scale {
+    transform: scale(1);
+}
+
+.lccp-scroll-animate.lccp-scale {
+    transform: scale(0.8);
+}
+
+/* Hover Effects */
+.lccp-svg-hover {
+    transition: all 0.3s ease;
+}
+
+.lccp-svg-hover:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+/* Focus States for Accessibility */
+.lccp-progress-circle:focus,
+.lccp-arch:focus,
+.lccp-loading-spinner:focus,
+.lccp-success-checkmark:focus {
+    outline: 2px solid #007cba;
+    outline-offset: 2px;
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    .lccp-progress-circle svg,
+    .lccp-arch,
+    .lccp-loading-spinner,
+    .lccp-success-checkmark,
+    .lccp-scroll-animate {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .lccp-progress-circle #progress-fill,
+    .lccp-progress-bar rect:last-child {
+        transition: none !important;
+    }
+}
+
+/* High Contrast Mode */
+.lccp-high-contrast .lccp-progress-circle #progress-fill {
+    stroke: #ffff00 !important;
+}
+
+.lccp-high-contrast .lccp-arch path {
+    stroke: #ffff00 !important;
+}
+
+.lccp-high-contrast .lccp-loading-spinner circle {
+    stroke: #ffff00 !important;
+}
+
+.lccp-high-contrast .lccp-success-checkmark path {
+    stroke: #00ff00 !important;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .lccp-progress-circle svg {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .lccp-arch svg {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .lccp-loading-spinner {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .lccp-success-checkmark {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .lccp-progress-circle,
+    .lccp-arch,
+    .lccp-loading-spinner,
+    .lccp-success-checkmark {
+        animation: none !important;
+        transition: none !important;
+    }
+    
+    .lccp-progress-circle svg,
+    .lccp-arch svg,
+    .lccp-loading-spinner svg,
+    .lccp-success-checkmark svg {
+        transform: none !important;
+    }
+}

@@ -1,0 +1,240 @@
+/**
+ * LCCP Checklist Styles
+ * Modern, accessible checklist styling
+ */
+
+.lccp-checklist {
+    margin: 2em 0;
+    padding: 1.5em;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.lccp-checklist-title {
+    margin: 0 0 1em 0;
+    color: #333;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+/* Progress Bar */
+.lccp-checklist-progress {
+    margin-bottom: 1.5em;
+}
+
+.lccp-checklist-progress .progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.lccp-checklist-progress .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4CAF50, #45a049);
+    border-radius: 4px;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.lccp-checklist-progress .progress-text {
+    display: block;
+    margin-top: 0.5em;
+    font-size: 0.9em;
+    color: #666;
+    font-weight: 500;
+}
+
+/* Checklist Content */
+.lccp-checklist-content ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.lccp-checklist-item {
+    margin: 0.75em 0;
+    padding: 0.75em;
+    background: #f9f9f9;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.lccp-checklist-item:hover {
+    background: #f5f5f5;
+    transform: translateX(4px);
+}
+
+.lccp-checklist-item.lccp-checked {
+    background: #e8f5e9;
+    opacity: 0.85;
+}
+
+.lccp-checklist-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    padding-left: 35px;
+    min-height: 24px;
+    user-select: none;
+}
+
+/* Hide default checkbox */
+.lccp-checklist-checkbox {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Custom checkbox */
+.lccp-checkbox-custom {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 24px;
+    width: 24px;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.lccp-checklist-checkbox:checked ~ .lccp-checkbox-custom {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+}
+
+/* Checkmark */
+.lccp-checkbox-custom:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.lccp-checklist-checkbox:checked ~ .lccp-checkbox-custom:after {
+    display: block;
+    left: 7px;
+    top: 3px;
+    width: 6px;
+    height: 11px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Text styling */
+.lccp-checklist-text {
+    font-size: 1em;
+    line-height: 1.5;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.lccp-checklist-item.lccp-checked .lccp-checklist-text {
+    text-decoration: line-through;
+    color: #888;
+}
+
+/* Different styles */
+.lccp-checklist[data-style="minimal"] {
+    background: transparent;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+}
+
+.lccp-checklist[data-style="minimal"] .lccp-checklist-item {
+    background: transparent;
+    border-left: 3px solid transparent;
+    padding-left: 1em;
+}
+
+.lccp-checklist[data-style="minimal"] .lccp-checklist-item.lccp-checked {
+    background: transparent;
+    border-left-color: #4CAF50;
+}
+
+/* BuddyBoss theme integration */
+.buddyboss-theme .lccp-checklist {
+    font-family: var(--bb-body-font-family);
+}
+
+.buddyboss-theme .lccp-checkbox-custom {
+    background-color: var(--bb-body-background);
+}
+
+.buddyboss-theme .lccp-checklist-checkbox:checked ~ .lccp-checkbox-custom {
+    background-color: var(--bb-primary-color);
+    border-color: var(--bb-primary-color);
+}
+
+/* LearnDash integration */
+.learndash-wrapper .lccp-checklist {
+    margin: 1.5em 0;
+}
+
+.ld-course-content .lccp-checklist {
+    max-width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .lccp-checklist {
+        padding: 1em;
+    }
+    
+    .lccp-checklist-item {
+        padding: 0.5em;
+        margin: 0.5em 0;
+    }
+    
+    .lccp-checklist-label {
+        padding-left: 30px;
+    }
+    
+    .lccp-checkbox-custom {
+        height: 20px;
+        width: 20px;
+    }
+}
+
+/* Animation for completion */
+@keyframes checkComplete {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.lccp-checklist-item.just-checked .lccp-checkbox-custom {
+    animation: checkComplete 0.3s ease;
+}
+
+/* Print styles */
+@media print {
+    .lccp-checklist {
+        border: 1px solid #000;
+    }
+    
+    .lccp-checklist-progress {
+        display: none;
+    }
+    
+    .lccp-checklist-item {
+        break-inside: avoid;
+    }
+}

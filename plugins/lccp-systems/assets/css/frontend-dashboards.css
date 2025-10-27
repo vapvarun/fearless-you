@@ -1,0 +1,360 @@
+/* Frontend Dashboard Styles - BuddyBoss Masonry Grid */
+
+.dasher-frontend-dashboard {
+    padding: 20px 0;
+}
+
+/* Dashboard Header */
+.dasher-dashboard-header {
+    margin-bottom: 30px;
+}
+
+.dasher-dashboard-header h2 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #32373c;
+}
+
+.dasher-dashboard-description {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Masonry Grid Container */
+.dasher-masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+/* BuddyBoss Style Cards */
+.dasher-card {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    padding: 24px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.dasher-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+}
+
+/* Card Icon */
+.dasher-card-icon {
+    width: 50px;
+    height: 50px;
+    background: #f0f0f0;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    font-size: 24px;
+}
+
+.dasher-card-icon i,
+.dasher-card-icon .dashicons {
+    font-size: 24px;
+    color: #666;
+}
+
+/* Card Colors */
+.dasher-card.primary .dasher-card-icon {
+    background: rgba(52, 152, 219, 0.1);
+}
+
+.dasher-card.primary .dasher-card-icon i,
+.dasher-card.primary .dasher-card-icon .dashicons {
+    color: #3498db;
+}
+
+.dasher-card.success .dasher-card-icon {
+    background: rgba(46, 204, 113, 0.1);
+}
+
+.dasher-card.success .dasher-card-icon i,
+.dasher-card.success .dasher-card-icon .dashicons {
+    color: #2ecc71;
+}
+
+.dasher-card.warning .dasher-card-icon {
+    background: rgba(241, 196, 15, 0.1);
+}
+
+.dasher-card.warning .dasher-card-icon i,
+.dasher-card.warning .dasher-card-icon .dashicons {
+    color: #f1c40f;
+}
+
+.dasher-card.info .dasher-card-icon {
+    background: rgba(155, 89, 182, 0.1);
+}
+
+.dasher-card.info .dasher-card-icon i,
+.dasher-card.info .dasher-card-icon .dashicons {
+    color: #9b59b6;
+}
+
+/* Card Content */
+.dasher-card-title {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dasher-card-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #32373c;
+    line-height: 1.2;
+    margin-bottom: 8px;
+}
+
+.dasher-card-description {
+    font-size: 14px;
+    color: #999;
+}
+
+/* Progress Bar */
+.dasher-progress-bar {
+    background: #f0f0f0;
+    border-radius: 4px;
+    height: 8px;
+    margin-top: 16px;
+    overflow: hidden;
+}
+
+.dasher-progress-fill {
+    background: #3498db;
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+/* Action Buttons */
+.dasher-card-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.dasher-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
+.dasher-btn:hover {
+    background: #2980b9;
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.dasher-btn.secondary {
+    background: #f0f0f0;
+    color: #666;
+}
+
+.dasher-btn.secondary:hover {
+    background: #e0e0e0;
+    color: #666;
+}
+
+/* Data Tables */
+.dasher-data-section {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    padding: 24px;
+    margin-bottom: 30px;
+}
+
+.dasher-data-section h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #32373c;
+}
+
+.dasher-data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.dasher-data-table th,
+.dasher-data-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.dasher-data-table th {
+    font-weight: 600;
+    color: #666;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+.dasher-data-table tr:hover {
+    background: #f9f9f9;
+}
+
+/* User Avatar */
+.dasher-user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.dasher-user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.dasher-user-details {
+    flex: 1;
+}
+
+.dasher-user-name {
+    font-weight: 600;
+    color: #32373c;
+    margin-bottom: 2px;
+}
+
+.dasher-user-email {
+    font-size: 12px;
+    color: #999;
+}
+
+/* Status Badges */
+.dasher-status {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.dasher-status.assigned {
+    background: rgba(46, 204, 113, 0.1);
+    color: #27ae60;
+}
+
+.dasher-status.unassigned {
+    background: rgba(231, 76, 60, 0.1);
+    color: #c0392b;
+}
+
+.dasher-status.active {
+    background: rgba(52, 152, 219, 0.1);
+    color: #2980b9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .dasher-masonry-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .dasher-card-value {
+        font-size: 28px;
+    }
+    
+    .dasher-data-table {
+        font-size: 14px;
+    }
+    
+    .dasher-user-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+}
+
+/* Loading State */
+.dasher-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    color: #666;
+}
+
+.dasher-loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #f0f0f0;
+    border-top-color: #3498db;
+    border-radius: 50%;
+    animation: dasher-spin 1s linear infinite;
+    margin-right: 12px;
+}
+
+@keyframes dasher-spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Empty State */
+.dasher-empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #999;
+}
+
+.dasher-empty-state-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    opacity: 0.3;
+}
+
+.dasher-empty-state-message {
+    font-size: 16px;
+}
+
+/* Quick Stats List */
+.dasher-quick-stats {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dasher-quick-stats li {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.dasher-quick-stats li:last-child {
+    border-bottom: none;
+}
+
+.dasher-quick-stats-label {
+    color: #666;
+}
+
+.dasher-quick-stats-value {
+    font-weight: 600;
+    color: #32373c;
+}

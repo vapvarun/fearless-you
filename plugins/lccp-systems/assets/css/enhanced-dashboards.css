@@ -1,0 +1,2215 @@
+/* Enhanced Dashboard Styles */
+
+/* WordPress Theme Override - Critical Grid Fixes */
+.dasher-kpi-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 20px !important;
+}
+
+/* Maximum specificity override for WordPress themes */
+html body .wp-site-blocks .dasher-kpi-grid,
+html body .entry-content .dasher-kpi-grid,
+html body .post-content .dasher-kpi-grid,
+html body #main .dasher-kpi-grid,
+html body #content .dasher-kpi-grid,
+html body .site-main .dasher-kpi-grid,
+html body .content-area .dasher-kpi-grid,
+html body div.dasher-kpi-grid,
+html body .wp-block-group .dasher-kpi-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 20px !important;
+    width: 100% !important;
+    /* Override flexbox completely */
+    flex-direction: unset !important;
+    flex-wrap: unset !important;
+}
+
+/* Force grid on cards too */
+html body .dasher-kpi-grid .dasher-kpi-card {
+    display: block !important;
+    flex: none !important;
+    width: auto !important;
+    float: none !important;
+}
+
+/* Hide BuddyBoss page titles on dashboard pages */
+body.page .bb-grid .entry-header,
+body.page .bb-grid .page-header,
+body.page .bb-grid h1.entry-title,
+body.page .bb-grid h1.page-title {
+    display: none !important;
+}
+
+/* Specific hiding for pages with dashboard shortcodes */
+.page .entry-content:has(.dasher-frontend-dashboard) + .entry-header,
+.page .entry-content:has(.dasher-frontend-dashboard) ~ .entry-header,
+.page .entry-header:has(+ .entry-content .dasher-frontend-dashboard) {
+    display: none !important;
+}
+
+/* Alternative approach - hide page titles when dashboard is present */
+body.page:has(.dasher-frontend-dashboard) .entry-header,
+body.page:has(.dasher-frontend-dashboard) .page-header {
+    display: none !important;
+}
+
+/* Base Dashboard Styles */
+.dasher-frontend-dashboard {
+    padding: 20px 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    /* Fix admin bar spacing issues */
+    margin-top: 0;
+    padding-top: 0;
+}
+
+/* Fix admin bar overlap and gap issues */
+body.admin-bar .dasher-frontend-dashboard {
+    margin-top: 0;
+    padding-top: 20px;
+}
+
+.dasher-frontend-dashboard * {
+    box-sizing: border-box;
+}
+
+/* Enhanced Header - Force non-purple colors */
+.dasher-dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    margin-top: 0;
+    padding: 30px;
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+    border-radius: var(--bb-block-radius, 12px);
+    color: white !important;
+    position: relative;
+    overflow: hidden;
+    /* Fix any potential z-index issues */
+    z-index: 1;
+}
+
+/* Role-specific header colors - Force override any purple */
+.dasher-mentor-dashboard-enhanced .dasher-dashboard-header {
+    background: linear-gradient(135deg, rgb(54, 87, 112) 0%, rgb(44, 71, 92) 100%) !important;
+    color: white !important;
+}
+
+/* Additional specificity to override BuddyBoss theme */
+html body .dasher-mentor-dashboard-enhanced .dasher-dashboard-header,
+html body .site-main .dasher-mentor-dashboard-enhanced .dasher-dashboard-header,
+html body .entry-content .dasher-mentor-dashboard-enhanced .dasher-dashboard-header {
+    background: linear-gradient(135deg, rgb(54, 87, 112) 0%, rgb(44, 71, 92) 100%) !important;
+    color: white !important;
+}
+
+/* Override any potential purple from BuddyBoss variables */
+.dasher-mentor-dashboard-enhanced .dasher-dashboard-header {
+    background-color: rgb(54, 87, 112) !important;
+    background-image: linear-gradient(135deg, rgb(54, 87, 112) 0%, rgb(44, 71, 92) 100%) !important;
+}
+
+/* Target any purple backgrounds specifically */
+.dasher-mentor-dashboard-enhanced .dasher-dashboard-header[style*="purple"],
+.dasher-mentor-dashboard-enhanced .dasher-dashboard-header[style*="#purple"],
+.dasher-mentor-dashboard-enhanced .dasher-dashboard-header[style*="rgb(128, 0, 128)"],
+.dasher-mentor-dashboard-enhanced .dasher-dashboard-header[style*="#800080"] {
+    background: linear-gradient(135deg, rgb(54, 87, 112) 0%, rgb(44, 71, 92) 100%) !important;
+    background-color: rgb(54, 87, 112) !important;
+}
+
+.dasher-bigbird-dashboard-enhanced .dasher-dashboard-header {
+    background: linear-gradient(135deg, #486e7f 0%, #3a5a6a 100%);
+    color: white;
+}
+
+.dasher-pc-dashboard-enhanced .dasher-dashboard-header {
+    background: linear-gradient(135deg, var(--bb-secondary-button-background-regular) 0%, rgba(var(--bb-primary-color-rgb), 0.9) 100%);
+    color: var(--bb-primary-button-text-regular);
+}
+
+.dasher-dashboard-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.dasher-header-left h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.dasher-dashboard-description {
+    font-size: 16px;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 0;
+}
+
+.dasher-header-right {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.dasher-time-selector select,
+.dasher-select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 14px;
+}
+
+/* User Greeting Section */
+.dasher-user-greeting {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.dasher-user-avatar-large {
+    border-radius: 50%;
+    border: 4px solid rgba(255,255,255,0.3);
+}
+
+.dasher-greeting-text h2 {
+    margin: 0 0 8px 0;
+    font-size: 28px;
+}
+
+.dasher-header-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* Enhanced Buttons */
+.dasher-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.dasher-btn-primary {
+    background: #2563eb !important;
+    color: white !important;
+    border-radius: var(--bb-button-radius, 6px);
+}
+
+.dasher-btn-primary:hover {
+    background: #1d4ed8 !important;
+    color: white !important;
+    transform: translateY(-1px);
+}
+
+/* Role-specific button colors */
+.dasher-mentor-dashboard-enhanced .dasher-btn-primary {
+    background: rgb(54, 87, 112);
+    color: white;
+}
+
+.dasher-mentor-dashboard-enhanced .dasher-btn-primary:hover {
+    background: rgb(44, 71, 92);
+    color: white;
+}
+
+.dasher-bigbird-dashboard-enhanced .dasher-btn-primary {
+    background: #486e7f;
+    color: white;
+}
+
+.dasher-bigbird-dashboard-enhanced .dasher-btn-primary:hover {
+    background: #3a5a6a;
+    color: white;
+}
+
+.dasher-pc-dashboard-enhanced .dasher-btn-primary {
+    background: var(--bb-secondary-button-background-regular);
+    color: var(--bb-secondary-button-text-regular);
+}
+
+.dasher-pc-dashboard-enhanced .dasher-btn-primary:hover {
+    background: var(--bb-secondary-button-background-hover);
+    color: var(--bb-secondary-button-text-hover);
+}
+
+.dasher-btn-outline {
+    background: transparent;
+    color: var(--bb-secondary-button-text-regular);
+    border: 1px solid var(--bb-secondary-button-border-regular);
+    border-radius: var(--bb-button-radius, 6px);
+}
+
+.dasher-btn-outline:hover {
+    background: var(--bb-secondary-button-background-hover);
+    color: var(--bb-secondary-button-text-hover);
+    border-color: var(--bb-secondary-button-border-hover);
+}
+
+/* Role-specific outline button colors */
+.dasher-mentor-dashboard-enhanced .dasher-btn-outline {
+    color: rgb(54, 87, 112);
+    border-color: rgb(54, 87, 112);
+}
+
+.dasher-mentor-dashboard-enhanced .dasher-btn-outline:hover {
+    background: rgb(54, 87, 112);
+    color: white;
+}
+
+.dasher-bigbird-dashboard-enhanced .dasher-btn-outline {
+    color: #486e7f;
+    border-color: #486e7f;
+}
+
+.dasher-bigbird-dashboard-enhanced .dasher-btn-outline:hover {
+    background: #486e7f;
+    color: white;
+}
+
+.dasher-pc-dashboard-enhanced .dasher-btn-outline {
+    color: var(--bb-secondary-button-text-regular);
+    border-color: var(--bb-secondary-button-border-regular);
+}
+
+.dasher-pc-dashboard-enhanced .dasher-btn-outline:hover {
+    background: var(--bb-secondary-button-background-hover);
+    color: var(--bb-secondary-button-text-hover);
+}
+
+.dasher-btn-small {
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+/* Alert/Insights Banner - Improved accessibility */
+.dasher-alerts-banner,
+.dasher-insights-banner {
+    background: #fff3cd;
+    border: 1px solid #d4a53a; /* Darker border for better contrast */
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 25px;
+}
+
+.dasher-alert-header,
+.dasher-insights-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.dasher-alert-header strong,
+.dasher-insights-header strong {
+    color: #664308; /* Darker color for better contrast ratio */
+}
+
+.dasher-toggle-alerts {
+    margin-left: auto;
+    background: none;
+    border: none;
+    color: #664308; /* Darker color for better contrast ratio */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dasher-insights-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dasher-insight {
+    padding: 12px;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dasher-insight.insight-success {
+    background: #d1ecf1;
+    border-left: 4px solid #0c5460;
+}
+
+.dasher-insight.insight-warning {
+    background: #fff3cd;
+    border-left: 4px solid #664308; /* Darker color for better contrast */
+}
+
+.dasher-insight.insight-info {
+    background: #d4edda;
+    border-left: 4px solid #155724;
+}
+
+/* Enhanced KPI Grid - FIXED */
+.dasher-kpi-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 20px !important;
+    margin-bottom: 40px !important;
+    width: 100% !important;
+    /* Force grid display with high specificity */
+    grid-auto-flow: row !important;
+    align-items: stretch !important;
+}
+
+/* Override any conflicting styles */
+.dasher-frontend-dashboard .dasher-kpi-grid {
+    display: grid !important;
+}
+
+.dasher-kpi-grid .dasher-kpi-card {
+    display: block !important;
+    float: none !important;
+    width: auto !important;
+    margin: 0 !important;
+    /* Reset any potential inherited positioning */
+    position: relative !important;
+    clear: none !important;
+    flex: none !important;
+}
+
+/* Flexbox fallback for older browsers */
+@supports not (display: grid) {
+    .dasher-kpi-grid {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 20px !important;
+    }
+    .dasher-kpi-card {
+        flex: 1 1 280px !important;
+        min-width: 280px !important;
+    }
+}
+
+/* Force cards to fill row when less than 4 cards - CSS only approach */
+.dasher-kpi-grid:has(.dasher-kpi-card:nth-child(3):last-child) {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.dasher-kpi-grid:has(.dasher-kpi-card:nth-child(2):last-child) {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.dasher-kpi-grid:has(.dasher-kpi-card:nth-child(1):last-child) {
+    grid-template-columns: 1fr;
+}
+
+/* JavaScript fallback classes for full-width cards */
+.dasher-kpi-grid.force-1-col {
+    grid-template-columns: 1fr;
+}
+
+.dasher-kpi-grid.force-2-col {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.dasher-kpi-grid.force-3-col {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.dasher-kpi-card {
+    background: var(--bb-content-background-color);
+    border-radius: var(--bb-block-radius, 12px);
+    padding: 24px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--bb-content-border-color);
+}
+
+/* Missing KPI component styles */
+.dasher-kpi-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.dasher-kpi-action {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    color: #495057;
+}
+
+.dasher-kpi-action:hover {
+    background: #e9ecef;
+    transform: translateY(-1px);
+}
+
+/* Missing alert styles */
+.dasher-alert {
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dasher-alert-icon {
+    font-size: 16px;
+    width: 20px;
+    text-align: center;
+}
+
+.dasher-alert-message {
+    flex: 1;
+    font-size: 14px;
+}
+
+.dasher-alert-severity.low {
+    background: #d1ecf1;
+    border-left: 4px solid #17a2b8;
+    color: #0c5460;
+}
+
+.dasher-alert-severity.medium {
+    background: #fff3cd;
+    border-left: 4px solid #d4a53a; /* Better contrast than #ffc107 */
+    color: #664308; /* Darker text for better contrast */
+}
+
+.dasher-alert-severity.high {
+    background: #f8d7da;
+    border-left: 4px solid #dc3545;
+    color: #721c24;
+}
+
+.dasher-alerts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Big Bird specific styles */
+.dasher-bigbird-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.dasher-bigbird-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-left: 4px solid #007cba;
+}
+
+.dasher-bigbird-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.dasher-bigbird-info {
+    flex: 1;
+}
+
+.dasher-bigbird-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    color: #2c3e50;
+}
+
+.dasher-bigbird-email {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin: 0;
+}
+
+.dasher-bigbird-metrics {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.dasher-bigbird-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* Action section styles */
+.dasher-action-section {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-top: 16px;
+}
+
+/* Additional missing metric styles */
+.dasher-stat {
+    text-align: center;
+    padding: 16px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+}
+
+.dasher-student-details {
+    background: white;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.dasher-student-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 12px;
+}
+
+.dasher-workload-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.dasher-workload-badge.light {
+    background: #d4edda;
+    color: #155724;
+}
+
+.dasher-workload-badge.moderate {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.dasher-workload-badge.heavy {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* Success/warning/primary indicator styles - WCAG AA compliant */
+.dasher-success {
+    color: #1b5e20; /* Darker green for better contrast */
+}
+
+.dasher-warning {
+    color: #e65100; /* Darker orange for better contrast */
+}
+
+.dasher-primary {
+    color: #0d47a1; /* Darker blue for better contrast */
+}
+
+/* Accessibility-friendly KPI card borders with better contrast */
+.dasher-kpi-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, #0d47a1, #1565c0) !important;
+    border-radius: var(--bb-block-radius, 12px) var(--bb-block-radius, 12px) 0 0;
+}
+
+/* Role-specific KPI card accents - WCAG AA compliant colors */
+.dasher-mentor-dashboard-enhanced .dasher-kpi-card::before {
+    background: linear-gradient(90deg, #2d5a87, #1e3d5c) !important;
+}
+
+.dasher-mentor-dashboard-enhanced .dasher-kpi-card.primary::before {
+    background: linear-gradient(90deg, #1e3d5c, #0f2a3e) !important;
+}
+
+.dasher-mentor-dashboard-enhanced .dasher-kpi-card.success::before {
+    background: linear-gradient(90deg, #2e7d32, #1b5e20) !important;
+}
+
+.dasher-mentor-dashboard-enhanced .dasher-kpi-card.info::before {
+    background: linear-gradient(90deg, #1976d2, #0d47a1) !important;
+}
+
+.dasher-mentor-dashboard-enhanced .dasher-kpi-card.warning::before {
+    background: linear-gradient(90deg, #f57c00, #e65100) !important;
+}
+
+.dasher-bigbird-dashboard-enhanced .dasher-kpi-card::before {
+    background: linear-gradient(90deg, #37474f, #263238) !important;
+}
+
+.dasher-bigbird-dashboard-enhanced .dasher-kpi-card.primary::before {
+    background: linear-gradient(90deg, #263238, #1c1c1c) !important;
+}
+
+.dasher-bigbird-dashboard-enhanced .dasher-kpi-card.success::before {
+    background: linear-gradient(90deg, #2e7d32, #1b5e20) !important;
+}
+
+.dasher-bigbird-dashboard-enhanced .dasher-kpi-card.info::before {
+    background: linear-gradient(90deg, #1976d2, #0d47a1) !important;
+}
+
+.dasher-bigbird-dashboard-enhanced .dasher-kpi-card.warning::before {
+    background: linear-gradient(90deg, #f57c00, #e65100) !important;
+}
+
+.dasher-pc-dashboard-enhanced .dasher-kpi-card::before {
+    background: linear-gradient(90deg, #1976d2, #0d47a1) !important;
+}
+
+.dasher-pc-dashboard-enhanced .dasher-kpi-card.primary::before {
+    background: linear-gradient(90deg, #0d47a1, #01579b) !important;
+}
+
+.dasher-pc-dashboard-enhanced .dasher-kpi-card.success::before {
+    background: linear-gradient(90deg, #2e7d32, #1b5e20) !important;
+}
+
+.dasher-pc-dashboard-enhanced .dasher-kpi-card.info::before {
+    background: linear-gradient(90deg, #1976d2, #0d47a1) !important;
+}
+
+.dasher-pc-dashboard-enhanced .dasher-kpi-card.warning::before {
+    background: linear-gradient(90deg, #f57c00, #e65100) !important;
+}
+
+.dasher-kpi-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+}
+
+.dasher-kpi-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+
+.dasher-kpi-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+/* Font Awesome icon adjustments */
+.dasher-kpi-icon i,
+.dasher-kpi-icon .fas,
+.dasher-kpi-icon .far,
+.dasher-kpi-icon .fab {
+    font-size: 24px;
+    line-height: 1;
+}
+
+.dasher-kpi-card.primary .dasher-kpi-icon {
+    background: linear-gradient(45deg, #2563eb, #1d4ed8) !important;
+    color: white !important;
+}
+
+/* Role-specific primary icon colors */
+.dasher-mentor-dashboard-enhanced .dasher-kpi-card.primary .dasher-kpi-icon {
+    background: linear-gradient(45deg, rgb(54, 87, 112), rgb(44, 71, 92));
+    color: white;
+}
+
+.dasher-bigbird-dashboard-enhanced .dasher-kpi-card.primary .dasher-kpi-icon {
+    background: linear-gradient(45deg, #486e7f, #3a5a6a);
+    color: white;
+}
+
+.dasher-pc-dashboard-enhanced .dasher-kpi-card.primary .dasher-kpi-icon {
+    background: linear-gradient(45deg, var(--bb-secondary-button-background-regular), rgba(var(--bb-primary-color-rgb), 0.9));
+    color: var(--bb-secondary-button-text-regular);
+}
+
+.dasher-kpi-card.success .dasher-kpi-icon {
+    background: linear-gradient(45deg, var(--bb-success-color), rgba(var(--bb-success-color-rgb), 0.8));
+    color: white;
+}
+
+.dasher-kpi-card.info .dasher-kpi-icon {
+    background: linear-gradient(45deg, var(--bb-secondary-button-background-regular), rgba(var(--bb-primary-color-rgb), 0.7));
+    color: var(--bb-secondary-button-text-regular);
+}
+
+.dasher-kpi-card.warning .dasher-kpi-icon {
+    background: linear-gradient(45deg, var(--bb-warning-color), rgba(var(--bb-warning-color-rgb), 0.8));
+    color: white;
+}
+
+.dasher-kpi-trend {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 12px;
+}
+
+.dasher-kpi-trend.positive {
+    color: var(--bb-success-color);
+    background: rgba(var(--bb-success-color-rgb), 0.1);
+}
+
+.dasher-kpi-trend.negative {
+    color: var(--bb-danger-color);
+    background: rgba(var(--bb-danger-color-rgb), 0.1);
+}
+
+.dasher-kpi-trend.neutral {
+    color: var(--bb-alternate-text-color);
+    background: rgba(var(--bb-alternate-text-color-rgb), 0.1);
+}
+
+.dasher-kpi-title {
+    font-size: 14px;
+    color: var(--bb-alternate-text-color);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.dasher-kpi-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--bb-headings-color);
+    margin-bottom: 8px;
+}
+
+.dasher-kpi-description {
+    font-size: 14px;
+    color: var(--bb-body-text-color);
+    margin-bottom: 12px;
+}
+
+.dasher-kpi-breakdown {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.dasher-breakdown-item {
+    text-align: center;
+}
+
+.dasher-breakdown-label {
+    display: block;
+    font-size: 11px;
+    color: #95a5a6;
+    margin-bottom: 4px;
+}
+
+.dasher-breakdown-value {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.dasher-breakdown-value.dasher-success { color: #27ae60; }
+.dasher-breakdown-value.dasher-primary { color: #3498db; }
+.dasher-breakdown-value.dasher-warning { color: #f39c12; }
+
+.dasher-kpi-footer {
+    font-size: 12px;
+    color: #95a5a6;
+    margin-top: 8px;
+}
+
+.dasher-alert-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #e74c3c;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+/* Progress Bars */
+.dasher-progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #ecf0f1;
+    border-radius: 4px;
+    overflow: hidden;
+    margin: 8px 0;
+}
+
+.dasher-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #2563eb, #1d4ed8) !important;
+    border-radius: var(--bb-option-radius, 4px);
+    transition: width 0.5s ease;
+}
+
+/* Role-specific progress bar colors */
+.dasher-mentor-dashboard-enhanced .dasher-progress-fill {
+    background: linear-gradient(90deg, rgb(54, 87, 112), rgb(44, 71, 92));
+}
+
+.dasher-bigbird-dashboard-enhanced .dasher-progress-fill {
+    background: linear-gradient(90deg, #486e7f, #3a5a6a);
+}
+
+.dasher-pc-dashboard-enhanced .dasher-progress-fill {
+    background: linear-gradient(90deg, var(--bb-secondary-button-background-regular), rgba(var(--bb-primary-color-rgb), 0.7));
+}
+
+/* Progress Circles */
+.dasher-progress-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: conic-gradient(#4CAF50 0deg, #e0e0e0 0deg);
+}
+
+.dasher-progress-text {
+    font-size: 12px;
+    font-weight: 600;
+    color: #2c3e50;
+    background: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Student Matrix */
+.dasher-student-matrix {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+/* Force student cards to fill row when less than 4 cards */
+.dasher-student-matrix:has(.dasher-student-card:nth-child(3):last-child) {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.dasher-student-matrix:has(.dasher-student-card:nth-child(2):last-child) {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.dasher-student-matrix:has(.dasher-student-card:nth-child(1):last-child) {
+    grid-template-columns: 1fr;
+}
+
+/* JavaScript fallback classes for student matrix */
+.dasher-student-matrix.force-1-col {
+    grid-template-columns: 1fr;
+}
+
+.dasher-student-matrix.force-2-col {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.dasher-student-matrix.force-3-col {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.dasher-student-matrix.list-view {
+    grid-template-columns: 1fr;
+}
+
+.dasher-student-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    border-left: 4px solid #e0e0e0;
+}
+
+.dasher-student-card.progress-high {
+    border-left-color: #4CAF50;
+}
+
+.dasher-student-card.progress-medium {
+    border-left-color: #FF9800;
+}
+
+.dasher-student-card.progress-low {
+    border-left-color: #f44336;
+}
+
+.dasher-student-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.dasher-student-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 16px;
+}
+
+.dasher-student-info {
+    flex: 1;
+}
+
+.dasher-student-name {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    color: #2c3e50;
+}
+
+.dasher-student-email {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin: 0 0 4px 0;
+}
+
+.dasher-assignment-date {
+    font-size: 12px;
+    color: #95a5a6;
+}
+
+.dasher-student-metrics {
+    margin-bottom: 16px;
+}
+
+.dasher-metric-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dasher-metric {
+    text-align: center;
+}
+
+.dasher-metric-label {
+    display: block;
+    font-size: 12px;
+    color: #95a5a6;
+    margin-bottom: 4px;
+}
+
+.dasher-metric-value {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.dasher-student-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* Section Headers */
+.dasher-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.dasher-section-header h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.dasher-section-controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.dasher-search-input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    width: 200px;
+}
+
+.dasher-filter-select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+/* View Toggles */
+.dasher-view-toggles {
+    display: flex;
+    background: #f8f9fa;
+    border-radius: 6px;
+    padding: 2px;
+}
+
+.dasher-view-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    background: none;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dasher-view-btn.active {
+    background: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Leaderboard */
+.dasher-leaderboard {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.dasher-leaderboard-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+
+.dasher-leaderboard-item:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.dasher-leaderboard-item.gold {
+    background: linear-gradient(135deg, #f7dc6f, #f4d03f);
+}
+
+.dasher-leaderboard-item.silver {
+    background: linear-gradient(135deg, #d5dbdb, #aeb6bf);
+}
+
+.dasher-leaderboard-item.bronze {
+    background: linear-gradient(135deg, #f0b27a, #e67e22);
+}
+
+.dasher-rank {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px;
+}
+
+.dasher-rank-number {
+    font-size: 24px;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.dasher-rank-medal {
+    font-size: 20px;
+    color: #f39c12;
+}
+
+/* Achievements */
+.dasher-achievements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.dasher-achievement-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.dasher-achievement-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(45deg, #f39c12, #f1c40f);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+}
+
+.dasher-achievement-content {
+    flex: 1;
+}
+
+.dasher-achievement-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    color: #2c3e50;
+}
+
+.dasher-achievement-student {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin: 0 0 4px 0;
+}
+
+.dasher-achievement-date {
+    font-size: 12px;
+    color: #95a5a6;
+}
+
+/* Communication Dashboard */
+.dasher-communication-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.dasher-communication-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border-left: 4px solid #e0e0e0;
+}
+
+.dasher-communication-item.needs-followup {
+    border-left-color: #f39c12;
+    background: #fffbf0;
+}
+
+.dasher-communication-student {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.dasher-comm-avatar {
+    border-radius: 50%;
+}
+
+.dasher-comm-name {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 4px 0;
+    color: #2c3e50;
+}
+
+.dasher-status-urgent {
+    color: #e74c3c;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.dasher-status-good {
+    color: #27ae60;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.dasher-communication-timing {
+    text-align: right;
+    min-width: 140px;
+}
+
+.dasher-last-contact {
+    display: block;
+    font-size: 14px;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.dasher-contact-date {
+    font-size: 12px;
+    color: #95a5a6;
+}
+
+.dasher-communication-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* Analytics */
+.dasher-analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Force analytics cards to fill row when less than 4 cards */
+.dasher-analytics-grid:has(.dasher-analytic-card:nth-child(3):last-child) {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.dasher-analytics-grid:has(.dasher-analytic-card:nth-child(2):last-child) {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.dasher-analytics-grid:has(.dasher-analytic-card:nth-child(1):last-child) {
+    grid-template-columns: 1fr;
+}
+
+/* JavaScript fallback classes for analytics grid */
+.dasher-analytics-grid.force-1-col {
+    grid-template-columns: 1fr;
+}
+
+.dasher-analytics-grid.force-2-col {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.dasher-analytics-grid.force-3-col {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.dasher-analytic-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.dasher-analytic-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.dasher-analytic-header h4 {
+    margin: 0;
+    font-size: 16px;
+    color: #2c3e50;
+}
+
+/* Empty States */
+.dasher-empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    background: white;
+    border-radius: 8px;
+    border: 2px dashed #e0e0e0;
+}
+
+.dasher-empty-state-icon {
+    font-size: 48px;
+    color: #bdc3c7;
+    margin-bottom: 16px;
+}
+
+.dasher-empty-state-message {
+    font-size: 16px;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+/* Chart Controls */
+.dasher-charts-section {
+    margin-bottom: 40px;
+}
+
+.dasher-chart-container {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.dasher-chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.dasher-chart-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.dasher-chart-btn {
+    padding: 8px 16px;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.dasher-chart-btn.active {
+    background: #0073aa;
+    color: white;
+    border-color: #0073aa;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dasher-dashboard-header {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .dasher-header-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+    
+    .dasher-kpi-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .dasher-student-matrix {
+        grid-template-columns: 1fr;
+    }
+    
+    .dasher-section-header {
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+    }
+    
+    .dasher-section-controls {
+        justify-content: space-between;
+    }
+    
+    .dasher-search-input {
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .dasher-leaderboard-item,
+    .dasher-communication-item {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+    
+    .dasher-communication-timing {
+        text-align: center;
+        min-width: auto;
+    }
+}
+
+/* Data Section Base Styles */
+.dasher-data-section {
+    background: var(--bb-content-background-color);
+    border-radius: var(--bb-block-radius, 12px);
+    padding: 24px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border: 1px solid var(--bb-content-border-color);
+}
+
+.dasher-data-section h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--bb-headings-color);
+}
+
+/* Section Badges */
+.dasher-section-badge {
+    background: var(--bb-label-background-color);
+    color: var(--bb-label-text-color);
+    padding: 4px 12px;
+    border-radius: var(--bb-label-type-radius, 12px);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Document Card Styles */
+.category-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 12px 0;
+}
+
+.category-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 8px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.category-name {
+    font-weight: 500;
+}
+
+.category-count {
+    color: #666;
+}
+
+/* Document Viewer Styles */
+.dasher-document-viewer {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.document-header {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.document-header h3 {
+    margin: 0 0 10px 0;
+    color: #2c3e50;
+}
+
+.document-meta {
+    display: flex;
+    gap: 15px;
+    font-size: 14px;
+    color: #666;
+}
+
+.document-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.document-actions .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.document-summary {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 6px;
+    margin-top: 20px;
+}
+
+.document-summary h4 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+.document-summary ul {
+    margin-bottom: 15px;
+}
+
+.document-note {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 4px;
+    padding: 12px;
+    margin-top: 15px;
+}
+
+.evaluation-instructions {
+    background: #e3f2fd;
+    border: 1px solid #bbdefb;
+    border-radius: 4px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.document-placeholder {
+    text-align: center;
+    padding: 40px 20px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 2px dashed #dee2e6;
+    margin-top: 20px;
+}
+
+.placeholder-icon {
+    font-size: 48px;
+    color: #6c757d;
+    margin-bottom: 15px;
+}
+
+@media print {
+    .document-actions {
+        display: none;
+    }
+}
+
+/* PC Dashboard Welcome Section */
+.dasher-welcome-section {
+    margin-bottom: 30px;
+}
+
+.dasher-welcome-banner {
+    background: linear-gradient(135deg, var(--bb-content-alternate-background-color) 0%, var(--bb-content-background-color) 100%);
+    border-radius: var(--bb-block-radius, 12px);
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-left: 6px solid var(--bb-secondary-button-background-regular);
+}
+
+.dasher-welcome-icon {
+    font-size: 48px;
+    color: var(--bb-secondary-button-background-regular);
+    min-width: 60px;
+}
+
+.dasher-welcome-content h3 {
+    margin: 0 0 10px 0;
+    color: var(--bb-headings-color);
+    font-size: 24px;
+}
+
+.dasher-welcome-content p {
+    margin: 0 0 15px 0;
+    color: var(--bb-body-text-color);
+    line-height: 1.6;
+}
+
+.dasher-welcome-stats {
+    display: flex;
+    gap: 20px;
+}
+
+.dasher-stat-item {
+    padding: 8px 16px;
+    background: var(--bb-content-background-color);
+    border-radius: 20px;
+    border: 1px solid var(--bb-content-border-color);
+    font-size: 14px;
+}
+
+.dasher-stat-item strong {
+    color: var(--bb-headings-color);
+}
+
+/* Message Stream Styles */
+.dasher-message-stream {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.dasher-message-bubble {
+    background: var(--bb-content-background-color);
+    border-radius: var(--bb-block-radius, 16px);
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: relative;
+    border-left: 4px solid var(--bb-content-border-color);
+    transition: all 0.3s ease;
+}
+
+.dasher-message-bubble:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+/* Role-specific message bubble colors */
+.dasher-message-bubble.mentor {
+    border-left-color: rgb(54, 87, 112);
+}
+
+.dasher-message-bubble.bigbird {
+    border-left-color: #486e7f;
+}
+
+.dasher-message-bubble.admin {
+    border-left-color: #6c757d;
+}
+
+.dasher-message-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.dasher-message-avatar {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.dasher-message-avatar .message-avatar {
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.dasher-role-badge {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    background: #6c757d;
+    color: white;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border: 2px solid white;
+}
+
+.dasher-role-badge.mentor {
+    background: rgb(54, 87, 112);
+}
+
+.dasher-role-badge.bigbird {
+    background: #486e7f;
+}
+
+.dasher-role-badge.admin {
+    background: #6c757d;
+}
+
+.dasher-message-meta {
+    flex: 1;
+}
+
+.dasher-message-sender {
+    margin: 0 0 4px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.dasher-message-date {
+    font-size: 12px;
+    color: #6c757d;
+}
+
+.dasher-message-content {
+    padding-left: 65px;
+}
+
+.dasher-message-title {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #495057;
+}
+
+.dasher-message-text {
+    color: #6c757d;
+    line-height: 1.6;
+}
+
+.dasher-message-text p {
+    margin-bottom: 10px;
+}
+
+.dasher-message-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Message composer styles for admin */
+.dasher-message-composer {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+
+.dasher-composer-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.dasher-composer-header h3 {
+    margin: 0;
+    color: #2c3e50;
+}
+
+.dasher-composer-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.dasher-form-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.dasher-form-row label {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #495057;
+}
+
+.dasher-form-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.dasher-composer-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    padding-top: 15px;
+    border-top: 1px solid #e9ecef;
+}
+
+/* Dashboard Customizer Styles */
+.dasher-customize-btn {
+    margin-left: 10px;
+}
+
+.dasher-customizer-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.dasher-customizer-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+}
+
+.dasher-customizer-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    background: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: var(--bb-block-radius, 12px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+
+.dasher-customizer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-bottom: 2px solid #e0e0e0;
+    background: #f8f9fa;
+}
+
+.dasher-customizer-header h3 {
+    margin: 0;
+    color: var(--bb-headings-color);
+    font-size: 20px;
+}
+
+.dasher-customizer-close {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: var(--bb-alternate-text-color);
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.dasher-customizer-close:hover {
+    background: var(--bb-content-border-color);
+    color: var(--bb-headings-color);
+}
+
+.dasher-customizer-body {
+    padding: 25px;
+    max-height: 50vh;
+    overflow-y: auto;
+}
+
+.dasher-customizer-section h4 {
+    margin: 0 0 10px 0;
+    color: var(--bb-headings-color);
+    font-size: 16px;
+}
+
+.dasher-customizer-section .description {
+    margin: 0 0 20px 0;
+    color: var(--bb-body-text-color);
+    font-size: 14px;
+}
+
+.dasher-card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.dasher-card-setting {
+    background: var(--bb-content-alternate-background-color);
+    border: 1px solid var(--bb-content-border-color);
+    border-radius: var(--bb-option-radius, 8px);
+    padding: 15px;
+    transition: all 0.2s ease;
+    cursor: move;
+}
+
+.dasher-card-setting:hover {
+    border-color: var(--bb-primary-color);
+    transform: translateY(-1px);
+}
+
+.dasher-card-setting-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.dasher-drag-handle {
+    color: var(--bb-alternate-text-color);
+    cursor: grab;
+    font-size: 14px;
+}
+
+.dasher-drag-handle:active {
+    cursor: grabbing;
+}
+
+.dasher-card-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.dasher-card-title {
+    font-weight: 600;
+    color: var(--bb-headings-color);
+    font-size: 14px;
+}
+
+.dasher-card-type {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 10px;
+    align-self: flex-start;
+}
+
+.dasher-type-primary {
+    background: rgba(37, 99, 235, 0.1);
+    color: #2563eb;
+}
+
+.dasher-type-success {
+    background: rgba(34, 197, 94, 0.1);
+    color: #22c55e;
+}
+
+.dasher-type-info {
+    background: rgba(6, 182, 212, 0.1);
+    color: #06b6d4;
+}
+
+.dasher-type-warning {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+}
+
+.dasher-card-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.dasher-card-size {
+    padding: 6px 10px;
+    border: 1px solid var(--bb-content-border-color);
+    border-radius: var(--bb-option-radius, 4px);
+    background: var(--bb-content-background-color);
+    color: var(--bb-body-text-color);
+    font-size: 12px;
+}
+
+.dasher-toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+}
+
+.dasher-toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.dasher-toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--bb-content-border-color);
+    transition: 0.2s;
+    border-radius: 24px;
+}
+
+.dasher-toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background: white;
+    transition: 0.2s;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.dasher-toggle-switch input:checked + .dasher-toggle-slider {
+    background: #2563eb;
+}
+
+.dasher-toggle-switch input:checked + .dasher-toggle-slider:before {
+    transform: translateX(20px);
+}
+
+.dasher-customizer-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    border-top: 1px solid var(--bb-content-border-color);
+    background: var(--bb-content-alternate-background-color);
+}
+
+.dasher-card-placeholder {
+    height: 60px;
+    background: var(--bb-content-border-color);
+    border: 2px dashed var(--bb-alternate-text-color);
+    border-radius: var(--bb-option-radius, 8px);
+    margin: 6px 0;
+}
+
+/* Card Size Classes */
+.dasher-kpi-card.dasher-card-small {
+    grid-column: span 1;
+    min-height: 150px;
+}
+
+.dasher-kpi-card.dasher-card-medium {
+    grid-column: span 1;
+    min-height: 200px;
+}
+
+.dasher-kpi-card.dasher-card-large {
+    grid-column: span 2;
+    min-height: 200px;
+}
+
+/* Notification Styles */
+.dasher-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--bb-content-background-color);
+    border: 1px solid var(--bb-content-border-color);
+    border-radius: var(--bb-option-radius, 8px);
+    padding: 15px 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    z-index: 10001;
+    transform: translateX(400px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    max-width: 350px;
+}
+
+.dasher-notification.dasher-notification-show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.dasher-notification-success {
+    border-left: 4px solid #22c55e;
+}
+
+.dasher-notification-error {
+    border-left: 4px solid #ef4444;
+}
+
+.dasher-notification-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--bb-body-text-color);
+    font-size: 14px;
+}
+
+.dasher-notification-success .fas {
+    color: #22c55e;
+}
+
+.dasher-notification-error .fas {
+    color: #ef4444;
+}
+
+/* Body class when customizer is open */
+body.dasher-customizer-open {
+    overflow: hidden;
+}
+
+/* WCAG AA Accessibility Focus States */
+.dasher-btn:focus,
+.dasher-toggle-alerts:focus,
+.dasher-select:focus,
+.dasher-search-input:focus,
+.dasher-filter-select:focus,
+.dasher-card-size:focus,
+.dasher-toggle-switch input:focus + .dasher-toggle-slider {
+    outline: 2px solid #0d47a1;
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .dasher-kpi-card {
+        border: 2px solid #000000;
+    }
+    
+    .dasher-btn-primary {
+        background: #000000 !important;
+        color: #ffffff !important;
+        border: 2px solid #ffffff;
+    }
+    
+    .dasher-btn-outline {
+        border: 2px solid #000000 !important;
+        color: #000000 !important;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .dasher-welcome-banner {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .dasher-welcome-stats {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .dasher-message-content {
+        padding-left: 0;
+        margin-top: 10px;
+    }
+    
+    .dasher-message-header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .dasher-form-cols {
+        grid-template-columns: 1fr;
+    }
+    
+    .dasher-customizer-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+    
+    .dasher-card-setting-header {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .dasher-card-controls {
+        width: 100%;
+        justify-content: flex-end;
+    }
+    
+    .dasher-customizer-footer {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .dasher-kpi-card.dasher-card-large {
+        grid-column: span 1;
+    }
+    
+    .dasher-notification {
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+}

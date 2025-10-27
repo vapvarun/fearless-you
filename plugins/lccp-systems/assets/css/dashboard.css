@@ -1,0 +1,621 @@
+/**
+ * Dashboard CSS for Dasher
+ *
+ * @package Dasher
+ * @since 1.0.0
+ */
+
+/* General Styles */
+.dasher-mentor-dashboard,
+.dasher-bigbird-dashboard,
+.dasher-bigbird-assignment {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.dasher-dashboard-intro {
+    margin-bottom: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* Metrics Summary */
+.dasher-metrics-summary {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.dasher-metric-card {
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 30%;
+}
+
+.dasher-metric-card h3 {
+    margin-top: 0;
+    color: #555;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.dasher-metric-value {
+    font-size: 32px;
+    font-weight: bold;
+    color: #007cba;
+    margin: 10px 0;
+}
+
+/* Dashboard Tabs */
+.dasher-dashboard-tabs {
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+.dasher-tab-nav {
+    display: flex;
+    border-bottom: 1px solid #e2e4e7;
+    padding: 0;
+    margin: 0;
+}
+
+.dasher-tab-nav li {
+    list-style: none;
+    margin: 0;
+}
+
+.dasher-tab-nav li a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    border-bottom: 3px solid transparent;
+}
+
+.dasher-tab-nav li a.ui-tabs-active {
+    border-bottom-color: #007cba;
+    color: #007cba;
+}
+
+.dasher-tab-content {
+    padding: 20px;
+}
+
+/* Filter Controls */
+.dasher-filter-controls {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.dasher-search-input {
+    flex: 1;
+    margin-right: 10px;
+    height: 36px;
+}
+
+.dasher-filter-select {
+    margin-right: 10px;
+    height: 36px;
+}
+
+/* Student Cards */
+.dasher-student-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px;
+}
+
+.dasher-student-card {
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.dasher-student-card:hover {
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+.dasher-student-card-header {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f0f0f0;
+    position: relative;
+}
+
+.dasher-student-info {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.dasher-student-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.dasher-student-name {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.dasher-progress-badge {
+    background: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+    margin-right: 10px;
+}
+
+.dasher-card-toggle {
+    cursor: pointer;
+    color: #007cba;
+}
+
+.dasher-student-card-content {
+    padding: 15px;
+}
+
+.dasher-student-details {
+    margin-bottom: 15px;
+}
+
+.dasher-student-details p {
+    margin: 5px 0;
+}
+
+.dasher-unassigned {
+    color: #d54e21;
+    font-style: italic;
+}
+
+.dasher-course-progress h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 5px;
+}
+
+.dasher-course-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.dasher-course-list li {
+    margin-bottom: 10px;
+}
+
+.dasher-course-title {
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.dasher-progress-bar-container {
+    height: 10px;
+    background: #f0f0f0;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.dasher-progress-bar {
+    height: 100%;
+    background: #007cba;
+    border-radius: 5px;
+}
+
+.dasher-progress-percentage {
+    font-size: 13px;
+    color: #666;
+}
+
+.dasher-student-actions {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Progress States */
+.dasher-student-card.not-started .dasher-progress-badge {
+    background: #f0f0f0;
+    color: #666;
+}
+
+.dasher-student-card.in-progress .dasher-progress-badge {
+    background: #e5f5fa;
+    color: #007cba;
+}
+
+.dasher-student-card.completed .dasher-progress-badge {
+    background: #e5f9e5;
+    color: #46b450;
+}
+
+/* BigBird Assignment Styles */
+.dasher-bigbird-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-gap: 20px;
+}
+
+.dasher-bigbird-card {
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+}
+
+.dasher-bigbird-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.dasher-bigbird-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.dasher-bigbird-info {
+    flex: 1;
+}
+
+.dasher-bigbird-info h3,
+.dasher-bigbird-info h4 {
+    margin: 0 0 5px 0;
+}
+
+.dasher-bigbird-info p {
+    margin: 0;
+    color: #666;
+}
+
+.dasher-student-count {
+    font-size: 13px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.dasher-assigned-students h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 5px;
+}
+
+.dasher-student-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.dasher-student-list-item {
+    display: flex;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.dasher-student-list-item:last-child {
+    border-bottom: none;
+}
+
+.dasher-student-mini-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.dasher-student-list-info {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.dasher-student-list-name {
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+.dasher-student-list-progress {
+    font-size: 12px;
+    background: #f0f0f0;
+    padding: 2px 8px;
+    border-radius: 10px;
+}
+
+/* Activities List */
+.dasher-activities-list {
+    margin-top: 15px;
+}
+
+.dasher-activity-student {
+    display: flex;
+    align-items: center;
+}
+
+.dasher-avatar-tiny {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+/* Notifications */
+.dasher-notifications-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.dasher-notification-item {
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.dasher-notification-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.dasher-notification-avatar {
+    margin-right: 15px;
+}
+
+.dasher-notification-avatar img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.dasher-notification-title h4 {
+    margin: 0;
+    font-size: 16px;
+}
+
+.dasher-notification-time {
+    font-size: 12px;
+    color: #666;
+}
+
+.dasher-notification-content {
+    border-top: 1px solid #f0f0f0;
+    padding-top: 10px;
+}
+
+.dasher-notification-content p {
+    margin-top: 0;
+}
+
+.dasher-notification-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+/* BigBird Assignment */
+.dasher-student-assignment {
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.dasher-student-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.dasher-current-assignment {
+    background: #e5f5fa;
+    padding: 10px 15px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.dasher-bigbird-selector {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 15px;
+    margin-bottom: 20px;
+}
+
+.dasher-bigbird-option {
+    margin-bottom: 15px;
+}
+
+.dasher-bigbird-option label {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+}
+
+.dasher-bigbird-option input[type="radio"] {
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
+.dasher-assignment-actions {
+    margin-top: 20px;
+}
+
+/* Empty States */
+.dasher-empty-state {
+    padding: 30px;
+    text-align: center;
+    background: #f9f9f9;
+    border-radius: 4px;
+    margin: 20px 0;
+}
+
+.dasher-empty-state p {
+    color: #666;
+    font-size: 15px;
+}
+
+/* Modal */
+.dasher-modal-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 100000;
+}
+
+.dasher-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 800px;
+    max-height: 90vh;
+    background: #fff;
+    border-radius: 4px;
+    z-index: 100001;
+    overflow: hidden;
+}
+
+.dasher-modal-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dasher-modal-header h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+.dasher-modal-close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #666;
+}
+
+.dasher-modal-body {
+    padding: 20px;
+    overflow-y: auto;
+    max-height: calc(90vh - 80px);
+}
+
+.dasher-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.dasher-loading .spinner {
+    margin-bottom: 10px;
+}
+
+/* Detailed Progress */
+.dasher-detailed-progress {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.dasher-detailed-student-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.dasher-detailed-current-progress {
+    margin-bottom: 20px;
+}
+
+.dasher-detailed-courses h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 5px;
+}
+
+.dasher-detailed-course {
+    background: #f9f9f9;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.dasher-detailed-course h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.dasher-progress-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.dasher-next-lesson {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #f0f0f0;
+}
+
+/* Messages */
+.dasher-error {
+    color: #d54e21;
+}
+
+.dasher-success {
+    color: #46b450;
+}
+
+/* Responsive */
+@media screen and (max-width: 782px) {
+    .dasher-metrics-summary {
+        flex-direction: column;
+    }
+    
+    .dasher-metric-card {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    .dasher-filter-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .dasher-search-input,
+    .dasher-filter-select {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+} 

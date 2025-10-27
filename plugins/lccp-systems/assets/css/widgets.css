@@ -1,0 +1,514 @@
+/**
+ * LCCP Advanced Widgets Styles
+ */
+
+/* Widget Container Styles */
+.lccp-widget-container {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+/* Course Progress Widget */
+.lccp-course-progress-widget {
+    padding: 15px;
+}
+
+.course-progress-item {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.course-progress-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.course-progress-item h4 {
+    margin: 0 0 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+.progress-bar-container {
+    background: #f0f0f0;
+    border-radius: 10px;
+    height: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar {
+    background: linear-gradient(90deg, #4CAF50, #66BB6A);
+    height: 100%;
+    border-radius: 10px;
+    transition: width 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 5px;
+}
+
+.progress-text {
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.progress-stats {
+    margin-top: 5px;
+    font-size: 13px;
+    color: #666;
+}
+
+/* Learning Streak Widget */
+.lccp-learning-streak-widget {
+    text-align: center;
+}
+
+.streak-stats {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.streak-item {
+    flex: 1;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin: 0 5px;
+    position: relative;
+}
+
+.streak-number {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    line-height: 1;
+}
+
+.streak-label {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+    text-transform: uppercase;
+}
+
+.streak-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+}
+
+.current-streak {
+    background: linear-gradient(135deg, #FFF3E0, #FFE0B2);
+}
+
+.longest-streak {
+    background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+}
+
+.total-days {
+    background: linear-gradient(135deg, #E3F2FD, #BBDEFB);
+}
+
+.streak-message {
+    padding: 15px;
+    background: #FFF9C4;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-style: italic;
+    color: #F57C00;
+}
+
+.recent-activity h4 {
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+.activity-grid {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.activity-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5px;
+}
+
+.day-label {
+    font-size: 11px;
+    color: #999;
+    margin-bottom: 3px;
+}
+
+.activity-indicator {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    background: #e0e0e0;
+}
+
+.activity-day.active .activity-indicator {
+    background: #4CAF50;
+    position: relative;
+}
+
+.activity-day.active .activity-indicator::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 14px;
+}
+
+/* Upcoming Sessions Widget */
+.lccp-upcoming-sessions-widget .sessions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.session-item {
+    display: flex;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s;
+}
+
+.session-item:hover {
+    background: #f8f9fa;
+}
+
+.session-item:last-child {
+    border-bottom: none;
+}
+
+.session-date {
+    flex-shrink: 0;
+    width: 50px;
+    text-align: center;
+    padding-right: 15px;
+}
+
+.session-date .month {
+    display: block;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #999;
+}
+
+.session-date .day {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.session-details {
+    flex: 1;
+}
+
+.session-title {
+    margin: 0 0 5px;
+    font-size: 15px;
+    color: #333;
+}
+
+.session-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.session-time {
+    font-size: 13px;
+    color: #666;
+}
+
+.session-badge {
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.session-badge.today {
+    background: #FFE0B2;
+    color: #E65100;
+}
+
+.session-badge.tomorrow {
+    background: #E1F5FE;
+    color: #0277BD;
+}
+
+.session-link {
+    display: inline-block;
+    color: #2196F3;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.session-link:hover {
+    color: #1976D2;
+}
+
+/* Resource Library Widget */
+.lccp-resource-library-widget .resource-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.resource-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s;
+}
+
+.resource-item:hover {
+    background: #f8f9fa;
+}
+
+.resource-item:last-child {
+    border-bottom: none;
+}
+
+.resource-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    background: #f0f0f0;
+    border-radius: 8px;
+    margin-right: 12px;
+}
+
+.resource-details {
+    flex: 1;
+}
+
+.resource-title {
+    display: block;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 3px;
+    transition: color 0.2s;
+}
+
+.resource-title:hover {
+    color: #2196F3;
+}
+
+.resource-meta {
+    display: flex;
+    gap: 10px;
+    font-size: 12px;
+    color: #999;
+}
+
+.resource-type {
+    background: #e0e0e0;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+/* View All Links */
+.view-all {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.view-all a {
+    color: #2196F3;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.view-all a:hover {
+    color: #1976D2;
+}
+
+/* Dashboard Widget Styles */
+.lccp-dashboard-widget {
+    padding: 20px;
+}
+
+.widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.widget-title {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.widget-role {
+    font-size: 12px;
+    padding: 3px 8px;
+    background: #e0e0e0;
+    border-radius: 3px;
+    color: #666;
+}
+
+/* Quiz Performance Widget */
+.quiz-performance-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.quiz-card {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #2196F3;
+}
+
+.quiz-card h4 {
+    margin: 0 0 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.quiz-score {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4CAF50;
+}
+
+.quiz-attempts {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Assignment Tracker Widget */
+.assignment-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.assignment-item {
+    padding: 12px;
+    border-left: 3px solid #ccc;
+    margin-bottom: 10px;
+    background: #f8f9fa;
+    transition: all 0.2s;
+}
+
+.assignment-item.pending {
+    border-left-color: #FFC107;
+}
+
+.assignment-item.approved {
+    border-left-color: #4CAF50;
+}
+
+.assignment-item.needs-revision {
+    border-left-color: #f44336;
+}
+
+.assignment-title {
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.assignment-meta {
+    font-size: 12px;
+    color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .streak-stats {
+        flex-direction: column;
+    }
+    
+    .streak-item {
+        margin: 5px 0;
+    }
+    
+    .quiz-performance-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Loading States */
+.widget-loading {
+    position: relative;
+    min-height: 100px;
+}
+
+.widget-loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    border: 3px solid #f0f0f0;
+    border-top-color: #2196F3;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+/* Empty States */
+.widget-empty {
+    text-align: center;
+    padding: 30px;
+    color: #999;
+}
+
+.widget-empty-icon {
+    font-size: 48px;
+    margin-bottom: 10px;
+    opacity: 0.5;
+}
+
+.widget-empty-message {
+    font-size: 14px;
+}

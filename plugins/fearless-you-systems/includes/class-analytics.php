@@ -341,7 +341,7 @@ class FYS_Analytics {
         $available_tags = wp_fusion()->settings->get('available_tags', array());
 
         foreach ($available_tags as $id => $label) {
-            if (strtolower($label) === strtolower($tag_name) || $id === $tag_name) {
+            if (strtolower($label['label']) === strtolower($tag_name) || $id === $tag_name) {
                 return $id;
             }
         }

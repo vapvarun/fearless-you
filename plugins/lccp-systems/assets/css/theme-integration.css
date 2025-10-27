@@ -1,0 +1,684 @@
+/**
+ * Theme Integration CSS for LCCP Systems
+ * Handles integration with BuddyBoss theme and other plugins
+ *
+ * @package LCCP Systems
+ * @since 1.0.0
+ */
+
+/* Font Weight Overrides */
+body, p {
+    font-weight: 400 !important;
+}
+
+strong {
+    font-weight: 700 !important;
+}
+
+b {
+    font-weight: 900 !important;
+}
+
+/* BuddyBoss MP3 Player */
+.wp-block-bpmp-mp3-player .bpMp3Player .coverBox {
+    max-width: 150px;
+}
+
+/* Resources List Styling */
+.resources-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.resources-list::marker {
+    content: none;
+}
+
+.thumbnail-container {
+    min-height: 339px;
+}
+
+.resource-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 2px solid #59898d;
+    border-radius: 5px;
+    background-color: white;
+    transition: all 0.3s;
+}
+
+.resource-item:hover {
+    background-color: #59898d;
+    color: white;
+}
+
+.resource-item:hover i,
+.resource-item:hover a {
+    color: white;
+}
+
+.resource-item i {
+    font-size: 24px !important;
+    color: #59898d;
+    margin-right: 10px;
+}
+
+.bb-course-excerpt h3 {
+    color: #59898d;
+}
+
+.resource-item a {
+    text-decoration: none;
+    color: #59898d;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+ul.ecs-event-list {
+    margin-left: 0;
+    border-radius: var(--bb-block-radius);
+}
+
+.resource-item a:hover {
+    color: white;
+}
+
+.bb-template-v2 .primary-menu > li:hover > a::before {
+    background-color: rgba(191, 192, 70, 0.5);
+}
+
+/* LearnDash Assessment Importer */
+.fli-assessment-form {
+    background-color: var(--bb-background);
+    padding: 20px;
+    border-radius: var(--bb-border-radius);
+    box-shadow: var(--bb-box-shadow);
+    margin-top: 20px;
+}
+
+.fli-assessment-form label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+    color: var(--bb-primary);
+}
+
+.fli-assessment-form .fli-range-slider {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.fli-range-slider .fli-range-square {
+    width: 24px;
+    height: 24px;
+    background-color: rgba(89, 137, 141, 0.2);
+    border-radius: var(--bb-border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.fli-range-slider .fli-range-square.selected {
+    background-color: rgba(89, 137, 141, 0.9);
+}
+
+.fli-assessment-form input[type="submit"] {
+    background-color: var(--bb-primary);
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: var(--bb-border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.fli-assessment-form input[type="submit"]:hover {
+    background-color: var(--bb-secondary);
+}
+
+.fli-assessment-questions p {
+    margin-top: 15px;
+}
+
+.fli-comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 30px;
+}
+
+.fli-comparison-table th,
+.fli-comparison-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.fli-comparison-table th {
+    background-color: var(--bb-primary);
+    color: #ffffff;
+}
+
+.fli-comparison-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* BuddyBoss Admin Page */
+.fli-wrap {
+    background-color: var(--bb-background);
+    padding: 20px;
+    border-radius: var(--bb-border-radius);
+    box-shadow: var(--bb-box-shadow);
+}
+
+button.fli-add-question {
+    background-color: var(--bb-primary);
+    color: #ffffff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: var(--bb-border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+button.fli-add-question:hover {
+    background-color: var(--bb-secondary);
+}
+
+.fli-assessment-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bb-bg-color, #f4f4f4);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.fli-assessment-name h2 {
+    margin: 0;
+}
+
+.fli-start-button button {
+    background-color: var(--bb-primary-color, #007BFF);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.fli-start-button button:hover {
+    background-color: var(--bb-secondary-color, #0056b3);
+}
+
+.fli-question {
+    margin: 20px 0;
+}
+
+.fli-progress-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.fli-progress-fill {
+    width: 0;
+    height: 20px;
+    background: linear-gradient(90deg, var(--bb-primary-color, darkblue), var(--bb-accent-color, darkcyan));
+    border-radius: 10px;
+    transition: width 0.3s ease, opacity 0.3s ease;
+    opacity: 0.3;
+}
+
+.fli-options {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.fli-options span {
+    cursor: pointer;
+    padding: 5px;
+}
+
+.fli-options span:hover {
+    background-color: var(--bb-primary-color, #007BFF);
+    color: white;
+    border-radius: 50%;
+}
+
+.fli-options span:active {
+    background-color: var(--bb-secondary-color, #0056b3);
+}
+
+/* Elephunkie Styling */
+.phunkie-tools-wrap {
+    background-color: #ff69b4 !important;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.phunkie-tools-header {
+    text-align: center;
+    background-color: #ff69b4;
+    padding: 10px;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 2em;
+}
+
+.phunkie-tools-container {
+    margin-top: 20px;
+}
+
+.phunkie-feature {
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: #ffffff;
+    border: 2px solid #ff69b4;
+    border-radius: 5px;
+}
+
+#ld-cg-ls4o8tfugp .grid > .item .content .entry-content * {
+    color: #393939;
+}
+
+/* Mastering Styling */
+.mastering {
+    font-weight: 100 !important;
+    font-size: 16px;
+    margin-top: 20px !important;
+    color: white !important;
+    padding: 1em;
+    background-color: #0a738a;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.mastering::first-line {
+    display: block;
+    font-weight: bold;
+}
+
+/* Layout Adjustments */
+.has-sidebar:not(.profile-sidebar, .group-sidebar, .llms-pointer, .activate) #primary, 
+body.buddypress.has-sidebar:not(.profile-sidebar, .group-sidebar, .llms-pointer, .activate) #page #primary {
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* Mobile Login Form Fixes - iPhone 15 Pro and similar devices */
+@media (max-width: 430px) {
+    /* Fix login form positioning and spacing */
+    body.login #login {
+        width: 85% !important;
+        max-width: 350px !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        padding: 0 !important;
+    }
+    
+    /* Fix form padding and spacing */
+    body.login #loginform,
+    body.login #registerform,
+    body.login #lostpasswordform {
+        margin: 0 !important;
+        padding: 20px !important;
+        transform: none !important;
+    }
+    
+    /* Fix input field spacing */
+    body.login input[type="text"],
+    body.login input[type="password"],
+    body.login input[type="email"] {
+        width: 100% !important;
+        box-sizing: border-box !important;
+        margin-bottom: 15px !important;
+        padding: 12px !important;
+        font-size: 16px !important; /* Prevents zoom on iOS */
+    }
+    
+    /* Fix Remember Me checkbox alignment */
+    body.login .forgetmenot {
+        margin: 15px 0 !important;
+        display: block !important;
+    }
+    
+    body.login .forgetmenot label {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        font-size: 14px !important;
+    }
+    
+    body.login .forgetmenot input[type="checkbox"] {
+        margin: 0 !important;
+        width: 18px !important;
+        height: 18px !important;
+        flex-shrink: 0 !important;
+        position: relative !important;
+        top: 0 !important;
+        vertical-align: middle !important;
+    }
+    
+    /* Fix button spacing */
+    body.login .submit {
+        margin-top: 20px !important;
+    }
+    
+    body.login .button-primary,
+    body.login input[type="submit"] {
+        width: 100% !important;
+        padding: 12px 20px !important;
+        font-size: 16px !important;
+        margin: 0 !important;
+    }
+    
+    /* Fix magic login buttons */
+    body.login .magic-login-buttons {
+        display: flex !important;
+        gap: 10px !important;
+        margin-top: 15px !important;
+    }
+    
+    body.login .magic-login-buttons button {
+        flex: 1 !important;
+        padding: 12px 15px !important;
+        font-size: 16px !important;
+    }
+    
+    /* Ensure proper spacing for password section in magic link */
+    body.login #password-login-section {
+        margin-top: 20px !important;
+        padding-top: 20px !important;
+    }
+    
+    /* Fix other options container */
+    body.login .other-options-container {
+        margin-top: 20px !important;
+        padding-top: 20px !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
+    
+    body.login .other-options-container p {
+        margin-bottom: 10px !important;
+        font-size: 14px !important;
+    }
+    
+    body.login .other-options-container a {
+        display: block !important;
+        padding: 8px 0 !important;
+        font-size: 14px !important;
+    }
+}
+
+/* Additional fixes for very small screens */
+@media (max-width: 375px) {
+    body.login #login {
+        width: 90% !important;
+    }
+    
+    body.login #loginform,
+    body.login #registerform,
+    body.login #lostpasswordform {
+        padding: 15px !important;
+    }
+}
+
+/* LearnDash Lesson List Mobile Responsive Styling - AGGRESSIVE OVERRIDE */
+body .ld-item-list,
+body .learndash .ld-item-list,
+body #learndash-page-content .ld-item-list,
+body .learndash-wrapper .ld-item-list,
+body .ld-lesson-list,
+body ul.ld-item-list {
+    padding: 0 !important;
+    margin: 0 0 20px 0 !important;
+    list-style: none !important;
+}
+
+body .ld-item-list .ld-item-list-item,
+body .learndash .ld-item-list-item,
+body .ld-lesson-item,
+body .ld-item-list li.ld-item-list-item,
+body .learndash-wrapper .ld-item-list-item,
+body .bb-course-content .ld-item-list-item,
+body ul.ld-item-list > li {
+    padding: 20px 25px !important;
+    margin-bottom: 12px !important;
+    background: #ffffff !important;
+    border: 2px solid #e7e9ec !important;
+    border-radius: 12px !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+    transition: all 0.3s ease !important;
+    list-style: none !important;
+}
+
+body .ld-item-list .ld-item-list-item:hover,
+body .learndash-wrapper .ld-item-list-item:hover,
+body ul.ld-item-list > li:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
+    transform: translateY(-3px) !important;
+    border-color: #59898d !important;
+    background: #fafbfd !important;
+}
+
+/* Lesson title and content alignment */
+.ld-item-list-item-title,
+.ld-lesson-title,
+.ld-item-list .ld-item-title {
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    line-height: 1.4 !important;
+    color: var(--bb-headings-color, #122b46) !important;
+    margin-bottom: 5px !important;
+}
+
+/* Status icons and indicators */
+.ld-item-list .ld-status-icon,
+.ld-lesson-item .ld-status {
+    display: inline-flex !important;
+    align-items: center !important;
+    margin-right: 10px !important;
+}
+
+/* Progress indicators */
+.ld-item-list .ld-progress,
+.learndash-wrapper .ld-progress {
+    margin: 10px 0 !important;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .ld-item-list .ld-item-list-item,
+    .learndash .ld-item-list-item,
+    .ld-lesson-item {
+        padding: 12px 15px !important;
+        margin-bottom: 8px !important;
+    }
+    
+    .ld-item-list-item-title,
+    .ld-lesson-title,
+    .ld-item-list .ld-item-title {
+        font-size: 16px !important;
+    }
+    
+    /* Ensure proper touch targets on mobile */
+    .ld-item-list-item a,
+    .ld-lesson-item a {
+        display: block !important;
+        min-height: 44px !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+    
+    /* Fix any overflow issues on mobile */
+    .ld-item-list,
+    .learndash-wrapper {
+        overflow-x: hidden !important;
+        max-width: 100% !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .ld-item-list .ld-item-list-item,
+    .learndash .ld-item-list-item,
+    .ld-lesson-item {
+        padding: 10px 12px !important;
+        margin-bottom: 6px !important;
+    }
+    
+    .ld-item-list-item-title,
+    .ld-lesson-title,
+    .ld-item-list .ld-item-title {
+        font-size: 15px !important;
+    }
+}
+
+/* BuddyBoss theme integration */
+.bb-course-widget .ld-item-list .ld-item-list-item,
+.bb-course-content .ld-item-list .ld-item-list-item {
+    background: var(--bb-body-background, #fafbfd) !important;
+    border-color: var(--bb-content-border, #e7e9ec) !important;
+}
+
+/* Fix padding inconsistencies in course content area */
+.learndash-wrapper .ld-item-list,
+.bb-learndash-content-wrap .ld-item-list,
+.bb-course-content .ld-item-list {
+    padding: 0 !important;
+    margin: 15px 0 !important;
+}
+
+/* Ensure consistent spacing between lesson elements */
+.ld-item-list .ld-item-list-item .ld-item-list-item-preview {
+    padding: 0 !important;
+}
+
+.ld-item-list .ld-item-list-item .ld-item-components {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    flex-wrap: wrap !important;
+}
+
+/* Fix nested lesson items (topics within lessons) */
+.ld-item-list .ld-item-list-items {
+    padding-left: 0 !important;
+}
+
+.ld-item-list .ld-item-list-items .ld-item-list-item {
+    margin-left: 20px !important;
+}
+
+@media (max-width: 768px) {
+    .ld-item-list .ld-item-list-items .ld-item-list-item {
+        margin-left: 15px !important;
+    }
+}
+
+/* Ensure proper alignment with BuddyBoss's grid system */
+.bb-grid-cell .ld-item-list,
+.bb-content-area .ld-item-list {
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Breadcrumb Customization - Hide Home and Courses */
+.breadcrumbs,
+.bb-breadcrumbs,
+.learndash-breadcrumbs,
+.breadcrumb,
+.breadcrumbs-list,
+.breadcrumb-trail {
+    /* Hide specific breadcrumb items */
+}
+
+.breadcrumbs a[href*="home"],
+.breadcrumbs a[href*="/"],
+.breadcrumbs a[href*="courses"],
+.breadcrumbs a[href*="course"],
+.breadcrumb a[href*="home"],
+.breadcrumb a[href*="/"],
+.breadcrumb a[href*="courses"],
+.breadcrumb a[href*="course"],
+.breadcrumb-trail a[href*="home"],
+.breadcrumb-trail a[href*="/"],
+.breadcrumb-trail a[href*="courses"],
+.breadcrumb-trail a[href*="course"],
+.bb-breadcrumbs a[href*="home"],
+.bb-breadcrumbs a[href*="/"],
+.bb-breadcrumbs a[href*="courses"],
+.bb-breadcrumbs a[href*="course"],
+.learndash-breadcrumbs a[href*="home"],
+.learndash-breadcrumbs a[href*="/"],
+.learndash-breadcrumbs a[href*="courses"],
+.learndash-breadcrumbs a[href*="course"] {
+    display: none !important;
+}
+
+/* Hide breadcrumb separators that would be orphaned */
+.breadcrumbs a[href*="home"] + .breadcrumb-separator,
+.breadcrumbs a[href*="/"] + .breadcrumb-separator,
+.breadcrumbs a[href*="courses"] + .breadcrumb-separator,
+.breadcrumbs a[href*="course"] + .breadcrumb-separator,
+.breadcrumb a[href*="home"] + .breadcrumb-separator,
+.breadcrumb a[href*="/"] + .breadcrumb-separator,
+.breadcrumb a[href*="courses"] + .breadcrumb-separator,
+.breadcrumb a[href*="course"] + .breadcrumb-separator,
+.breadcrumb-trail a[href*="home"] + .breadcrumb-separator,
+.breadcrumb-trail a[href*="/"] + .breadcrumb-separator,
+.breadcrumb-trail a[href*="courses"] + .breadcrumb-separator,
+.breadcrumb-trail a[href*="course"] + .breadcrumb-separator,
+.bb-breadcrumbs a[href*="home"] + .breadcrumb-separator,
+.bb-breadcrumbs a[href*="/"] + .breadcrumb-separator,
+.bb-breadcrumbs a[href*="courses"] + .breadcrumb-separator,
+.bb-breadcrumbs a[href*="course"] + .breadcrumb-separator,
+.learndash-breadcrumbs a[href*="home"] + .breadcrumb-separator,
+.learndash-breadcrumbs a[href*="/"] + .breadcrumb-separator,
+.learndash-breadcrumbs a[href*="courses"] + .breadcrumb-separator,
+.learndash-breadcrumbs a[href*="course"] + .breadcrumb-separator {
+    display: none !important;
+}
+
+/* More specific BuddyBoss breadcrumb targeting */
+.bb-template-v2 .breadcrumbs a[href*="home"],
+.bb-template-v2 .breadcrumbs a[href*="/"],
+.bb-template-v2 .breadcrumbs a[href*="courses"],
+.bb-template-v2 .breadcrumbs a[href*="course"],
+.bb-template-v2 .breadcrumb a[href*="home"],
+.bb-template-v2 .breadcrumb a[href*="/"],
+.bb-template-v2 .breadcrumb a[href*="courses"],
+.bb-template-v2 .breadcrumb a[href*="course"] {
+    display: none !important;
+}
+
+/* LearnDash specific breadcrumb hiding */
+.learndash-wrapper .breadcrumbs a[href*="home"],
+.learndash-wrapper .breadcrumbs a[href*="/"],
+.learndash-wrapper .breadcrumbs a[href*="courses"],
+.learndash-wrapper .breadcrumbs a[href*="course"],
+.learndash-wrapper .breadcrumb a[href*="home"],
+.learndash-wrapper .breadcrumb a[href*="/"],
+.learndash-wrapper .breadcrumb a[href*="courses"],
+.learndash-wrapper .breadcrumb a[href*="course"] {
+    display: none !important;
+}
+
+/* Additional breadcrumb hiding for common patterns */
+.breadcrumbs li:first-child a[href*="home"],
+.breadcrumbs li:first-child a[href*="/"],
+.breadcrumbs li:nth-child(2) a[href*="courses"],
+.breadcrumbs li:nth-child(2) a[href*="course"],
+.breadcrumb li:first-child a[href*="home"],
+.breadcrumb li:first-child a[href*="/"],
+.breadcrumb li:nth-child(2) a[href*="courses"],
+.breadcrumb li:nth-child(2) a[href*="course"] {
+    display: none !important;
+}

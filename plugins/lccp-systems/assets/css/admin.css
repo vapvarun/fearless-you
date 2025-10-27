@@ -1,0 +1,475 @@
+/**
+ * Admin styles for Dasher
+ *
+ * @package Dasher
+ * @since 1.0.0
+ */
+
+/* Course Builder Menu-Style Interface */
+.toplevel_page_dasher-course-builder .menu-edit {
+    margin-right: 300px;
+}
+
+.toplevel_page_dasher-course-builder #menu-settings-column {
+    float: right;
+    clear: right;
+    width: 280px;
+    margin-left: -300px;
+}
+
+.toplevel_page_dasher-course-builder #menu-management-liquid {
+    float: left;
+    min-width: 100%;
+}
+
+.toplevel_page_dasher-course-builder #menu-management {
+    position: relative;
+    margin-right: 20px;
+    margin-top: 13px;
+}
+
+.toplevel_page_dasher-course-builder .accordion-container {
+    border: 1px solid #dfdfdf;
+    background: #fff;
+}
+
+.toplevel_page_dasher-course-builder .accordion-section {
+    border-bottom: 1px solid #dfdfdf;
+}
+
+.toplevel_page_dasher-course-builder .accordion-section-title {
+    margin: 0;
+    padding: 12px 15px 15px;
+    position: relative;
+    border-left: 4px solid #fff;
+    cursor: pointer;
+    font-size: 14px;
+    line-height: 1.4;
+    background: #f7f7f7;
+}
+
+.toplevel_page_dasher-course-builder .accordion-section.open .accordion-section-title {
+    border-left-color: #2271b1;
+    background: #f0f6fc;
+}
+
+.toplevel_page_dasher-course-builder .accordion-section-content {
+    padding: 13px 15px 15px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.toplevel_page_dasher-course-builder .categorychecklist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.toplevel_page_dasher-course-builder .categorychecklist li {
+    margin: 0;
+    padding: 3px 0;
+}
+
+.toplevel_page_dasher-course-builder .menu-item {
+    margin-bottom: 0;
+    position: relative;
+    border: 1px solid #dfdfdf;
+    background: #fff;
+}
+
+.toplevel_page_dasher-course-builder .menu-item-bar {
+    clear: both;
+    line-height: 1.5;
+    position: relative;
+    margin: 13px 0;
+}
+
+.toplevel_page_dasher-course-builder .menu-item-handle {
+    border: 1px solid #dfdfdf;
+    position: relative;
+    padding: 10px 15px;
+    background: #f7f7f7;
+    border-radius: 3px;
+    cursor: move;
+}
+
+.toplevel_page_dasher-course-builder .menu-item-title {
+    font-weight: 600;
+}
+
+.toplevel_page_dasher-course-builder .item-controls {
+    float: right;
+    font-size: 11px;
+    line-height: 1.4;
+}
+
+.toplevel_page_dasher-course-builder .item-type {
+    color: #646970;
+    margin-right: 10px;
+}
+
+.toplevel_page_dasher-course-builder .item-edit {
+    color: #2271b1;
+    text-decoration: none;
+}
+
+.toplevel_page_dasher-course-builder .menu-item-settings {
+    display: none;
+    padding: 10px 15px 15px;
+    background: #f6f7f7;
+    border-top: 1px solid #dfdfdf;
+}
+
+.toplevel_page_dasher-course-builder .menu-item-depth-1 .menu-item-handle {
+    margin-left: 30px;
+}
+
+.toplevel_page_dasher-course-builder .menu-item-depth-1 .menu-item-settings {
+    margin-left: 30px;
+}
+
+.toplevel_page_dasher-course-builder .button-controls {
+    text-align: right;
+    margin-top: 10px;
+}
+
+.toplevel_page_dasher-course-builder .course-selector {
+    margin-bottom: 15px;
+}
+
+.toplevel_page_dasher-course-builder .course-select {
+    width: 100%;
+    margin: 5px 0;
+}
+
+.toplevel_page_dasher-course-builder .count-theme-items {
+    background: #646970;
+    color: #fff;
+    border-radius: 9px;
+    padding: 2px 6px;
+    font-size: 11px;
+    margin-left: 5px;
+}
+
+.toplevel_page_dasher-course-builder .major-publishing-actions {
+    padding: 10px;
+    clear: both;
+    border-top: 1px solid #dfdfdf;
+    background: #f6f7f7;
+}
+
+.toplevel_page_dasher-course-builder .publishing-action {
+    text-align: right;
+    float: right;
+    line-height: 23px;
+}
+
+.toplevel_page_dasher-course-builder .course-instructions {
+    margin: 15px 0;
+    padding: 10px;
+    background: #f0f6fc;
+    border-left: 4px solid #2271b1;
+}
+
+.toplevel_page_dasher-course-builder .sortable-placeholder {
+    background: #f0f6fc;
+    border: 2px dashed #2271b1;
+    height: 50px;
+    margin: 5px 0;
+}
+
+.toplevel_page_dasher-course-builder #nav-menu-header {
+    border-bottom: 1px solid #dfdfdf;
+    padding: 0;
+}
+
+.toplevel_page_dasher-course-builder .menu-name-label {
+    float: left;
+    padding: 14px 0;
+    margin-right: 10px;
+}
+
+.toplevel_page_dasher-course-builder .menu-name {
+    width: 250px;
+    margin: 8px 0;
+}
+
+.toplevel_page_dasher-course-builder .menu-settings {
+    border-top: 1px solid #dfdfdf;
+    padding: 15px;
+    background: #f6f7f7;
+}
+
+.toplevel_page_dasher-course-builder .menu-settings-group {
+    margin-bottom: 20px;
+    border: none;
+    padding: 0;
+}
+
+.toplevel_page_dasher-course-builder .menu-settings-group-name {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #23282d;
+    font-size: 13px;
+}
+
+.toplevel_page_dasher-course-builder .menu-settings-input {
+    margin-bottom: 10px;
+}
+
+.toplevel_page_dasher-course-builder .menu-settings-input label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.toplevel_page_dasher-course-builder .menu-settings-input select {
+    width: 100%;
+    max-width: 250px;
+}
+
+.toplevel_page_dasher-course-builder .checkbox-input label {
+    display: flex;
+    align-items: center;
+    font-weight: normal;
+}
+
+.toplevel_page_dasher-course-builder .checkbox-input input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+/* No Course Selected State */
+.toplevel_page_dasher-course-builder .no-course-selected {
+    opacity: 0.5;
+    pointer-events: none;
+    background: #f9f9f9;
+}
+
+.toplevel_page_dasher-course-builder .no-course-selected-content {
+    text-align: center;
+    padding: 60px 20px;
+    background: #f9f9f9;
+    border: 2px dashed #ddd;
+    border-radius: 8px;
+    margin: 20px;
+}
+
+.toplevel_page_dasher-course-builder .no-course-message {
+    font-size: 16px;
+    color: #666;
+    margin: 0;
+}
+
+.toplevel_page_dasher-course-builder .course-structure-title {
+    margin: 0;
+    padding: 15px 20px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #23282d;
+    background: #f0f6fc;
+    border-left: 4px solid #2271b1;
+}
+
+/* Connection indicator */
+.dasher-connected-indicator {
+    color: #ffb900;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+/* Settings page */
+.dasher-settings-wrap .success {
+    color: #46b450;
+}
+
+.dasher-settings-wrap .error {
+    color: #dc3232;
+}
+
+/* Visualization page */
+.dasher-visualization-wrap {
+    margin: 20px 0;
+}
+
+.dasher-description {
+    background: #f9f9f9;
+    border-left: 4px solid #0073aa;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 3px;
+}
+
+.dasher-visualization-container {
+    margin-top: 20px;
+}
+
+.dasher-courses-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.dasher-courses-table thead th {
+    background: #f1f1f1;
+    padding: 12px 15px;
+    border-bottom: 1px solid #ccd0d4;
+    font-weight: 600;
+    color: #23282d;
+}
+
+.dasher-courses-table tbody td {
+    padding: 0;
+    border-bottom: 1px solid #f0f0f1;
+}
+
+.dasher-courses-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.dasher-course-header {
+    padding: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.2s ease;
+}
+
+.dasher-course-header:hover {
+    background-color: #f9f9f9;
+}
+
+.dasher-course-header .dashicons,
+.dasher-child-item .dashicons {
+    vertical-align: middle;
+    margin-right: 8px;
+    color: #0073aa;
+}
+
+.dasher-course-header .dashicons-welcome-learn-more {
+    color: #46b450;
+    font-size: 18px;
+}
+
+.dasher-toggle-icon {
+    cursor: pointer;
+    color: #0073aa;
+    transition: color 0.2s ease;
+    margin-right: 8px;
+}
+
+.dasher-toggle-icon:hover {
+    color: #005a87;
+}
+
+.dasher-toggle-placeholder {
+    display: inline-block;
+    width: 20px;
+    margin-right: 8px;
+}
+
+.dasher-course-content {
+    padding: 0 15px 15px 51px;
+    background: #fafafa;
+    border-top: 1px solid #f0f0f1;
+}
+
+.dasher-children-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.dasher-child-item {
+    padding: 8px 0;
+    margin: 2px 0;
+    display: flex;
+    align-items: center;
+    border-radius: 3px;
+    transition: background-color 0.2s ease;
+}
+
+.dasher-child-item:hover {
+    background-color: #f0f0f1;
+}
+
+.dasher-child-item a {
+    color: #0073aa;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.dasher-child-item a:hover {
+    color: #005a87;
+    text-decoration: underline;
+}
+
+.dasher-child-content {
+    padding: 5px 0 5px 24px;
+    display: none;
+    margin-top: 5px;
+}
+
+.dasher-loading {
+    padding: 10px;
+    color: #666;
+    font-style: italic;
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+}
+
+.dasher-error {
+    color: #dc3232;
+    padding: 10px;
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #dc3232;
+    margin: 5px 0;
+}
+
+.dasher-no-children {
+    color: #666;
+    font-style: italic;
+    padding: 8px 0;
+    margin: 5px 0;
+}
+
+/* Icon colors for different content types */
+.dasher-child-item .dashicons-media-text {
+    color: #0073aa; /* Lessons */
+}
+
+.dasher-child-item .dashicons-media-document {
+    color: #46b450; /* Topics */
+}
+
+.dasher-child-item .dashicons-clipboard {
+    color: #ffb900; /* Quizzes */
+}
+
+.dasher-child-item .dashicons-media-default {
+    color: #666; /* Default */
+}
+
+/* Responsive design */
+@media (max-width: 782px) {
+    .dasher-course-header {
+        padding: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .dasher-course-content {
+        padding: 0 10px 10px 30px;
+    }
+    
+    .dasher-child-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 5px 0;
+    }
+} 

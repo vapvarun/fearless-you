@@ -1,0 +1,360 @@
+/**
+ * LCCP Accessibility Styles
+ * Integrates with BuddyBoss theme variables
+ */
+
+:root {
+    /* Use BuddyBoss theme colors when available */
+    --lccp-primary: var(--bb-primary-color, #007cba);
+    --lccp-secondary: var(--bb-secondary-color, #ff6b00);
+    --lccp-text: var(--bb-body-text-color, #122b46);
+    --lccp-heading: var(--bb-heading-text-color, #122b46);
+    --lccp-link: var(--bb-primary-button-background-regular, #007cba);
+    --lccp-link-hover: var(--bb-primary-button-background-hover, #005a87);
+    --lccp-border: var(--bb-primary-button-border-regular, #e7e9ec);
+    --lccp-background: var(--bb-body-background-color, #ffffff);
+    --lccp-alt-background: var(--bb-alternate-background-color, #f7f7f7);
+}
+
+/* Accessibility Widget */
+.lccp-a11y-widget {
+    position: fixed;
+    z-index: 999999;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.lccp-a11y-widget.bottom-left {
+    bottom: 20px;
+    left: 20px;
+}
+
+.lccp-a11y-widget.bottom-right {
+    bottom: 20px;
+    right: 20px;
+}
+
+.lccp-a11y-toggle {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--lccp-primary);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.lccp-a11y-toggle:hover {
+    background: var(--lccp-link-hover);
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.lccp-a11y-toggle:focus {
+    outline: 3px solid var(--lccp-secondary);
+    outline-offset: 2px;
+}
+
+.lccp-a11y-panel {
+    position: absolute;
+    bottom: 70px;
+    left: 0;
+    background: var(--lccp-background);
+    border: 1px solid var(--lccp-border);
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    width: 320px;
+    max-height: 500px;
+    overflow-y: auto;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.lccp-a11y-header {
+    padding: 15px;
+    border-bottom: 1px solid var(--lccp-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--lccp-alt-background);
+}
+
+.lccp-a11y-header h2 {
+    margin: 0;
+    font-size: 16px;
+    color: var(--lccp-heading);
+}
+
+.lccp-a11y-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--lccp-text);
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lccp-a11y-content {
+    padding: 15px;
+}
+
+.lccp-a11y-option {
+    margin-bottom: 10px;
+}
+
+.lccp-a11y-btn {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--lccp-border);
+    border-radius: 6px;
+    background: var(--lccp-background);
+    color: var(--lccp-text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s ease;
+    font-size: 14px;
+}
+
+.lccp-a11y-btn:hover {
+    background: var(--lccp-alt-background);
+    border-color: var(--lccp-primary);
+}
+
+.lccp-a11y-btn:focus {
+    outline: 2px solid var(--lccp-primary);
+    outline-offset: 2px;
+}
+
+.lccp-a11y-btn.active {
+    background: var(--lccp-primary);
+    color: white;
+    border-color: var(--lccp-primary);
+}
+
+.lccp-a11y-icon {
+    font-size: 20px;
+}
+
+.lccp-a11y-btn-reset {
+    background: var(--lccp-alt-background);
+    border-color: var(--lccp-secondary);
+}
+
+/* Reading Guide */
+.lccp-reading-guide {
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: rgba(255, 255, 0, 0.3);
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+    pointer-events: none;
+    z-index: 999998;
+    transition: top 0.1s ease;
+}
+
+/* Accessibility Features */
+body.lccp-a11y-high-contrast {
+    background: #000 !important;
+    color: #fff !important;
+}
+
+body.lccp-a11y-high-contrast * {
+    background: #000 !important;
+    color: #fff !important;
+    border-color: #fff !important;
+}
+
+body.lccp-a11y-high-contrast a {
+    color: #ffff00 !important;
+    text-decoration: underline !important;
+}
+
+body.lccp-a11y-high-contrast button,
+body.lccp-a11y-high-contrast input[type="submit"] {
+    background: #fff !important;
+    color: #000 !important;
+}
+
+body.lccp-a11y-font-size {
+    font-size: 120% !important;
+}
+
+body.lccp-a11y-font-size * {
+    font-size: inherit !important;
+}
+
+body.lccp-a11y-readable-font {
+    font-family: Arial, Helvetica, sans-serif !important;
+}
+
+body.lccp-a11y-readable-font * {
+    font-family: inherit !important;
+}
+
+body.lccp-a11y-highlight-links a {
+    background: yellow !important;
+    color: #000 !important;
+    padding: 2px 4px !important;
+    text-decoration: underline !important;
+}
+
+body.lccp-a11y-keyboard-nav *:focus {
+    outline: 3px solid #ff0000 !important;
+    outline-offset: 2px !important;
+}
+
+body.lccp-a11y-no-animations *,
+body.lccp-a11y-no-animations *:before,
+body.lccp-a11y-no-animations *:after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    animation-delay: 0.01ms !important;
+}
+
+body.lccp-a11y-text-spacing * {
+    line-height: 1.5 !important;
+    letter-spacing: 0.12em !important;
+    word-spacing: 0.16em !important;
+}
+
+body.lccp-a11y-text-spacing p {
+    margin-bottom: 2em !important;
+}
+
+body.lccp-a11y-large-cursor {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><polygon points="14,0 34,20 24,22 20,34 14,34 14,0" fill="black" stroke="white" stroke-width="2"/></svg>') 24 24, auto !important;
+}
+
+body.lccp-a11y-large-cursor * {
+    cursor: inherit !important;
+}
+
+/* Screen Reader Mode */
+body.lccp-a11y-screen-reader img:not([alt]),
+body.lccp-a11y-screen-reader [aria-hidden="true"] {
+    opacity: 0.3 !important;
+}
+
+body.lccp-a11y-screen-reader .screen-reader-text {
+    clip: auto !important;
+    clip-path: none !important;
+    height: auto !important;
+    margin: 0 !important;
+    overflow: visible !important;
+    position: static !important;
+    width: auto !important;
+    background: #000 !important;
+    color: #fff !important;
+    padding: 5px !important;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .lccp-a11y-panel {
+        width: calc(100vw - 40px);
+        max-width: 320px;
+    }
+    
+    .lccp-a11y-widget.bottom-left,
+    .lccp-a11y-widget.bottom-right {
+        left: 20px;
+        right: auto;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .lccp-a11y-toggle {
+        width: 48px;
+        height: 48px;
+    }
+    
+    .lccp-a11y-panel {
+        bottom: 60px;
+    }
+    
+    .lccp-a11y-btn {
+        padding: 10px;
+        font-size: 13px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .lccp-a11y-widget {
+        display: none !important;
+    }
+}
+
+/* BuddyBoss Theme Integration */
+.buddyboss-theme body.lccp-a11y-high-contrast .bb-header-buttons {
+    background: #000 !important;
+}
+
+.buddyboss-theme body.lccp-a11y-high-contrast .site-header {
+    background: #000 !important;
+    border-color: #fff !important;
+}
+
+.buddyboss-theme body.lccp-a11y-high-contrast .bb-course-header {
+    background: #000 !important;
+}
+
+.buddyboss-theme body.lccp-a11y-high-contrast .learndash-wrapper {
+    background: #000 !important;
+}
+
+/* LearnDash Integration */
+body.lccp-a11y-high-contrast .learndash_mark_complete_button {
+    background: #fff !important;
+    color: #000 !important;
+    border: 2px solid #fff !important;
+}
+
+body.lccp-a11y-font-size .learndash-wrapper {
+    font-size: inherit !important;
+}
+
+/* Focus indicators for LearnDash elements */
+.learndash-wrapper *:focus,
+.ld-focus-mode *:focus {
+    outline: 3px solid var(--lccp-primary) !important;
+    outline-offset: 2px !important;
+}
+
+/* Ensure BuddyBoss mobile menu is accessible */
+@media screen and (max-width: 768px) {
+    .buddyboss-theme .mobile-menu-button {
+        min-width: 44px !important;
+        min-height: 44px !important;
+    }
+    
+    .buddyboss-theme .bb-mobile-menu a {
+        min-height: 44px !important;
+        display: flex !important;
+        align-items: center !important;
+    }
+}

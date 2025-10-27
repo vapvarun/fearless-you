@@ -1,0 +1,337 @@
+/**
+ * LCCP Admin Dashboard Widget Styles
+ */
+
+/* Dashboard Widget Container */
+#dashboard-widgets .lccp-dashboard-widget {
+    padding: 0;
+}
+
+.lccp-dashboard-widget .inside {
+    padding: 12px;
+    margin: 0;
+}
+
+/* Widget Header */
+.lccp-widget-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e0e0e0;
+    margin: -12px -12px 12px;
+}
+
+.lccp-widget-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    color: #23282d;
+}
+
+.lccp-role-badge {
+    font-size: 11px;
+    padding: 3px 8px;
+    background: #0073aa;
+    color: white;
+    border-radius: 3px;
+    font-weight: normal;
+}
+
+/* Statistics Grid */
+.lccp-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.lccp-stat-card {
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.lccp-stat-number {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0073aa;
+    line-height: 1;
+}
+
+.lccp-stat-label {
+    font-size: 11px;
+    color: #666;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+/* Quick Actions */
+.lccp-quick-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.lccp-quick-action {
+    flex: 1;
+    padding: 8px 12px;
+    background: #0073aa;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 13px;
+    transition: background 0.2s;
+}
+
+.lccp-quick-action:hover {
+    background: #005a87;
+    color: white;
+}
+
+/* Student List Table */
+.lccp-student-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.lccp-student-table th {
+    text-align: left;
+    padding: 8px;
+    background: #f8f9fa;
+    font-size: 12px;
+    font-weight: 600;
+    color: #666;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.lccp-student-table td {
+    padding: 8px;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 13px;
+}
+
+.lccp-student-table tr:hover {
+    background: #f8f9fa;
+}
+
+.lccp-student-name {
+    font-weight: 500;
+    color: #0073aa;
+    text-decoration: none;
+}
+
+.lccp-student-name:hover {
+    color: #005a87;
+}
+
+/* Progress Indicators */
+.lccp-progress-bar {
+    width: 100px;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.lccp-progress-fill {
+    height: 100%;
+    background: #46b450;
+    transition: width 0.3s;
+}
+
+/* Status Badges */
+.lccp-status-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.lccp-status-active {
+    background: #d4edda;
+    color: #155724;
+}
+
+.lccp-status-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.lccp-status-completed {
+    background: #cce5ff;
+    color: #004085;
+}
+
+.lccp-status-overdue {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* Timeline Widget */
+.lccp-timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.lccp-timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: #e0e0e0;
+}
+
+.lccp-timeline-item {
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.lccp-timeline-marker {
+    position: absolute;
+    left: -24px;
+    top: 2px;
+    width: 12px;
+    height: 12px;
+    background: white;
+    border: 2px solid #0073aa;
+    border-radius: 50%;
+}
+
+.lccp-timeline-content {
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.lccp-timeline-date {
+    font-size: 11px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.lccp-timeline-title {
+    font-weight: 500;
+    color: #23282d;
+}
+
+/* Empty State */
+.lccp-empty-state {
+    text-align: center;
+    padding: 30px;
+    color: #666;
+}
+
+.lccp-empty-icon {
+    font-size: 48px;
+    color: #ddd;
+    margin-bottom: 10px;
+}
+
+.lccp-empty-message {
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.lccp-empty-action {
+    display: inline-block;
+    padding: 8px 16px;
+    background: #0073aa;
+    color: white;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+.lccp-empty-action:hover {
+    background: #005a87;
+    color: white;
+}
+
+/* Loading State */
+.lccp-loading {
+    text-align: center;
+    padding: 30px;
+}
+
+.lccp-spinner {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 3px solid #f0f0f0;
+    border-top-color: #0073aa;
+    border-radius: 50%;
+    animation: lccp-spin 1s linear infinite;
+}
+
+@keyframes lccp-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Tabs Navigation */
+.lccp-tabs {
+    display: flex;
+    border-bottom: 1px solid #e0e0e0;
+    margin: -12px -12px 15px;
+    padding: 0 12px;
+    background: #f8f9fa;
+}
+
+.lccp-tab {
+    padding: 10px 15px;
+    color: #666;
+    text-decoration: none;
+    font-size: 13px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.lccp-tab:hover {
+    color: #23282d;
+}
+
+.lccp-tab.active {
+    color: #0073aa;
+    border-bottom-color: #0073aa;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 782px) {
+    .lccp-stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .lccp-quick-actions {
+        flex-direction: column;
+    }
+    
+    .lccp-progress-bar {
+        width: 60px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .lccp-quick-actions,
+    .lccp-tabs {
+        display: none;
+    }
+    
+    .lccp-dashboard-widget {
+        border: 1px solid #ddd;
+        page-break-inside: avoid;
+    }
+}

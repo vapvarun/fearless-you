@@ -1,0 +1,50 @@
+/**
+ * LCCP Checklist Admin Styles
+ */
+
+/* TinyMCE button icon */
+.mce-i-checklist:before {
+    content: "\f147";
+    font-family: dashicons;
+    font-size: 20px;
+    line-height: 20px;
+}
+
+/* Visual representation in editor */
+.mce-lccp-checklist {
+    border: 2px dashed #4CAF50;
+    padding: 10px;
+    margin: 10px 0;
+    background: #f0f9f0;
+    border-radius: 4px;
+    min-height: 50px;
+    position: relative;
+}
+
+.mce-checklist-placeholder {
+    color: #4CAF50;
+    font-weight: bold;
+    display: inline-block;
+    padding: 5px 10px;
+    background: white;
+    border-radius: 3px;
+}
+
+/* Meta box styles */
+#lccp_checklist_settings .inside {
+    margin: 0;
+    padding: 10px;
+}
+
+#lccp_checklist_settings label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#lccp_checklist_settings input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+#lccp_checklist_settings .widefat {
+    margin-bottom: 10px;
+}

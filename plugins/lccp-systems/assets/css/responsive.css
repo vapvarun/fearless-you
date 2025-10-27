@@ -1,0 +1,391 @@
+/**
+ * LCCP Responsive Design System
+ * Mobile-first approach with BuddyBoss theme integration
+ */
+
+/* Base responsive utilities */
+.lccp-container {
+    width: 100%;
+    max-width: var(--bb-container-width, 1200px);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Mobile First - Base styles for mobile */
+@media screen {
+    /* Responsive text */
+    html {
+        font-size: 16px;
+        -webkit-text-size-adjust: 100%;
+    }
+    
+    body {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+    
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.25rem; }
+    h4 { font-size: 1.1rem; }
+    h5 { font-size: 1rem; }
+    h6 { font-size: 0.9rem; }
+    
+    /* Responsive images and media */
+    img, video, iframe, embed, object {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    /* Responsive tables */
+    table {
+        width: 100%;
+        overflow-x: auto;
+        display: block;
+    }
+    
+    /* Responsive forms */
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    input[type="password"],
+    input[type="search"],
+    input[type="number"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="month"],
+    input[type="week"],
+    input[type="time"],
+    input[type="datetime-local"],
+    input[type="color"],
+    textarea,
+    select {
+        width: 100%;
+        max-width: 100%;
+        padding: 10px;
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    /* Responsive buttons */
+    button,
+    input[type="submit"],
+    input[type="button"],
+    .button,
+    .btn {
+        min-height: 44px;
+        padding: 10px 20px;
+        font-size: 1rem;
+        touch-action: manipulation;
+    }
+    
+    /* Grid system */
+    .lccp-row {
+        display: flex;
+        flex-wrap: wrap;
+        margin: -10px;
+    }
+    
+    .lccp-col {
+        flex: 1 1 100%;
+        padding: 10px;
+    }
+}
+
+/* Tablet styles (768px and up) */
+@media screen and (min-width: 768px) {
+    h1 { font-size: 2.25rem; }
+    h2 { font-size: 1.875rem; }
+    h3 { font-size: 1.5rem; }
+    h4 { font-size: 1.25rem; }
+    h5 { font-size: 1.1rem; }
+    h6 { font-size: 1rem; }
+    
+    .lccp-col-md-1 { flex: 0 0 8.333333%; max-width: 8.333333%; }
+    .lccp-col-md-2 { flex: 0 0 16.666667%; max-width: 16.666667%; }
+    .lccp-col-md-3 { flex: 0 0 25%; max-width: 25%; }
+    .lccp-col-md-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+    .lccp-col-md-5 { flex: 0 0 41.666667%; max-width: 41.666667%; }
+    .lccp-col-md-6 { flex: 0 0 50%; max-width: 50%; }
+    .lccp-col-md-7 { flex: 0 0 58.333333%; max-width: 58.333333%; }
+    .lccp-col-md-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
+    .lccp-col-md-9 { flex: 0 0 75%; max-width: 75%; }
+    .lccp-col-md-10 { flex: 0 0 83.333333%; max-width: 83.333333%; }
+    .lccp-col-md-11 { flex: 0 0 91.666667%; max-width: 91.666667%; }
+    .lccp-col-md-12 { flex: 0 0 100%; max-width: 100%; }
+    
+    /* Responsive tables - restore normal display */
+    table {
+        display: table;
+        overflow-x: visible;
+    }
+}
+
+/* Desktop styles (1024px and up) */
+@media screen and (min-width: 1024px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.75rem; }
+    h4 { font-size: 1.5rem; }
+    h5 { font-size: 1.25rem; }
+    h6 { font-size: 1.1rem; }
+    
+    .lccp-col-lg-1 { flex: 0 0 8.333333%; max-width: 8.333333%; }
+    .lccp-col-lg-2 { flex: 0 0 16.666667%; max-width: 16.666667%; }
+    .lccp-col-lg-3 { flex: 0 0 25%; max-width: 25%; }
+    .lccp-col-lg-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+    .lccp-col-lg-5 { flex: 0 0 41.666667%; max-width: 41.666667%; }
+    .lccp-col-lg-6 { flex: 0 0 50%; max-width: 50%; }
+    .lccp-col-lg-7 { flex: 0 0 58.333333%; max-width: 58.333333%; }
+    .lccp-col-lg-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
+    .lccp-col-lg-9 { flex: 0 0 75%; max-width: 75%; }
+    .lccp-col-lg-10 { flex: 0 0 83.333333%; max-width: 83.333333%; }
+    .lccp-col-lg-11 { flex: 0 0 91.666667%; max-width: 91.666667%; }
+    .lccp-col-lg-12 { flex: 0 0 100%; max-width: 100%; }
+}
+
+/* LCCP Dashboard Responsive */
+.lccp-admin-overview .stats-grid {
+    display: grid;
+    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+@media screen and (max-width: 768px) {
+    .lccp-admin-overview .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* LCCP Hour Tracker Form Responsive */
+.lccp-hour-tracker-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 480px) {
+    .lccp-hour-tracker-form .radio-group {
+        flex-direction: column;
+    }
+    
+    .lccp-hour-tracker-form .radio-group label {
+        margin-bottom: 10px;
+    }
+}
+
+/* BuddyBoss Theme Responsive Overrides */
+@media screen and (max-width: 768px) {
+    /* Fix BuddyBoss header on mobile */
+    .buddyboss-theme .site-header {
+        position: relative;
+    }
+    
+    /* Fix BuddyBoss sidebar on mobile */
+    .buddyboss-theme .bb-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .buddyboss-theme .bb-sidebar {
+        display: none;
+    }
+    
+    .buddyboss-theme .bb-sidebar.mobile-visible {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 9999;
+        background: var(--bb-body-background-color);
+    }
+}
+
+/* LearnDash Responsive Overrides */
+@media screen and (max-width: 768px) {
+    /* Course grid responsive */
+    .ld-course-list-items {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Course navigation responsive */
+    .learndash-wrapper .ld-course-navigation {
+        flex-direction: column;
+    }
+    
+    .learndash-wrapper .ld-course-navigation .ld-course-nav-item {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    /* Progress bar responsive */
+    .learndash-wrapper .ld-progress {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .learndash-wrapper .ld-progress-bar {
+        margin-bottom: 10px;
+    }
+}
+
+/* WordPress Admin Responsive */
+@media screen and (max-width: 782px) {
+    /* Admin menu responsive */
+    #adminmenu {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+    
+    #adminmenu.mobile-visible {
+        transform: translateX(0);
+    }
+    
+    /* Admin bar responsive */
+    #wpadminbar {
+        position: fixed;
+    }
+    
+    /* Admin content area */
+    #wpcontent {
+        margin-left: 0;
+    }
+    
+    /* Form tables responsive */
+    .form-table th,
+    .form-table td {
+        display: block;
+        width: 100%;
+    }
+    
+    .form-table th {
+        padding-bottom: 5px;
+        font-weight: bold;
+    }
+}
+
+/* Utility classes for responsive visibility */
+.hide-mobile {
+    display: block !important;
+}
+
+.show-mobile {
+    display: none !important;
+}
+
+@media screen and (max-width: 768px) {
+    .hide-mobile {
+        display: none !important;
+    }
+    
+    .show-mobile {
+        display: block !important;
+    }
+}
+
+.hide-tablet {
+    display: block !important;
+}
+
+.show-tablet {
+    display: none !important;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .hide-tablet {
+        display: none !important;
+    }
+    
+    .show-tablet {
+        display: block !important;
+    }
+}
+
+.hide-desktop {
+    display: none !important;
+}
+
+.show-desktop {
+    display: block !important;
+}
+
+@media screen and (min-width: 1024px) {
+    .hide-desktop {
+        display: block !important;
+    }
+    
+    .show-desktop {
+        display: none !important;
+    }
+}
+
+/* Print responsive styles */
+@media print {
+    * {
+        color: #000 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    
+    a,
+    a:visited {
+        text-decoration: underline;
+    }
+    
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+    
+    abbr[title]:after {
+        content: " (" attr(title) ")";
+    }
+    
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+        content: "";
+    }
+    
+    pre,
+    blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+    
+    thead {
+        display: table-header-group;
+    }
+    
+    tr,
+    img {
+        page-break-inside: avoid;
+    }
+    
+    img {
+        max-width: 100% !important;
+    }
+    
+    @page {
+        margin: 0.5cm;
+    }
+    
+    p,
+    h2,
+    h3 {
+        orphans: 3;
+        widows: 3;
+    }
+    
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+    
+    /* Hide non-essential elements */
+    .lccp-a11y-widget,
+    .site-header,
+    .site-footer,
+    .bb-sidebar,
+    #wpadminbar {
+        display: none !important;
+    }
+}
