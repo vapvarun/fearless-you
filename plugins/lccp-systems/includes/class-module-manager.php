@@ -434,7 +434,8 @@ class LCCP_Module_Manager {
      * Enable a module with error protection
      */
     public function enable_module($module_id) {
-        if (!isset($this->module_settings[$module_id])) {
+        // Ensure we have an array format, not legacy string format
+        if (!isset($this->module_settings[$module_id]) || !is_array($this->module_settings[$module_id])) {
             $this->module_settings[$module_id] = array();
         }
         $this->module_settings[$module_id]['enabled'] = true;
@@ -574,9 +575,9 @@ class LCCP_Module_Manager {
 
                 case 'roles':
                 case 'membership_roles':
-                    $roles_ok = function_exists('get_role') && get_role('dasher_mentor') && get_role('dasher_bigbird');
+                    $roles_ok = function_exists('get_role') && get_role('lccp_mentor') && get_role('lccp_big_bird');
                     if (!$roles_ok) {
-                        $error = 'Required roles not registered (dasher_mentor, dasher_bigbird)';
+                        $error = 'Required roles not registered (lccp_mentor, lccp_big_bird)';
                     }
                     break;
 
@@ -614,9 +615,15 @@ class LCCP_Module_Manager {
         if (!empty($dependents)) {
             return new WP_Error('has_dependents', 'Cannot disable module with active dependencies');
         }
-        
+
         if (isset($this->module_settings[$module_id])) {
-            $this->module_settings[$module_id]['enabled'] = false;
+            // Handle both array and string formats
+            if (is_array($this->module_settings[$module_id])) {
+                $this->module_settings[$module_id]['enabled'] = false;
+            } else {
+                // Convert legacy string format to array format
+                $this->module_settings[$module_id] = array('enabled' => false);
+            }
             update_option('lccp_modules_settings', $this->module_settings);
         }
         
