@@ -6,21 +6,19 @@
 
 ## What We Have
 
-### Active Include Files (3 files)
-- `includes/other-options-handler.php` - Site options management
-- `includes/role-based-logo.php` - Custom logo per user role
-- `includes/class-fli-image-upload-handler.php` - Image upload handling
-
-### Admin Files
-- `inc/admin/admin-init.php` - Admin area initialization
-- `inc/admin/theme-functions.php` - Theme-specific functions
-- `inc/admin/dynamic-styles.php` - Dynamic CSS generation
-- `inc/learndash-customizer.php` - LearnDash customizations
+### Core Files
+- `functions.php` - Main theme functionality
+- `style.css` - Theme stylesheet
 
 ### Assets
 - Custom CSS in `assets/css/`
 - Custom JS in `assets/js/`
+- Template overrides in `template-parts/`
 - BuddyBoss Platform integration
+
+### Removed Directories (Now Clean)
+- ❌ `includes/` - REMOVED (all files deleted)
+- ❌ `inc/` - REMOVED (all files deleted)
 
 ## What To Do
 
@@ -59,7 +57,18 @@
   - `caching-system.php` (22 KB) - custom caching (use caching plugin instead)
   - Removed require statements from functions.php
   - **Reason:** No debug code on live site, caching handled by plugins
-- ✅ **Total cleanup:** 205 KB removed, 8 unused files deleted
+- ✅ **Removed ALL unused include/admin files (Oct 27, 2025):**
+  - `includes/other-options-handler.php` (25 KB) - AJAX handlers for unused page
+  - `includes/role-based-logo.php` (4 KB) - logo switcher (no users with those roles)
+  - `includes/class-fli-image-upload-handler.php` (12 KB) - unused shortcodes
+  - `inc/admin/admin-init.php` - admin menu for non-existent options
+  - `inc/admin/theme-functions.php` - helper functions for non-existent options
+  - `inc/admin/dynamic-styles.php` - CSS generator never called
+  - `inc/admin/category-colors.php` (14 KB) - depends on non-existent Redux options
+  - `inc/admin/options-init.php` (16 KB) - Redux config never used
+  - `inc/learndash-customizer.php` (17 KB) - never included
+  - **Removed entire `includes/` and `inc/` directories**
+- ✅ **Total cleanup:** ~330 KB removed, 16 files + 2 directories deleted
 
 ## Notes
 

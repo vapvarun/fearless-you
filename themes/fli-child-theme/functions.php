@@ -559,17 +559,6 @@ function make_registration_date_column_sortable( $columns ) {
 }
 add_filter( 'manage_users_sortable_columns', 'make_registration_date_column_sortable' );
 
-// Include other options handler
-require_once get_stylesheet_directory() . '/includes/other-options-handler.php';
-
-// Include role-based logo handler
-require_once get_stylesheet_directory() . '/includes/role-based-logo.php';
-
-// Include theme options
-require_once get_stylesheet_directory() . '/inc/admin/admin-init.php';
-require_once get_stylesheet_directory() . '/inc/admin/theme-functions.php';
-require_once get_stylesheet_directory() . '/inc/admin/dynamic-styles.php';
-
 /**
  * Extend login duration when "Remember Me" is checked.
  *
@@ -588,21 +577,6 @@ function extend_login_duration( $length, $user_id, $remember ) {
 	return $length;
 }
 add_filter( 'auth_cookie_expiration', 'extend_login_duration', 10, 3 );
-
-/**
- * Image Upload Handler
- * Extracted to separate file for better organization and live site testing
- *
- * Database check shows ZERO usage locally - verify on live site before removing
- * Shortcodes: [fli_image_upload] and [fli_image_gallery]
- *
- * To disable: Comment out the line below
- */
-if ( file_exists( get_stylesheet_directory() . '/includes/class-fli-image-upload-handler.php' ) ) {
-	require_once get_stylesheet_directory() . '/includes/class-fli-image-upload-handler.php';
-}
-
-
 
 
 /**
