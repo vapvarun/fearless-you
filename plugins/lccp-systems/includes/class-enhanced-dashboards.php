@@ -530,7 +530,7 @@ class LCCP_Enhanced_Dashboards {
             "SELECT u.*, a.assigned_date 
             FROM {$wpdb->prefix}lccp_assignments a
             JOIN {$wpdb->users} u ON a.pc_id = u.ID
-            WHERE a.big_bird_id = %d AND a.status = 'active'",
+            WHERE a.bigbird_id = %d AND a.status = 'active'",
             $this->current_user->ID
         ));
         
