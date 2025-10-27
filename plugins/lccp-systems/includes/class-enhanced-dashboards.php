@@ -596,19 +596,31 @@ class LCCP_Enhanced_Dashboards {
      * Render Mentor Students Widget
      */
     public function render_mentor_students_widget() {
+        global $wpdb;
         $mentor_id = get_current_user_id();
-        
-        // Get students assigned to this mentor
-        $students = get_users(array(
-            'meta_key' => 'mentor_id',
-            'meta_value' => $mentor_id,
-            'role' => 'subscriber'
-        ));
-        
+
+        // Get students assigned to this mentor with their hours in a single query
+        $students = $wpdb->get_results($wpdb->prepare("
+            SELECT
+                u.ID,
+                u.display_name,
+                COALESCE(SUM(h.session_length), 0) as total_hours
+            FROM {$wpdb->users} u
+            INNER JOIN {$wpdb->usermeta} um_mentor ON u.ID = um_mentor.user_id
+                AND um_mentor.meta_key = 'mentor_id'
+                AND um_mentor.meta_value = %s
+            INNER JOIN {$wpdb->usermeta} um_role ON u.ID = um_role.user_id
+                AND um_role.meta_key = '{$wpdb->prefix}capabilities'
+                AND um_role.meta_value LIKE '%%subscriber%%'
+            LEFT JOIN {$wpdb->prefix}lccp_hour_tracker h ON u.ID = h.user_id
+            GROUP BY u.ID, u.display_name
+            ORDER BY u.display_name ASC
+        ", $mentor_id));
+
         if (!empty($students)) {
             echo '<ul class="lccp-student-list">';
             foreach ($students as $student) {
-                $hours_completed = get_user_meta($student->ID, 'lccp_hours_completed', true) ?: 0;
+                $hours_completed = $student->total_hours;
                 echo '<li>';
                 echo '<strong>' . esc_html($student->display_name) . '</strong><br>';
                 echo 'Hours: ' . number_format($hours_completed, 1) . '/75<br>';
@@ -669,16 +681,16 @@ class LCCP_Enhanced_Dashboards {
      */
     public function render_pc_performance_widget() {
         global $wpdb;
-        
-        // Get performance metrics for PCs
-        $pcs = get_users(array('role' => 'lccp_pc'));
-        
+
+        // Get performance metrics for PCs using count_users() for efficiency
+        $user_counts = count_users();
+        $pc_count = isset($user_counts['avail_roles']['lccp_pc']) ? $user_counts['avail_roles']['lccp_pc'] : 0;
+        $active_students = isset($user_counts['avail_roles']['subscriber']) ? $user_counts['avail_roles']['subscriber'] : 0;
+
         echo '<div class="lccp-pc-performance">';
         echo '<h4>Team Performance Metrics</h4>';
         echo '<ul>';
-        echo '<li>Total PCs: ' . count($pcs) . '</li>';
-        $student_counts = count_users();
-        $active_students = isset($student_counts['avail_roles']['subscriber']) ? $student_counts['avail_roles']['subscriber'] : 0;
+        echo '<li>Total PCs: ' . $pc_count . '</li>';
         echo '<li>Active Students: ' . $active_students . '</li>';
         echo '<li>Average Completion Rate: Calculating...</li>';
         echo '</ul>';
@@ -689,31 +701,43 @@ class LCCP_Enhanced_Dashboards {
      * Render Student Hours Widget
      */
     public function render_student_hours_widget() {
+        global $wpdb;
         $pc_id = get_current_user_id();
-        
-        // Get students assigned to this PC
-        $students = get_users(array(
-            'meta_key' => 'pc_id',
-            'meta_value' => $pc_id,
-            'role' => 'subscriber'
-        ));
-        
+
+        // Get students assigned to this PC with their hours in a single query
+        $students = $wpdb->get_results($wpdb->prepare("
+            SELECT
+                u.ID,
+                u.display_name,
+                COALESCE(SUM(h.session_length), 0) as total_hours
+            FROM {$wpdb->users} u
+            INNER JOIN {$wpdb->usermeta} um_pc ON u.ID = um_pc.user_id
+                AND um_pc.meta_key = 'pc_id'
+                AND um_pc.meta_value = %s
+            INNER JOIN {$wpdb->usermeta} um_role ON u.ID = um_role.user_id
+                AND um_role.meta_key = '{$wpdb->prefix}capabilities'
+                AND um_role.meta_value LIKE '%%subscriber%%'
+            LEFT JOIN {$wpdb->prefix}lccp_hour_tracker h ON u.ID = h.user_id
+            GROUP BY u.ID, u.display_name
+            ORDER BY u.display_name ASC
+        ", $pc_id));
+
         if (!empty($students)) {
             echo '<table class="lccp-hours-tracking">';
             echo '<thead><tr><th>Student</th><th>Hours</th><th>Status</th></tr></thead>';
             echo '<tbody>';
-            
+
             foreach ($students as $student) {
-                $hours = get_user_meta($student->ID, 'lccp_hours_completed', true) ?: 0;
+                $hours = $student->total_hours;
                 $status = $hours >= 75 ? 'Complete' : 'In Progress';
-                
+
                 echo '<tr>';
                 echo '<td>' . esc_html($student->display_name) . '</td>';
                 echo '<td>' . number_format($hours, 1) . '/75</td>';
                 echo '<td>' . $status . '</td>';
                 echo '</tr>';
             }
-            
+
             echo '</tbody></table>';
         } else {
             echo '<p>No students currently assigned.</p>';

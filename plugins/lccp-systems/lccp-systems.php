@@ -234,7 +234,7 @@ class LCCP_Systems {
 							<div class="stat-label"><?php _e( 'Active Students', 'lccp-systems' ); ?></div>
 						</div>
 						<div class="stat-card">
-							<div class="stat-value"><?php echo $mentor_counts = count_users(); echo isset($mentor_counts['avail_roles']['lccp_mentor']) ? $mentor_counts['avail_roles']['lccp_mentor'] : 0;; ?></div>
+						<div class="stat-value"><?php $mentor_counts = count_users(); echo isset($mentor_counts['avail_roles']['lccp_mentor']) ? $mentor_counts['avail_roles']['lccp_mentor'] : 0; ?></div>
 							<div class="stat-label"><?php _e( 'Mentors', 'lccp-systems' ); ?></div>
 						</div>
 					</div>
