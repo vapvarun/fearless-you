@@ -195,7 +195,8 @@ class LCCP_Systems {
 	}
 
 	public function render_settings_page() {
-		$modules          = $this->get_available_modules();
+		$manager = LCCP_Module_Manager::get_instance();
+		$modules = $manager->get_modules();
 		$wp_fusion_active = class_exists( 'WP_Fusion' );
 		?>
 		<div class="lccp-admin-page">
@@ -215,8 +216,8 @@ class LCCP_Systems {
 						$total_hours    = $wpdb->get_var( "SELECT SUM(session_length) FROM $hour_table" );
 						$total_students = $wpdb->get_var( "SELECT COUNT(DISTINCT user_id) FROM $hour_table" );
 						$active_modules = 0;
-						foreach ( $modules as $module ) {
-							if ( get_option( $module['id'], 'off' ) === 'on' ) {
+						foreach ( $modules as $module_id => $module ) {
+							if ( $manager->is_module_enabled( $module_id ) ) {
 								++$active_modules;
 							}
 						}
@@ -274,40 +275,19 @@ class LCCP_Systems {
 								<span class="lccp-accordion-icon dashicons dashicons-arrow-down"></span>
 							</div>
 							<div class="lccp-accordion-content">
-								<p class="description"><?php _e( 'Enable or disable individual modules. Some modules may have dependencies that need to be enabled first.', 'lccp-systems' ); ?></p>
-								
-								<div class="lccp-modules-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; margin-top: 20px;">
-									<?php foreach ( $modules as $module ) : ?>
-									<div class="module-toggle-card" style="border: 1px solid #ddd; padding: 15px; border-radius: 4px; background: white;">
-										<label style="display: flex; align-items: start; cursor: pointer;">
-											<input type="checkbox" name="<?php echo esc_attr( $module['id'] ); ?>" value="on" 
-													<?php checked( get_option( $module['id'], 'off' ), 'on' ); ?> 
-													style="margin-right: 10px; margin-top: 2px;" />
-											<div>
-												<strong style="display: block; margin-bottom: 5px;"><?php echo esc_html( $module['name'] ); ?></strong>
-												<span style="color: #666; font-size: 13px;"><?php echo esc_html( $module['description'] ); ?></span>
-												<?php if ( ! empty( $module['requires'] ) ) : ?>
-												<div style="margin-top: 5px;">
-													<small style="color: #999;">
-														<?php _e( 'Requires:', 'lccp-systems' ); ?> 
-														<?php echo implode( ', ', $module['requires'] ); ?>
-													</small>
-												</div>
-												<?php endif; ?>
-											</div>
-										</label>
-									</div>
-									<?php endforeach; ?>
-								</div>
-								
-								<div style="margin-top: 20px; padding: 15px; background: #f0f0f0; border-radius: 4px;">
-									<h4 style="margin-top: 0;"><?php _e( 'Bulk Actions', 'lccp-systems' ); ?></h4>
-									<button type="button" class="button" onclick="toggleAllModules(true)">
-										<?php _e( 'Enable All Modules', 'lccp-systems' ); ?>
-									</button>
-									<button type="button" class="button" onclick="toggleAllModules(false)">
-										<?php _e( 'Disable All Modules', 'lccp-systems' ); ?>
-									</button>
+								<div style="padding: 20px; background: #f0f6fc; border: 1px solid #0073aa; border-radius: 4px;">
+									<h3 style="margin-top: 0; color: #0073aa;">
+										<span class="dashicons dashicons-admin-plugins" style="font-size: 24px; vertical-align: middle;"></span>
+										<?php _e( 'Module Manager', 'lccp-systems' ); ?>
+									</h3>
+									<p><?php _e( 'Module management has been moved to a dedicated page for better control and visibility.', 'lccp-systems' ); ?></p>
+									<p>
+										<strong><?php echo $active_modules; ?> of <?php echo count( $modules ); ?> modules</strong> are currently enabled.
+									</p>
+									<a href="<?php echo admin_url( 'admin.php?page=lccp-module-manager' ); ?>" class="button button-primary button-large">
+										<span class="dashicons dashicons-admin-settings" style="vertical-align: middle;"></span>
+										<?php _e( 'Go to Module Manager', 'lccp-systems' ); ?>
+									</a>
 								</div>
 							</div>
 						</div>
@@ -1334,7 +1314,8 @@ class LCCP_Systems {
 	}
 
 	private function render_overview_tab() {
-		$modules = $this->get_available_modules();
+		$manager = LCCP_Module_Manager::get_instance();
+		$modules = $manager->get_modules();
 		?>
 		<div class="lccp-overview-tab">
 			<h2><?php _e( 'System Overview', 'lccp-systems' ); ?></h2>
