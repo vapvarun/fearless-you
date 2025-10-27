@@ -559,12 +559,6 @@ function make_registration_date_column_sortable( $columns ) {
 }
 add_filter( 'manage_users_sortable_columns', 'make_registration_date_column_sortable' );
 
-// Include error logging system
-require_once get_stylesheet_directory() . '/includes/error-logging.php';
-
-// Include caching system
-require_once get_stylesheet_directory() . '/includes/caching-system.php';
-
 // Include other options handler
 require_once get_stylesheet_directory() . '/includes/other-options-handler.php';
 

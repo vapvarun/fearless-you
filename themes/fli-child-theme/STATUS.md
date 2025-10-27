@@ -6,9 +6,7 @@
 
 ## What We Have
 
-### Active Include Files (5 files)
-- `includes/error-logging.php` - Debug/logging system (used by caching)
-- `includes/caching-system.php` - Performance caching system
+### Active Include Files (3 files)
 - `includes/other-options-handler.php` - Site options management
 - `includes/role-based-logo.php` - Custom logo per user role
 - `includes/class-fli-image-upload-handler.php` - Image upload handling
@@ -56,7 +54,12 @@
   - `functions-backup-original.php`
   - `functions.php.backup`
   - `custom-fivo-docs.js.backup`
-- ✅ **Total cleanup:** 165 KB removed, 6 unused files deleted
+- ✅ **Removed debug/development code for production (Oct 27, 2025):**
+  - `error-logging.php` (18 KB) - debug logging system with admin menu
+  - `caching-system.php` (22 KB) - custom caching (use caching plugin instead)
+  - Removed require statements from functions.php
+  - **Reason:** No debug code on live site, caching handled by plugins
+- ✅ **Total cleanup:** 205 KB removed, 8 unused files deleted
 
 ## Notes
 
