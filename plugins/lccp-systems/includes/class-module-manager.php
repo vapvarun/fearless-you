@@ -211,7 +211,7 @@ class LCCP_Module_Manager {
         
         // Map module IDs to actual file paths
         $module_files = array(
-            'dashboards' => array('includes/class-dashboards.php', 'includes/class-enhanced-dashboards.php'),
+            'dashboards' => array('modules/class-dashboards.php', 'includes/class-enhanced-dashboards.php'),
             'hour_tracker' => 'includes/class-hour-tracker.php',
             'document_manager' => 'includes/document-manager.php',
             'course_access_manager' => 'includes/class-course-access-manager.php',
