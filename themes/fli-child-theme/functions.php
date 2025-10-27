@@ -1262,3 +1262,37 @@ add_action(
 		}
 	}
 );
+
+/**
+ * Disable BuddyBoss license check requests.
+ *
+ * Blocks all requests to licenses.caseproof.com to prevent
+ * unnecessary API calls and improve site performance.
+ *
+ * @since 1.0.0
+ * @param false|array|WP_Error $preempt Whether to preempt the HTTP request.
+ * @param array                $args Request arguments.
+ * @param string               $url Request URL.
+ * @return false|array False to continue request, array to preempt.
+ */
+function fli_disable_buddyboss_license_checks( $preempt, $args, $url ) {
+	// Check if this is a BuddyBoss license check request
+	if ( strpos( $url, 'licenses.caseproof.com' ) !== false ) {
+		// Return a fake successful response to prevent the request
+		return array(
+			'response' => array(
+				'code'    => 200,
+				'message' => 'OK',
+			),
+			'body'     => json_encode( array(
+				'success' => true,
+				'data'    => array(),
+			) ),
+			'headers'  => array(),
+			'cookies'  => array(),
+		);
+	}
+
+	return $preempt;
+}
+add_filter( 'pre_http_request', 'fli_disable_buddyboss_license_checks', 1, 3 );
