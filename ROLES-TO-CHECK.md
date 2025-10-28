@@ -1,37 +1,60 @@
-# Roles Created by Deleted Plugins
+# Database Analysis: Role Usage
 
-When you delete these plugins, User Role Editor will still see these roles (WordPress stores them in database):
+## ✅ ROLES IN USE (18 Total Users - KEEP THESE)
 
-## From Fearless Roles Manager:
-- `fearless_you_member`
-- `fearless_you_subscriber`
-- `fearless_you_pending`
+### fearless_you_member
+- **Users**: 9 users (IDs: 8, 12, 19, 39, 56, 59, 68, 78, 79)
+- **Capabilities**: 6 capabilities
+  - read
+  - access_fearless_you_content
+  - view_membership_dashboard
+  - participate_in_community
+  - access_monthly_trainings
+  - download_resources
 
-## From Fearless You Systems:
-- `fearless_you_member` (duplicate)
-- `fearless_faculty`
-- `fearless_ambassador`
+### fearless_faculty
+- **Users**: 4 users (IDs: 3831, 5372, 9932, 13153)
+- **Capabilities**: 7 capabilities
+  - read
+  - access_fearless_you_content
+  - teach_courses
+  - create_content
+  - moderate_discussions
+  - view_faculty_dashboard
+  - access_faculty_resources
+
+### fearless_ambassador
+- **Users**: 5 users (IDs: 3632, 4131, 9142, 16706, 165129)
+- **Capabilities**: 7 capabilities
+  - read
+  - access_fearless_you_content
+  - promote_fearless_living
+  - access_ambassador_resources
+  - view_ambassador_dashboard
+  - participate_in_community
+  - refer_members
 
 ---
 
-## After Deleting Plugins:
+## ❌ UNUSED ROLES (0 Users - CAN DELETE)
 
-1. Install **User Role Editor** plugin
-2. Go to Users > User Role Editor
-3. You'll see all these roles still there
-4. Edit capabilities as needed
-5. Delete unused roles
+### fearless_you_subscriber
+- **Users**: 0
+- **Status**: Registered but never assigned to anyone
+- **Action**: Delete via User Role Editor after plugin removal
+
+### fearless_you_pending
+- **Users**: 0
+- **Status**: Registered but never assigned to anyone
+- **Action**: Delete via User Role Editor after plugin removal
 
 ---
 
-## What to Check on Site:
+## What User Role Editor Will Show
 
-Search for these shortcodes (might be on pages):
-- `[fys_member_dashboard]`
-- `[fys_faculty_dashboard]`
-- `[fys_ambassador_dashboard]`
-
-If found, replace with:
-- Regular WordPress page
-- HTML links
-- LearnDash `[ld_profile]` shortcode
+After deleting the plugins, all 5 roles remain in the `wp_user_roles` option. User Role Editor will:
+- ✅ Auto-detect all 5 roles
+- ✅ Show all capabilities for each role
+- ✅ Allow you to edit/delete/manage them
+- ✅ No data loss - 18 users keep their assigned roles
+- ✅ You can safely delete the 2 unused roles (fearless_you_subscriber, fearless_you_pending)
