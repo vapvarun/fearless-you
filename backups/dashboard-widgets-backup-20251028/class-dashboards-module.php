@@ -397,20 +397,13 @@ class LCCP_Dashboards_Module extends LCCP_Module {
     
     /**
      * Add dashboard widgets
-     * DISABLED: Dashboard widget removed for optimization (v2.0.0)
-     * Functionality consolidated into Enhanced Dashboards - Program Overview widget
      */
     public function add_dashboard_widgets() {
-        // Widget disabled - duplicate of Enhanced Dashboards "Program Overview"
-        // Dashboard optimization: 22 widgets reduced to 5 essential widgets
-
-        /* REMOVED FOR OPTIMIZATION
         wp_add_dashboard_widget(
             'lccp_dashboard_overview',
             __('LCCP Systems Overview', 'lccp-systems'),
             array($this, 'render_dashboard_widget')
         );
-        */
     }
     
     /**

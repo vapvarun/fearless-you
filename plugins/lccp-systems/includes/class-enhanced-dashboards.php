@@ -1,8 +1,14 @@
 <?php
 /**
- * Enhanced Dashboards with Permission Hierarchy
- * 
+ * Enhanced Dashboards with Permission Hierarchy - OPTIMIZED
+ *
+ * Minimal Dashboard: 5 Essential Widgets
+ * - Admin (100): Program Overview, Activity Feed, Team Performance
+ * - Mentor/Big Bird/PC (25-75): My Team, Course & Hour Progress
+ *
  * Hierarchy: PC < Big Bird < Mentor < Rhonda (admin)
+ *
+ * @version 2.0.0 - Optimized for performance and UX
  */
 
 if (!defined('ABSPATH')) {
@@ -10,10 +16,10 @@ if (!defined('ABSPATH')) {
 }
 
 class LCCP_Enhanced_Dashboards {
-    
+
     private $current_user;
     private $user_role_level;
-    
+
     public function __construct() {
         add_action('init', array($this, 'setup_user_permissions'));
         add_action('wp_dashboard_setup', array($this, 'add_dashboard_widgets'));
@@ -39,7 +45,7 @@ class LCCP_Enhanced_Dashboards {
             'lccp-dashboard-widgets',
             plugin_dir_url(dirname(__FILE__)) . 'assets/css/dashboard-widgets.css',
             array(),
-            '1.1.0'
+            '2.0.0'
         );
 
         // Enqueue dashboard widgets JavaScript
@@ -47,7 +53,7 @@ class LCCP_Enhanced_Dashboards {
             'lccp-dashboard-widgets',
             plugin_dir_url(dirname(__FILE__)) . 'assets/js/dashboard-widgets.js',
             array('jquery'),
-            '1.1.0',
+            '2.0.0',
             true
         );
 
@@ -57,138 +63,112 @@ class LCCP_Enhanced_Dashboards {
             'nonce' => wp_create_nonce('lccp_dashboard_nonce')
         ));
     }
-    
+
     public function setup_user_permissions() {
         $this->current_user = wp_get_current_user();
         $this->user_role_level = $this->get_user_role_level();
     }
-    
+
     private function get_user_role_level() {
         if (!$this->current_user) {
             return 0;
         }
-        
+
         $user_email = $this->current_user->user_email;
         $user_roles = $this->current_user->roles;
-        
+
         // Rhonda gets highest level
         if ($user_email === 'rhonda@fearlessliving.org' || in_array('administrator', $user_roles)) {
             return 100; // Full access to everything
         }
-        
+
         // Role-based hierarchy
         if (in_array('lccp_mentor', $user_roles)) {
             return 75; // Access to Big Birds, PCs, and students
         }
-        
+
         if (in_array('lccp_big_bird', $user_roles)) {
             return 50; // Access to PCs and students
         }
-        
+
         if (in_array('lccp_pc', $user_roles)) {
             return 25; // Access to assigned students only
         }
-        
+
         return 10; // Student level
     }
-    
+
     public function add_dashboard_widgets() {
         global $wp_meta_boxes;
-        
+
         // Remove default WordPress widgets for LCCP users
         if ($this->user_role_level > 0 && $this->user_role_level < 100) {
             unset($wp_meta_boxes['dashboard']['normal']['core']['dashboard_activity']);
             unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
             unset($wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
         }
-        
-        // Add role-specific widgets
+
+        // ADMIN WIDGETS (Level 100)
         if ($this->user_role_level >= 100) {
-            // Rhonda/Admin widgets
+            // Widget 1: Program Overview - Comprehensive stats
             wp_add_dashboard_widget(
-                'lccp_admin_overview',
+                'lccp_program_overview',
                 'LCCP Program Overview',
-                array($this, 'render_admin_overview_widget')
+                array($this, 'render_program_overview_widget')
             );
-            
+
+            // Widget 2: Activity Feed - Recent program activity
             wp_add_dashboard_widget(
-                'lccp_all_activity',
-                'All Program Activity',
-                array($this, 'render_all_activity_widget')
+                'lccp_activity_feed',
+                'Program Activity Feed',
+                array($this, 'render_activity_feed_widget')
             );
-            
+
+            // Widget 3: Team Performance - All team metrics
             wp_add_dashboard_widget(
-                'lccp_mentor_performance',
-                'Mentor Performance Metrics',
-                array($this, 'render_mentor_performance_widget')
-            );
-        }
-        
-        if ($this->user_role_level >= 75) {
-            // Mentor widgets
-            wp_add_dashboard_widget(
-                'lccp_mentor_students',
-                'My Mentorship Overview',
-                array($this, 'render_mentor_students_widget')
-            );
-            
-            wp_add_dashboard_widget(
-                'lccp_big_bird_oversight',
-                'Big Bird Team Performance',
-                array($this, 'render_bigbird_oversight_widget')
+                'lccp_team_performance',
+                'Team Performance Dashboard',
+                array($this, 'render_team_performance_widget')
             );
         }
-        
-        if ($this->user_role_level >= 50) {
-            // Big Bird widgets
+
+        // ROLE-SPECIFIC WIDGETS (Level 25+)
+        if ($this->user_role_level >= 25 && $this->user_role_level < 100) {
+            // Widget 4: My Team - Role-specific team management
             wp_add_dashboard_widget(
-                'lccp_big_bird_pcs',
-                'My PC Team',
-                array($this, 'render_bigbird_pcs_widget')
+                'lccp_my_team',
+                $this->get_my_team_title(),
+                array($this, 'render_my_team_widget')
             );
-            
+
+            // Widget 5: Course & Hour Progress - Combined tracking
             wp_add_dashboard_widget(
-                'lccp_pc_performance',
-                'PC Performance Tracking',
-                array($this, 'render_pc_performance_widget')
-            );
-        }
-        
-        if ($this->user_role_level >= 25) {
-            // PC widgets
-            wp_add_dashboard_widget(
-                'lccp_pc_students',
-                'My Assigned Students',
-                array($this, 'render_pc_students_widget')
-            );
-            
-            wp_add_dashboard_widget(
-                'lccp_student_hours',
-                'Student Hour Tracking',
-                array($this, 'render_student_hours_widget')
-            );
-        }
-        
-        // Common widgets for all LCCP roles
-        if ($this->user_role_level >= 25) {
-            wp_add_dashboard_widget(
-                'lccp_course_progress',
-                'Course Progress Overview',
-                array($this, 'render_course_progress_widget')
-            );
-            
-            wp_add_dashboard_widget(
-                'lccp_upcoming_sessions',
-                'Upcoming Sessions',
-                array($this, 'render_upcoming_sessions_widget')
+                'lccp_course_hour_progress',
+                'Course & Hour Progress',
+                array($this, 'render_course_hour_progress_widget')
             );
         }
     }
-    
+
     /**
-     * Admin Overview Widget - Only for Rhonda/Admins (WordPress Standard)
+     * Get role-specific title for My Team widget
      */
-    public function render_admin_overview_widget() {
+    private function get_my_team_title() {
+        if ($this->user_role_level >= 75) {
+            return 'My Mentorship Team';
+        } elseif ($this->user_role_level >= 50) {
+            return 'My PC Team';
+        } elseif ($this->user_role_level >= 25) {
+            return 'My Assigned Students';
+        }
+        return 'My Team';
+    }
+
+    /**
+     * WIDGET 1: Program Overview (Admin Only)
+     * Consolidates: LCCP Program Overview + Systems Overview
+     */
+    public function render_program_overview_widget() {
         global $wpdb;
 
         // Get comprehensive statistics - using count_users() for efficiency
@@ -204,7 +184,8 @@ class LCCP_Enhanced_Dashboards {
 
         $this_month_hours = $wpdb->get_var(
             "SELECT SUM(session_length) FROM {$wpdb->prefix}lccp_hour_tracker
-            WHERE MONTH(session_date) = MONTH(CURRENT_DATE())"
+            WHERE MONTH(session_date) = MONTH(CURRENT_DATE())
+            AND YEAR(session_date) = YEAR(CURRENT_DATE())"
         );
         $this_month_hours = $this_month_hours ? $this_month_hours : 0;
 
@@ -226,7 +207,7 @@ class LCCP_Enhanced_Dashboards {
                 <div class="lccp-stat-number"><?php echo number_format($total_bigbirds); ?></div>
             </div>
             <div class="lccp-stat-box">
-                <h4>Program Candidates</h4>
+                <h4>Practice Coaches</h4>
                 <div class="lccp-stat-number"><?php echo number_format($total_pcs); ?></div>
             </div>
         </div>
@@ -256,11 +237,12 @@ class LCCP_Enhanced_Dashboards {
         </div>
         <?php
     }
-    
+
     /**
-     * All Activity Widget - Shows all program activity for Rhonda (WordPress Standard)
+     * WIDGET 2: Activity Feed (Admin Only)
+     * Shows all recent program activity
      */
-    public function render_all_activity_widget() {
+    public function render_activity_feed_widget() {
         global $wpdb;
 
         // Get recent activities across all users
@@ -321,11 +303,12 @@ class LCCP_Enhanced_Dashboards {
         </div>
         <?php
     }
-    
+
     /**
-     * Mentor Performance Widget (WordPress Standard)
+     * WIDGET 3: Team Performance (Admin Only)
+     * Consolidates: Mentor Performance, PC Performance, Big Bird Performance
      */
-    public function render_mentor_performance_widget() {
+    public function render_team_performance_widget() {
         global $wpdb;
 
         // Get all mentor stats in a single efficient query with JOINs
@@ -333,9 +316,9 @@ class LCCP_Enhanced_Dashboards {
             SELECT
                 u.ID,
                 u.display_name,
+                'Mentor' as role_label,
                 COUNT(DISTINCT a.student_id) as student_count,
-                COALESCE(SUM(h.session_length), 0) as month_hours,
-                0 as completion_rate
+                COALESCE(SUM(h.session_length), 0) as month_hours
             FROM {$wpdb->users} u
             INNER JOIN {$wpdb->usermeta} um ON u.ID = um.user_id
                 AND um.meta_key = '{$wpdb->prefix}capabilities'
@@ -355,29 +338,24 @@ class LCCP_Enhanced_Dashboards {
             <table class="lccp-widget-table">
                 <thead>
                     <tr>
-                        <th>Mentor</th>
-                        <th>Students</th>
+                        <th>Team Member</th>
+                        <th>Role</th>
+                        <th>Team Size</th>
                         <th>Hours (Month)</th>
-                        <th>Completion Rate</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($mentor_stats as $mentor): ?>
+                    <?php foreach ($mentor_stats as $member): ?>
                         <tr>
                             <td>
-                                <strong><?php echo esc_html($mentor->display_name); ?></strong>
+                                <strong><?php echo esc_html($member->display_name); ?></strong>
                             </td>
-                            <td><?php echo intval($mentor->student_count); ?></td>
-                            <td><?php echo number_format($mentor->month_hours, 1); ?></td>
+                            <td><?php echo esc_html($member->role_label); ?></td>
+                            <td><?php echo intval($member->student_count); ?></td>
+                            <td><?php echo number_format($member->month_hours, 1); ?></td>
                             <td>
-                                <span class="lccp-mini-progress">
-                                    <span class="lccp-mini-progress-fill" style="width: <?php echo $mentor->completion_rate; ?>%"></span>
-                                </span>
-                                <?php echo $mentor->completion_rate; ?>%
-                            </td>
-                            <td>
-                                <a href="#" class="view-details" data-mentor-id="<?php echo $mentor->ID; ?>">View</a>
+                                <a href="#" class="view-details" data-member-id="<?php echo $member->ID; ?>">View</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -385,165 +363,30 @@ class LCCP_Enhanced_Dashboards {
             </table>
         <?php else: ?>
             <div class="lccp-empty-state">
-                <p class="lccp-empty-state-description">No mentor data available.</p>
+                <p class="lccp-empty-state-description">No team member data available.</p>
             </div>
         <?php endif; ?>
         <?php
     }
-    
+
     /**
-     * Helper Methods
+     * WIDGET 4: My Team (Role-Specific)
+     * Consolidates: My Mentorship Overview, Big Bird Team, My PC Team, My Assigned Students
      */
-    private function calculate_overall_completion_rate() {
-        if (!function_exists('learndash_get_course_list')) {
-            return 0;
+    public function render_my_team_widget() {
+        if ($this->user_role_level >= 75) {
+            $this->render_mentor_team_view();
+        } elseif ($this->user_role_level >= 50) {
+            $this->render_bigbird_team_view();
+        } elseif ($this->user_role_level >= 25) {
+            $this->render_pc_team_view();
         }
-
-        // Check cache first (15 minute cache)
-        $cache_key = 'lccp_overall_completion_rate';
-        $cached_rate = get_transient($cache_key);
-        if (false !== $cached_rate) {
-            return $cached_rate;
-        }
-
-        global $wpdb;
-
-        // Get average completion using efficient database query
-        // LearnDash stores course progress in user meta as ld_course_progress_{course_id}
-        $completion_rate = $wpdb->get_var("
-            SELECT AVG(CAST(meta_value AS DECIMAL(5,2)))
-            FROM {$wpdb->usermeta}
-            WHERE meta_key LIKE 'course_%_progress'
-            AND meta_value IS NOT NULL
-            AND meta_value != ''
-            AND CAST(meta_value AS DECIMAL(5,2)) BETWEEN 0 AND 100
-        ");
-
-        $rate = $completion_rate ? round($completion_rate) : 0;
-
-        // Cache for 15 minutes
-        set_transient($cache_key, $rate, 15 * MINUTE_IN_SECONDS);
-
-        return $rate;
     }
-    
-    private function get_mentor_student_count($mentor_id) {
-        global $wpdb;
-        return $wpdb->get_var($wpdb->prepare(
-            "SELECT COUNT(DISTINCT student_id) 
-            FROM {$wpdb->prefix}lccp_assignments 
-            WHERE mentor_id = %d AND status = 'active'",
-            $mentor_id
-        ));
-    }
-    
-    private function get_user_month_hours($user_id) {
-        global $wpdb;
-        return $wpdb->get_var($wpdb->prepare(
-            "SELECT SUM(session_length) 
-            FROM {$wpdb->prefix}lccp_hour_tracker 
-            WHERE user_id = %d 
-            AND MONTH(session_date) = MONTH(CURRENT_DATE())",
-            $user_id
-        ));
-    }
-    
-    private function get_mentor_completion_rate($mentor_id) {
-        // Calculate average completion rate for mentor's students
-        global $wpdb;
-        
-        $students = $wpdb->get_col($wpdb->prepare(
-            "SELECT student_id FROM {$wpdb->prefix}lccp_assignments 
-            WHERE mentor_id = %d AND status = 'active'",
-            $mentor_id
-        ));
-        
-        if (empty($students) || !function_exists('learndash_get_course_list')) {
-            return 0;
-        }
-        
-        $total_progress = 0;
-        $count = 0;
-        
-        foreach ($students as $student_id) {
-            $courses = learndash_get_course_list();
-            foreach ($courses as $course_id) {
-                $progress = learndash_course_progress(array(
-                    'user_id' => $student_id,
-                    'course_id' => $course_id,
-                    'array' => true
-                ));
-                
-                if (isset($progress['percentage'])) {
-                    $total_progress += $progress['percentage'];
-                    $count++;
-                }
-            }
-        }
-        
-        return $count > 0 ? round($total_progress / $count) : 0;
-    }
-    
+
     /**
-     * Big Bird and PC specific widget methods would continue here...
+     * Mentor team view - Shows Big Birds, PCs, and Students
      */
-    public function render_bigbird_pcs_widget() {
-        // Implementation for Big Bird PC team widget
-        global $wpdb;
-        
-        $pcs = $wpdb->get_results($wpdb->prepare(
-            "SELECT u.*, a.assigned_date
-            FROM {$wpdb->prefix}lccp_assignments a
-            JOIN {$wpdb->users} u ON a.pc_id = u.ID
-            WHERE a.bigbird_id = %d AND a.status = 'active'",
-            $this->current_user->ID
-        ));
-        
-        if ($pcs) {
-            echo '<ul class="pc-list">';
-            foreach ($pcs as $pc) {
-                $hours = $this->get_user_month_hours($pc->ID);
-                echo '<li>';
-                echo '<strong>' . esc_html($pc->display_name) . '</strong>';
-                echo ' - ' . number_format($hours, 1) . ' hours this month';
-                echo '</li>';
-            }
-            echo '</ul>';
-        } else {
-            echo '<p>No PCs currently assigned.</p>';
-        }
-    }
-    
-    public function render_pc_students_widget() {
-        // Implementation for PC students widget
-        global $wpdb;
-        
-        $students = $wpdb->get_results($wpdb->prepare(
-            "SELECT u.*, a.assigned_date 
-            FROM {$wpdb->prefix}lccp_assignments a
-            JOIN {$wpdb->users} u ON a.student_id = u.ID
-            WHERE a.pc_id = %d AND a.status = 'active'",
-            $this->current_user->ID
-        ));
-        
-        if ($students) {
-            echo '<ul class="student-list">';
-            foreach ($students as $student) {
-                echo '<li>';
-                echo '<strong>' . esc_html($student->display_name) . '</strong>';
-                echo ' - <a href="' . admin_url('admin.php?page=lccp-student-details&student_id=' . $student->ID) . '">View Progress</a>';
-                echo '</li>';
-            }
-            echo '</ul>';
-        } else {
-            echo '<p>No students currently assigned.</p>';
-        }
-    }
-    
-    /**
-     * Render Mentor Students Widget
-     */
-    public function render_mentor_students_widget() {
+    private function render_mentor_team_view() {
         global $wpdb;
         $mentor_id = get_current_user_id();
 
@@ -566,200 +409,304 @@ class LCCP_Enhanced_Dashboards {
         ", $mentor_id));
 
         if (!empty($students)) {
-            echo '<ul class="lccp-student-list">';
+            echo '<ul class="lccp-team-list">';
             foreach ($students as $student) {
                 $hours_completed = $student->total_hours;
-                echo '<li>';
-                echo '<strong>' . esc_html($student->display_name) . '</strong><br>';
-                echo 'Hours: ' . number_format($hours_completed, 1) . '/75<br>';
-                echo '<div class="progress-bar">';
-                echo '<div class="progress" style="width: ' . min(100, ($hours_completed/75)*100) . '%"></div>';
+                $progress_percent = min(100, ($hours_completed/75)*100);
+
+                echo '<li class="lccp-team-member">';
+                echo '<div class="lccp-team-member-header">';
+                echo '<strong>' . esc_html($student->display_name) . '</strong>';
+                echo '<span class="lccp-hours-badge">' . number_format($hours_completed, 1) . '/75 hrs</span>';
+                echo '</div>';
+                echo '<div class="lccp-progress-bar">';
+                echo '<div class="lccp-progress-fill" style="width: ' . $progress_percent . '%"></div>';
                 echo '</div>';
                 echo '</li>';
             }
             echo '</ul>';
         } else {
-            echo '<p>No students currently assigned to you.</p>';
+            echo '<div class="lccp-empty-state">';
+            echo '<p class="lccp-empty-state-description">No students currently assigned to you.</p>';
+            echo '</div>';
         }
     }
-    
+
     /**
-     * Render Big Bird Oversight Widget
+     * Big Bird team view - Shows PCs and their students
      */
-    public function render_bigbird_oversight_widget() {
+    private function render_bigbird_team_view() {
         global $wpdb;
 
-        // Get all PCs with their student counts in a single efficient query
-        $pc_stats = $wpdb->get_results("
-            SELECT
-                u.ID,
-                u.display_name,
-                COUNT(DISTINCT um_students.user_id) as student_count
-            FROM {$wpdb->users} u
-            INNER JOIN {$wpdb->usermeta} um_role ON u.ID = um_role.user_id
-                AND um_role.meta_key = '{$wpdb->prefix}capabilities'
-                AND um_role.meta_value LIKE '%lccp_pc%'
-            LEFT JOIN {$wpdb->usermeta} um_students ON u.ID = um_students.meta_value
-                AND um_students.meta_key = 'pc_id'
-            GROUP BY u.ID, u.display_name
-            ORDER BY u.display_name ASC
+        $pcs = $wpdb->get_results($wpdb->prepare(
+            "SELECT u.ID, u.display_name, a.assigned_date
+            FROM {$wpdb->prefix}lccp_assignments a
+            JOIN {$wpdb->users} u ON a.pc_id = u.ID
+            WHERE a.bigbird_id = %d AND a.status = 'active'",
+            get_current_user_id()
+        ));
+
+        if ($pcs) {
+            echo '<ul class="lccp-team-list">';
+            foreach ($pcs as $pc) {
+                $hours = $this->get_user_month_hours($pc->ID);
+                echo '<li class="lccp-team-member">';
+                echo '<div class="lccp-team-member-header">';
+                echo '<strong>' . esc_html($pc->display_name) . '</strong>';
+                echo '<span class="lccp-hours-badge">' . number_format($hours, 1) . ' hrs this month</span>';
+                echo '</div>';
+                echo '</li>';
+            }
+            echo '</ul>';
+        } else {
+            echo '<div class="lccp-empty-state">';
+            echo '<p class="lccp-empty-state-description">No PCs currently assigned.</p>';
+            echo '</div>';
+        }
+    }
+
+    /**
+     * PC team view - Shows assigned students
+     */
+    private function render_pc_team_view() {
+        global $wpdb;
+
+        $students = $wpdb->get_results($wpdb->prepare(
+            "SELECT u.ID, u.display_name, a.assigned_date
+            FROM {$wpdb->prefix}lccp_assignments a
+            JOIN {$wpdb->users} u ON a.student_id = u.ID
+            WHERE a.pc_id = %d AND a.status = 'active'",
+            get_current_user_id()
+        ));
+
+        if ($students) {
+            echo '<ul class="lccp-team-list">';
+            foreach ($students as $student) {
+                echo '<li class="lccp-team-member">';
+                echo '<div class="lccp-team-member-header">';
+                echo '<strong>' . esc_html($student->display_name) . '</strong>';
+                echo '<a href="' . admin_url('admin.php?page=lccp-student-details&student_id=' . $student->ID) . '" class="button button-small">View Progress</a>';
+                echo '</div>';
+                echo '</li>';
+            }
+            echo '</ul>';
+        } else {
+            echo '<div class="lccp-empty-state">';
+            echo '<p class="lccp-empty-state-description">No students currently assigned.</p>';
+            echo '</div>';
+        }
+    }
+
+    /**
+     * WIDGET 5: Course & Hour Progress (All Roles 25+)
+     * Consolidates: Course Progress, Hour Tracking, Quiz Performance, Course Timeline
+     */
+    public function render_course_hour_progress_widget() {
+        global $wpdb;
+        $user_id = get_current_user_id();
+
+        // Get hour progress
+        $total_hours = $wpdb->get_var($wpdb->prepare(
+            "SELECT COALESCE(SUM(session_length), 0) FROM {$wpdb->prefix}lccp_hour_tracker WHERE user_id = %d",
+            $user_id
+        ));
+        $hours_required = 75;
+        $hours_percent = min(100, ($total_hours / $hours_required) * 100);
+
+        // Get course progress
+        $course_progress = $this->get_user_course_progress($user_id);
+
+        ?>
+        <div class="lccp-progress-section">
+            <h4>Hour Progress</h4>
+            <div class="lccp-progress-container">
+                <div class="lccp-progress-label">
+                    <span>Hours Logged</span>
+                    <span><?php echo number_format($total_hours, 1); ?> / <?php echo $hours_required; ?> hrs</span>
+                </div>
+                <div class="lccp-progress-bar">
+                    <div class="lccp-progress-fill" style="width: <?php echo $hours_percent; ?>%;">
+                        <?php echo round($hours_percent); ?>%
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="lccp-progress-section">
+            <h4>Course Progress</h4>
+            <div class="lccp-widget-stats">
+                <div class="lccp-stat-box">
+                    <h5>Overall Progress</h5>
+                    <div class="lccp-stat-number"><?php echo $course_progress['average_progress']; ?>%</div>
+                </div>
+                <div class="lccp-stat-box">
+                    <h5>Completed</h5>
+                    <div class="lccp-stat-number"><?php echo $course_progress['completed_courses']; ?></div>
+                </div>
+                <div class="lccp-stat-box">
+                    <h5>In Progress</h5>
+                    <div class="lccp-stat-number"><?php echo $course_progress['in_progress_courses']; ?></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="lccp-widget-actions">
+            <a href="<?php echo admin_url('admin.php?page=lccp-my-courses'); ?>" class="button button-primary">View All Courses</a>
+            <a href="<?php echo admin_url('admin.php?page=lccp-log-hours'); ?>" class="button">Log Hours</a>
+        </div>
+        <?php
+    }
+
+    /**
+     * Helper Methods
+     */
+    private function calculate_overall_completion_rate() {
+        if (!function_exists('learndash_get_course_list')) {
+            return 0;
+        }
+
+        // Check cache first (15 minute cache)
+        $cache_key = 'lccp_overall_completion_rate';
+        $cached_rate = get_transient($cache_key);
+        if (false !== $cached_rate) {
+            return $cached_rate;
+        }
+
+        global $wpdb;
+
+        // Get average completion using efficient database query
+        $completion_rate = $wpdb->get_var("
+            SELECT AVG(CAST(meta_value AS DECIMAL(5,2)))
+            FROM {$wpdb->usermeta}
+            WHERE meta_key LIKE 'course_%_progress'
+            AND meta_value IS NOT NULL
+            AND meta_value != ''
+            AND CAST(meta_value AS DECIMAL(5,2)) BETWEEN 0 AND 100
         ");
 
-        if (!empty($pc_stats)) {
-            echo '<table class="lccp-pc-overview">';
-            echo '<thead><tr><th>PC Name</th><th>Students</th><th>Avg Progress</th></tr></thead>';
-            echo '<tbody>';
+        $rate = $completion_rate ? round($completion_rate) : 0;
 
-            foreach ($pc_stats as $pc) {
-                echo '<tr>';
-                echo '<td>' . esc_html($pc->display_name) . '</td>';
-                echo '<td>' . intval($pc->student_count) . '</td>';
-                echo '<td>-</td>';
-                echo '</tr>';
-            }
+        // Cache for 15 minutes
+        set_transient($cache_key, $rate, 15 * MINUTE_IN_SECONDS);
 
-            echo '</tbody></table>';
-        } else {
-            echo '<p>No PC team members found.</p>';
-        }
+        return $rate;
     }
-    
-    /**
-     * Render PC Performance Widget
-     */
-    public function render_pc_performance_widget() {
+
+    private function get_user_month_hours($user_id) {
         global $wpdb;
-
-        // Get performance metrics for PCs using count_users() for efficiency
-        $user_counts = count_users();
-        $pc_count = isset($user_counts['avail_roles']['lccp_pc']) ? $user_counts['avail_roles']['lccp_pc'] : 0;
-        $active_students = isset($user_counts['avail_roles']['subscriber']) ? $user_counts['avail_roles']['subscriber'] : 0;
-
-        echo '<div class="lccp-pc-performance">';
-        echo '<h4>Team Performance Metrics</h4>';
-        echo '<ul>';
-        echo '<li>Total PCs: ' . $pc_count . '</li>';
-        echo '<li>Active Students: ' . $active_students . '</li>';
-        echo '<li>Average Completion Rate: Calculating...</li>';
-        echo '</ul>';
-        echo '</div>';
+        return $wpdb->get_var($wpdb->prepare(
+            "SELECT COALESCE(SUM(session_length), 0)
+            FROM {$wpdb->prefix}lccp_hour_tracker
+            WHERE user_id = %d
+            AND MONTH(session_date) = MONTH(CURRENT_DATE())
+            AND YEAR(session_date) = YEAR(CURRENT_DATE())",
+            $user_id
+        ));
     }
-    
-    /**
-     * Render Student Hours Widget
-     */
-    public function render_student_hours_widget() {
-        global $wpdb;
-        $pc_id = get_current_user_id();
 
-        // Get students assigned to this PC with their hours in a single query
-        $students = $wpdb->get_results($wpdb->prepare("
-            SELECT
-                u.ID,
-                u.display_name,
-                COALESCE(SUM(h.session_length), 0) as total_hours
-            FROM {$wpdb->users} u
-            INNER JOIN {$wpdb->usermeta} um_pc ON u.ID = um_pc.user_id
-                AND um_pc.meta_key = 'pc_id'
-                AND um_pc.meta_value = %s
-            INNER JOIN {$wpdb->usermeta} um_role ON u.ID = um_role.user_id
-                AND um_role.meta_key = '{$wpdb->prefix}capabilities'
-                AND um_role.meta_value LIKE '%%subscriber%%'
-            LEFT JOIN {$wpdb->prefix}lccp_hour_tracker h ON u.ID = h.user_id
-            GROUP BY u.ID, u.display_name
-            ORDER BY u.display_name ASC
-        ", $pc_id));
-
-        if (!empty($students)) {
-            echo '<table class="lccp-hours-tracking">';
-            echo '<thead><tr><th>Student</th><th>Hours</th><th>Status</th></tr></thead>';
-            echo '<tbody>';
-
-            foreach ($students as $student) {
-                $hours = $student->total_hours;
-                $status = $hours >= 75 ? 'Complete' : 'In Progress';
-
-                echo '<tr>';
-                echo '<td>' . esc_html($student->display_name) . '</td>';
-                echo '<td>' . number_format($hours, 1) . '/75</td>';
-                echo '<td>' . $status . '</td>';
-                echo '</tr>';
-            }
-
-            echo '</tbody></table>';
-        } else {
-            echo '<p>No students currently assigned.</p>';
-        }
-    }
-    
-    /**
-     * Render Course Progress Widget
-     */
-    public function render_course_progress_widget() {
-        echo '<div class="lccp-course-progress">';
-        echo '<p>Course progress tracking will be displayed here.</p>';
-        echo '<ul>';
-        echo '<li>Module 1: Foundation - In Progress</li>';
-        echo '<li>Module 2: Advanced Techniques - Not Started</li>';
-        echo '<li>Module 3: Practice Sessions - Not Started</li>';
-        echo '</ul>';
-        echo '</div>';
-    }
-    
-    /**
-     * Render Upcoming Sessions Widget
-     */
-    public function render_upcoming_sessions_widget() {
-        echo '<div class="lccp-upcoming-sessions">';
-        echo '<h4>Next Sessions</h4>';
-        echo '<ul>';
-        echo '<li>Group Coaching - Tomorrow 2:00 PM EST</li>';
-        echo '<li>Q&A Session - Friday 3:00 PM EST</li>';
-        echo '<li>Monthly Review - Next Monday 1:00 PM EST</li>';
-        echo '</ul>';
-        echo '</div>';
-    }
-    
     /**
      * Get user course progress data
      */
-    public function get_user_course_progress($user_id) {
+    private function get_user_course_progress($user_id) {
         $completed_courses = 0;
         $in_progress_courses = 0;
         $total_progress = 0;
         $course_count = 0;
-        
+
+        // Check if LearnDash is active
+        if (!function_exists('learndash_user_get_enrolled_courses')) {
+            return array(
+                'average_progress' => 0,
+                'completed_courses' => 0,
+                'in_progress_courses' => 0,
+                'total_courses' => 0
+            );
+        }
+
         // Get user's enrolled courses
         $enrolled_courses = learndash_user_get_enrolled_courses($user_id);
-        
+
         if (!empty($enrolled_courses)) {
             foreach ($enrolled_courses as $course_id) {
                 $course_progress = learndash_course_progress(array(
                     'user_id' => $user_id,
                     'course_id' => $course_id,
-                    'post_id' => $course_id
+                    'array' => true
                 ));
-                
-                $progress_percentage = $course_progress['percentage'];
-                $total_progress += $progress_percentage;
-                $course_count++;
-                
-                if ($progress_percentage >= 100) {
-                    $completed_courses++;
-                } elseif ($progress_percentage > 0) {
-                    $in_progress_courses++;
+
+                if (isset($course_progress['percentage'])) {
+                    $progress_percentage = $course_progress['percentage'];
+                    $total_progress += $progress_percentage;
+                    $course_count++;
+
+                    if ($progress_percentage >= 100) {
+                        $completed_courses++;
+                    } elseif ($progress_percentage > 0) {
+                        $in_progress_courses++;
+                    }
                 }
             }
         }
-        
+
         $average_progress = $course_count > 0 ? round($total_progress / $course_count) : 0;
-        
+
         return array(
             'average_progress' => $average_progress,
             'completed_courses' => $completed_courses,
             'in_progress_courses' => $in_progress_courses,
             'total_courses' => $course_count
         );
+    }
+
+    /**
+     * AJAX Handlers
+     */
+    public function ajax_get_student_progress() {
+        check_ajax_referer('lccp_dashboard_nonce', 'nonce');
+
+        if (!current_user_can('edit_users')) {
+            wp_send_json_error('Insufficient permissions');
+        }
+
+        $student_id = isset($_POST['student_id']) ? intval($_POST['student_id']) : 0;
+
+        if (!$student_id) {
+            wp_send_json_error('Invalid student ID');
+        }
+
+        $progress = $this->get_user_course_progress($student_id);
+        wp_send_json_success($progress);
+    }
+
+    public function ajax_get_hour_statistics() {
+        check_ajax_referer('lccp_dashboard_nonce', 'nonce');
+
+        global $wpdb;
+        $user_id = get_current_user_id();
+
+        $stats = array(
+            'total_hours' => $wpdb->get_var($wpdb->prepare(
+                "SELECT COALESCE(SUM(session_length), 0) FROM {$wpdb->prefix}lccp_hour_tracker WHERE user_id = %d",
+                $user_id
+            )),
+            'month_hours' => $this->get_user_month_hours($user_id)
+        );
+
+        wp_send_json_success($stats);
+    }
+
+    public function ajax_get_activity_feed() {
+        check_ajax_referer('lccp_dashboard_nonce', 'nonce');
+
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error('Insufficient permissions');
+        }
+
+        $role = isset($_POST['role']) ? sanitize_text_field($_POST['role']) : '';
+        $time = isset($_POST['time']) ? intval($_POST['time']) : 24;
+
+        // Implementation would filter activities based on role and time
+        wp_send_json_success(array('html' => '<p>Filtered activities would appear here</p>'));
     }
 }
 

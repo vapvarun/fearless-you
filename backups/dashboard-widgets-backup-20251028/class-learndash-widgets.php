@@ -10,34 +10,22 @@ if (!defined('ABSPATH')) {
 }
 
 class LCCP_LearnDash_Widgets {
-
+    
     private $user_role_level = 0;
     private $current_user_id;
     private $user_roles = array();
-
-    /**
-     * DISABLED: LearnDash widgets have been consolidated into Enhanced Dashboards
-     * Version 2.0.0 - Dashboard optimization reduces from 22 to 5 essential widgets
-     */
+    
     public function __construct() {
-        // All LearnDash dashboard widgets disabled for optimization
-        // Functionality consolidated into:
-        // - Widget 5: Course & Hour Progress (in Enhanced Dashboards)
-
-        // No hooks registered - widgets disabled
-
-        /* REMOVED HOOKS - OPTIMIZATION
         add_action('init', array($this, 'setup_user_context'));
         add_action('wp_dashboard_setup', array($this, 'add_dashboard_widgets'), 999);
         add_action('widgets_init', array($this, 'register_widgets'));
         add_action('wp_enqueue_scripts', array($this, 'enqueue_widget_assets'));
         add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_assets'));
-
+        
         // AJAX handlers
         add_action('wp_ajax_lccp_refresh_widget', array($this, 'ajax_refresh_widget'));
         add_action('wp_ajax_lccp_get_quiz_details', array($this, 'ajax_get_quiz_details'));
         add_action('wp_ajax_lccp_get_assignment_details', array($this, 'ajax_get_assignment_details'));
-        */
     }
     
     /**
