@@ -1,0 +1,413 @@
+/**
+ * WordPress Dashboard Widgets - Standard Styles
+ * Follows WordPress core dashboard widget design patterns
+ *
+ * @package LCCP Systems
+ * @since 1.1.0
+ */
+
+/* ========================================
+   Core Widget Container Styles
+   ======================================== */
+
+/* Use WordPress standard .inside class for widget content */
+#dashboard-widgets .postbox .inside {
+    margin: 0;
+    padding: 12px;
+}
+
+/* ========================================
+   Statistics Grid (WordPress Standard)
+   ======================================== */
+
+.lccp-widget-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    margin: 0 0 15px 0;
+}
+
+.lccp-stat-box {
+    background: #f6f7f7;
+    padding: 12px;
+    border-radius: 4px;
+    text-align: center;
+    border-left: 3px solid #2271b1;
+}
+
+.lccp-stat-box h4 {
+    margin: 0 0 8px 0;
+    font-size: 11px;
+    font-weight: 600;
+    color: #646970;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.lccp-stat-number {
+    font-size: 28px;
+    font-weight: 600;
+    color: #1d2327;
+    line-height: 1;
+}
+
+.lccp-stat-label {
+    font-size: 12px;
+    color: #646970;
+    margin-top: 4px;
+}
+
+/* ========================================
+   Activity Feed (WordPress Standard)
+   ======================================== */
+
+.lccp-activity-block {
+    margin: 0;
+}
+
+.lccp-activity-item {
+    padding: 12px 0;
+    border-bottom: 1px solid #dcdcde;
+}
+
+.lccp-activity-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.lccp-activity-item:first-child {
+    padding-top: 0;
+}
+
+.lccp-activity-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.lccp-activity-user {
+    font-weight: 600;
+    color: #1d2327;
+}
+
+.lccp-activity-role {
+    background: #2271b1;
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.lccp-activity-content {
+    font-size: 13px;
+    color: #50575e;
+    margin-bottom: 4px;
+}
+
+.lccp-activity-time {
+    font-size: 12px;
+    color: #787c82;
+}
+
+/* ========================================
+   Data Tables (WordPress Standard)
+   ======================================== */
+
+.lccp-widget-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+}
+
+.lccp-widget-table thead th {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #646970;
+    padding: 8px 10px;
+    text-align: left;
+    border-bottom: 1px solid #c3c4c7;
+    background: #f6f7f7;
+}
+
+.lccp-widget-table tbody td {
+    padding: 10px;
+    border-bottom: 1px solid #dcdcde;
+    font-size: 13px;
+    color: #2c3338;
+}
+
+.lccp-widget-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.lccp-widget-table tbody tr:hover {
+    background: #f6f7f7;
+}
+
+/* ========================================
+   Progress Bars (WordPress Standard)
+   ======================================== */
+
+.lccp-progress-container {
+    margin: 15px 0;
+}
+
+.lccp-progress-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 13px;
+    color: #2c3338;
+}
+
+.lccp-progress-bar {
+    background: #dcdcde;
+    height: 24px;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.lccp-progress-fill {
+    background: #2271b1;
+    height: 100%;
+    transition: width 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.lccp-progress-fill.success {
+    background: #00a32a;
+}
+
+.lccp-progress-fill.warning {
+    background: #dba617;
+}
+
+.lccp-progress-fill.danger {
+    background: #d63638;
+}
+
+/* Mini progress bars for table cells */
+.lccp-mini-progress {
+    background: #dcdcde;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+    width: 60px;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+.lccp-mini-progress-fill {
+    background: #2271b1;
+    height: 100%;
+}
+
+/* ========================================
+   Widget Actions (WordPress Standard)
+   ======================================== */
+
+.lccp-widget-actions {
+    margin-top: 15px;
+    padding-top: 12px;
+    border-top: 1px solid #dcdcde;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.lccp-widget-actions .button {
+    margin: 0;
+}
+
+/* ========================================
+   Filters and Controls
+   ======================================== */
+
+.lccp-widget-filters {
+    margin: 15px 0;
+    padding: 12px;
+    background: #f6f7f7;
+    border-radius: 4px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.lccp-widget-filters select,
+.lccp-widget-filters input {
+    flex: 1;
+    min-width: 120px;
+}
+
+/* ========================================
+   Empty States
+   ======================================== */
+
+.lccp-empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #646970;
+}
+
+.lccp-empty-state-icon {
+    font-size: 48px;
+    color: #c3c4c7;
+    margin-bottom: 12px;
+}
+
+.lccp-empty-state-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c3338;
+    margin-bottom: 8px;
+}
+
+.lccp-empty-state-description {
+    font-size: 13px;
+    color: #646970;
+    margin-bottom: 16px;
+}
+
+/* ========================================
+   Badges and Labels
+   ======================================== */
+
+.lccp-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.lccp-badge.primary {
+    background: #2271b1;
+    color: #fff;
+}
+
+.lccp-badge.success {
+    background: #00a32a;
+    color: #fff;
+}
+
+.lccp-badge.warning {
+    background: #dba617;
+    color: #fff;
+}
+
+.lccp-badge.danger {
+    background: #d63638;
+    color: #fff;
+}
+
+.lccp-badge.info {
+    background: #72aee6;
+    color: #fff;
+}
+
+.lccp-badge.secondary {
+    background: #dcdcde;
+    color: #2c3338;
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+@media screen and (max-width: 782px) {
+    .lccp-widget-stats {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 8px;
+    }
+
+    .lccp-stat-box {
+        padding: 10px;
+    }
+
+    .lccp-stat-number {
+        font-size: 24px;
+    }
+
+    .lccp-widget-actions {
+        flex-direction: column;
+    }
+
+    .lccp-widget-actions .button {
+        width: 100%;
+    }
+
+    .lccp-widget-filters {
+        flex-direction: column;
+    }
+
+    .lccp-widget-filters select,
+    .lccp-widget-filters input {
+        width: 100%;
+    }
+}
+
+/* ========================================
+   Loading States
+   ======================================== */
+
+.lccp-widget-loading {
+    text-align: center;
+    padding: 30px;
+    color: #646970;
+}
+
+.lccp-widget-loading .spinner {
+    float: none;
+    margin: 0 auto 12px;
+}
+
+/* ========================================
+   Widget Specific Overrides
+   ======================================== */
+
+/* Admin Overview Widget */
+#lccp_admin_overview .inside {
+    padding: 12px;
+}
+
+/* Activity Feed Widget */
+#lccp_all_activity .inside {
+    padding: 12px;
+}
+
+/* Performance Widget */
+#lccp_mentor_performance .inside {
+    padding: 12px;
+}
+
+/* ========================================
+   Accessibility
+   ======================================== */
+
+.lccp-widget-table a:focus,
+.lccp-activity-item a:focus {
+    box-shadow: 0 0 0 2px #2271b1;
+    outline: 2px solid transparent;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .lccp-stat-box {
+        border-left-width: 4px;
+    }
+
+    .lccp-progress-bar {
+        border: 1px solid #000;
+    }
+}

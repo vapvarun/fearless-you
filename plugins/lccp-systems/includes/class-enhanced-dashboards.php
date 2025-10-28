@@ -18,11 +18,44 @@ class LCCP_Enhanced_Dashboards {
         add_action('init', array($this, 'setup_user_permissions'));
         add_action('wp_dashboard_setup', array($this, 'add_dashboard_widgets'));
         add_action('admin_enqueue_scripts', array($this, 'enqueue_dashboard_assets'));
-        
+
         // AJAX handlers for real-time updates
         add_action('wp_ajax_lccp_get_student_progress', array($this, 'ajax_get_student_progress'));
         add_action('wp_ajax_lccp_get_hour_statistics', array($this, 'ajax_get_hour_statistics'));
         add_action('wp_ajax_lccp_get_activity_feed', array($this, 'ajax_get_activity_feed'));
+    }
+
+    /**
+     * Enqueue dashboard widget assets (WordPress Standard)
+     */
+    public function enqueue_dashboard_assets($hook) {
+        // Only load on dashboard
+        if ('index.php' !== $hook) {
+            return;
+        }
+
+        // Enqueue WordPress-standard dashboard widgets CSS
+        wp_enqueue_style(
+            'lccp-dashboard-widgets',
+            plugin_dir_url(dirname(__FILE__)) . 'assets/css/dashboard-widgets.css',
+            array(),
+            '1.1.0'
+        );
+
+        // Enqueue dashboard widgets JavaScript
+        wp_enqueue_script(
+            'lccp-dashboard-widgets',
+            plugin_dir_url(dirname(__FILE__)) . 'assets/js/dashboard-widgets.js',
+            array('jquery'),
+            '1.1.0',
+            true
+        );
+
+        // Localize script for AJAX
+        wp_localize_script('lccp-dashboard-widgets', 'lccpDashboard', array(
+            'ajaxUrl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('lccp_dashboard_nonce')
+        ));
     }
     
     public function setup_user_permissions() {
@@ -153,123 +186,83 @@ class LCCP_Enhanced_Dashboards {
     }
     
     /**
-     * Admin Overview Widget - Only for Rhonda/Admins
+     * Admin Overview Widget - Only for Rhonda/Admins (WordPress Standard)
      */
     public function render_admin_overview_widget() {
         global $wpdb;
-        
+
         // Get comprehensive statistics - using count_users() for efficiency
         $user_counts = count_users();
         $total_students = isset($user_counts['avail_roles']['subscriber']) ? $user_counts['avail_roles']['subscriber'] : 0;
         $total_mentors = isset($user_counts['avail_roles']['lccp_mentor']) ? $user_counts['avail_roles']['lccp_mentor'] : 0;
         $total_bigbirds = isset($user_counts['avail_roles']['lccp_big_bird']) ? $user_counts['avail_roles']['lccp_big_bird'] : 0;
         $total_pcs = isset($user_counts['avail_roles']['lccp_pc']) ? $user_counts['avail_roles']['lccp_pc'] : 0;
-        
+
         // Get hour statistics
         $total_hours = $wpdb->get_var("SELECT SUM(session_length) FROM {$wpdb->prefix}lccp_hour_tracker");
         $this_month_hours = $wpdb->get_var(
-            "SELECT SUM(session_length) FROM {$wpdb->prefix}lccp_hour_tracker 
+            "SELECT SUM(session_length) FROM {$wpdb->prefix}lccp_hour_tracker
             WHERE MONTH(session_date) = MONTH(CURRENT_DATE())"
         );
-        
+
         // Get course completion rates
         $completion_rate = $this->calculate_overall_completion_rate();
-        
+
         ?>
-        <div class="lccp-admin-overview">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <h4>Total Students</h4>
-                    <div class="stat-number"><?php echo $total_students; ?></div>
-                </div>
-                <div class="stat-card">
-                    <h4>Active Mentors</h4>
-                    <div class="stat-number"><?php echo $total_mentors; ?></div>
-                </div>
-                <div class="stat-card">
-                    <h4>Big Birds</h4>
-                    <div class="stat-number"><?php echo $total_bigbirds; ?></div>
-                </div>
-                <div class="stat-card">
-                    <h4>Program Candidates</h4>
-                    <div class="stat-number"><?php echo $total_pcs; ?></div>
-                </div>
+        <div class="lccp-widget-stats">
+            <div class="lccp-stat-box">
+                <h4>Total Students</h4>
+                <div class="lccp-stat-number"><?php echo number_format($total_students); ?></div>
             </div>
-            
-            <div class="hours-overview">
-                <h4>Hour Statistics</h4>
-                <p>Total Hours Tracked: <strong><?php echo number_format($total_hours, 1); ?></strong></p>
-                <p>This Month: <strong><?php echo number_format($this_month_hours, 1); ?></strong></p>
+            <div class="lccp-stat-box">
+                <h4>Active Mentors</h4>
+                <div class="lccp-stat-number"><?php echo number_format($total_mentors); ?></div>
             </div>
-            
-            <div class="completion-overview">
-                <h4>Course Completion</h4>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: <?php echo $completion_rate; ?>%"></div>
-                </div>
-                <p>Overall Completion Rate: <strong><?php echo $completion_rate; ?>%</strong></p>
+            <div class="lccp-stat-box">
+                <h4>Big Birds</h4>
+                <div class="lccp-stat-number"><?php echo number_format($total_bigbirds); ?></div>
             </div>
-            
-            <div class="quick-actions">
-                <a href="<?php echo admin_url('admin.php?page=lccp-reports'); ?>" class="button button-primary">View Detailed Reports</a>
-                <a href="<?php echo admin_url('admin.php?page=lccp-export'); ?>" class="button">Export Data</a>
+            <div class="lccp-stat-box">
+                <h4>Program Candidates</h4>
+                <div class="lccp-stat-number"><?php echo number_format($total_pcs); ?></div>
             </div>
         </div>
-        
-        <style>
-        .lccp-admin-overview .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        .lccp-admin-overview .stat-card {
-            background: #f0f0f1;
-            padding: 15px;
-            border-radius: 5px;
-            text-align: center;
-        }
-        .lccp-admin-overview .stat-card h4 {
-            margin: 0 0 10px 0;
-            font-size: 12px;
-            color: #666;
-            text-transform: uppercase;
-        }
-        .lccp-admin-overview .stat-number {
-            font-size: 24px;
-            font-weight: bold;
-            color: #2271b1;
-        }
-        .lccp-admin-overview .progress-bar {
-            background: #ddd;
-            height: 20px;
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 10px 0;
-        }
-        .lccp-admin-overview .progress-fill {
-            background: #4CAF50;
-            height: 100%;
-            transition: width 0.3s;
-        }
-        .lccp-admin-overview .quick-actions {
-            margin-top: 20px;
-            display: flex;
-            gap: 10px;
-        }
-        </style>
+
+        <div class="lccp-progress-container">
+            <div class="lccp-progress-label">
+                <span><strong>Hour Statistics</strong></span>
+                <span>Total: <?php echo number_format($total_hours, 1); ?> hrs | This Month: <?php echo number_format($this_month_hours, 1); ?> hrs</span>
+            </div>
+        </div>
+
+        <div class="lccp-progress-container">
+            <div class="lccp-progress-label">
+                <span><strong>Course Completion</strong></span>
+                <span><?php echo round($completion_rate); ?>%</span>
+            </div>
+            <div class="lccp-progress-bar">
+                <div class="lccp-progress-fill success" style="width: <?php echo $completion_rate; ?>%;">
+                    <?php echo round($completion_rate); ?>%
+                </div>
+            </div>
+        </div>
+
+        <div class="lccp-widget-actions">
+            <a href="<?php echo admin_url('admin.php?page=lccp-reports'); ?>" class="button button-primary">View Detailed Reports</a>
+            <a href="<?php echo admin_url('admin.php?page=lccp-export'); ?>" class="button">Export Data</a>
+        </div>
         <?php
     }
     
     /**
-     * All Activity Widget - Shows all program activity for Rhonda
+     * All Activity Widget - Shows all program activity for Rhonda (WordPress Standard)
      */
     public function render_all_activity_widget() {
         global $wpdb;
-        
+
         // Get recent activities across all users
         $recent_activities = $wpdb->get_results(
-            "SELECT 
+            "SELECT
                 h.*,
                 u.display_name,
                 u.user_email,
@@ -280,89 +273,54 @@ class LCCP_Enhanced_Dashboards {
             ORDER BY h.created_at DESC
             LIMIT 10"
         );
-        
+
         ?>
-        <div class="lccp-activity-feed">
-            <div class="activity-list">
-                <?php if ($recent_activities): ?>
-                    <?php foreach ($recent_activities as $activity): ?>
-                        <div class="activity-item">
-                            <div class="activity-meta">
-                                <strong><?php echo esc_html($activity->display_name); ?></strong>
-                                <?php if ($activity->role_type): ?>
-                                    <span class="role-badge"><?php echo esc_html($activity->role_type); ?></span>
-                                <?php endif; ?>
-                            </div>
-                            <div class="activity-content">
-                                Tracked <?php echo $activity->session_length; ?> hours with 
-                                <?php echo esc_html($activity->client_name); ?>
-                            </div>
-                            <div class="activity-time">
-                                <?php echo human_time_diff(strtotime($activity->created_at), current_time('timestamp')); ?> ago
-                            </div>
+        <div class="lccp-activity-block">
+            <?php if ($recent_activities): ?>
+                <?php foreach ($recent_activities as $activity): ?>
+                    <div class="lccp-activity-item">
+                        <div class="lccp-activity-header">
+                            <span class="lccp-activity-user"><?php echo esc_html($activity->display_name); ?></span>
+                            <?php if ($activity->role_type): ?>
+                                <span class="lccp-activity-role"><?php echo esc_html($activity->role_type); ?></span>
+                            <?php endif; ?>
                         </div>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <p>No recent activity to display.</p>
-                <?php endif; ?>
-            </div>
-            
-            <div class="activity-filters">
-                <select id="activity-filter-role" class="activity-filter">
-                    <option value="">All Roles</option>
-                    <option value="mentor">Mentors</option>
-                    <option value="bigbird">Big Birds</option>
-                    <option value="pc">PCs</option>
-                    <option value="student">Students</option>
-                </select>
-                
-                <select id="activity-filter-time" class="activity-filter">
-                    <option value="24">Last 24 Hours</option>
-                    <option value="168">Last Week</option>
-                    <option value="720">Last Month</option>
-                </select>
-            </div>
+                        <div class="lccp-activity-content">
+                            Tracked <?php echo $activity->session_length; ?> hours with
+                            <?php echo esc_html($activity->client_name); ?>
+                        </div>
+                        <div class="lccp-activity-time">
+                            <?php echo human_time_diff(strtotime($activity->created_at), current_time('timestamp')); ?> ago
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <div class="lccp-empty-state">
+                    <p class="lccp-empty-state-description">No recent activity to display.</p>
+                </div>
+            <?php endif; ?>
         </div>
-        
-        <style>
-        .activity-item {
-            padding: 10px;
-            border-bottom: 1px solid #eee;
-        }
-        .activity-item:last-child {
-            border-bottom: none;
-        }
-        .activity-meta {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 5px;
-        }
-        .role-badge {
-            background: #2271b1;
-            color: white;
-            padding: 2px 8px;
-            border-radius: 3px;
-            font-size: 11px;
-        }
-        .activity-time {
-            color: #666;
-            font-size: 12px;
-            margin-top: 5px;
-        }
-        .activity-filters {
-            margin-top: 15px;
-            display: flex;
-            gap: 10px;
-        }
-        .activity-filter {
-            flex: 1;
-        }
-        </style>
+
+        <div class="lccp-widget-filters">
+            <select id="activity-filter-role" class="activity-filter">
+                <option value="">All Roles</option>
+                <option value="mentor">Mentors</option>
+                <option value="bigbird">Big Birds</option>
+                <option value="pc">PCs</option>
+                <option value="student">Students</option>
+            </select>
+
+            <select id="activity-filter-time" class="activity-filter">
+                <option value="24">Last 24 Hours</option>
+                <option value="168">Last Week</option>
+                <option value="720">Last Month</option>
+            </select>
+        </div>
         <?php
     }
     
     /**
-     * Mentor Performance Widget
+     * Mentor Performance Widget (WordPress Standard)
      */
     public function render_mentor_performance_widget() {
         global $wpdb;
@@ -390,8 +348,8 @@ class LCCP_Enhanced_Dashboards {
         ");
 
         ?>
-        <div class="lccp-mentor-performance">
-            <table class="widefat">
+        <?php if (!empty($mentor_stats)): ?>
+            <table class="lccp-widget-table">
                 <thead>
                     <tr>
                         <th>Mentor</th>
@@ -410,9 +368,9 @@ class LCCP_Enhanced_Dashboards {
                             <td><?php echo intval($mentor->student_count); ?></td>
                             <td><?php echo number_format($mentor->month_hours, 1); ?></td>
                             <td>
-                                <div class="mini-progress">
-                                    <div class="mini-progress-fill" style="width: <?php echo $mentor->completion_rate; ?>%"></div>
-                                </div>
+                                <span class="lccp-mini-progress">
+                                    <span class="lccp-mini-progress-fill" style="width: <?php echo $mentor->completion_rate; ?>%"></span>
+                                </span>
                                 <?php echo $mentor->completion_rate; ?>%
                             </td>
                             <td>
@@ -422,24 +380,11 @@ class LCCP_Enhanced_Dashboards {
                     <?php endforeach; ?>
                 </tbody>
             </table>
-        </div>
-        
-        <style>
-        .mini-progress {
-            background: #ddd;
-            height: 10px;
-            border-radius: 5px;
-            overflow: hidden;
-            display: inline-block;
-            width: 60px;
-            vertical-align: middle;
-            margin-right: 5px;
-        }
-        .mini-progress-fill {
-            background: #4CAF50;
-            height: 100%;
-        }
-        </style>
+        <?php else: ?>
+            <div class="lccp-empty-state">
+                <p class="lccp-empty-state-description">No mentor data available.</p>
+            </div>
+        <?php endif; ?>
         <?php
     }
     
