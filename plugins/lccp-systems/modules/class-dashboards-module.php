@@ -413,96 +413,9 @@ class LCCP_Dashboards_Module extends LCCP_Module {
         */
     }
     
-    /**
-     * Render dashboard widget
-     */
-    public function render_dashboard_widget() {
-        $stats = $this->get_system_stats();
-        ?>
-        <div class="lccp-dashboard-widget">
-            <div class="lccp-stats-grid">
-                <div class="lccp-stat-item">
-                    <div class="lccp-stat-number"><?php echo esc_html($stats['total_students']); ?></div>
-                    <div class="lccp-stat-label"><?php esc_html_e('Students', 'lccp-systems'); ?></div>
-                </div>
-                <div class="lccp-stat-item">
-                    <div class="lccp-stat-number"><?php echo esc_html($stats['total_mentors']); ?></div>
-                    <div class="lccp-stat-label"><?php esc_html_e('Mentors', 'lccp-systems'); ?></div>
-                </div>
-                <div class="lccp-stat-item">
-                    <div class="lccp-stat-number"><?php echo esc_html($stats['total_bigbirds']); ?></div>
-                    <div class="lccp-stat-label"><?php esc_html_e('Big Birds', 'lccp-systems'); ?></div>
-                </div>
-                <div class="lccp-stat-item">
-                    <div class="lccp-stat-number"><?php echo esc_html($stats['total_pcs']); ?></div>
-                    <div class="lccp-stat-label"><?php esc_html_e('PCs', 'lccp-systems'); ?></div>
-                </div>
-            </div>
-            
-            <div class="lccp-widget-actions">
-                <a href="<?php echo admin_url('admin.php?page=lccp-systems'); ?>" class="button button-primary">
-                    <?php esc_html_e('View Full Dashboard', 'lccp-systems'); ?>
-                </a>
-            </div>
-        </div>
-        
-        <style>
-        .lccp-dashboard-widget {
-            padding: 10px 0;
-        }
-        
-        .lccp-stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .lccp-stat-item {
-            text-align: center;
-            padding: 10px;
-            background: #f9f9f9;
-            border-radius: 4px;
-        }
-        
-        .lccp-stat-number {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #007cba;
-        }
-        
-        .lccp-stat-label {
-            font-size: 0.9em;
-            color: #666;
-            margin-top: 5px;
-        }
-        
-        .lccp-widget-actions {
-            text-align: center;
-        }
-        </style>
-        <?php
-    }
-    
-    /**
-     * Get system statistics
-     */
-    private function get_system_stats() {
-        $stats = get_transient('lccp_system_stats');
-        
-        if ($stats === false) {
-            $stats = array(
-                'total_students' => count(get_users(array('role' => 'subscriber'))),
-                'total_mentors' => count(get_users(array('role' => 'lccp_mentor'))),
-                'total_bigbirds' => count(get_users(array('role' => 'lccp_big_bird'))),
-                'total_pcs' => count(get_users(array('role' => 'lccp_pc')))
-            );
-            
-            set_transient('lccp_system_stats', $stats, 300); // 5 minutes
-        }
-        
-        return $stats;
-    }
+    // render_dashboard_widget() - DELETED (v2.0.0 optimization)
+    // get_system_stats() - DELETED (v2.0.0 optimization)
+    // Functionality moved to Enhanced Dashboards - Program Overview widget
     
     /**
      * Enqueue dashboard assets

@@ -245,8 +245,8 @@ class LCCP_Module_Manager {
             'performance' => 'includes/class-performance-optimizer.php',
             'learndash_integration' => 'includes/class-learndash-integration.php',
             'learndash_compatibility' => 'includes/class-learndash-compatibility.php',
-            'learndash_widgets' => 'includes/class-learndash-widgets.php',
-            'advanced_widgets' => 'includes/class-learndash-widgets.php',
+            // 'learndash_widgets' => DELETED - Dashboard optimization v2.0.0
+            // 'advanced_widgets' => DELETED - Dashboard optimization v2.0.0
             'roles' => 'includes/class-roles-manager.php',
             'checklist' => 'includes/class-checklist-manager.php',
             'messages' => 'includes/class-message-system.php',
