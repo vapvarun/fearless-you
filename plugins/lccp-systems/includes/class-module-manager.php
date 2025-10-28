@@ -157,6 +157,10 @@ class LCCP_Module_Manager {
     
     private function __construct() {
         $this->module_settings = get_option('lccp_modules_settings', array());
+
+        // Migrate legacy string format to array format
+        $this->migrate_legacy_settings();
+
         add_action('init', array($this, 'load_enabled_modules'), 5);
         // Run deeper, runtime-dependent self-tests later in init
         add_action('init', array($this, 'run_deferred_self_tests'), 99);
@@ -167,6 +171,26 @@ class LCCP_Module_Manager {
         add_action('admin_notices', array($this, 'display_module_errors'));
     }
     
+    /**
+     * Migrate legacy settings format (string 'on'/'off') to array format
+     */
+    private function migrate_legacy_settings() {
+        $needs_update = false;
+
+        foreach ($this->module_settings as $module_id => $setting) {
+            if (!is_array($setting)) {
+                // Convert legacy format to array format
+                $enabled = ($setting === 'on' || $setting === true || $setting === 1);
+                $this->module_settings[$module_id] = array('enabled' => $enabled);
+                $needs_update = true;
+            }
+        }
+
+        if ($needs_update) {
+            update_option('lccp_modules_settings', $this->module_settings);
+        }
+    }
+
     /**
      * Register a module
      */
@@ -421,13 +445,14 @@ class LCCP_Module_Manager {
 
         $setting = $this->module_settings[$module_id];
 
-        // Handle both array format ['enabled' => true] and string format 'on'
+        // Settings are now normalized to array format in constructor
+        // But keep legacy support as fallback for edge cases
         if (is_array($setting)) {
             return isset($setting['enabled']) && $setting['enabled'];
-        } else {
-            // Legacy string format: 'on' or true
-            return $setting === 'on' || $setting === true || $setting === 1;
         }
+
+        // Fallback for any unmigrated settings (should not happen)
+        return $setting === 'on' || $setting === true || $setting === 1;
     }
     
     /**

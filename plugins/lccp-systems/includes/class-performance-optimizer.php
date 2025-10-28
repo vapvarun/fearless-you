@@ -10,20 +10,25 @@ if (!defined('ABSPATH')) {
 }
 
 class LCCP_Performance_Optimizer {
-    
+
     private $settings;
-    
+    private $cleanup_lock_key = 'lccp_cleanup_in_progress';
+    private $last_cleanup_key = 'lccp_last_cleanup_time';
+
     public function __construct() {
         $this->settings = get_option('lccp_performance_settings', $this->get_default_settings());
-        
+
         // Initialize optimizations
         add_action('init', array($this, 'init_optimizations'));
-        
+
         // Admin settings
         add_action('admin_init', array($this, 'register_settings'));
-        
-        // Scheduled cleanup
+
+        // Scheduled cleanup with permission check
         add_action('lccp_systems_daily_cleanup', array($this, 'daily_cleanup'));
+
+        // Admin security notices
+        add_action('admin_notices', array($this, 'show_optimization_warnings'));
     }
     
     public function init_optimizations() {
@@ -265,88 +270,259 @@ class LCCP_Performance_Optimizer {
     
     public function cleanup_database() {
         global $wpdb;
-        
-        // Clean up spam comments
-        $wpdb->delete($wpdb->comments, array('comment_approved' => 'spam'));
-        
-        // Clean up old revisions (keep only 3 most recent)
-        $wpdb->query("
-            DELETE FROM {$wpdb->posts} 
-            WHERE post_type = 'revision' 
-            AND ID NOT IN (
-                SELECT * FROM (
-                    SELECT MAX(ID) FROM {$wpdb->posts} p2
-                    WHERE p2.post_type = 'revision' 
-                    AND p2.post_parent = {$wpdb->posts}.post_parent
-                    GROUP BY p2.post_parent
-                    ORDER BY p2.post_date DESC
-                    LIMIT 3
-                ) as t
-            )
-        ");
-        
-        // Clean up orphaned post meta
-        $wpdb->query("
-            DELETE pm FROM {$wpdb->postmeta} pm
-            LEFT JOIN {$wpdb->posts} p ON pm.post_id = p.ID
-            WHERE p.ID IS NULL
-        ");
-        
-        // Clean up orphaned user meta
-        $wpdb->query("
-            DELETE um FROM {$wpdb->usermeta} um
-            LEFT JOIN {$wpdb->users} u ON um.user_id = u.ID
-            WHERE u.ID IS NULL
-        ");
+
+        // Security: Only run if explicitly enabled and scheduled properly
+        if (!$this->settings['optimize_cleanup']) {
+            return false;
+        }
+
+        // Prevent concurrent cleanup operations
+        if (get_transient($this->cleanup_lock_key)) {
+            error_log('[LCCP Performance] Cleanup already in progress, skipping...');
+            return false;
+        }
+
+        // Rate limiting: Only run once per day
+        $last_cleanup = get_option($this->last_cleanup_key);
+        if ($last_cleanup && (time() - $last_cleanup) < DAY_IN_SECONDS) {
+            return false;
+        }
+
+        // Set lock
+        set_transient($this->cleanup_lock_key, true, HOUR_IN_SECONDS);
+
+        try {
+            $stats = array(
+                'spam_comments' => 0,
+                'revisions' => 0,
+                'orphaned_postmeta' => 0,
+                'orphaned_usermeta' => 0
+            );
+
+            // Clean up spam comments (with limit for safety)
+            $stats['spam_comments'] = $wpdb->query(
+                $wpdb->prepare(
+                    "DELETE FROM {$wpdb->comments} WHERE comment_approved = %s LIMIT 1000",
+                    'spam'
+                )
+            );
+
+            // Clean up old revisions (keep only 3 most recent) - Fixed query
+            $stats['revisions'] = $wpdb->query("
+                DELETE p1 FROM {$wpdb->posts} p1
+                LEFT JOIN (
+                    SELECT p2.ID, p2.post_parent,
+                           (SELECT COUNT(*) FROM {$wpdb->posts} p3
+                            WHERE p3.post_parent = p2.post_parent
+                            AND p3.post_type = 'revision'
+                            AND p3.post_date >= p2.post_date) as row_num
+                    FROM {$wpdb->posts} p2
+                    WHERE p2.post_type = 'revision'
+                ) AS ranked ON p1.ID = ranked.ID
+                WHERE p1.post_type = 'revision'
+                AND ranked.row_num > 3
+                LIMIT 1000
+            ");
+
+            // Clean up orphaned post meta (with limit for safety)
+            $stats['orphaned_postmeta'] = $wpdb->query("
+                DELETE pm FROM {$wpdb->postmeta} pm
+                LEFT JOIN {$wpdb->posts} p ON pm.post_id = p.ID
+                WHERE p.ID IS NULL
+                LIMIT 1000
+            ");
+
+            // Clean up orphaned user meta (with limit for safety)
+            $stats['orphaned_usermeta'] = $wpdb->query("
+                DELETE um FROM {$wpdb->usermeta} um
+                LEFT JOIN {$wpdb->users} u ON um.user_id = u.ID
+                WHERE u.ID IS NULL
+                LIMIT 1000
+            ");
+
+            // Log successful cleanup
+            $this->log_cleanup_event('Database cleanup completed', $stats);
+
+            // Update last cleanup time
+            update_option($this->last_cleanup_key, time());
+
+            // Send admin notification
+            $this->send_cleanup_notification($stats);
+
+            return $stats;
+
+        } catch (Exception $e) {
+            error_log('[LCCP Performance] Database cleanup failed: ' . $e->getMessage());
+            $this->send_cleanup_error_notification($e->getMessage());
+            return false;
+
+        } finally {
+            // Always release the lock
+            delete_transient($this->cleanup_lock_key);
+        }
+    }
+
+    /**
+     * Log cleanup events
+     */
+    private function log_cleanup_event($event, $stats = array()) {
+        $log_entry = sprintf(
+            '[LCCP Performance] %s - Spam: %d, Revisions: %d, Orphaned Meta: %d/%d at %s',
+            $event,
+            $stats['spam_comments'] ?? 0,
+            $stats['revisions'] ?? 0,
+            $stats['orphaned_postmeta'] ?? 0,
+            $stats['orphaned_usermeta'] ?? 0,
+            current_time('mysql')
+        );
+
+        error_log($log_entry);
+
+        // Store in database log
+        $log = get_option('lccp_performance_cleanup_log', array());
+        $log[] = array(
+            'event' => $event,
+            'stats' => $stats,
+            'timestamp' => current_time('mysql')
+        );
+
+        // Keep only last 50 entries
+        if (count($log) > 50) {
+            $log = array_slice($log, -50);
+        }
+
+        update_option('lccp_performance_cleanup_log', $log);
+    }
+
+    /**
+     * Send cleanup notification to admin
+     */
+    private function send_cleanup_notification($stats) {
+        // Only send if significant cleanup occurred
+        $total_cleaned = array_sum($stats);
+        if ($total_cleaned < 100) {
+            return; // Don't spam admin for small cleanups
+        }
+
+        $admin_email = get_option('admin_email');
+        $subject = '[LCCP Performance] Database Cleanup Report';
+        $message = sprintf(
+            "Database cleanup completed successfully:\n\n" .
+            "Spam Comments Removed: %d\n" .
+            "Old Revisions Removed: %d\n" .
+            "Orphaned Post Meta Removed: %d\n" .
+            "Orphaned User Meta Removed: %d\n\n" .
+            "Total Records Cleaned: %d\n" .
+            "Time: %s",
+            $stats['spam_comments'],
+            $stats['revisions'],
+            $stats['orphaned_postmeta'],
+            $stats['orphaned_usermeta'],
+            $total_cleaned,
+            current_time('mysql')
+        );
+
+        wp_mail($admin_email, $subject, $message);
+    }
+
+    /**
+     * Send cleanup error notification
+     */
+    private function send_cleanup_error_notification($error) {
+        $admin_email = get_option('admin_email');
+        $subject = '[LCCP Performance] Database Cleanup Error';
+        $message = sprintf(
+            "Database cleanup encountered an error:\n\n%s\n\nTime: %s",
+            $error,
+            current_time('mysql')
+        );
+
+        wp_mail($admin_email, $subject, $message);
     }
     
     public function cleanup_expired_transients() {
         global $wpdb;
-        
-        // Delete expired transients
-        $wpdb->query("
-            DELETE FROM {$wpdb->options} 
-            WHERE option_name LIKE '_transient_timeout_%' 
-            AND option_value < UNIX_TIMESTAMP()
-        ");
-        
-        // Delete orphaned transients
-        $wpdb->query("
-            DELETE FROM {$wpdb->options} 
-            WHERE option_name LIKE '_transient_%' 
-            AND option_name NOT LIKE '_transient_timeout_%'
-            AND option_name NOT IN (
-                SELECT REPLACE(option_name, '_transient_timeout_', '_transient_') 
-                FROM (
-                    SELECT option_name FROM {$wpdb->options}
-                    WHERE option_name LIKE '_transient_timeout_%'
-                ) AS t
-            )
-        ");
+
+        // Rate limiting: Only run once per day
+        $last_transient_cleanup = get_transient('lccp_last_transient_cleanup');
+        if ($last_transient_cleanup) {
+            return false;
+        }
+
+        set_transient('lccp_last_transient_cleanup', true, DAY_IN_SECONDS);
+
+        try {
+            // Delete expired transients (with limit for safety)
+            $expired_count = $wpdb->query(
+                $wpdb->prepare(
+                    "DELETE FROM {$wpdb->options}
+                    WHERE option_name LIKE %s
+                    AND option_value < UNIX_TIMESTAMP()
+                    LIMIT 1000",
+                    '_transient_timeout_%'
+                )
+            );
+
+            // Delete corresponding transient values
+            $wpdb->query("
+                DELETE FROM {$wpdb->options}
+                WHERE option_name LIKE '_transient_%'
+                AND option_name NOT LIKE '_transient_timeout_%'
+                AND CONCAT('_transient_timeout_', SUBSTRING(option_name, 12)) NOT IN (
+                    SELECT option_name FROM (
+                        SELECT option_name FROM {$wpdb->options}
+                        WHERE option_name LIKE '_transient_timeout_%'
+                    ) AS tmp
+                )
+                LIMIT 1000
+            ");
+
+            error_log('[LCCP Performance] Cleaned up ' . $expired_count . ' expired transients');
+
+            return $expired_count;
+
+        } catch (Exception $e) {
+            error_log('[LCCP Performance] Transient cleanup failed: ' . $e->getMessage());
+            return false;
+        }
     }
     
     public function optimize_autoloaded_options() {
         global $wpdb;
-        
-        // Find large autoloaded options
-        $large_options = $wpdb->get_results("
-            SELECT option_name, LENGTH(option_value) as size 
-            FROM {$wpdb->options} 
-            WHERE autoload = 'yes' 
-            AND LENGTH(option_value) > 100000
-            ORDER BY size DESC
-            LIMIT 10
-        ");
-        
-        $safe_to_disable = array(
-            'rewrite_rules', // Can be regenerated
-            '_site_transient_browser_', // Browser data
-            '_site_transient_timeout_browser_', // Browser timeouts
-        );
-        
-        foreach ($large_options as $option) {
-            foreach ($safe_to_disable as $pattern) {
-                if (strpos($option->option_name, $pattern) !== false) {
+
+        // Security: Only run for administrators
+        if (!current_user_can('manage_options')) {
+            return false;
+        }
+
+        // Rate limiting: Only run once per week
+        $last_autoload_optimization = get_option('lccp_last_autoload_optimization');
+        if ($last_autoload_optimization && (time() - $last_autoload_optimization) < WEEK_IN_SECONDS) {
+            return false;
+        }
+
+        try {
+            // Find large autoloaded options
+            $large_options = $wpdb->get_results("
+                SELECT option_name, LENGTH(option_value) as size
+                FROM {$wpdb->options}
+                WHERE autoload = 'yes'
+                AND LENGTH(option_value) > 100000
+                ORDER BY size DESC
+                LIMIT 10
+            ");
+
+            // Whitelist of safe options to disable autoloading
+            $safe_to_disable = array(
+                'rewrite_rules', // Can be regenerated
+                '_site_transient_browser_', // Browser data
+            );
+
+            $optimized_count = 0;
+
+            foreach ($large_options as $option) {
+                foreach ($safe_to_disable as $pattern) {
+                    if (strpos($option->option_name, $pattern) !== false) {
                     $wpdb->update(
                         $wpdb->options,
                         array('autoload' => 'no'),
@@ -406,7 +582,33 @@ class LCCP_Performance_Optimizer {
     public function register_settings() {
         register_setting('lccp_systems_settings', 'lccp_performance_settings');
     }
-    
+
+    /**
+     * Show optimization warnings in admin
+     */
+    public function show_optimization_warnings() {
+        if (!current_user_can('manage_options')) {
+            return;
+        }
+
+        $screen = get_current_screen();
+        if (!$screen || strpos($screen->id, 'lccp') === false) {
+            return;
+        }
+
+        if ($this->settings['optimize_cleanup']) {
+            ?>
+            <div class="notice notice-info">
+                <p>
+                    <strong>Performance Optimization Active:</strong> Database cleanup operations are enabled.
+                    These operations automatically remove spam, old revisions, and orphaned data.
+                    <a href="<?php echo admin_url('admin.php?page=lccp-systems'); ?>">Review Settings</a>
+                </p>
+            </div>
+            <?php
+        }
+    }
+
     private function get_default_settings() {
         return array(
             'optimize_database' => true,

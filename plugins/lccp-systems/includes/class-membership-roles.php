@@ -14,12 +14,14 @@ if (!defined('ABSPATH')) {
 }
 
 class LCCP_Membership_Roles {
-    
+
     private $fearless_you_tag = 'fearless you membership - active';
     private $fearless_you_role = 'fearless_you_member';
     private $public_user_role = 'public_user';
     private $free_user_role = 'free_user';
-    
+    private $audit_log_option = 'lccp_role_change_audit_log';
+    private $max_log_entries = 500;
+
     public function __construct() {
         // Create custom roles on activation
         add_action('init', array($this, 'create_membership_roles'));
@@ -277,27 +279,252 @@ class LCCP_Membership_Roles {
     /**
      * Update user role based on tags
      */
-    public function update_user_role($user_id) {
+    public function update_user_role($user_id, $reason = 'Automatic role assignment') {
         $new_role = $this->determine_user_role($user_id);
-        
+
         if ($new_role) {
             $user = new WP_User($user_id);
-            
+            $old_roles = $user->roles;
+
+            // Security check: Prevent privilege escalation
+            if (!$this->is_role_change_safe($user_id, $old_roles, $new_role)) {
+                $this->log_security_event(
+                    'Blocked privilege escalation attempt',
+                    $user_id,
+                    $old_roles,
+                    $new_role,
+                    $reason
+                );
+                return false;
+            }
+
+            // Rate limiting: Check if too many role changes in short time
+            if (!$this->check_role_change_rate_limit($user_id)) {
+                $this->log_security_event(
+                    'Rate limit exceeded for role changes',
+                    $user_id,
+                    $old_roles,
+                    $new_role,
+                    $reason
+                );
+                return false;
+            }
+
             // Remove old membership roles
             $membership_roles = array($this->fearless_you_role, $this->public_user_role, $this->free_user_role, 'subscriber');
             foreach ($membership_roles as $role) {
                 $user->remove_role($role);
             }
-            
+
             // Add new role
             $user->add_role($new_role);
-            
-            // Log the change
+
+            // Log the change to user meta
             update_user_meta($user_id, 'lccp_last_role_update', current_time('mysql'));
-            update_user_meta($user_id, 'lccp_role_reason', 'Automatic role assignment based on tags/purchases');
-            
-            do_action('lccp_user_role_updated', $user_id, $new_role);
+            update_user_meta($user_id, 'lccp_role_reason', $reason);
+
+            // Store previous role for rollback capability
+            update_user_meta($user_id, 'lccp_previous_role', $old_roles);
+
+            // Add to audit log
+            $this->add_to_audit_log($user_id, $old_roles, $new_role, $reason);
+
+            // Alert admin if suspicious change detected
+            if ($this->is_suspicious_role_change($user_id, $old_roles, $new_role)) {
+                $this->send_role_change_alert($user_id, $old_roles, $new_role, $reason);
+            }
+
+            do_action('lccp_user_role_updated', $user_id, $new_role, $old_roles);
+
+            return true;
         }
+
+        return false;
+    }
+
+    /**
+     * Check if role change is safe (prevent privilege escalation)
+     */
+    private function is_role_change_safe($user_id, $old_roles, $new_role) {
+        // Never allow changing administrator or editor roles
+        $protected_roles = array('administrator', 'editor', 'shop_manager');
+
+        foreach ($old_roles as $role) {
+            if (in_array($role, $protected_roles)) {
+                return false;
+            }
+        }
+
+        // Only allow changes between membership roles
+        $allowed_target_roles = array(
+            $this->fearless_you_role,
+            $this->public_user_role,
+            $this->free_user_role,
+            'subscriber'
+        );
+
+        return in_array($new_role, $allowed_target_roles);
+    }
+
+    /**
+     * Check rate limit for role changes (max 5 changes per hour per user)
+     */
+    private function check_role_change_rate_limit($user_id) {
+        $cache_key = 'lccp_role_changes_' . $user_id;
+        $changes = get_transient($cache_key);
+
+        if ($changes === false) {
+            set_transient($cache_key, 1, HOUR_IN_SECONDS);
+            return true;
+        }
+
+        if ($changes >= 5) {
+            return false; // Too many changes
+        }
+
+        set_transient($cache_key, $changes + 1, HOUR_IN_SECONDS);
+        return true;
+    }
+
+    /**
+     * Check if role change is suspicious
+     */
+    private function is_suspicious_role_change($user_id, $old_roles, $new_role) {
+        // Flag if changing from paid to free within 7 days
+        if ($new_role === $this->free_user_role) {
+            $last_update = get_user_meta($user_id, 'lccp_last_role_update', true);
+            if ($last_update) {
+                $last_update_time = strtotime($last_update);
+                $days_since = (time() - $last_update_time) / DAY_IN_SECONDS;
+
+                if ($days_since < 7 && in_array($this->fearless_you_role, $old_roles)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Add role change to audit log
+     */
+    private function add_to_audit_log($user_id, $old_roles, $new_role, $reason) {
+        $log = get_option($this->audit_log_option, array());
+
+        // Limit log size
+        if (count($log) >= $this->max_log_entries) {
+            $log = array_slice($log, -($this->max_log_entries - 1));
+        }
+
+        $user = get_user_by('ID', $user_id);
+        $log[] = array(
+            'user_id' => $user_id,
+            'username' => $user ? $user->user_login : 'Unknown',
+            'old_roles' => $old_roles,
+            'new_role' => $new_role,
+            'reason' => $reason,
+            'timestamp' => current_time('mysql'),
+            'ip_address' => $_SERVER['REMOTE_ADDR'] ?? 'Unknown',
+            'user_agent' => $_SERVER['HTTP_USER_AGENT'] ?? 'Unknown'
+        );
+
+        update_option($this->audit_log_option, $log);
+    }
+
+    /**
+     * Log security event
+     */
+    private function log_security_event($event, $user_id, $old_roles, $new_role, $reason) {
+        error_log(sprintf(
+            '[LCCP Membership Roles Security] %s - User ID: %d, Old Roles: %s, New Role: %s, Reason: %s',
+            $event,
+            $user_id,
+            implode(', ', $old_roles),
+            $new_role,
+            $reason
+        ));
+
+        // Add to security log
+        $security_log = get_option('lccp_role_security_log', array());
+        $security_log[] = array(
+            'event' => $event,
+            'user_id' => $user_id,
+            'old_roles' => $old_roles,
+            'new_role' => $new_role,
+            'reason' => $reason,
+            'timestamp' => current_time('mysql')
+        );
+
+        // Keep only last 100 security events
+        if (count($security_log) > 100) {
+            $security_log = array_slice($security_log, -100);
+        }
+
+        update_option('lccp_role_security_log', $security_log);
+    }
+
+    /**
+     * Send alert email to admin about suspicious role change
+     */
+    private function send_role_change_alert($user_id, $old_roles, $new_role, $reason) {
+        $user = get_user_by('ID', $user_id);
+        if (!$user) {
+            return;
+        }
+
+        $admin_email = get_option('admin_email');
+        $subject = '[LCCP Security Alert] Suspicious Role Change Detected';
+        $message = sprintf(
+            "A suspicious role change was detected:\n\n" .
+            "User: %s (%s)\n" .
+            "Old Roles: %s\n" .
+            "New Role: %s\n" .
+            "Reason: %s\n" .
+            "Time: %s\n" .
+            "IP Address: %s\n\n" .
+            "Please review this change at: %s",
+            $user->user_login,
+            $user->user_email,
+            implode(', ', $old_roles),
+            $new_role,
+            $reason,
+            current_time('mysql'),
+            $_SERVER['REMOTE_ADDR'] ?? 'Unknown',
+            admin_url('admin.php?page=lccp-membership-roles')
+        );
+
+        wp_mail($admin_email, $subject, $message);
+    }
+
+    /**
+     * Rollback user to previous role
+     */
+    public function rollback_user_role($user_id) {
+        if (!current_user_can('manage_options')) {
+            return false;
+        }
+
+        $previous_roles = get_user_meta($user_id, 'lccp_previous_role', true);
+        if (empty($previous_roles)) {
+            return false;
+        }
+
+        $user = new WP_User($user_id);
+
+        // Remove current roles
+        foreach ($user->roles as $role) {
+            $user->remove_role($role);
+        }
+
+        // Restore previous roles
+        foreach ($previous_roles as $role) {
+            $user->add_role($role);
+        }
+
+        $this->add_to_audit_log($user_id, $user->roles, implode(', ', $previous_roles), 'Manual rollback by admin');
+
+        return true;
     }
     
     /**
