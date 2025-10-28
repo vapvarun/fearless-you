@@ -198,12 +198,15 @@ class LCCP_Enhanced_Dashboards {
         $total_bigbirds = isset($user_counts['avail_roles']['lccp_big_bird']) ? $user_counts['avail_roles']['lccp_big_bird'] : 0;
         $total_pcs = isset($user_counts['avail_roles']['lccp_pc']) ? $user_counts['avail_roles']['lccp_pc'] : 0;
 
-        // Get hour statistics
+        // Get hour statistics (with null safety)
         $total_hours = $wpdb->get_var("SELECT SUM(session_length) FROM {$wpdb->prefix}lccp_hour_tracker");
+        $total_hours = $total_hours ? $total_hours : 0;
+
         $this_month_hours = $wpdb->get_var(
             "SELECT SUM(session_length) FROM {$wpdb->prefix}lccp_hour_tracker
             WHERE MONTH(session_date) = MONTH(CURRENT_DATE())"
         );
+        $this_month_hours = $this_month_hours ? $this_month_hours : 0;
 
         // Get course completion rates
         $completion_rate = $this->calculate_overall_completion_rate();
@@ -757,26 +760,6 @@ class LCCP_Enhanced_Dashboards {
             'in_progress_courses' => $in_progress_courses,
             'total_courses' => $course_count
         );
-    }
-
-    public function enqueue_dashboard_assets($hook) {
-        if ('index.php' !== $hook) {
-            return;
-        }
-        
-        wp_enqueue_script(
-            'lccp-dashboard',
-            LCCP_SYSTEMS_PLUGIN_URL . 'assets/js/dashboard.js',
-            array('jquery'),
-            LCCP_SYSTEMS_VERSION,
-            true
-        );
-        
-        wp_localize_script('lccp-dashboard', 'lccp_dashboard', array(
-            'ajax_url' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('lccp_dashboard_nonce'),
-            'refresh_interval' => 30000 // Refresh every 30 seconds
-        ));
     }
 }
 
