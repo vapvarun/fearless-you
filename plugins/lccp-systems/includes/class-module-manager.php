@@ -403,15 +403,20 @@ class LCCP_Module_Manager {
      * Check if module dependencies are met
      */
     private function check_module_dependencies($module_id) {
+        // Check if module is registered
+        if (!isset($this->registered_modules[$module_id])) {
+            return true; // If not registered, no dependencies to check
+        }
+
         $module_data = $this->registered_modules[$module_id];
         $dependencies = $module_data['info']['dependencies'] ?? array();
-        
+
         foreach ($dependencies as $dependency) {
             if (!$this->is_dependency_met($dependency)) {
                 return false;
             }
         }
-        
+
         return true;
     }
     
