@@ -704,8 +704,9 @@ class LCCP_Performance_Optimizer {
             <h2>Performance Status</h2>
             <?php $this->display_performance_status(); ?>
             
+            <?php /* REMOVED Oct 28, 2025: Broken links - lccp-performance admin page never registered
             <hr>
-            
+
             <h2>Manual Optimization</h2>
             <p>
                 <button class="button" onclick="if(confirm('Clean database now?')) { location.href='<?php echo wp_nonce_url(admin_url('admin.php?page=lccp-performance&action=clean_db'), 'lccp_clean_db'); ?>'; }">
@@ -718,6 +719,7 @@ class LCCP_Performance_Optimizer {
                     Optimize Tables
                 </button>
             </p>
+            */ ?>
         </div>
         <?php
         

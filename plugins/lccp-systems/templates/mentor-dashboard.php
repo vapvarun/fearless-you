@@ -421,7 +421,7 @@ $avg_workload = $total_bigbirds > 0 ? round($assigned_count / $total_bigbirds, 1
             </div>
             <div class="lccp-kpi-footer">
                 <small>
-                    <a href="<?php echo admin_url('admin.php?page=lccp-pc-dashboard'); ?>" style="color: inherit; text-decoration: none;">
+                    <a href="<?php echo admin_url('admin.php?page=dasher-pc-dashboard'); ?>" style="color: inherit; text-decoration: none;">
                         <?php esc_html_e('View LCCP Dashboard →', 'lccp-systems'); ?>
                     </a>
                 </small>

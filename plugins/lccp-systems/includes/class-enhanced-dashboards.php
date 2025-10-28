@@ -231,10 +231,12 @@ class LCCP_Enhanced_Dashboards {
             </div>
         </div>
 
+        <?php /* REMOVED Oct 28, 2025: Broken links - admin pages never registered
         <div class="lccp-widget-actions">
             <a href="<?php echo admin_url('admin.php?page=lccp-reports'); ?>" class="button button-primary">View Detailed Reports</a>
             <a href="<?php echo admin_url('admin.php?page=lccp-export'); ?>" class="button">Export Data</a>
         </div>
+        */ ?>
         <?php
     }
 
@@ -485,7 +487,8 @@ class LCCP_Enhanced_Dashboards {
                 echo '<li class="lccp-team-member">';
                 echo '<div class="lccp-team-member-header">';
                 echo '<strong>' . esc_html($student->display_name) . '</strong>';
-                echo '<a href="' . admin_url('admin.php?page=lccp-student-details&student_id=' . $student->ID) . '" class="button button-small">View Progress</a>';
+                // REMOVED Oct 28, 2025: Broken link - admin page never registered
+                // echo '<a href="' . admin_url('admin.php?page=lccp-student-details&student_id=' . $student->ID) . '" class="button button-small">View Progress</a>';
                 echo '</div>';
                 echo '</li>';
             }
@@ -550,10 +553,12 @@ class LCCP_Enhanced_Dashboards {
             </div>
         </div>
 
+        <?php /* REMOVED Oct 28, 2025: Broken links - admin pages never registered
         <div class="lccp-widget-actions">
             <a href="<?php echo admin_url('admin.php?page=lccp-my-courses'); ?>" class="button button-primary">View All Courses</a>
             <a href="<?php echo admin_url('admin.php?page=lccp-log-hours'); ?>" class="button">Log Hours</a>
         </div>
+        */ ?>
         <?php
     }
 

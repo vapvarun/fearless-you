@@ -235,8 +235,12 @@ class LCCP_Module_Manager {
         
         // Map module IDs to actual file paths
         $module_files = array(
-            'dashboards' => 'includes/class-enhanced-dashboards.php',
+            'dashboards' => array(
+                'includes/class-enhanced-dashboards.php',  // Dashboard widgets
+                'modules/class-dashboards-module.php'      // Dashboard shortcodes (FIXED Oct 28, 2025)
+            ),
             'hour_tracker' => 'includes/class-hour-tracker.php',
+            'hour_tracker_advanced' => 'includes/class-hour-tracker-frontend.php', // FIXED Oct 28, 2025
             'document_manager' => 'includes/document-manager.php',
             'course_access_manager' => 'includes/class-course-access-manager.php',
             'accessibility_manager' => 'includes/class-accessibility-manager.php',
@@ -244,6 +248,7 @@ class LCCP_Module_Manager {
             'membership_roles' => 'includes/class-membership-roles.php', // Includes mentor functionality
             'performance' => 'includes/class-performance-optimizer.php',
             'learndash_integration' => 'includes/class-learndash-integration.php',
+            'learndash_advanced' => 'includes/class-learndash-compatibility.php', // FIXED Oct 28, 2025
             'learndash_compatibility' => 'includes/class-learndash-compatibility.php',
             // 'learndash_widgets' => DELETED - Dashboard optimization v2.0.0
             // 'advanced_widgets' => DELETED - Dashboard optimization v2.0.0
@@ -499,8 +504,9 @@ class LCCP_Module_Manager {
     public function self_test_module($module_id) {
         // Map module IDs to expected symbols to verify basic functionality
         $expectations = array(
-            'dashboards' => array('class' => 'LCCP_Enhanced_Dashboards'),
+            'dashboards' => array('class' => 'LCCP_Dashboards_Module'), // Updated Oct 28, 2025 - now loads both widget and shortcode classes
             'hour_tracker' => array('class' => 'LCCP_Hour_Tracker'),
+            'hour_tracker_advanced' => array('class' => 'LCCP_Hour_Tracker_Frontend'), // FIXED Oct 28, 2025
             'document_manager' => array('class' => 'Dasher_Document_Manager'),
             'course_access_manager' => array('class' => 'LCCP_Course_Access_Manager'),
             'accessibility_manager' => array('class' => 'LCCP_Accessibility_Manager'),
@@ -508,6 +514,7 @@ class LCCP_Module_Manager {
             'membership_roles' => array('class' => 'LCCP_Membership_Roles'),
             'performance' => array('class' => 'LCCP_Performance_Optimizer'),
             'learndash_integration' => array('class' => 'LCCP_LearnDash_Integration'),
+            'learndash_advanced' => array('class' => 'LCCP_LearnDash_Compatibility'), // FIXED Oct 28, 2025
             'learndash_compatibility' => array('class' => 'LCCP_LearnDash_Compatibility'),
             'learndash_widgets' => array('class' => 'LCCP_LearnDash_Widgets'),
             'advanced_widgets' => array('class' => 'LCCP_LearnDash_Widgets'),
@@ -861,9 +868,36 @@ class LCCP_Module_Manager {
                 'has_admin_page' => true,
                 'requires_plugin' => 'The Events Calendar',
                 'security_warning' => false
+            ),
+            'hour_tracker_advanced' => array(
+                'name' => __('Hour Tracker Frontend', 'lccp-systems'),
+                'description' => __('Advanced frontend hour tracking interface with enhanced student dashboards and progress visualization.', 'lccp-systems'),
+                'category' => 'certification',
+                'dependencies' => array('hour_tracker'),
+                'has_admin_page' => false,
+                'requires_plugin' => false,
+                'security_warning' => false
+            ),
+            'learndash_advanced' => array(
+                'name' => __('LearnDash Advanced Features', 'lccp-systems'),
+                'description' => __('Advanced LearnDash compatibility features and course management enhancements.', 'lccp-systems'),
+                'category' => 'integrations',
+                'dependencies' => array('learndash_integration'),
+                'has_admin_page' => false,
+                'requires_plugin' => 'LearnDash',
+                'security_warning' => false
+            ),
+            'performance_advanced' => array(
+                'name' => __('Performance Advanced', 'lccp-systems'),
+                'description' => __('Advanced performance optimization features (currently placeholder for future enhancements).', 'lccp-systems'),
+                'category' => 'system',
+                'dependencies' => array('performance'),
+                'has_admin_page' => false,
+                'requires_plugin' => false,
+                'security_warning' => false
             )
         );
-        
+
         return $modules;
     }
     

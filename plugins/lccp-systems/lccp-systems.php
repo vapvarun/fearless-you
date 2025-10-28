@@ -241,24 +241,13 @@ class LCCP_Systems {
 					</div>
 				</div>
 				
-				<!-- Quick Actions Bar -->
-				<div class="lccp-quick-actions">
-					<h3><?php _e( 'Quick Actions', 'lccp-systems' ); ?></h3>
-					<div class="button-group">
-						<a href="<?php echo admin_url( 'users.php?page=lccp-hour-tracker' ); ?>" class="button">
-							<span class="dashicons dashicons-clock"></span> <?php _e( 'View Hour Submissions', 'lccp-systems' ); ?>
-						</a>
-						<a href="<?php echo admin_url( 'admin.php?page=lccp-systems&action=export_data' ); ?>" class="button">
-							<span class="dashicons dashicons-download"></span> <?php _e( 'Export Data', 'lccp-systems' ); ?>
-						</a>
-						<button type="button" class="button" onclick="if(confirm('Clear all caches?')) location.href='<?php echo wp_nonce_url( admin_url( 'admin.php?page=lccp-systems&action=clear_cache' ), 'lccp_clear_cache' ); ?>'">
-							<span class="dashicons dashicons-trash"></span> <?php _e( 'Clear Cache', 'lccp-systems' ); ?>
-						</button>
-						<a href="<?php echo admin_url( 'admin.php?page=lccp-systems&action=run_diagnostics' ); ?>" class="button">
-							<span class="dashicons dashicons-admin-tools"></span> <?php _e( 'Run Diagnostics', 'lccp-systems' ); ?>
-						</a>
-					</div>
-				</div>
+				<?php /* Quick Actions Bar - REMOVED Oct 28, 2025
+				All four buttons had no working handlers:
+				- View Hour Submissions: Admin page never registered
+				- Export Data: No handler exists
+				- Clear Cache: Handler exists but render method never hooked to admin page
+				- Run Diagnostics: No handler exists
+				*/ ?>
 				
 				<form method="post" action="options.php">
 					<?php settings_fields( 'lccp_systems_settings' ); ?>
