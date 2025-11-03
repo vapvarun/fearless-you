@@ -628,3 +628,6 @@ class LCCP_Dashboards_Module extends LCCP_Module {
         $wpdb->query("DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_timeout_lccp_%_dashboard_%'");
     }
 }
+
+// Initialize the dashboards module
+new LCCP_Dashboards_Module();

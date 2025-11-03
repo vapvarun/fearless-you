@@ -237,7 +237,8 @@ class LCCP_Module_Manager {
         $module_files = array(
             'dashboards' => array(
                 'includes/class-enhanced-dashboards.php',  // Dashboard widgets
-                'modules/class-dashboards-module.php'      // Dashboard shortcodes (FIXED Oct 28, 2025)
+                'modules/class-dashboards-module.php',     // Role-based dashboard shortcodes (FIXED Oct 28, 2025)
+                'modules/class-dashboards.php'              // Main dashboard router shortcode (FIXED Nov 3, 2025)
             ),
             'hour_tracker' => 'includes/class-hour-tracker.php',
             'hour_tracker_advanced' => 'includes/class-hour-tracker-frontend.php', // FIXED Oct 28, 2025
