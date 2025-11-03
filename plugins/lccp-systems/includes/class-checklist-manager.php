@@ -169,7 +169,7 @@ class LCCP_Checklist_Manager {
         // Process the list items
         $content = preg_replace_callback(
             '/<li>(.*?)<\/li>/s',
-            function($matches) use (&$item_index, $progress_data) {
+            function($matches) use ($progress_data) {
                 static $item_index = 0;
                 $checked = isset($progress_data[$item_index]) && $progress_data[$item_index] ? 'checked' : '';
                 $checked_class = $checked ? 'lccp-checked' : '';
