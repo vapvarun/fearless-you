@@ -1,0 +1,38 @@
+"Page ID","Page Title","Page URL",Shortcode,Status,Plugin/Source,"Action Required",Priority
+229248,"Big Bird Dashboard",http://you.local/lccp-dashboard/bigbird-dashboard/,[lccp_bigbird_dashboard],ORPHANED,"LCCP Systems (not loading)","Fix - Core Functionality",HIGH
+229222,"BigBird Dashboard",http://you.local/bigbird-dashboard/,[dasher_bigbird_dashboard],ORPHANED,"LCCP Systems (not loading)","Fix - Core Functionality",HIGH
+229222,"BigBird Dashboard",http://you.local/bigbird-dashboard/,[ld_course_list],ACTIVE,LearnDash,"None - Working",Low
+228352,"BigBird Dashboard",http://you.local/dashboard-bb/,[dasher_bigbird_dashboard],ORPHANED,"LCCP Systems (not loading)","Fix - Core Functionality",HIGH
+224639,Courses,http://you.local/courses/,[phunk_courses_by_category],ORPHANED,"Unknown Plugin","Replace Shortcode",MEDIUM
+220068,"Current Programs",http://you.local/current-programs/,[7347],ORPHANED,"NOT FOUND","False Positive - No Action",IGNORE
+220068,"Current Programs",http://you.local/current-programs/,[7029],ORPHANED,"NOT FOUND","False Positive - No Action",IGNORE
+220068,"Current Programs",http://you.local/current-programs/,[7253],ORPHANED,"NOT FOUND","False Positive - No Action",IGNORE
+220068,"Current Programs",http://you.local/current-programs/,[7035],ORPHANED,"NOT FOUND","False Positive - No Action",IGNORE
+218999,"Document Library",http://you.local/document-library/,[doc_library],ORPHANED,"LCCP Systems (module disabled)","Replace Shortcode",MEDIUM
+229366,"Faculty Dashboard",http://you.local/faculty-dashboard/,[fys_faculty_dashboard],ACTIVE,"Fearless You Systems","None - Working",Low
+229219,"Hour Submission",http://you.local/hour-submission/,[lccp-hour-form],ORPHANED,"LCCP Systems (not loading)","Fix - Core Functionality",HIGH
+225034,"Instructor Dashboard",http://you.local/instructor-dashboard/,[0],ORPHANED,"NOT FOUND","False Positive - No Action",IGNORE
+225034,"Instructor Dashboard",http://you.local/instructor-dashboard/,[data-active],ORPHANED,"NOT FOUND","False Positive - No Action",IGNORE
+225034,"Instructor Dashboard",http://you.local/instructor-dashboard/,[data-completed],ORPHANED,"NOT FOUND","False Positive - No Action",IGNORE
+225034,"Instructor Dashboard",http://you.local/instructor-dashboard/,[rel],ORPHANED,"NOT FOUND","False Positive - No Action",IGNORE
+225034,"Instructor Dashboard",http://you.local/instructor-dashboard/,[offset],ORPHANED,"NOT FOUND","False Positive - No Action",IGNORE
+225034,"Instructor Dashboard",http://you.local/instructor-dashboard/,[data-selected],ORPHANED,"NOT FOUND","False Positive - No Action",IGNORE
+229246,"LCCP Dashboard",http://you.local/lccp-dashboard/,[lccp_dashboard],ACTIVE,"LCCP Systems","None - Working",Low
+229251,"LCCP Test Page",http://you.local/lccp-test-page/,[lccp-hour-widget],ORPHANED,"LCCP Systems (not loading)","Fix - Core Functionality",HIGH
+229251,"LCCP Test Page",http://you.local/lccp-test-page/,[lccp-hour-form],ORPHANED,"LCCP Systems (not loading)","Fix - Core Functionality",HIGH
+229251,"LCCP Test Page",http://you.local/lccp-test-page/,[lccp-hour-log],ORPHANED,"LCCP Systems (not loading)","Fix - Core Functionality",HIGH
+221194,"Love Notes Setup",http://you.local/love-notes-setup/,[user_meta],ACTIVE,"WP Fusion","None - Working",Low
+228351,"Mentor Dashboard",http://you.local/dashboard-m/,[dasher_mentor_dashboard],ORPHANED,"LCCP Systems (not loading)","Fix - Core Functionality",HIGH
+229221,"Mentor Dashboard",http://you.local/mentor-dashboard/,[dasher_mentor_dashboard],ORPHANED,"LCCP Systems (not loading)","Fix - Core Functionality",HIGH
+229249,"Mentor Dashboard",http://you.local/lccp-dashboard/mentor-dashboard/,[lccp_mentor_dashboard],ACTIVE,"LCCP Systems","None - Working",Low
+229365,"My Dashboard",http://you.local/my-dashboard/,[lccp_dashboard],ACTIVE,"LCCP Systems","None - Working",Low
+229223,"PC Dashboard",http://you.local/pc-dashboard/,[dasher_pc_dashboard],ORPHANED,"LCCP Systems (not loading)","Fix - Core Functionality",HIGH
+229247,"Program Coordinator Dashboard",http://you.local/lccp-dashboard/pc-dashboard/,[lccp_pc_dashboard],ACTIVE,"LCCP Systems","None - Working",Low
+78,Replays,http://you.local/replays/,[ld_lesson_list],ACTIVE,LearnDash,"None - Working",Low
+78,Replays,http://you.local/replays/,[ld_topic_list],ACTIVE,LearnDash,"None - Working",Low
+78,Replays,http://you.local/replays/,[memb_has_any_tag],ORPHANED,"Unknown/Membership Plugin","Replace Shortcode",MEDIUM
+229218,"Student Dashboard",http://you.local/student-dashboard/,[lccp_student_dashboard],ACTIVE,"LCCP Systems","None - Working",Low
+229218,"Student Dashboard",http://you.local/student-dashboard/,[ld_course_list],ACTIVE,LearnDash,"None - Working",Low
+229250,"Student Dashboard",http://you.local/lccp-dashboard/student-dashboard/,[lccp_student_dashboard],ACTIVE,"LCCP Systems","None - Working",Low
+7,"Terms of Use",http://you.local/terms-of-use/,[at],ORPHANED,"NOT FOUND","False Positive - No Action",IGNORE
+225077,"Your Checklists",http://you.local/your-checklists/,[user_checklists],ORPHANED,"NOT FOUND","Replace Shortcode",MEDIUM
