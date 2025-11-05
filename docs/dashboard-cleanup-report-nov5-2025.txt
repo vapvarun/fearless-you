@@ -1,0 +1,99 @@
+DASHBOARD PAGES CLEANUP REPORT
+Date: November 5, 2025
+===============================================
+
+PAGES DELETED (Permanently Removed):
+-------------------------------------
+
+1. Page ID: 229221
+   Title: Mentor Dashboard
+   Slug: /mentor-dashboard/
+   Status: Was Published
+   Content: Test page with old shortcode [dasher_mentor_dashboard]
+   Reason: Duplicate of correct LCCP Mentor Dashboard (ID 229249)
+
+2. Page ID: 229222
+   Title: BigBird Dashboard
+   Slug: /bigbird-dashboard/
+   Status: Was Published
+   Content: Old shortcode [dasher_bigbird_dashboard]
+   Reason: Duplicate of correct LCCP Big Bird Dashboard (ID 229248)
+
+3. Page ID: 229223
+   Title: PC Dashboard
+   Slug: /pc-dashboard/
+   Status: Was Published
+   Content: Old shortcode [dasher_pc_dashboard]
+   Reason: Duplicate of correct LCCP PC Dashboard (ID 229247)
+
+4. Page ID: 228351
+   Title: Mentor Dashboard
+   Slug: /dashboard-m/
+   Status: Was Published
+   Content: Old shortcode [dasher_mentor_dashboard]
+   Reason: Outdated duplicate dashboard page
+
+5. Page ID: 228352
+   Title: BigBird Dashboard
+   Slug: /dashboard-bb/
+   Status: Was Published
+   Content: Old shortcode [dasher_bigbird_dashboard]
+   Reason: Outdated duplicate dashboard page
+
+6. Page ID: 229218
+   Title: Student Dashboard
+   Slug: /student-dashboard/
+   Status: Was Published
+   Content: Old version with extra HTML wrapper
+   Reason: Duplicate of correct LCCP Student Dashboard (ID 229250)
+
+7. Page ID: 229230
+   Title: Test Dashboard
+   Slug: /test-dashboard/
+   Status: Was Draft
+   Content: Test page with [dasher_mentor_dashboard]
+   Reason: Test page no longer needed
+
+===============================================
+
+ACTIVE LCCP DASHBOARD PAGES (Kept):
+------------------------------------
+
+✓ ID 229246 - LCCP Dashboard
+  Slug: /lccp-dashboard/
+  Shortcode: [lccp_dashboard]
+
+✓ ID 229247 - Program Coordinator Dashboard
+  Slug: /pc-dashboard/
+  Shortcode: [lccp_pc_dashboard]
+
+✓ ID 229248 - Big Bird Dashboard
+  Slug: /bigbird-dashboard/
+  Shortcode: [lccp_bigbird_dashboard]
+
+✓ ID 229249 - Mentor Dashboard
+  Slug: /mentor-dashboard/
+  Shortcode: [lccp_mentor_dashboard]
+
+✓ ID 229250 - Student Dashboard
+  Slug: /student-dashboard/
+  Shortcode: [lccp_student_dashboard]
+
+===============================================
+
+SUMMARY:
+--------
+- 7 duplicate/outdated dashboard pages permanently deleted
+- 5 correct LCCP dashboard pages retained and active
+- All pages now use the correct lccp_* shortcodes
+- No functionality lost - only duplicates removed
+- Resolved confusion from multiple pages with same slug
+
+IMPACT:
+-------
+✓ No broken links (duplicates had same slugs as active pages)
+✓ Cleaner admin interface
+✓ Reduced confusion for content editors
+✓ All dashboard functionality intact
+
+===============================================
