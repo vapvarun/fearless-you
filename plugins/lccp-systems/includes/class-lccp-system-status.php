@@ -192,7 +192,7 @@ class LCCP_System_Status {
         }
         
         $critical_plugins = array(
-            'buddyboss-platform/bp-loader.php' => 'BuddyBoss Platform',
+            // 'buddyboss-platform/bp-loader.php' => 'BuddyBoss Platform', // DISABLED: Community part is now optional
             'sfwd-lms/sfwd_lms.php' => 'LearnDash LMS'
         );
         

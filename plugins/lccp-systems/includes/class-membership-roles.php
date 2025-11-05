@@ -42,11 +42,11 @@ class LCCP_Membership_Roles {
         
         // WooCommerce membership hooks (if using WooCommerce Memberships)
         add_action('wc_memberships_user_membership_status_changed', array($this, 'check_role_on_membership_change'), 10, 3);
-        
-        // BuddyBoss/BuddyPress group membership
-        add_action('groups_join_group', array($this, 'check_role_on_group_join'), 10, 2);
-        add_action('groups_leave_group', array($this, 'check_role_on_group_leave'), 10, 2);
-        
+
+        // BuddyBoss/BuddyPress group membership - DISABLED: Community part is now optional
+        // add_action('groups_join_group', array($this, 'check_role_on_group_join'), 10, 2);
+        // add_action('groups_leave_group', array($this, 'check_role_on_group_leave'), 10, 2);
+
         // Admin interface for bulk role updates
         add_action('admin_menu', array($this, 'add_admin_menu'));
         
@@ -165,8 +165,9 @@ class LCCP_Membership_Roles {
                 }
             }
         }
-        
-        // Check BuddyBoss/BuddyPress groups
+
+        // Check BuddyBoss/BuddyPress groups - DISABLED: Community part is now optional
+        /*
         if (function_exists('groups_get_user_groups')) {
             $groups = groups_get_user_groups($user_id);
             if (!empty($groups['groups'])) {
@@ -179,7 +180,8 @@ class LCCP_Membership_Roles {
                 }
             }
         }
-        
+        */
+
         // Apply filters so other plugins can add tags
         $tags = apply_filters('lccp_user_tags', $tags, $user_id);
         

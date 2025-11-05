@@ -44,10 +44,10 @@ class LCCP_Dashboards {
         
         // Auto-redirect users to their dashboard after login
         add_filter('login_redirect', array($this, 'dashboard_login_redirect'), 10, 3);
-        
-        // Add dashboard links to BuddyBoss profile menu
-        add_action('bp_setup_nav', array($this, 'add_dashboard_to_profile'), 100);
-        
+
+        // Add dashboard links to BuddyBoss profile menu - DISABLED: Community part is now optional
+        // add_action('bp_setup_nav', array($this, 'add_dashboard_to_profile'), 100);
+
         // Enqueue assets
         add_action('wp_enqueue_scripts', array($this, 'enqueue_assets'));
         
