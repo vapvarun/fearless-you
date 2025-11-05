@@ -1,0 +1,111 @@
+SITE AUDIT - PAGE CLEANUP RECOMMENDATIONS
+Date: November 5, 2025
+==========================================
+
+ISSUES FOUND:
+=============
+
+1. DUPLICATE PAGES
+------------------
+
+A. "Welcome to Fearless You!" (3 versions)
+   ✓ ID 222497 - /welcome-to-fearless-you-2/ [ACTIVE FRONT PAGE - KEEP]
+   ❌ ID 220274 - /welcome-to-fearless-you/ [OLD VERSION - RECOMMEND DELETE]
+   ⚠️ ID 2 - /dashboard/ [ORIGINAL 2022 VERSION - CHECK IF LINKED]
+
+B. "Members" (2 versions)
+   ⚠️ ID 230024 - /members-2/ [NEWER - Oct 2025]
+   ⚠️ ID 6 - /members/ [OLDER - Mar 2022]
+   Note: Both appear to be empty. Determine which is correct.
+
+2. OLD DRAFT PAGES (Low Priority)
+----------------------------------
+   - ID 229229: Test Page (draft) - Sep 2025
+   - ID 228859: Coaches Toolkit Training (draft, no slug) - Aug 2025
+   - ID 228574: Toolkit Certification (draft, no slug) - Jul 2025
+   - ID 220272: Home (draft, no slug) - Jun 2023
+   - ID 217136: Monthly Topics (draft) - Oct 2022
+   - ID 255: Videos (draft) - Jun 2022
+   - ID 254: Groups (draft) - Jun 2022
+   - ID 243: Documents (draft) - Jun 2022
+   - ID 230: Photos (draft) - Jun 2022
+   - ID 30: Community (draft) - Mar 2022
+   - ID 5: News Feed (draft) - Mar 2022
+   - ID 3: Privacy Policy (draft) - Mar 2022
+
+3. PAGES WITH NO SLUG (Potential Issues)
+-----------------------------------------
+   Draft pages with missing slugs that might cause issues:
+   - ID 228859: Coaches Toolkit Training
+   - ID 228574: Toolkit Certification
+   - ID 220272: Home
+
+==========================================
+
+RECOMMENDATIONS:
+================
+
+HIGH PRIORITY:
+--------------
+1. Delete duplicate "Welcome to Fearless You!" page
+   - DELETE ID 220274 (old version from 2023)
+   - Keep ID 222497 (current front page)
+   - Review ID 2 (dashboard) - check if any menus/links reference it
+
+2. Resolve "Members" duplicate
+   - Determine which Members page is correct (ID 6 or ID 230024)
+   - Delete the unused one
+
+MEDIUM PRIORITY:
+----------------
+3. Clean up old draft pages
+   - Review drafts from 2022 (IDs: 255, 254, 243, 230, 30, 5, 3)
+   - These are 3+ years old and likely not needed
+   - Recommended: DELETE if not actively being worked on
+
+4. Fix pages with no slug
+   - Either complete these drafts or delete them
+   - Pages without slugs can cause admin confusion
+
+LOW PRIORITY:
+-------------
+5. Review recent drafts
+   - ID 229229: Test Page - probably safe to delete
+   - ID 228859, 228574: Toolkit pages - check if being developed
+
+==========================================
+
+RECOMMENDED IMMEDIATE ACTIONS:
+==============================
+
+1. DELETE ID 220274 - Old "Welcome to Fearless You!" (2023)
+   Reason: Duplicate of active front page
+
+2. CHECK & DELETE ONE: ID 6 or ID 230024 (Members pages)
+   Action needed: Determine which Members page should be kept
+
+3. DELETE TEST PAGE: ID 229229 (Test Page draft)
+   Reason: Clearly a test, likely not needed
+
+4. REVIEW & DELETE OLD DRAFTS from 2022:
+   IDs: 255, 254, 243, 230, 30, 5, 3
+   Reason: 3+ years old, likely abandoned
+
+==========================================
+
+SUMMARY:
+========
+- 2 confirmed duplicate pages found
+- 12 old draft pages (3+ years old)
+- 3 pages with missing slugs
+- Estimated cleanup: 15-17 pages can be deleted
+
+IMPACT:
+=======
+✓ Cleaner admin interface
+✓ Faster page load times in admin
+✓ Reduced database size
+✓ Less confusion for content editors
+✓ No impact on live site (only drafts and duplicates)
+
+==========================================
